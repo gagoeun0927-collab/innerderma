@@ -1,0 +1,4 @@
+allprojects {
+    def wslBuildDir = System.getenv('INNERDERMA_WSL_BUILD_DIR') ?: '/tmp/innerderma-build'
+    layout.buildDirectory = file(wslBuildDir)
+}

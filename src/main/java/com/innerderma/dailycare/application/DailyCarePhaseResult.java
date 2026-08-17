@@ -9,4 +9,5 @@ import java.util.List;
 
 public record DailyCarePhaseResult(CarePhase phase, LocalDate servedDate, boolean inherited,
                                    CareSolution solution, List<String> steps,
-                                   List<ProductRecommendationItem> products, String productNotice) {}
+                                   List<ProductRecommendationItem> products, String productNotice,
+                                   boolean completionRecorded, boolean completed) {}

@@ -18,3 +18,9 @@ This preference should survive new sessions and context resets.
 - When the user requests a summary and the result is long, create a Markdown document under `docs/` instead of returning the entire content only in chat.
 - Give the document a descriptive, stable filename and show its path to the user.
 - Keep the chat response concise and summarize the document's contents.
+
+## File change reporting
+
+- When reporting code or documentation changes, list only which files were modified and briefly describe the outcome.
+- Do not report line numbers, added/deleted line counts, patch hunks, or detailed per-line change information unless the user explicitly asks for it.
+- Keep implementation-process reporting concise.

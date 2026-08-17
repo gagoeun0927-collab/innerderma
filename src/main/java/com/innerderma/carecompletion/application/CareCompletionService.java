@@ -67,4 +67,24 @@ public class CareCompletionService {
                 repository.findByUser_UserCodeAndServedDateBetweenOrderByServedDateDescPhaseAsc(
                         userCode, resolvedFrom, resolvedTo));
     }
+
+    @Transactional(readOnly = true)
+    public CareAdherenceSummary getSummary(String userCode, LocalDate from, LocalDate to) {
+        var history = getHistory(userCode, from, to);
+        int morningRecorded = 0, morningCompleted = 0, eveningRecorded = 0, eveningCompleted = 0;
+        for (var item : history.items()) {
+            if (item.getPhase() == CarePhase.MORNING) {
+                morningRecorded++;
+                if (item.isCompleted()) morningCompleted++;
+            } else {
+                eveningRecorded++;
+                if (item.isCompleted()) eveningCompleted++;
+            }
+        }
+        int recorded = morningRecorded + eveningRecorded;
+        int completed = morningCompleted + eveningCompleted;
+        int rate = recorded == 0 ? 0 : (int) Math.round(completed * 100.0 / recorded);
+        return new CareAdherenceSummary(history.from(), history.to(), recorded, completed,
+                morningRecorded, morningCompleted, eveningRecorded, eveningCompleted, rate);
+    }
 }

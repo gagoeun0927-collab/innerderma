@@ -77,4 +77,30 @@ class CareCompletionServiceTest {
                 .isInstanceOf(com.innerderma.common.error.BusinessException.class);
         verifyNoInteractions(repository);
     }
+
+    @Test
+    void summarizesRecordedAndCompletedChecksByPhase() {
+        UserRepository userRepository = mock(UserRepository.class);
+        CareCompletionRepository repository = mock(CareCompletionRepository.class);
+        CareCompletionService service = new CareCompletionService(userRepository, repository,
+                mock(CareSolutionService.class));
+        LocalDate from = LocalDate.of(2026, 8, 1), to = LocalDate.of(2026, 8, 2);
+        when(userRepository.existsByUserCode("WHS-DEMO-001")).thenReturn(true);
+        CareCompletion morningDone = mock(CareCompletion.class);
+        CareCompletion morningSkipped = mock(CareCompletion.class);
+        CareCompletion eveningDone = mock(CareCompletion.class);
+        when(morningDone.getPhase()).thenReturn(CarePhase.MORNING);
+        when(morningDone.isCompleted()).thenReturn(true);
+        when(morningSkipped.getPhase()).thenReturn(CarePhase.MORNING);
+        when(eveningDone.getPhase()).thenReturn(CarePhase.EVENING);
+        when(eveningDone.isCompleted()).thenReturn(true);
+        when(repository.findByUser_UserCodeAndServedDateBetweenOrderByServedDateDescPhaseAsc(
+                "WHS-DEMO-001", from, to)).thenReturn(java.util.List.of(morningDone, morningSkipped, eveningDone));
+
+        CareAdherenceSummary summary = service.getSummary("WHS-DEMO-001", from, to);
+
+        assertThat(summary.recordedCount()).isEqualTo(3);
+        assertThat(summary.completedCount()).isEqualTo(2);
+        assertThat(summary.completionRatePercent()).isEqualTo(67);
+    }
 }

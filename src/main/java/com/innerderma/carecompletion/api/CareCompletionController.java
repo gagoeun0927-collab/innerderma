@@ -1,6 +1,7 @@
 package com.innerderma.carecompletion.api;
 
 import com.innerderma.carecompletion.application.CareCompletionService;
+import com.innerderma.carecompletion.application.CareAdherenceSummary;
 import com.innerderma.common.response.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -37,5 +38,13 @@ public class CareCompletionController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
         return ApiResponse.success(CareCompletionHistoryResponse.from(
                 service.getHistory(userCode, from, to)));
+    }
+
+    @GetMapping("/summary")
+    public ApiResponse<CareAdherenceSummary> getSummary(
+            @PathVariable String userCode,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
+        return ApiResponse.success(service.getSummary(userCode, from, to));
     }
 }

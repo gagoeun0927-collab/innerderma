@@ -50,4 +50,9 @@ public class SkinCaptureController {
     public ApiResponse<SkinCaptureResponse> getLatest(@PathVariable String userCode) {
         return ApiResponse.success(SkinCaptureResponse.from(skinCaptureService.getLatest(userCode)));
     }
+
+    @GetMapping("/today")
+    public ApiResponse<DailyCaptureStatusResponse> getToday(@PathVariable String userCode) {
+        return ApiResponse.success(DailyCaptureStatusResponse.from(skinCaptureService.getTodayStatus(userCode)));
+    }
 }

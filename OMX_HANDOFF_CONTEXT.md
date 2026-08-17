@@ -563,3 +563,6 @@ SkinAge는 분석 데이터만 제공한다. 안전 필터, 계절 보조 조정
 - `GET /api/users/{userCode}/care-completions/summary?from=YYYY-MM-DD&to=YYYY-MM-DD`
   - 체크가 기록된 아침·귀가 후 단계의 기록 수, 완료 수, 완료 비율을 집계한다.
   - 체크하지 않은 단계를 임의로 미수행 처리하지 않아 통계를 과장하지 않는다.
+
+`GET /api/users/{userCode}/skin-captures/today`를 추가해 오늘 유효 촬영 여부와 재촬영 가능
+상태를 조회할 수 있게 했다. 품질 실패 사진은 오늘의 유효 촬영으로 간주하지 않는다.

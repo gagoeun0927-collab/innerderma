@@ -89,6 +89,15 @@ public class SkinCaptureService {
                 .orElseThrow(() -> new BusinessException(ErrorCode.SKIN_CAPTURE_NOT_FOUND));
     }
 
+    public DailyCaptureStatus getTodayStatus(String userCode) {
+        if (!userRepository.existsByUserCode(userCode)) throw new BusinessException(ErrorCode.USER_NOT_FOUND);
+        LocalDate today = LocalDate.now(clock);
+        var capture = skinCaptureRepository
+                .findFirstByUser_UserCodeAndCapturedDateAndQualityStatusOrderByCapturedAtDesc(
+                        userCode, today, SkinCaptureQualityStatus.VALID).orElse(null);
+        return new DailyCaptureStatus(today, capture == null, capture);
+    }
+
     private void validate(SkinCaptureFile file) {
         if (file == null || file.bytes() == null || file.size() <= 0 || file.size() != file.bytes().length) {
             throw new BusinessException(ErrorCode.INVALID_SKIN_CAPTURE_IMAGE);

@@ -1,7 +1,6 @@
 package com.innerderma.dailycare.application;
 
-import com.innerderma.caresolution.application.CareSolutionResult;
-import com.innerderma.productrecommendation.application.ProductRecommendationResult;
+import java.time.LocalDate;
+import java.util.List;
 
-public record DailyCareResult(CareSolutionResult solution,
-                              ProductRecommendationResult productRecommendations) {}
+public record DailyCareResult(LocalDate servedDate, List<DailyCarePhaseResult> phases) {}

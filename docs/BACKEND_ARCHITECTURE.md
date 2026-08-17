@@ -50,6 +50,7 @@ Controller(API)
 | `GET` | `/api/facilities` | 시설 목록 조회 |
 | `GET` | `/api/users/{userCode}/procedures?facilityCode={code}&date={date}` | 시설과 날짜에 해당하는 시술 기록 조회 |
 | `GET` | `/api/users/{userCode}/skin-diagnosis` | 최신 WHS 피부 진단 조회 |
+| `GET` | `/api/ai-rules` | 현재 활성화된 버전별 AI 규칙 목록 조회 |
 
 ### 피부 사진
 
@@ -196,6 +197,8 @@ User
 - Flyway/Liquibase 기반 DB 마이그레이션
 - OpenAPI/Swagger 문서 자동화
 - 다국어 처리 기반
+
+AI Master Rule 적용을 위한 버전형 Rule DB 기반이 추가되었으며, 초기 규칙으로 Safety First, Image Quality Gate, Minimum Intervention을 관리한다. 실제 상태·추세 계산과 전체 Rule Engine 실행기는 후속 단계에서 연결한다.
 
 ## 7. 주요 코드 위치
 

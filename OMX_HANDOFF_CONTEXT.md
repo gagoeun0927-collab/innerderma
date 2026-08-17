@@ -398,3 +398,26 @@ WHS 초기 피부 진단 + 최신 사진 분석 + 자가 상태 + 시술 기록 
   `requiresSafetyAttention=true`로 반환
 - 이 플래그는 의료 진단이 아니라 일반 케어보다 안전 안내를 우선하기 위한 규칙이다.
 - 잘못된 JSON enum 값도 500이 아닌 `COMMON_001` 400 응답으로 처리한다.
+
+## 17. 2026-08-17 후속 개발 기록: SkinAge 사진 분석 연동
+
+`skin-analysis` 1차 백엔드를 구현했다.
+
+- `POST /api/users/{userCode}/skin-analyses`
+  - 요청의 `captureId`를 생략하면 사용자의 최신 피부 사진을 사용한다.
+  - 선택적 `actualAge`는 0~120 범위로 검증한다.
+  - 저장된 사진을 `POST {SKINAGE_BASE_URL}/api/v1/analyze`로 전송한다.
+  - 히트맵은 현재 서비스에 필요하지 않아 `include_heatmaps=false`로 고정한다.
+- `GET /api/users/{userCode}/skin-analyses/latest`
+  - 외부 API를 다시 호출하지 않고 저장된 최신 전체 분석 결과를 반환한다.
+- 피부 나이, 종합 점수, 7개 구역의 28개 지표, 고민 평균, 우선 고민,
+  모델 메타데이터를 SkinAge 명세에 맞춰 매핑한다.
+- 점수 범위, 7개 구역, 구역당 4개 고민, 필수 고민 식별자 등을 검증한 뒤에만 저장한다.
+- 사진 1건당 분석 결과 1건만 허용하며 원본 전체 응답을 함께 보존한다.
+- 파일은 설정된 피부 사진 저장 경로 내부에서만 다시 읽을 수 있다.
+- SkinAge 연결/HTTP/역직렬화 실패는 InnerDerma `ANALYSIS_004` 502 오류로 변환한다.
+- 실제 AI 서버 주소는 `SKINAGE_BASE_URL` 환경 변수로 설정하며 기본값은
+  `http://localhost:8000`이다.
+
+SkinAge는 분석 데이터만 제공한다. 안전 필터, 계절 보조 조정, 제품 및 행동 추천은
+이 분석 기능에 포함하지 않고 향후 `care-solution`에서 처리한다.

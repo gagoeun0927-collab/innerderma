@@ -1,0 +1,99 @@
+package com.innerderma.selfcheck.api;
+
+import com.innerderma.common.error.GlobalExceptionHandler;
+import com.innerderma.selfcheck.application.SelfCheckCommand;
+import com.innerderma.selfcheck.application.SelfCheckService;
+import com.innerderma.selfcheck.domain.SelfCheck;
+import com.innerderma.selfcheck.domain.SymptomSeverity;
+import com.innerderma.user.domain.User;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.time.LocalDateTime;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+class SelfCheckControllerTest {
+
+    private SelfCheckService service;
+    private MockMvc mockMvc;
+
+    @BeforeEach
+    void setUp() {
+        service = mock(SelfCheckService.class);
+        mockMvc = MockMvcBuilders.standaloneSetup(new SelfCheckController(service))
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
+    }
+
+    @Test
+    void createsSelfCheckAndReturnsSafetyFlag() throws Exception {
+        User user = new User("WHS-DEMO-001", "테스트 사용자", "010-1234-1234");
+        SelfCheck result = new SelfCheck(
+                user,
+                LocalDateTime.of(2026, 8, 17, 12, 30),
+                SymptomSeverity.MODERATE,
+                SymptomSeverity.NONE,
+                SymptomSeverity.MILD,
+                SymptomSeverity.MILD,
+                SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
+                null
+        );
+        when(service.create(eq("WHS-DEMO-001"), any(SelfCheckCommand.class))).thenReturn(result);
+
+        mockMvc.perform(post("/api/users/WHS-DEMO-001/self-checks")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(validRequest("MODERATE")))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.data.pain").value("MODERATE"))
+                .andExpect(jsonPath("$.data.requiresSafetyAttention").value(true));
+    }
+
+    @Test
+    void rejectsMissingRequiredSymptom() throws Exception {
+        mockMvc.perform(post("/api/users/WHS-DEMO-001/self-checks")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.code").value("COMMON_001"))
+                .andExpect(jsonPath("$.errors.pain").exists());
+    }
+
+    @Test
+    void rejectsUnknownSeverityAsBadRequest() throws Exception {
+        mockMvc.perform(post("/api/users/WHS-DEMO-001/self-checks")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(validRequest("VERY_HIGH")))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("COMMON_001"));
+    }
+
+    private String validRequest(String pain) {
+        return """
+                {
+                  "pain": "%s",
+                  "heatSensation": "NONE",
+                  "tightness": "MILD",
+                  "dryness": "MILD",
+                  "itching": "NONE",
+                  "swelling": "NONE",
+                  "peeling": "NONE",
+                  "breakout": "NONE"
+                }
+                """.formatted(pain);
+    }
+}

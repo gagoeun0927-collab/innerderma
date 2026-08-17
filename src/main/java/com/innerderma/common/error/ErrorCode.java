@@ -11,7 +11,8 @@ public enum ErrorCode {
     INVALID_SKIN_CAPTURE_IMAGE(HttpStatus.BAD_REQUEST, "CAPTURE_001", "지원하지 않는 피부 사진입니다."),
     SKIN_CAPTURE_ALREADY_EXISTS(HttpStatus.CONFLICT, "CAPTURE_002", "오늘의 유효한 피부 촬영 기록이 이미 있습니다."),
     SKIN_CAPTURE_NOT_FOUND(HttpStatus.NOT_FOUND, "CAPTURE_003", "피부 촬영 기록을 찾을 수 없습니다."),
-    SKIN_CAPTURE_STORAGE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "CAPTURE_004", "피부 사진을 저장하지 못했습니다.");
+    SKIN_CAPTURE_STORAGE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "CAPTURE_004", "피부 사진을 저장하지 못했습니다."),
+    SELF_CHECK_NOT_FOUND(HttpStatus.NOT_FOUND, "SELF_CHECK_001", "자가 피부 상태 기록을 찾을 수 없습니다.");
 
     private final HttpStatus status;
     private final String code;

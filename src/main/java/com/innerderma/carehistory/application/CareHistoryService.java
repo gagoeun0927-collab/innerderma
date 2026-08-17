@@ -59,26 +59,37 @@ public class CareHistoryService {
         if (date == null) {
             throw new BusinessException(ErrorCode.INVALID_REQUEST);
         }
-        // 같은 날짜의 아침은 전날 시작된 사이클, 귀가 후는 당일 시작된 사이클에 속할 수 있다.
-        CareHistoryResult candidates = getHistory(userCode, date.minusDays(1), date);
-        var items = candidates.items().stream()
-                .flatMap(history -> {
-                    var phases = new java.util.ArrayList<DailyCareHistoryItem>(2);
-                    if (date.equals(history.morningCareDate())) {
-                        phases.add(new DailyCareHistoryItem(CarePhase.MORNING,
-                                !date.equals(history.date()), history));
-                    }
-                    if (date.equals(history.eveningCareDate())) {
-                        phases.add(new DailyCareHistoryItem(CarePhase.EVENING, false, history));
-                    }
-                    return phases.stream();
-                })
-                .sorted(java.util.Comparator.comparing(DailyCareHistoryItem::phase))
-                .toList();
+        if (!userRepository.existsByUserCode(userCode)) {
+            throw new BusinessException(ErrorCode.USER_NOT_FOUND);
+        }
+
+        var items = new java.util.ArrayList<DailyCareHistoryItem>(2);
+        // 기상 후 단계는 당일 새 촬영 전에 확정되어 있으므로 전날까지의 최신 솔루션을 사용한다.
+        careSolutionRepository
+                .findFirstByCareCycle_User_UserCodeAndCareCycle_OriginCaptureDateLessThanEqualOrderByCareCycle_OriginCaptureDateDescGeneratedAtDesc(
+                        userCode, date.minusDays(1))
+                .ifPresent(solution -> items.add(new DailyCareHistoryItem(
+                        CarePhase.MORNING, true, toItem(solution.getCareCycle().getSkinAnalysis().getSkinCapture()))));
+
+        // 귀가 후 단계는 당일 새 솔루션이 있으면 교체하고, 없으면 가장 최근 솔루션을 승계한다.
+        careSolutionRepository
+                .findFirstByCareCycle_User_UserCodeAndCareCycle_OriginCaptureDateLessThanEqualOrderByCareCycle_OriginCaptureDateDescGeneratedAtDesc(
+                        userCode, date)
+                .ifPresent(solution -> items.add(new DailyCareHistoryItem(
+                        CarePhase.EVENING,
+                        !date.equals(solution.getCareCycle().getOriginCaptureDate()),
+                        toItem(solution.getCareCycle().getSkinAnalysis().getSkinCapture()))));
+
+        // 아직 새 솔루션이 완성되지 않았고 과거 솔루션도 없다면 당일 처리 상태는 계속 보여 준다.
+        if (items.stream().noneMatch(item -> item.phase() == CarePhase.EVENING)) {
+            getHistory(userCode, date, date).items().stream().findFirst()
+                    .ifPresent(history -> items.add(new DailyCareHistoryItem(CarePhase.EVENING, false, history)));
+        }
         if (items.isEmpty()) {
             throw new BusinessException(ErrorCode.CARE_HISTORY_NOT_FOUND);
         }
-        return new DailyCareHistoryResult(date, items);
+        items.sort(java.util.Comparator.comparing(DailyCareHistoryItem::phase));
+        return new DailyCareHistoryResult(date, java.util.List.copyOf(items));
     }
 
     private CareHistoryItem toItem(com.innerderma.skincapture.domain.SkinCapture capture) {

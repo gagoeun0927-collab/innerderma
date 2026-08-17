@@ -126,6 +126,16 @@ class CareHistoryServiceTest {
         when(newCycle.getId()).thenReturn(22L);
         when(newCycle.getEveningCareDate()).thenReturn(servedDate);
         when(newCycle.getMorningCareDate()).thenReturn(servedDate.plusDays(1));
+        when(previousCycle.getOriginCaptureDate()).thenReturn(servedDate.minusDays(1));
+        when(newCycle.getOriginCaptureDate()).thenReturn(servedDate);
+        when(previousCycle.getSkinAnalysis()).thenReturn(previousAnalysis);
+        when(newCycle.getSkinAnalysis()).thenReturn(newAnalysis);
+        when(previousAnalysis.getSkinCapture()).thenReturn(previousCapture);
+        when(newAnalysis.getSkinCapture()).thenReturn(newCapture);
+        CareSolution previousSolution = mock(CareSolution.class);
+        CareSolution newSolution = mock(CareSolution.class);
+        when(previousSolution.getCareCycle()).thenReturn(previousCycle);
+        when(newSolution.getCareCycle()).thenReturn(newCycle);
 
         when(captureRepository.findByUser_UserCodeAndCapturedDateBetweenAndQualityStatusOrderByCapturedDateDescCapturedAtDesc(
                 USER_CODE, servedDate.minusDays(1), servedDate, SkinCaptureQualityStatus.VALID))
@@ -134,6 +144,12 @@ class CareHistoryServiceTest {
         when(analysisRepository.findBySkinCapture_Id(2L)).thenReturn(java.util.Optional.of(newAnalysis));
         when(cycleRepository.findBySkinAnalysis_Id(11L)).thenReturn(java.util.Optional.of(previousCycle));
         when(cycleRepository.findBySkinAnalysis_Id(12L)).thenReturn(java.util.Optional.of(newCycle));
+        when(solutionRepository
+                .findFirstByCareCycle_User_UserCodeAndCareCycle_OriginCaptureDateLessThanEqualOrderByCareCycle_OriginCaptureDateDescGeneratedAtDesc(
+                        USER_CODE, servedDate.minusDays(1))).thenReturn(java.util.Optional.of(previousSolution));
+        when(solutionRepository
+                .findFirstByCareCycle_User_UserCodeAndCareCycle_OriginCaptureDateLessThanEqualOrderByCareCycle_OriginCaptureDateDescGeneratedAtDesc(
+                        USER_CODE, servedDate)).thenReturn(java.util.Optional.of(newSolution));
 
         DailyCareHistoryResult result = service.getDailyDetail(USER_CODE, servedDate);
 
@@ -143,6 +159,29 @@ class CareHistoryServiceTest {
         assertThat(result.items().get(0).history().careCycleId()).isEqualTo(21L);
         assertThat(result.items().get(1).inherited()).isFalse();
         assertThat(result.items().get(1).history().careCycleId()).isEqualTo(22L);
+    }
+
+    @Test
+    void noPhotoDayInheritsLatestSolutionForBothPhases() {
+        LocalDate originDate = LocalDate.of(2026, 8, 17);
+        LocalDate servedDate = originDate.plusDays(3);
+        CareSolution solution = solution(originDate);
+        SkinCapture capture = solution.getCareCycle().getSkinAnalysis().getSkinCapture();
+        when(solutionRepository
+                .findFirstByCareCycle_User_UserCodeAndCareCycle_OriginCaptureDateLessThanEqualOrderByCareCycle_OriginCaptureDateDescGeneratedAtDesc(
+                        eq(USER_CODE), any(LocalDate.class))).thenReturn(java.util.Optional.of(solution));
+        when(analysisRepository.findBySkinCapture_Id(capture.getId()))
+                .thenReturn(java.util.Optional.of(solution.getCareCycle().getSkinAnalysis()));
+        when(cycleRepository.findBySkinAnalysis_Id(solution.getCareCycle().getSkinAnalysis().getId()))
+                .thenReturn(java.util.Optional.of(solution.getCareCycle()));
+        when(solutionRepository.findByCareCycle_Id(solution.getCareCycle().getId()))
+                .thenReturn(java.util.Optional.of(solution));
+
+        DailyCareHistoryResult result = service.getDailyDetail(USER_CODE, servedDate);
+
+        assertThat(result.items()).extracting(DailyCareHistoryItem::phase)
+                .containsExactly(CarePhase.MORNING, CarePhase.EVENING);
+        assertThat(result.items()).allMatch(DailyCareHistoryItem::inherited);
     }
 
     private CareSolution solution(LocalDate date) {

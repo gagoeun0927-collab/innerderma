@@ -55,13 +55,30 @@ public class CareHistoryService {
         return new CareHistoryResult(resolvedFrom, resolvedTo, items);
     }
 
-    public CareHistoryItem getDailyDetail(String userCode, LocalDate date) {
+    public DailyCareHistoryResult getDailyDetail(String userCode, LocalDate date) {
         if (date == null) {
             throw new BusinessException(ErrorCode.INVALID_REQUEST);
         }
-        CareHistoryResult result = getHistory(userCode, date, date);
-        return result.items().stream().findFirst()
-                .orElseThrow(() -> new BusinessException(ErrorCode.CARE_HISTORY_NOT_FOUND));
+        // 같은 날짜의 아침은 전날 시작된 사이클, 귀가 후는 당일 시작된 사이클에 속할 수 있다.
+        CareHistoryResult candidates = getHistory(userCode, date.minusDays(1), date);
+        var items = candidates.items().stream()
+                .flatMap(history -> {
+                    var phases = new java.util.ArrayList<DailyCareHistoryItem>(2);
+                    if (date.equals(history.morningCareDate())) {
+                        phases.add(new DailyCareHistoryItem(CarePhase.MORNING,
+                                !date.equals(history.date()), history));
+                    }
+                    if (date.equals(history.eveningCareDate())) {
+                        phases.add(new DailyCareHistoryItem(CarePhase.EVENING, false, history));
+                    }
+                    return phases.stream();
+                })
+                .sorted(java.util.Comparator.comparing(DailyCareHistoryItem::phase))
+                .toList();
+        if (items.isEmpty()) {
+            throw new BusinessException(ErrorCode.CARE_HISTORY_NOT_FOUND);
+        }
+        return new DailyCareHistoryResult(date, items);
     }
 
     private CareHistoryItem toItem(com.innerderma.skincapture.domain.SkinCapture capture) {
@@ -71,7 +88,9 @@ public class CareHistoryService {
         CareProgressStatus status = solution != null ? CareProgressStatus.SOLUTION_READY
                 : cycle != null ? CareProgressStatus.CYCLE_CREATED
                 : analysis != null ? CareProgressStatus.ANALYZED : CareProgressStatus.CAPTURED;
-        return new CareHistoryItem(capture.getCapturedDate(), capture.getId(),
+        return new CareHistoryItem(capture.getCapturedDate(),
+                cycle == null ? capture.getCapturedDate() : cycle.getEveningCareDate(),
+                cycle == null ? null : cycle.getMorningCareDate(), capture.getId(),
                 analysis == null ? null : analysis.getId(), cycle == null ? null : cycle.getId(),
                 solution == null ? null : solution.getId(), status,
                 solution == null ? null : solution.getSeason(),

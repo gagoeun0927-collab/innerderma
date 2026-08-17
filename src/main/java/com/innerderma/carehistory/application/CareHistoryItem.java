@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 
 public record CareHistoryItem(
         LocalDate date,
+        LocalDate eveningCareDate,
+        LocalDate morningCareDate,
         Long captureId,
         Long analysisId,
         Long careCycleId,

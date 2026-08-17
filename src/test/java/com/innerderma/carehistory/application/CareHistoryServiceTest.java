@@ -105,6 +105,46 @@ class CareHistoryServiceTest {
                         .isEqualTo(com.innerderma.common.error.ErrorCode.CARE_HISTORY_NOT_FOUND));
     }
 
+    @Test
+    void sameDateCanContainPreviousMorningAndNewEveningCare() {
+        LocalDate servedDate = LocalDate.of(2026, 8, 18);
+        SkinCapture previousCapture = mock(SkinCapture.class);
+        SkinCapture newCapture = mock(SkinCapture.class);
+        when(previousCapture.getId()).thenReturn(1L);
+        when(previousCapture.getCapturedDate()).thenReturn(servedDate.minusDays(1));
+        when(newCapture.getId()).thenReturn(2L);
+        when(newCapture.getCapturedDate()).thenReturn(servedDate);
+        SkinAnalysis previousAnalysis = mock(SkinAnalysis.class);
+        SkinAnalysis newAnalysis = mock(SkinAnalysis.class);
+        when(previousAnalysis.getId()).thenReturn(11L);
+        when(newAnalysis.getId()).thenReturn(12L);
+        CareCycle previousCycle = mock(CareCycle.class);
+        CareCycle newCycle = mock(CareCycle.class);
+        when(previousCycle.getId()).thenReturn(21L);
+        when(previousCycle.getEveningCareDate()).thenReturn(servedDate.minusDays(1));
+        when(previousCycle.getMorningCareDate()).thenReturn(servedDate);
+        when(newCycle.getId()).thenReturn(22L);
+        when(newCycle.getEveningCareDate()).thenReturn(servedDate);
+        when(newCycle.getMorningCareDate()).thenReturn(servedDate.plusDays(1));
+
+        when(captureRepository.findByUser_UserCodeAndCapturedDateBetweenAndQualityStatusOrderByCapturedDateDescCapturedAtDesc(
+                USER_CODE, servedDate.minusDays(1), servedDate, SkinCaptureQualityStatus.VALID))
+                .thenReturn(List.of(newCapture, previousCapture));
+        when(analysisRepository.findBySkinCapture_Id(1L)).thenReturn(java.util.Optional.of(previousAnalysis));
+        when(analysisRepository.findBySkinCapture_Id(2L)).thenReturn(java.util.Optional.of(newAnalysis));
+        when(cycleRepository.findBySkinAnalysis_Id(11L)).thenReturn(java.util.Optional.of(previousCycle));
+        when(cycleRepository.findBySkinAnalysis_Id(12L)).thenReturn(java.util.Optional.of(newCycle));
+
+        DailyCareHistoryResult result = service.getDailyDetail(USER_CODE, servedDate);
+
+        assertThat(result.items()).extracting(DailyCareHistoryItem::phase)
+                .containsExactly(CarePhase.MORNING, CarePhase.EVENING);
+        assertThat(result.items().get(0).inherited()).isTrue();
+        assertThat(result.items().get(0).history().careCycleId()).isEqualTo(21L);
+        assertThat(result.items().get(1).inherited()).isFalse();
+        assertThat(result.items().get(1).history().careCycleId()).isEqualTo(22L);
+    }
+
     private CareSolution solution(LocalDate date) {
         User user = new User(USER_CODE, "테스트 사용자", "010-1234-1234");
         SkinCapture capture = new SkinCapture(user, date, date.atTime(9, 0), "/face.jpg",

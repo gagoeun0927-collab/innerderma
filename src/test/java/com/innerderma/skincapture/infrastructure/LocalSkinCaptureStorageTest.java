@@ -40,4 +40,25 @@ class LocalSkinCaptureStorageTest {
                         assertThat(exception.errorCode()).isEqualTo(ErrorCode.INVALID_SKIN_CAPTURE_IMAGE)
                 );
     }
+
+    @Test
+    void loadsPreviouslyStoredImage() {
+        LocalSkinCaptureStorage storage = new LocalSkinCaptureStorage(tempDir.toString());
+        byte[] bytes = {(byte) 0xFF, (byte) 0xD8, (byte) 0xFF, 0};
+        String storedPath = storage.store(new SkinCaptureFile("face.jpg", "image/jpeg", bytes.length, bytes));
+
+        assertThat(storage.load(storedPath)).isEqualTo(bytes);
+    }
+
+    @Test
+    void refusesToLoadFileOutsideConfiguredDirectory() throws Exception {
+        LocalSkinCaptureStorage storage = new LocalSkinCaptureStorage(tempDir.resolve("safe").toString());
+        Path outside = tempDir.resolve("outside.jpg");
+        Files.write(outside, new byte[]{1});
+
+        assertThatThrownBy(() -> storage.load(outside.toString()))
+                .isInstanceOfSatisfying(BusinessException.class, exception ->
+                        assertThat(exception.errorCode()).isEqualTo(ErrorCode.SKIN_ANALYSIS_IMAGE_NOT_AVAILABLE)
+                );
+    }
 }

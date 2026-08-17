@@ -12,7 +12,12 @@ public enum ErrorCode {
     SKIN_CAPTURE_ALREADY_EXISTS(HttpStatus.CONFLICT, "CAPTURE_002", "오늘의 유효한 피부 촬영 기록이 이미 있습니다."),
     SKIN_CAPTURE_NOT_FOUND(HttpStatus.NOT_FOUND, "CAPTURE_003", "피부 촬영 기록을 찾을 수 없습니다."),
     SKIN_CAPTURE_STORAGE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "CAPTURE_004", "피부 사진을 저장하지 못했습니다."),
-    SELF_CHECK_NOT_FOUND(HttpStatus.NOT_FOUND, "SELF_CHECK_001", "자가 피부 상태 기록을 찾을 수 없습니다.");
+    SELF_CHECK_NOT_FOUND(HttpStatus.NOT_FOUND, "SELF_CHECK_001", "자가 피부 상태 기록을 찾을 수 없습니다."),
+    SKIN_ANALYSIS_NOT_FOUND(HttpStatus.NOT_FOUND, "ANALYSIS_001", "피부 사진 분석 결과를 찾을 수 없습니다."),
+    SKIN_ANALYSIS_ALREADY_EXISTS(HttpStatus.CONFLICT, "ANALYSIS_002", "해당 사진의 분석 결과가 이미 있습니다."),
+    SKIN_ANALYSIS_IMAGE_NOT_AVAILABLE(HttpStatus.UNPROCESSABLE_CONTENT, "ANALYSIS_003", "분석할 피부 사진을 불러올 수 없습니다."),
+    SKINAGE_API_UNAVAILABLE(HttpStatus.BAD_GATEWAY, "ANALYSIS_004", "피부 분석 서비스에 연결할 수 없습니다."),
+    SKINAGE_INVALID_RESPONSE(HttpStatus.BAD_GATEWAY, "ANALYSIS_005", "피부 분석 서비스의 응답이 올바르지 않습니다.");
 
     private final HttpStatus status;
     private final String code;

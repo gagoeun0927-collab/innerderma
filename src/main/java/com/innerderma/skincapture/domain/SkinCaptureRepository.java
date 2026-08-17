@@ -16,4 +16,7 @@ public interface SkinCaptureRepository extends JpaRepository<SkinCapture, Long> 
 
     @EntityGraph(attributePaths = "user")
     Optional<SkinCapture> findFirstByUser_UserCodeOrderByCapturedAtDesc(String userCode);
+
+    @EntityGraph(attributePaths = "user")
+    Optional<SkinCapture> findByIdAndUser_UserCode(Long id, String userCode);
 }

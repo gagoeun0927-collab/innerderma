@@ -48,4 +48,20 @@ public class LocalSkinCaptureStorage implements SkinCaptureStorage {
             throw new BusinessException(ErrorCode.SKIN_CAPTURE_STORAGE_FAILED);
         }
     }
+
+    @Override
+    public byte[] load(String imagePath) {
+        try {
+            Path source = Path.of(imagePath).toAbsolutePath().normalize();
+            if (!source.startsWith(root) || !Files.isRegularFile(source)) {
+                throw new BusinessException(ErrorCode.SKIN_ANALYSIS_IMAGE_NOT_AVAILABLE);
+            }
+            return Files.readAllBytes(source);
+        } catch (IOException | RuntimeException exception) {
+            if (exception instanceof BusinessException businessException) {
+                throw businessException;
+            }
+            throw new BusinessException(ErrorCode.SKIN_ANALYSIS_IMAGE_NOT_AVAILABLE);
+        }
+    }
 }

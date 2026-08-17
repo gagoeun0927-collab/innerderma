@@ -7,7 +7,11 @@ public enum ErrorCode {
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_002", "서버 내부 오류가 발생했습니다."),
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "USER_001", "사용자를 찾을 수 없습니다."),
     SKIN_DIAGNOSIS_NOT_FOUND(HttpStatus.NOT_FOUND, "SKIN_001", "피부 진단 결과를 찾을 수 없습니다."),
-    PROCEDURE_NOT_FOUND(HttpStatus.NOT_FOUND, "PROCEDURE_001", "시술 기록을 찾을 수 없습니다.");
+    PROCEDURE_NOT_FOUND(HttpStatus.NOT_FOUND, "PROCEDURE_001", "시술 기록을 찾을 수 없습니다."),
+    INVALID_SKIN_CAPTURE_IMAGE(HttpStatus.BAD_REQUEST, "CAPTURE_001", "지원하지 않는 피부 사진입니다."),
+    SKIN_CAPTURE_ALREADY_EXISTS(HttpStatus.CONFLICT, "CAPTURE_002", "오늘의 유효한 피부 촬영 기록이 이미 있습니다."),
+    SKIN_CAPTURE_NOT_FOUND(HttpStatus.NOT_FOUND, "CAPTURE_003", "피부 촬영 기록을 찾을 수 없습니다."),
+    SKIN_CAPTURE_STORAGE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "CAPTURE_004", "피부 사진을 저장하지 못했습니다.");
 
     private final HttpStatus status;
     private final String code;

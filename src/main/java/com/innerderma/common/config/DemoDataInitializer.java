@@ -76,7 +76,19 @@ public class DemoDataInitializer {
                         derna,
                         DEMO_DATE,
                         "진정 및 피부 장벽 관리",
-                        "자극적인 제품을 피하고 보습제를 충분히 사용할 것"
+                        "자극적인 제품을 피하고 보습제를 충분히 사용할 것",
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        List.of(),
+                        List.of(),
+                        List.of("자극적인 제품을 피하고 보습제를 충분히 사용할 것"),
+                        List.of(),
+                        List.of(),
+                        null,
+                        null
                 ));
             }
 

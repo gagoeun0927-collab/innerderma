@@ -24,4 +24,8 @@ public interface ProcedureRecordRepository extends JpaRepository<ProcedureRecord
     @EntityGraph(attributePaths = "facility")
     Optional<ProcedureRecord> findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDesc(
             String userCode, LocalDate date);
+
+    @EntityGraph(attributePaths = "facility")
+    Optional<ProcedureRecord> findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDescIdDesc(
+            String userCode, LocalDate date);
 }

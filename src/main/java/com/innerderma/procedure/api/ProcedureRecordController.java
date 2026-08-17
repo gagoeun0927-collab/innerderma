@@ -35,4 +35,13 @@ public class ProcedureRecordController {
                 .toList();
         return ApiResponse.success(records);
     }
+
+    @GetMapping("/treatment-context")
+    public ApiResponse<TreatmentContextResponse> getTreatmentContext(
+            @PathVariable String userCode,
+            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date
+    ) {
+        return ApiResponse.success(TreatmentContextResponse.from(
+                procedureRecordService.getTreatmentContext(userCode, date)));
+    }
 }

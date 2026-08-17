@@ -12,7 +12,7 @@
 | 영역 | 상태 | 현재 내용 |
 |---|---|---|
 | WHS 진단 | 구현됨 | Baseline 진단을 정규화된 항목별 metric(원본 사용자·평균 점수, 등급)으로 저장·조회 |
-| WHS 시술 | 부분 구현 | 시술일, 시술명, 관리 가이드 저장·조회 |
+| WHS 시술 / Treatment Context | 구현됨 | 기존 시술 기록 호환을 유지하며 검증된 시술 컨텍스트와 지정일 기준 경과일 조회 제공 |
 | 얼굴 촬영 | 구현됨 | 일일 파일 업로드, 품질 상태, 오늘 촬영 여부 |
 | SkinAge 분석 | 구현됨 | 외부 분석 API 연동과 결과 저장 |
 | 자가 문진 | 구현됨 | 주요 증상 등급과 Safety Attention 계산 |
@@ -46,19 +46,21 @@
 - 활성 규칙 조회 API: `GET /api/ai-rules`
 - 초기 Master Rule 데이터: `R000`, `R002`, `R010`
 - 동일 Rule ID와 Version 중복 생성을 막는 제약
+- Treatment Context: 시술 코드·유형·부위, 회복일 범위, 정상/경고 증상, 사후 제한, 허용/제한 제품 태그, 출처·규칙 버전을 nullable/빈 컬렉션 기반으로 구조화
+- `GET /api/users/{userCode}/procedures/treatment-context?date={date}`: 지정일 이하의 가장 최신 시술만 선택하고 `daysSinceTreatment`를 계산; 미래 시술은 선택하지 않음
+- 데모 시술에는 기존 관리 가이드만 유지하고, 제공되지 않은 의학적 컨텍스트는 null 또는 빈 컬렉션으로 보존
 
 ## 다음 개발 순서
 
-1. WHS 시술 데이터를 Treatment Context 형태로 확장
-2. User Skin State Snapshot과 일일 상태 점수 저장
-3. 이전 Snapshot과 오늘 분석을 이용한 Trend Engine 구현
-4. Safety → Treatment → Priority → Goal 순서의 Rule Engine 구현
-5. Night/Morning Solution Object와 Applied Rule 저장
-6. Piece Seoul 검증 상품 Knowledge Base 확장
-7. WIM Inner Care Knowledge Base와 알레르기 필터 구현
-8. 응답 검증기, 버전 기반 중복 호출 방지, 캐시 구현
-9. 설명 전용 LLM 계층 연결
-10. Golden Test Set 확장
+1. User Skin State Snapshot과 일일 상태 점수 저장
+2. 이전 Snapshot과 오늘 분석을 이용한 Trend Engine 구현
+3. Safety → Treatment → Priority → Goal 순서의 Rule Engine 구현
+4. Night/Morning Solution Object와 Applied Rule 저장
+5. Piece Seoul 검증 상품 Knowledge Base 확장
+6. WIM Inner Care Knowledge Base와 알레르기 필터 구현
+7. 응답 검증기, 버전 기반 중복 호출 방지, 캐시 구현
+8. 설명 전용 LLM 계층 연결
+9. Golden Test Set 확장
 
 ## 원칙
 

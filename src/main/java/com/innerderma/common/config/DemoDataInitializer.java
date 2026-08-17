@@ -7,6 +7,10 @@ import com.innerderma.procedure.domain.ProcedureRecordRepository;
 import com.innerderma.product.domain.*;
 import com.innerderma.skindiagnosis.domain.WhsSkinDiagnosis;
 import com.innerderma.skindiagnosis.domain.WhsSkinDiagnosisRepository;
+import com.innerderma.skindiagnosis.domain.SkinDiagnosisGrade;
+import com.innerderma.skindiagnosis.domain.SkinDiagnosisMetricType;
+import com.innerderma.skindiagnosis.domain.WhsSkinDiagnosisMetric;
+
 import com.innerderma.user.domain.User;
 import com.innerderma.user.domain.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Configuration
 public class DemoDataInitializer {
@@ -43,7 +48,20 @@ public class DemoDataInitializer {
                 diagnosisRepository.save(new WhsSkinDiagnosis(
                         user,
                         DEMO_DATE,
-                        "수분이 부족하고 볼 주변 홍조와 거친 피부결이 관찰됨"
+                        "WHS 피부 진단 결과입니다.",
+                        List.of(
+                                metric(SkinDiagnosisMetricType.SKIN_AGE, null),
+                                metric(SkinDiagnosisMetricType.FOREHEAD_WRINKLE, null),
+                                metric(SkinDiagnosisMetricType.CROW_FEET_WRINKLE, null),
+                                metric(SkinDiagnosisMetricType.UNDER_EYE_WRINKLE, null),
+                                metric(SkinDiagnosisMetricType.PIGMENTATION, SkinDiagnosisGrade.NORMAL),
+                                metric(SkinDiagnosisMetricType.SKIN_UNIFORMITY, SkinDiagnosisGrade.EXCELLENT),
+                                metric(SkinDiagnosisMetricType.ACNE, SkinDiagnosisGrade.EXCELLENT),
+                                metric(SkinDiagnosisMetricType.BLACKHEAD, SkinDiagnosisGrade.NEEDS_IMPROVEMENT),
+                                metric(SkinDiagnosisMetricType.DARK_CIRCLE, SkinDiagnosisGrade.EXCELLENT),
+                                metric(SkinDiagnosisMetricType.EYE_SAGGING, SkinDiagnosisGrade.EXCELLENT),
+                                metric(SkinDiagnosisMetricType.PORE, SkinDiagnosisGrade.NORMAL)
+                        )
                 ));
             }
 
@@ -64,6 +82,11 @@ public class DemoDataInitializer {
 
             initializeDemoProducts(productRepository);
         };
+    }
+
+    private WhsSkinDiagnosisMetric metric(SkinDiagnosisMetricType type, SkinDiagnosisGrade grade) {
+        // The supplied WHS result contains no numeric source values, so both scores remain null.
+        return new WhsSkinDiagnosisMetric(type, null, null, grade);
     }
 
     private void initializeDemoProducts(ProductRepository repository) {

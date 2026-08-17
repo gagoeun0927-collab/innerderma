@@ -157,7 +157,9 @@ Controller(API)
 - `User`
 - `Facility`
 - `ProcedureRecord`
-- `WhsSkinDiagnosis`
+- `WhsSkinDiagnosis` (WHS 초기 Baseline)
+  - `WhsSkinDiagnosisMetric`: 진단당 항목별 1건. 피부 나이, 이마·눈꼬리·눈밑 주름, 색소, 피부 균일도, 여드름, 블랙헤드, 다크서클, 눈처짐, 모공을 지원한다.
+  - `userScore`와 `averageScore`는 nullable 원본값이며 서비스가 평균·차이·종합점수를 추론해 저장하지 않는다. `grade`는 `EXCELLENT`, `NORMAL`, `NEEDS_IMPROVEMENT` 또는 미제공(null)이다.
 - `SkinCapture`
 - `SelfCheck`
 - `SkinAnalysis`
@@ -176,6 +178,10 @@ User
  ├─ ProcedureRecord ──────────────────────────┤
  └─ CareCompletion ───────────────────────────┘
 ```
+
+### WHS 피부 진단 응답
+
+`GET /api/users/{userCode}/skin-diagnosis`는 기존 `resultSummary`를 호환용으로 유지하고, 의사결정용 데이터는 `metrics` 배열로 반환한다. 각 metric은 `metricType`, nullable `userScore`, nullable `averageScore`, nullable `grade`를 가진다. 주름은 위치별 metric으로 분리되며 단일 주름 점수로 합산하지 않는다.
 
 ## 5. 공통 처리
 

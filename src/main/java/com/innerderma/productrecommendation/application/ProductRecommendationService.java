@@ -104,7 +104,10 @@ public class ProductRecommendationService {
     private String concernLabel(ProductConcern concern) {
         return switch (concern) {
             case WRINKLE -> "주름"; case PORE_TEXTURE -> "모공·피부결";
-            case PIGMENTATION -> "색소"; case REDNESS -> "홍조"; default -> "피부 장벽";
+            case PIGMENTATION -> "색소"; case REDNESS -> "홍조";
+            case ACNE -> "여드름"; case BLACKHEAD -> "블랙헤드";
+            case DARK_CIRCLE -> "다크서클"; case EYE_SAGGING -> "눈 처짐";
+            case SKIN_UNIFORMITY -> "피부 균일도"; default -> "피부 장벽";
         };
     }
 }

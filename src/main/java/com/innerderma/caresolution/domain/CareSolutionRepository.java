@@ -20,4 +20,8 @@ public interface CareSolutionRepository extends JpaRepository<CareSolution, Long
             "careCycle.skinAnalysis.skinCapture", "careCycle.selfCheck"})
     List<CareSolution> findByCareCycle_User_UserCodeAndCareCycle_OriginCaptureDateBetweenOrderByCareCycle_OriginCaptureDateDesc(
             String userCode, LocalDate from, LocalDate to);
+
+    @EntityGraph(attributePaths = {"careCycle", "careCycle.user", "careCycle.skinAnalysis",
+            "careCycle.skinAnalysis.skinCapture", "careCycle.selfCheck"})
+    Optional<CareSolution> findByCareCycle_Id(Long careCycleId);
 }

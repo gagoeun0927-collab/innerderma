@@ -10,4 +10,7 @@ public interface SkinAnalysisRepository extends JpaRepository<SkinAnalysis, Long
 
     @EntityGraph(attributePaths = {"skinCapture", "skinCapture.user"})
     Optional<SkinAnalysis> findFirstBySkinCapture_User_UserCodeOrderByAnalyzedAtDesc(String userCode);
+
+    @EntityGraph(attributePaths = {"skinCapture", "skinCapture.user"})
+    Optional<SkinAnalysis> findBySkinCapture_Id(Long skinCaptureId);
 }

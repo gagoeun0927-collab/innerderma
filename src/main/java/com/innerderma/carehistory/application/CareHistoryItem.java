@@ -12,6 +12,7 @@ public record CareHistoryItem(
         Long analysisId,
         Long careCycleId,
         Long careSolutionId,
+        CareProgressStatus progressStatus,
         CareSeason season,
         SafetyLevel safetyLevel,
         String headline,

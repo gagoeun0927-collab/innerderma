@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 public interface SkinCaptureRepository extends JpaRepository<SkinCapture, Long> {
@@ -19,4 +20,8 @@ public interface SkinCaptureRepository extends JpaRepository<SkinCapture, Long> 
 
     @EntityGraph(attributePaths = "user")
     Optional<SkinCapture> findByIdAndUser_UserCode(Long id, String userCode);
+
+    @EntityGraph(attributePaths = "user")
+    List<SkinCapture> findByUser_UserCodeAndCapturedDateBetweenOrderByCapturedDateDescCapturedAtDesc(
+            String userCode, LocalDate from, LocalDate to);
 }

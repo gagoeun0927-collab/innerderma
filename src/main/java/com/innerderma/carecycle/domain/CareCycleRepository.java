@@ -15,4 +15,7 @@ public interface CareCycleRepository extends JpaRepository<CareCycle, Long> {
     @EntityGraph(attributePaths = {"user", "skinAnalysis", "skinAnalysis.skinCapture", "selfCheck"})
     Optional<CareCycle> findFirstByUser_UserCodeAndOriginCaptureDateLessThanEqualOrderByOriginCaptureDateDescCreatedAtDesc(
             String userCode, LocalDate targetDate);
+
+    @EntityGraph(attributePaths = {"user", "skinAnalysis", "skinAnalysis.skinCapture", "selfCheck"})
+    Optional<CareCycle> findBySkinAnalysis_Id(Long skinAnalysisId);
 }

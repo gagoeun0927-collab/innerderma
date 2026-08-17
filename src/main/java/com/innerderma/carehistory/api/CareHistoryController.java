@@ -1,6 +1,7 @@
 package com.innerderma.carehistory.api;
 
 import com.innerderma.carehistory.application.CareHistoryService;
+import com.innerderma.carehistory.application.CareHistoryItem;
 import com.innerderma.common.response.ApiResponse;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,12 @@ public class CareHistoryController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
         return ApiResponse.success(CareHistoryResponse.from(service.getHistory(userCode, from, to)));
+    }
+
+    @GetMapping("/{date}")
+    public ApiResponse<CareHistoryItem> getDailyDetail(
+            @PathVariable String userCode,
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return ApiResponse.success(service.getDailyDetail(userCode, date));
     }
 }

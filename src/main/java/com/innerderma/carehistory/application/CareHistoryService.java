@@ -6,6 +6,7 @@ import com.innerderma.common.error.BusinessException;
 import com.innerderma.common.error.ErrorCode;
 import com.innerderma.skinanalysis.domain.SkinAnalysisRepository;
 import com.innerderma.skincapture.domain.SkinCaptureRepository;
+import com.innerderma.skincapture.domain.SkinCaptureQualityStatus;
 import com.innerderma.user.domain.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,28 +47,39 @@ public class CareHistoryService {
         validateRange(resolvedFrom, resolvedTo);
 
         var items = captureRepository
-                .findByUser_UserCodeAndCapturedDateBetweenOrderByCapturedDateDescCapturedAtDesc(
-                        userCode, resolvedFrom, resolvedTo)
+                .findByUser_UserCodeAndCapturedDateBetweenAndQualityStatusOrderByCapturedDateDescCapturedAtDesc(
+                        userCode, resolvedFrom, resolvedTo, SkinCaptureQualityStatus.VALID)
                 .stream()
-                .map(capture -> {
-                    var analysis = analysisRepository.findBySkinCapture_Id(capture.getId()).orElse(null);
-                    var cycle = analysis == null ? null : cycleRepository.findBySkinAnalysis_Id(analysis.getId()).orElse(null);
-                    var solution = cycle == null ? null : careSolutionRepository.findByCareCycle_Id(cycle.getId()).orElse(null);
-                    CareProgressStatus status = solution != null ? CareProgressStatus.SOLUTION_READY
-                            : cycle != null ? CareProgressStatus.CYCLE_CREATED
-                            : analysis != null ? CareProgressStatus.ANALYZED : CareProgressStatus.CAPTURED;
-                    return new CareHistoryItem(capture.getCapturedDate(), capture.getId(),
-                            analysis == null ? null : analysis.getId(), cycle == null ? null : cycle.getId(),
-                            solution == null ? null : solution.getId(), status,
-                            solution == null ? null : solution.getSeason(),
-                            solution == null ? null : solution.getSafetyLevel(),
-                            solution == null ? null : solution.getHeadline(),
-                            solution == null ? null : solution.getPrimaryConcern(),
-                            cycle != null && cycle.getSelfCheck() != null,
-                            solution == null ? null : solution.getGeneratedAt());
-                })
+                .map(this::toItem)
                 .toList();
         return new CareHistoryResult(resolvedFrom, resolvedTo, items);
+    }
+
+    public CareHistoryItem getDailyDetail(String userCode, LocalDate date) {
+        if (date == null) {
+            throw new BusinessException(ErrorCode.INVALID_REQUEST);
+        }
+        CareHistoryResult result = getHistory(userCode, date, date);
+        return result.items().stream().findFirst()
+                .orElseThrow(() -> new BusinessException(ErrorCode.CARE_HISTORY_NOT_FOUND));
+    }
+
+    private CareHistoryItem toItem(com.innerderma.skincapture.domain.SkinCapture capture) {
+        var analysis = analysisRepository.findBySkinCapture_Id(capture.getId()).orElse(null);
+        var cycle = analysis == null ? null : cycleRepository.findBySkinAnalysis_Id(analysis.getId()).orElse(null);
+        var solution = cycle == null ? null : careSolutionRepository.findByCareCycle_Id(cycle.getId()).orElse(null);
+        CareProgressStatus status = solution != null ? CareProgressStatus.SOLUTION_READY
+                : cycle != null ? CareProgressStatus.CYCLE_CREATED
+                : analysis != null ? CareProgressStatus.ANALYZED : CareProgressStatus.CAPTURED;
+        return new CareHistoryItem(capture.getCapturedDate(), capture.getId(),
+                analysis == null ? null : analysis.getId(), cycle == null ? null : cycle.getId(),
+                solution == null ? null : solution.getId(), status,
+                solution == null ? null : solution.getSeason(),
+                solution == null ? null : solution.getSafetyLevel(),
+                solution == null ? null : solution.getHeadline(),
+                solution == null ? null : solution.getPrimaryConcern(),
+                cycle != null && cycle.getSelfCheck() != null,
+                solution == null ? null : solution.getGeneratedAt());
     }
 
     private void validateRange(LocalDate from, LocalDate to) {

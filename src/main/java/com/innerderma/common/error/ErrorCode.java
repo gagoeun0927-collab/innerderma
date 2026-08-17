@@ -21,7 +21,8 @@ public enum ErrorCode {
     CARE_CYCLE_NOT_FOUND(HttpStatus.NOT_FOUND, "CARE_CYCLE_001", "사용할 수 있는 케어 사이클을 찾을 수 없습니다."),
     CARE_CYCLE_ALREADY_EXISTS(HttpStatus.CONFLICT, "CARE_CYCLE_002", "해당 피부 분석의 케어 사이클이 이미 있습니다."),
     CARE_SOLUTION_NOT_FOUND(HttpStatus.NOT_FOUND, "CARE_SOLUTION_001", "케어 솔루션을 찾을 수 없습니다."),
-    CARE_SOLUTION_ALREADY_EXISTS(HttpStatus.CONFLICT, "CARE_SOLUTION_002", "해당 케어 사이클의 솔루션이 이미 있습니다.");
+    CARE_SOLUTION_ALREADY_EXISTS(HttpStatus.CONFLICT, "CARE_SOLUTION_002", "해당 케어 사이클의 솔루션이 이미 있습니다."),
+    CARE_HISTORY_NOT_FOUND(HttpStatus.NOT_FOUND, "CARE_HISTORY_001", "해당 날짜의 케어 기록을 찾을 수 없습니다.");
 
     private final HttpStatus status;
     private final String code;

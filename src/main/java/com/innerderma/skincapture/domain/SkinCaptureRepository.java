@@ -22,6 +22,6 @@ public interface SkinCaptureRepository extends JpaRepository<SkinCapture, Long> 
     Optional<SkinCapture> findByIdAndUser_UserCode(Long id, String userCode);
 
     @EntityGraph(attributePaths = "user")
-    List<SkinCapture> findByUser_UserCodeAndCapturedDateBetweenOrderByCapturedDateDescCapturedAtDesc(
-            String userCode, LocalDate from, LocalDate to);
+    List<SkinCapture> findByUser_UserCodeAndCapturedDateBetweenAndQualityStatusOrderByCapturedDateDescCapturedAtDesc(
+            String userCode, LocalDate from, LocalDate to, SkinCaptureQualityStatus qualityStatus);
 }

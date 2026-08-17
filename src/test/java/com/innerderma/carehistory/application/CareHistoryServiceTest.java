@@ -44,8 +44,8 @@ class CareHistoryServiceTest {
         LocalDate to = LocalDate.of(2026, 8, 17);
         CareSolution solution = solution(to);
         SkinCapture capture = solution.getCareCycle().getSkinAnalysis().getSkinCapture();
-        when(captureRepository.findByUser_UserCodeAndCapturedDateBetweenOrderByCapturedDateDescCapturedAtDesc(
-                USER_CODE, from, to)).thenReturn(List.of(capture));
+        when(captureRepository.findByUser_UserCodeAndCapturedDateBetweenAndQualityStatusOrderByCapturedDateDescCapturedAtDesc(
+                USER_CODE, from, to, SkinCaptureQualityStatus.VALID)).thenReturn(List.of(capture));
         when(analysisRepository.findBySkinCapture_Id(capture.getId()))
                 .thenReturn(java.util.Optional.of(solution.getCareCycle().getSkinAnalysis()));
         when(cycleRepository.findBySkinAnalysis_Id(solution.getCareCycle().getSkinAnalysis().getId()))
@@ -79,8 +79,8 @@ class CareHistoryServiceTest {
         User user = new User(USER_CODE, "테스트 사용자", "010-1234-1234");
         SkinCapture capture = new SkinCapture(user, date, date.atTime(9, 0), "/face.jpg",
                 "face.jpg", "image/jpeg", 3, SkinCaptureQualityStatus.VALID);
-        when(captureRepository.findByUser_UserCodeAndCapturedDateBetweenOrderByCapturedDateDescCapturedAtDesc(
-                USER_CODE, date, date)).thenReturn(List.of(capture));
+        when(captureRepository.findByUser_UserCodeAndCapturedDateBetweenAndQualityStatusOrderByCapturedDateDescCapturedAtDesc(
+                USER_CODE, date, date, SkinCaptureQualityStatus.VALID)).thenReturn(List.of(capture));
         when(analysisRepository.findBySkinCapture_Id(capture.getId()))
                 .thenReturn(java.util.Optional.empty());
 
@@ -91,6 +91,18 @@ class CareHistoryServiceTest {
             assertThat(item.analysisId()).isNull();
             assertThat(item.careSolutionId()).isNull();
         });
+    }
+
+    @Test
+    void reportsNotFoundWhenDateHasNoValidCapture() {
+        LocalDate date = LocalDate.of(2026, 8, 17);
+        when(captureRepository.findByUser_UserCodeAndCapturedDateBetweenAndQualityStatusOrderByCapturedDateDescCapturedAtDesc(
+                USER_CODE, date, date, SkinCaptureQualityStatus.VALID)).thenReturn(List.of());
+
+        assertThatThrownBy(() -> service.getDailyDetail(USER_CODE, date))
+                .isInstanceOf(BusinessException.class)
+                .satisfies(error -> assertThat(((BusinessException) error).errorCode())
+                        .isEqualTo(com.innerderma.common.error.ErrorCode.CARE_HISTORY_NOT_FOUND));
     }
 
     private CareSolution solution(LocalDate date) {

@@ -17,7 +17,9 @@ public enum ErrorCode {
     SKIN_ANALYSIS_ALREADY_EXISTS(HttpStatus.CONFLICT, "ANALYSIS_002", "해당 사진의 분석 결과가 이미 있습니다."),
     SKIN_ANALYSIS_IMAGE_NOT_AVAILABLE(HttpStatus.UNPROCESSABLE_CONTENT, "ANALYSIS_003", "분석할 피부 사진을 불러올 수 없습니다."),
     SKINAGE_API_UNAVAILABLE(HttpStatus.BAD_GATEWAY, "ANALYSIS_004", "피부 분석 서비스에 연결할 수 없습니다."),
-    SKINAGE_INVALID_RESPONSE(HttpStatus.BAD_GATEWAY, "ANALYSIS_005", "피부 분석 서비스의 응답이 올바르지 않습니다.");
+    SKINAGE_INVALID_RESPONSE(HttpStatus.BAD_GATEWAY, "ANALYSIS_005", "피부 분석 서비스의 응답이 올바르지 않습니다."),
+    CARE_CYCLE_NOT_FOUND(HttpStatus.NOT_FOUND, "CARE_CYCLE_001", "사용할 수 있는 케어 사이클을 찾을 수 없습니다."),
+    CARE_CYCLE_ALREADY_EXISTS(HttpStatus.CONFLICT, "CARE_CYCLE_002", "해당 피부 분석의 케어 사이클이 이미 있습니다.");
 
     private final HttpStatus status;
     private final String code;

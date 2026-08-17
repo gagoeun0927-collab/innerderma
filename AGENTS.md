@@ -12,3 +12,9 @@ Optimize model usage dynamically for each task instead of using the most expensi
 - Prefer the lowest-cost model and reasoning effort that can complete the work reliably.
 
 This preference should survive new sessions and context resets.
+
+## Long-form summaries
+
+- When the user requests a summary and the result is long, create a Markdown document under `docs/` instead of returning the entire content only in chat.
+- Give the document a descriptive, stable filename and show its path to the user.
+- Keep the chat response concise and summarize the document's contents.

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.*;
 import java.util.List;
+import java.time.temporal.ChronoUnit;
 
 @Service
 public class CareCompletionService {
@@ -49,5 +50,21 @@ public class CareCompletionService {
         }
         LocalDate date = servedDate == null ? LocalDate.now(SEOUL) : servedDate;
         return repository.findByUser_UserCodeAndServedDateOrderByPhaseAsc(userCode, date);
+    }
+
+    @Transactional(readOnly = true)
+    public CareCompletionHistoryResult getHistory(String userCode, LocalDate from, LocalDate to) {
+        if (!userRepository.existsByUserCode(userCode)) {
+            throw new BusinessException(ErrorCode.USER_NOT_FOUND);
+        }
+        LocalDate resolvedTo = to == null ? LocalDate.now(SEOUL) : to;
+        LocalDate resolvedFrom = from == null ? resolvedTo.minusDays(29) : from;
+        if (resolvedFrom.isAfter(resolvedTo)
+                || ChronoUnit.DAYS.between(resolvedFrom, resolvedTo) + 1 > 31) {
+            throw new BusinessException(ErrorCode.INVALID_REQUEST);
+        }
+        return new CareCompletionHistoryResult(resolvedFrom, resolvedTo,
+                repository.findByUser_UserCodeAndServedDateBetweenOrderByServedDateDescPhaseAsc(
+                        userCode, resolvedFrom, resolvedTo));
     }
 }

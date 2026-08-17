@@ -29,4 +29,13 @@ public class CareCompletionController {
         return ApiResponse.success(service.getDaily(userCode, date).stream()
                 .map(CareCompletionResponse::from).toList());
     }
+
+    @GetMapping("/history")
+    public ApiResponse<CareCompletionHistoryResponse> getHistory(
+            @PathVariable String userCode,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
+        return ApiResponse.success(CareCompletionHistoryResponse.from(
+                service.getHistory(userCode, from, to)));
+    }
 }

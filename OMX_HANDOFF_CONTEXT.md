@@ -554,3 +554,9 @@ SkinAge는 분석 데이터만 제공한다. 안전 필터, 계절 보조 조정
 
 오늘의 케어 통합 조회 응답에도 각 단계의 `completionRecorded`와 `completed`를 포함해,
 프론트엔드가 별도 요청 없이 아침·귀가 후 체크 상태를 함께 표시할 수 있도록 연결했다.
+
+캘린더에서 날짜별 수행 상태를 표시할 수 있도록 완료 기록 범위 조회도 추가했다.
+
+- `GET /api/users/{userCode}/care-completions/history?from=YYYY-MM-DD&to=YYYY-MM-DD`
+  - 날짜별 아침·귀가 후 기록 여부와 완료 여부를 묶어서 반환한다.
+  - 기본 최근 30일, 최대 31일까지 조회할 수 있다.

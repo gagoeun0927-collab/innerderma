@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
@@ -61,5 +62,19 @@ class CareCompletionServiceTest {
         assertThat(service.save("WHS-DEMO-001", date, CarePhase.EVENING, false)).isSameAs(existing);
         verify(existing).update(eq(solution), eq(false), any());
         verify(repository).save(existing);
+    }
+
+    @Test
+    void rejectsCompletionHistoryLongerThanThirtyOneDays() {
+        UserRepository userRepository = mock(UserRepository.class);
+        CareCompletionRepository repository = mock(CareCompletionRepository.class);
+        CareCompletionService service = new CareCompletionService(userRepository, repository,
+                mock(CareSolutionService.class));
+        when(userRepository.existsByUserCode("WHS-DEMO-001")).thenReturn(true);
+
+        assertThatThrownBy(() -> service.getHistory("WHS-DEMO-001",
+                LocalDate.of(2026, 7, 1), LocalDate.of(2026, 8, 17)))
+                .isInstanceOf(com.innerderma.common.error.BusinessException.class);
+        verifyNoInteractions(repository);
     }
 }

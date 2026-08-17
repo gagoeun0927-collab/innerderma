@@ -16,4 +16,8 @@ public interface CareCompletionRepository extends JpaRepository<CareCompletion, 
     @EntityGraph(attributePaths = {"user", "careSolution", "careSolution.careCycle"})
     List<CareCompletion> findByUser_UserCodeAndServedDateOrderByPhaseAsc(
             String userCode, LocalDate servedDate);
+
+    @EntityGraph(attributePaths = {"user", "careSolution", "careSolution.careCycle"})
+    List<CareCompletion> findByUser_UserCodeAndServedDateBetweenOrderByServedDateDescPhaseAsc(
+            String userCode, LocalDate from, LocalDate to);
 }

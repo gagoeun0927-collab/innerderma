@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.EntityGraph;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface ProcedureRecordRepository extends JpaRepository<ProcedureRecord, Long> {
     @EntityGraph(attributePaths = "facility")
@@ -19,4 +20,8 @@ public interface ProcedureRecordRepository extends JpaRepository<ProcedureRecord
             String facilityCode,
             LocalDate procedureDate
     );
+
+    @EntityGraph(attributePaths = "facility")
+    Optional<ProcedureRecord> findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDesc(
+            String userCode, LocalDate date);
 }

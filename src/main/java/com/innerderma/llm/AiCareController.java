@@ -10,6 +10,7 @@ import com.innerderma.knowledge.product.ProductMatchResult;
 import com.innerderma.knowledge.product.ProductMatcher;
 import com.innerderma.skinstate.domain.SkinStateSnapshot;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
+import com.innerderma.user.application.UserService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,24 +34,31 @@ public class AiCareController {
     private final LlmRenderer llmRenderer;
     private final ResponseValidator responseValidator;
     private final SkinStateSnapshotRepository snapshotRepository;
+    private final UserService userService;
 
     public AiCareController(SolutionAssembler solutionAssembler,
                             ProductMatcher productMatcher,
                             LlmRenderer llmRenderer,
                             ResponseValidator responseValidator,
-                            SkinStateSnapshotRepository snapshotRepository) {
+                            SkinStateSnapshotRepository snapshotRepository,
+                            UserService userService) {
         this.solutionAssembler = solutionAssembler;
         this.productMatcher = productMatcher;
         this.llmRenderer = llmRenderer;
         this.responseValidator = responseValidator;
         this.snapshotRepository = snapshotRepository;
+        this.userService = userService;
     }
 
     @PostMapping
     public ApiResponse<AiCareResponse> generate(
             @PathVariable String userCode,
-            @RequestParam(defaultValue = "ko") String locale
+            @RequestParam(required = false) String locale
     ) {
+        // locale 미지정 시 사용자의 preferredLocale 사용
+        String resolvedLocale = (locale != null && !locale.isBlank())
+                ? locale.trim().toLowerCase()
+                : userService.getByUserCode(userCode).getPreferredLocale();
         // 1. Rule Engine 실행 → Solution Object
         SolutionObject solution = solutionAssembler.assembleForUser(userCode);
 
@@ -61,7 +69,7 @@ public class AiCareController {
         ProductMatchResult products = productMatcher.match(solution, primaryConcern, null, List.of());
 
         // 4. LLM 렌더링 (locale 기반 다국어)
-        LlmResponse llmResponse = llmRenderer.render(solution, products, locale);
+        LlmResponse llmResponse = llmRenderer.render(solution, products, resolvedLocale);
 
         // 5. Response Validation
         List<String> productIds = extractProductIds(llmResponse);
@@ -77,7 +85,7 @@ public class AiCareController {
                 llmResponse,
                 solution.appliedRules(),
                 primaryConcern,
-                locale,
+                resolvedLocale,
                 validation.valid(),
                 validation.violations()
         ));

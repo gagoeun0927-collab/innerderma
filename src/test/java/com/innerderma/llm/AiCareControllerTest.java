@@ -39,6 +39,7 @@ class AiCareControllerTest {
     private LlmRenderer llmRenderer;
     private ResponseValidator responseValidator;
     private SkinStateSnapshotRepository snapshotRepository;
+    private com.innerderma.user.application.UserService userService;
     private MockMvc mockMvc;
 
     @BeforeEach
@@ -48,8 +49,9 @@ class AiCareControllerTest {
         llmRenderer = mock(LlmRenderer.class);
         responseValidator = mock(ResponseValidator.class);
         snapshotRepository = mock(SkinStateSnapshotRepository.class);
+        userService = mock(com.innerderma.user.application.UserService.class);
         mockMvc = MockMvcBuilders.standaloneSetup(
-                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository))
+                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository, userService))
                 .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
     }
@@ -149,6 +151,11 @@ class AiCareControllerTest {
                 .thenReturn(Optional.empty());
         when(productMatcher.match(any(), eq("STABLE"), any(), any()))
                 .thenReturn(new ProductMatchResult(List.of(), List.of(), List.of(), "STABLE", null));
+
+        // locale 미지정 → userService에서 preferredLocale 조회
+        com.innerderma.user.domain.User user = new com.innerderma.user.domain.User("WHS-DEMO-001", "test", "010-1234-1234");
+        user.updatePreferredLocale("ko");
+        when(userService.getByUserCode("WHS-DEMO-001")).thenReturn(user);
 
         LlmResponse llmResponse = new LlmResponse("Care", "STABLE", "", null, null, null, null);
         when(llmRenderer.render(any(), any(), any())).thenReturn(llmResponse);

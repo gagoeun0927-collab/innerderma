@@ -24,6 +24,9 @@ public class User {
     @Column(name = "phone_number", nullable = false, length = 30)
     private String phoneNumber;
 
+    @Column(name = "preferred_locale", nullable = false, length = 10)
+    private String preferredLocale = "en";
+
     protected User() {
     }
 
@@ -31,6 +34,7 @@ public class User {
         this.userCode = userCode;
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.preferredLocale = "en";
     }
 
     public Long getId() {
@@ -47,6 +51,14 @@ public class User {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getPreferredLocale() {
+        return preferredLocale;
+    }
+
+    public void updatePreferredLocale(String locale) {
+        this.preferredLocale = locale != null && !locale.isBlank() ? locale.trim().toLowerCase() : "en";
     }
 
 }

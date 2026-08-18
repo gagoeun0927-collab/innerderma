@@ -21,4 +21,11 @@ public class UserService {
         return userRepository.findByUserCode(userCode)
                 .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
     }
+
+    @Transactional
+    public User updatePreferredLocale(String userCode, String locale) {
+        User user = getByUserCode(userCode);
+        user.updatePreferredLocale(locale);
+        return user;
+    }
 }

@@ -39,6 +39,7 @@ class AiCareControllerTest {
     private LlmRenderer llmRenderer;
     private ResponseValidator responseValidator;
     private SkinStateSnapshotRepository snapshotRepository;
+    private com.innerderma.procedure.domain.ProcedureRecordRepository procedureRecordRepository;
     private com.innerderma.user.application.UserService userService;
     private MockMvc mockMvc;
 
@@ -49,11 +50,14 @@ class AiCareControllerTest {
         llmRenderer = mock(LlmRenderer.class);
         responseValidator = mock(ResponseValidator.class);
         snapshotRepository = mock(SkinStateSnapshotRepository.class);
+        procedureRecordRepository = mock(com.innerderma.procedure.domain.ProcedureRecordRepository.class);
         userService = mock(com.innerderma.user.application.UserService.class);
         mockMvc = MockMvcBuilders.standaloneSetup(
-                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository, userService))
+                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository, procedureRecordRepository, userService))
                 .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
+        when(procedureRecordRepository.findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDesc(any(), any()))
+                .thenReturn(java.util.Optional.empty());
     }
 
     @Test

@@ -8,6 +8,8 @@ import com.innerderma.airule.validation.ResponseValidator;
 import com.innerderma.common.response.ApiResponse;
 import com.innerderma.knowledge.product.ProductMatchResult;
 import com.innerderma.knowledge.product.ProductMatcher;
+import com.innerderma.procedure.domain.ProcedureRecord;
+import com.innerderma.procedure.domain.ProcedureRecordRepository;
 import com.innerderma.skinstate.domain.SkinStateSnapshot;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.user.application.UserService;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +37,7 @@ public class AiCareController {
     private final LlmRenderer llmRenderer;
     private final ResponseValidator responseValidator;
     private final SkinStateSnapshotRepository snapshotRepository;
+    private final ProcedureRecordRepository procedureRecordRepository;
     private final UserService userService;
 
     public AiCareController(SolutionAssembler solutionAssembler,
@@ -41,12 +45,14 @@ public class AiCareController {
                             LlmRenderer llmRenderer,
                             ResponseValidator responseValidator,
                             SkinStateSnapshotRepository snapshotRepository,
+                            ProcedureRecordRepository procedureRecordRepository,
                             UserService userService) {
         this.solutionAssembler = solutionAssembler;
         this.productMatcher = productMatcher;
         this.llmRenderer = llmRenderer;
         this.responseValidator = responseValidator;
         this.snapshotRepository = snapshotRepository;
+        this.procedureRecordRepository = procedureRecordRepository;
         this.userService = userService;
     }
 
@@ -65,13 +71,16 @@ public class AiCareController {
         // 2. Primary concern 결정 (Snapshot의 dominant → taxonomy mapping)
         String primaryConcern = resolvePrimaryConcern(userCode);
 
-        // 3. Product Matching
-        ProductMatchResult products = productMatcher.match(solution, primaryConcern, null, List.of());
+        // 3. Treatment context 자동 판별 (시술 기록 존재 여부)
+        String treatmentCode = resolveLatestTreatmentCode(userCode);
 
-        // 4. LLM 렌더링 (locale 기반 다국어)
+        // 4. Product Matching (treatment 유형에 따라 자동 필터)
+        ProductMatchResult products = productMatcher.match(solution, primaryConcern, treatmentCode, List.of());
+
+        // 5. LLM 렌더링 (locale 기반 다국어)
         LlmResponse llmResponse = llmRenderer.render(solution, products, resolvedLocale);
 
-        // 5. Response Validation
+        // 6. Response Validation
         List<String> productIds = extractProductIds(llmResponse);
         int nightSteps = llmResponse.night() != null ? llmResponse.night().steps().size() : 0;
         int morningSteps = llmResponse.morning() != null ? llmResponse.morning().steps().size() : 0;
@@ -97,6 +106,19 @@ public class AiCareController {
                 .map(MappedConcern::fromSelfReport)
                 .map(MappedConcern::concern)
                 .orElse("STABLE");
+    }
+
+    /**
+     * 사용자 유형 자동 판별 (정책 A): 시술 기록이 존재하면 최신 시술의 procedureName을
+     * Treatment KB에서 매칭해 treatmentCode를 반환.
+     * 없으면 null → Product Matcher에서 treatment 필터 미적용 (Diagnosis Only 유형).
+     */
+    private String resolveLatestTreatmentCode(String userCode) {
+        return procedureRecordRepository
+                .findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDesc(
+                        userCode, LocalDate.now())
+                .map(ProcedureRecord::getProcedureName)
+                .orElse(null);
     }
 
     private List<String> extractProductIds(LlmResponse response) {

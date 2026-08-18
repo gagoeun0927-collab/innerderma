@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Clock;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Optional;
 
@@ -19,6 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class SelfCheckServiceTest {
@@ -73,6 +76,44 @@ class SelfCheckServiceTest {
         assertThatThrownBy(() -> service.getLatest(USER_CODE))
                 .isInstanceOfSatisfying(BusinessException.class, exception ->
                         assertThat(exception.errorCode()).isEqualTo(ErrorCode.SELF_CHECK_NOT_FOUND)
+                );
+    }
+
+    @Test
+    void historyDefaultsToRecentThirtyDaysUsingKoreanToday() {
+        when(userRepository.existsByUserCode(USER_CODE)).thenReturn(true);
+        when(selfCheckRepository.findByUser_UserCodeAndCheckedAtBetweenOrderByCheckedAtDesc(
+                any(), any(), any())).thenReturn(java.util.List.of());
+
+        var result = service.getHistory(USER_CODE, null, null);
+
+        // CLOCK은 Asia/Seoul 기준 2026-08-17이며 기본 범위는 최근 30일(7/19~8/17)이다.
+        assertThat(result.to()).isEqualTo(LocalDate.of(2026, 8, 17));
+        assertThat(result.from()).isEqualTo(LocalDate.of(2026, 7, 19));
+        assertThat(result.items()).isEmpty();
+    }
+
+    @Test
+    void historyRejectsRangeLongerThanThirtyOneDays() {
+        when(userRepository.existsByUserCode(USER_CODE)).thenReturn(true);
+
+        assertThatThrownBy(() -> service.getHistory(USER_CODE,
+                LocalDate.of(2026, 7, 1), LocalDate.of(2026, 8, 17)))
+                .isInstanceOfSatisfying(BusinessException.class, exception ->
+                        assertThat(exception.errorCode()).isEqualTo(ErrorCode.INVALID_REQUEST)
+                );
+        verify(selfCheckRepository, never())
+                .findByUser_UserCodeAndCheckedAtBetweenOrderByCheckedAtDesc(any(), any(), any());
+    }
+
+    @Test
+    void historyRejectsReversedRange() {
+        when(userRepository.existsByUserCode(USER_CODE)).thenReturn(true);
+
+        assertThatThrownBy(() -> service.getHistory(USER_CODE,
+                LocalDate.of(2026, 8, 17), LocalDate.of(2026, 8, 1)))
+                .isInstanceOfSatisfying(BusinessException.class, exception ->
+                        assertThat(exception.errorCode()).isEqualTo(ErrorCode.INVALID_REQUEST)
                 );
     }
 

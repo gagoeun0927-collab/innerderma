@@ -12,10 +12,17 @@ import com.innerderma.user.domain.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
 
+/**
+ * Seeds hackathon demo/dummy data (a single demo user, facilities, a baseline diagnosis, a
+ * procedure, and [데모] products). Excluded from the {@code prod} profile so real deployments do
+ * not receive placeholder data.
+ */
 @Configuration
+@Profile("!prod")
 public class DemoDataInitializer {
 
     public static final String DEMO_USER_CODE = "WHS-DEMO-001";

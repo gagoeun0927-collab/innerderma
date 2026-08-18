@@ -90,14 +90,17 @@ public class SkinStateSnapshotService {
         LocalDateTime now = LocalDateTime.now(clock);
 
         // SkinAge 분석 결과(선택): 최신 분석의 concern_averages를 원본 보존
-        String analysisScoresJson = null;
-        Long sourceAnalysisId = null;
+        final String analysisScoresJson;
+        final Long sourceAnalysisId;
         var latestAnalysis = skinAnalysisRepository
                 .findFirstBySkinCapture_User_UserCodeOrderByAnalyzedAtDesc(userCode);
         if (latestAnalysis.isPresent()) {
             SkinAnalysis analysis = latestAnalysis.get();
             sourceAnalysisId = analysis.getId();
             analysisScoresJson = extractConcernAverages(analysis.getRawResult());
+        } else {
+            sourceAnalysisId = null;
+            analysisScoresJson = null;
         }
 
         SkinStateSnapshot snapshot = snapshotRepository

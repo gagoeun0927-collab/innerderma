@@ -49,6 +49,9 @@ class SelfCheckControllerTest {
                 SymptomSeverity.NONE,
                 SymptomSeverity.NONE,
                 SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
                 null
         );
         when(service.create(eq("WHS-DEMO-001"), any(SelfCheckCommand.class))).thenReturn(result);
@@ -92,7 +95,10 @@ class SelfCheckControllerTest {
                   "itching": "NONE",
                   "swelling": "NONE",
                   "peeling": "NONE",
-                  "breakout": "NONE"
+                  "breakout": "NONE",
+                  "oozing": "NONE",
+                  "bleeding": "NONE",
+                  "barrierDamage": "NONE"
                 }
                 """.formatted(pain);
     }

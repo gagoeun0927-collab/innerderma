@@ -115,6 +115,7 @@ class CareSolutionServiceTest {
                 attention ? SymptomSeverity.MODERATE : SymptomSeverity.NONE,
                 SymptomSeverity.NONE, SymptomSeverity.MILD, SymptomSeverity.MILD,
                 SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE,
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE,
                 SymptomSeverity.NONE, null);
         return new CareCycle(user, analysis, selfCheck, date, date.atTime(10, 3));
     }

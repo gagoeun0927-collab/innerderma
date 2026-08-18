@@ -54,6 +54,9 @@ public class SelfCheckService {
                 command.swelling(),
                 command.peeling(),
                 command.breakout(),
+                command.oozing(),
+                command.bleeding(),
+                command.barrierDamage(),
                 command.note()
         );
         SelfCheck saved = selfCheckRepository.save(selfCheck);

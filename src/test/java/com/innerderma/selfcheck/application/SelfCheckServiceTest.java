@@ -86,6 +86,9 @@ class SelfCheckServiceTest {
                 SymptomSeverity.NONE,
                 SymptomSeverity.NONE,
                 SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
                 note
         );
     }

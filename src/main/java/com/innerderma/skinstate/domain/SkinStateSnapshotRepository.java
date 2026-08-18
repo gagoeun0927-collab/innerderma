@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 public interface SkinStateSnapshotRepository extends JpaRepository<SkinStateSnapshot, Long> {
@@ -13,4 +14,7 @@ public interface SkinStateSnapshotRepository extends JpaRepository<SkinStateSnap
 
     @EntityGraph(attributePaths = "user")
     Optional<SkinStateSnapshot> findFirstByUser_UserCodeOrderBySnapshotDateDesc(String userCode);
+
+    @EntityGraph(attributePaths = "user")
+    List<SkinStateSnapshot> findTop2ByUser_UserCodeOrderBySnapshotDateDesc(String userCode);
 }

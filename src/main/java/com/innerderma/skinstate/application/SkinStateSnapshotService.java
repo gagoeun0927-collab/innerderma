@@ -40,8 +40,8 @@ public class SkinStateSnapshotService {
 
     private static final ZoneId MVP_ZONE = ZoneId.of("Asia/Seoul");
 
-    /** 원천 축과 동점 시 tie-break 순서(자가문진 선언 순서 그대로). */
-    private static final List<String> AXIS_ORDER = List.of(
+    /** 원천 축과 동점 시 tie-break 순서(자가문진 선언 순서 그대로). Trend 등 다른 계층에서 표준 축 집합으로 재사용한다. */
+    public static final List<String> AXIS_ORDER = List.of(
             "pain", "heatSensation", "tightness", "dryness",
             "itching", "swelling", "peeling", "breakout");
 

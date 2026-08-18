@@ -1,0 +1,163 @@
+package com.innerderma.llm;
+
+import com.innerderma.airule.signal.MappedConcern;
+import com.innerderma.airule.solution.SolutionAssembler;
+import com.innerderma.airule.solution.SolutionObject;
+import com.innerderma.airule.validation.ResponseValidationResult;
+import com.innerderma.airule.validation.ResponseValidator;
+import com.innerderma.common.error.GlobalExceptionHandler;
+import com.innerderma.knowledge.product.PieceSeoulProduct;
+import com.innerderma.knowledge.product.ProductMatchResult;
+import com.innerderma.knowledge.product.ProductMatcher;
+import com.innerderma.knowledge.product.WimStoreProduct;
+import com.innerderma.skinstate.domain.SkinStateSnapshot;
+import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
+import com.innerderma.user.domain.User;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+class AiCareControllerTest {
+
+    private SolutionAssembler solutionAssembler;
+    private ProductMatcher productMatcher;
+    private LlmRenderer llmRenderer;
+    private ResponseValidator responseValidator;
+    private SkinStateSnapshotRepository snapshotRepository;
+    private MockMvc mockMvc;
+
+    @BeforeEach
+    void setUp() {
+        solutionAssembler = mock(SolutionAssembler.class);
+        productMatcher = mock(ProductMatcher.class);
+        llmRenderer = mock(LlmRenderer.class);
+        responseValidator = mock(ResponseValidator.class);
+        snapshotRepository = mock(SkinStateSnapshotRepository.class);
+        mockMvc = MockMvcBuilders.standaloneSetup(
+                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository))
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
+    }
+
+    @Test
+    void returnsFullAiCareResponseWithProducts() throws Exception {
+        // Solution
+        SolutionObject solution = new SolutionObject(
+                Map.of("night_max_steps", 4, "recommendation_mode", "NORMAL"),
+                List.of(), List.of("R022@1.0.0", "R030@1.0.0", "R010@1.0.0"), List.of(), Map.of(), Map.of());
+        when(solutionAssembler.assembleForUser("WHS-DEMO-001")).thenReturn(solution);
+
+        // Snapshot → concern
+        SkinStateSnapshot snapshot = new SkinStateSnapshot(
+                new User("WHS-DEMO-001", "test", "010-1234-1234"),
+                LocalDate.of(2026, 8, 19), "selfcheck-ordinal-v1", "{}", null, "dryness", 1L, null,
+                LocalDateTime.now());
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
+                .thenReturn(Optional.of(snapshot));
+
+        // Product matching
+        PieceSeoulProduct nightProduct = new PieceSeoulProduct(
+                "PSS_001", "Piece Seoul", "Cica Cream", "MOISTURIZER",
+                List.of("barrier"), List.of("HYDRATION"), List.of(), List.of(),
+                List.of("night"), "daily", "fingertip", "얼굴 전체 도포",
+                List.of(), List.of("장벽 강화"), List.of(), List.of(), true, 38000, null, null);
+        WimStoreProduct innerProduct = new WimStoreProduct(
+                "WIM_001", "WIM", "콜라겐 젤리", "JELLY",
+                List.of("HYDRATION"), List.of(), List.of(), List.of(),
+                "1일 1포", List.of("콜라겐 함유"), List.of(), List.of(), true, 45000, null, null);
+        when(productMatcher.match(any(), eq("HYDRATION"), any(), any()))
+                .thenReturn(new ProductMatchResult(List.of(nightProduct), List.of(), List.of(innerProduct), "HYDRATION", null));
+
+        // LLM response
+        LlmResponse llmResponse = new LlmResponse(
+                "오늘의 스킨케어",
+                "수분 부족 상태",
+                "보습 강화",
+                new LlmResponse.NightCare("RECOVERY", List.of(
+                        new LlmResponse.Step(1, "PSS_001", "Cica Cream", "얼굴 전체 도포", "장벽 강화"))),
+                new LlmResponse.MorningCare("PROTECTION", List.of()),
+                new LlmResponse.InnerCare(List.of(
+                        new LlmResponse.Recommendation("WIM_001", "콜라겐 젤리", "1일 1포", "콜라겐 보충")), List.of()),
+                null);
+        when(llmRenderer.render(any(), any(), eq("ko"))).thenReturn(llmResponse);
+
+        // Validation
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any()))
+                .thenReturn(ResponseValidationResult.success());
+
+        mockMvc.perform(post("/api/users/WHS-DEMO-001/ai-care").param("locale", "ko"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.data.care.headline").value("오늘의 스킨케어"))
+                .andExpect(jsonPath("$.data.care.skinStateSummary").value("수분 부족 상태"))
+                .andExpect(jsonPath("$.data.care.night.steps[0].productId").value("PSS_001"))
+                .andExpect(jsonPath("$.data.care.innerCare.recommended[0].productId").value("WIM_001"))
+                .andExpect(jsonPath("$.data.appliedRules[0]").value("R022@1.0.0"))
+                .andExpect(jsonPath("$.data.primaryConcern").value("HYDRATION"))
+                .andExpect(jsonPath("$.data.locale").value("ko"))
+                .andExpect(jsonPath("$.data.validated").value(true));
+    }
+
+    @Test
+    void returnsSafetyResponseWithCaution() throws Exception {
+        SolutionObject solution = new SolutionObject(
+                Map.of("safety_status", "CAUTION", "recommendation_mode", "CONSERVATIVE", "limit_new_product_addition", true),
+                List.of("NO_AGGRESSIVE_ROUTINE"), List.of("R000@1.0.0", "R010@1.0.0"), List.of(), Map.of(), Map.of());
+        when(solutionAssembler.assembleForUser("WHS-DEMO-001")).thenReturn(solution);
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
+                .thenReturn(Optional.empty());
+        when(productMatcher.match(any(), any(), any(), any()))
+                .thenReturn(new ProductMatchResult(List.of(), List.of(), List.of(), "STABLE", null));
+
+        LlmResponse llmResponse = new LlmResponse(
+                "주의 안내", "피부 상태 주의", "안정화",
+                new LlmResponse.NightCare("RECOVERY", List.of()),
+                new LlmResponse.MorningCare("PROTECTION", List.of()),
+                new LlmResponse.InnerCare(List.of(), List.of()),
+                "현재 주의가 필요한 상태입니다.");
+        when(llmRenderer.render(any(), any(), eq("en"))).thenReturn(llmResponse);
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any()))
+                .thenReturn(ResponseValidationResult.success());
+
+        mockMvc.perform(post("/api/users/WHS-DEMO-001/ai-care").param("locale", "en"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.care.caution").value("현재 주의가 필요한 상태입니다."))
+                .andExpect(jsonPath("$.data.appliedRules[0]").value("R000@1.0.0"));
+    }
+
+    @Test
+    void defaultsToStableWhenNoSnapshot() throws Exception {
+        SolutionObject solution = new SolutionObject(
+                Map.of(), List.of(), List.of("R010@1.0.0"), List.of(), Map.of(), Map.of());
+        when(solutionAssembler.assembleForUser("WHS-DEMO-001")).thenReturn(solution);
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
+                .thenReturn(Optional.empty());
+        when(productMatcher.match(any(), eq("STABLE"), any(), any()))
+                .thenReturn(new ProductMatchResult(List.of(), List.of(), List.of(), "STABLE", null));
+
+        LlmResponse llmResponse = new LlmResponse("Care", "STABLE", "", null, null, null, null);
+        when(llmRenderer.render(any(), any(), any())).thenReturn(llmResponse);
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any()))
+                .thenReturn(ResponseValidationResult.success());
+
+        mockMvc.perform(post("/api/users/WHS-DEMO-001/ai-care"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.primaryConcern").value("STABLE"))
+                .andExpect(jsonPath("$.data.locale").value("ko"));
+    }
+}

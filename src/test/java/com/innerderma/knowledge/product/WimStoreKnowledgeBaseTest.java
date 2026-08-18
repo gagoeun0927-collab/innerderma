@@ -32,8 +32,10 @@ class WimStoreKnowledgeBaseTest {
     @Test
     void excludesProductsWithUserAllergens() {
         List<WimStoreProduct> all = kb.findAll();
-        List<WimStoreProduct> filtered = kb.filter(null, List.of("milk"), List.of());
-        assertThat(filtered.size()).isLessThan(all.size());
+        List<WimStoreProduct> filtered = kb.filter(null, List.of("milk", "soy"), List.of());
+        // milk 또는 soy 알레르겐이 있는 제품이 제외돼야 함
+        assertThat(filtered.size()).isLessThanOrEqualTo(all.size());
+        assertThat(filtered).noneMatch(p -> p.hasAllergen(List.of("milk", "soy")));
     }
 
     @Test

@@ -114,6 +114,49 @@ class SkinAnalysisServiceTest {
         verify(client, never()).analyze(any(), any(), any(), any());
     }
 
+    @Test
+    void historyDefaultsToRecentThirtyDaysUsingKoreanToday() {
+        SkinAnalysis analysis = new SkinAnalysis(
+                capture(), LocalDateTime.of(2026, 8, 17, 12, 30),
+                78.5, "Good", "1.0.0", write(validResult())
+        );
+        when(userRepository.existsByUserCode(USER_CODE)).thenReturn(true);
+        when(analysisRepository.findBySkinCapture_User_UserCodeAndAnalyzedAtBetweenOrderByAnalyzedAtDesc(
+                any(), any(), any())).thenReturn(List.of(analysis));
+
+        var result = service.getHistory(USER_CODE, null, null);
+
+        // CLOCK은 Asia/Seoul 기준 2026-08-17이며 기본 범위는 최근 30일(7/19~8/17)이다.
+        assertThat(result.to()).isEqualTo(LocalDate.of(2026, 8, 17));
+        assertThat(result.from()).isEqualTo(LocalDate.of(2026, 7, 19));
+        assertThat(result.items()).hasSize(1);
+        verify(client, never()).analyze(any(), any(), any(), any());
+    }
+
+    @Test
+    void historyRejectsRangeLongerThanThirtyOneDays() {
+        when(userRepository.existsByUserCode(USER_CODE)).thenReturn(true);
+
+        assertThatThrownBy(() -> service.getHistory(USER_CODE,
+                LocalDate.of(2026, 7, 1), LocalDate.of(2026, 8, 17)))
+                .isInstanceOfSatisfying(BusinessException.class, exception ->
+                        assertThat(exception.errorCode()).isEqualTo(ErrorCode.INVALID_REQUEST)
+                );
+        verify(analysisRepository, never())
+                .findBySkinCapture_User_UserCodeAndAnalyzedAtBetweenOrderByAnalyzedAtDesc(any(), any(), any());
+    }
+
+    @Test
+    void historyRejectsReversedRange() {
+        when(userRepository.existsByUserCode(USER_CODE)).thenReturn(true);
+
+        assertThatThrownBy(() -> service.getHistory(USER_CODE,
+                LocalDate.of(2026, 8, 17), LocalDate.of(2026, 8, 1)))
+                .isInstanceOfSatisfying(BusinessException.class, exception ->
+                        assertThat(exception.errorCode()).isEqualTo(ErrorCode.INVALID_REQUEST)
+                );
+    }
+
     private SkinCapture capture() {
         return new SkinCapture(
                 new User(USER_CODE, "테스트 사용자", "010-1234-1234"),

@@ -67,6 +67,51 @@ class SkinCaptureServiceTest {
     }
 
     @Test
+    void historyDefaultsToRecentThirtyDaysUsingKoreanTodayAndValidStatus() {
+        User user = new User(USER_CODE, "테스트 사용자", "010-1234-1234");
+        SkinCapture capture = new SkinCapture(
+                user, LocalDate.of(2026, 8, 15),
+                java.time.LocalDateTime.of(2026, 8, 15, 12, 0),
+                "/images/c.jpg", "c.jpg", "image/jpeg", 3, SkinCaptureQualityStatus.VALID);
+        when(userRepository.existsByUserCode(USER_CODE)).thenReturn(true);
+        when(skinCaptureRepository
+                .findByUser_UserCodeAndCapturedDateBetweenAndQualityStatusOrderByCapturedDateDescCapturedAtDesc(
+                        USER_CODE, LocalDate.of(2026, 7, 19), LocalDate.of(2026, 8, 17),
+                        SkinCaptureQualityStatus.VALID))
+                .thenReturn(java.util.List.of(capture));
+
+        var result = service.getHistory(USER_CODE, null, null);
+
+        assertThat(result.to()).isEqualTo(LocalDate.of(2026, 8, 17));
+        assertThat(result.from()).isEqualTo(LocalDate.of(2026, 7, 19));
+        assertThat(result.items()).hasSize(1);
+    }
+
+    @Test
+    void historyRejectsRangeLongerThanThirtyOneDays() {
+        when(userRepository.existsByUserCode(USER_CODE)).thenReturn(true);
+
+        assertThatThrownBy(() -> service.getHistory(USER_CODE,
+                LocalDate.of(2026, 7, 1), LocalDate.of(2026, 8, 17)))
+                .isInstanceOfSatisfying(BusinessException.class, exception ->
+                        assertThat(exception.errorCode()).isEqualTo(ErrorCode.INVALID_REQUEST)
+                );
+        verify(skinCaptureRepository, never())
+                .findByUser_UserCodeAndCapturedDateBetweenAndQualityStatusOrderByCapturedDateDescCapturedAtDesc(
+                        any(), any(), any(), any());
+    }
+
+    @Test
+    void historyRejectsUnknownUser() {
+        when(userRepository.existsByUserCode(USER_CODE)).thenReturn(false);
+
+        assertThatThrownBy(() -> service.getHistory(USER_CODE, null, null))
+                .isInstanceOfSatisfying(BusinessException.class, exception ->
+                        assertThat(exception.errorCode()).isEqualTo(ErrorCode.USER_NOT_FOUND)
+                );
+    }
+
+    @Test
     void rejectsSecondValidCaptureOnSameKoreanDate() {
         when(userRepository.findByUserCode(USER_CODE))
                 .thenReturn(Optional.of(new User(USER_CODE, "테스트 사용자", "010-1234-1234")));

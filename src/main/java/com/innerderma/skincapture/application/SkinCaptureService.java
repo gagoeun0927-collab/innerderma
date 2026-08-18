@@ -11,10 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Iterator;
 import java.util.Set;
 
 @Service
@@ -22,6 +28,7 @@ import java.util.Set;
 public class SkinCaptureService {
 
     static final long MAX_IMAGE_SIZE = 10L * 1024 * 1024;
+    static final int MIN_RESOLUTION = 512;
     private static final ZoneId MVP_ZONE = ZoneId.of("Asia/Seoul");
     private static final Set<String> SUPPORTED_CONTENT_TYPES = Set.of("image/jpeg", "image/png", "image/webp");
 
@@ -67,6 +74,7 @@ public class SkinCaptureService {
             throw new BusinessException(ErrorCode.SKIN_CAPTURE_ALREADY_EXISTS);
         }
 
+        SkinCaptureQualityStatus qualityStatus = assessQuality(file);
         String imagePath = storage.store(file);
         SkinCapture capture = new SkinCapture(
                 user,
@@ -76,7 +84,7 @@ public class SkinCaptureService {
                 safeOriginalFilename(file.originalFilename()),
                 file.contentType(),
                 file.size(),
-                SkinCaptureQualityStatus.VALID
+                qualityStatus
         );
         return skinCaptureRepository.save(capture);
     }
@@ -96,6 +104,36 @@ public class SkinCaptureService {
                 .findFirstByUser_UserCodeAndCapturedDateAndQualityStatusOrderByCapturedAtDesc(
                         userCode, today, SkinCaptureQualityStatus.VALID).orElse(null);
         return new DailyCaptureStatus(today, capture == null, capture);
+    }
+
+    /**
+     * R002 품질 게이트 (기획서 7.1): 최소 해상도 미만이거나 디코딩에 실패한 사진은 예외가 아니라
+     * QUALITY_CHECK_FAILED 상태로 저장해 재촬영을 유도한다. VALID 촬영만 1일 1회 제한에 반영되므로
+     * 품질 미달 사진은 같은 날 재촬영을 막지 않는다. 표준 JDK가 디코더를 제공하지 않는 형식(webp 등)은
+     * 해상도를 측정할 수 없으므로 오탐 방지를 위해 VALID로 통과시킨다.
+     */
+    private SkinCaptureQualityStatus assessQuality(SkinCaptureFile file) {
+        try (ImageInputStream stream = ImageIO.createImageInputStream(new ByteArrayInputStream(file.bytes()))) {
+            if (stream == null) {
+                return SkinCaptureQualityStatus.QUALITY_CHECK_FAILED;
+            }
+            Iterator<ImageReader> readers = ImageIO.getImageReaders(stream);
+            if (!readers.hasNext()) {
+                return SkinCaptureQualityStatus.VALID;
+            }
+            ImageReader reader = readers.next();
+            try {
+                reader.setInput(stream, true, true);
+                int minEdge = Math.min(reader.getWidth(0), reader.getHeight(0));
+                return minEdge >= MIN_RESOLUTION
+                        ? SkinCaptureQualityStatus.VALID
+                        : SkinCaptureQualityStatus.QUALITY_CHECK_FAILED;
+            } finally {
+                reader.dispose();
+            }
+        } catch (IOException | RuntimeException exception) {
+            return SkinCaptureQualityStatus.QUALITY_CHECK_FAILED;
+        }
     }
 
     private void validate(SkinCaptureFile file) {

@@ -10,6 +10,9 @@ import com.innerderma.user.domain.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -48,7 +51,7 @@ class SkinCaptureServiceTest {
     @Test
     void createsOneValidCaptureUsingKoreanDate() {
         User user = new User(USER_CODE, "테스트 사용자", "010-1234-1234");
-        SkinCaptureFile file = jpegFile();
+        SkinCaptureFile file = realJpeg("folder/face.jpg", 640, 640);
         when(userRepository.findByUserCode(USER_CODE)).thenReturn(Optional.of(user));
         when(skinCaptureRepository.existsByUser_UserCodeAndCapturedDateAndQualityStatus(
                 USER_CODE, LocalDate.of(2026, 8, 17), SkinCaptureQualityStatus.VALID
@@ -64,6 +67,41 @@ class SkinCaptureServiceTest {
         assertThat(result.getQualityStatus()).isEqualTo(SkinCaptureQualityStatus.VALID);
         assertThat(result.getOriginalFilename()).isEqualTo("face.jpg");
         verify(storage).store(file);
+    }
+
+    @Test
+    void storesLowResolutionCaptureAsQualityCheckFailed() {
+        User user = new User(USER_CODE, "테스트 사용자", "010-1234-1234");
+        SkinCaptureFile file = realJpeg("face.jpg", 200, 200);
+        when(userRepository.findByUserCode(USER_CODE)).thenReturn(Optional.of(user));
+        when(skinCaptureRepository.existsByUser_UserCodeAndCapturedDateAndQualityStatus(
+                USER_CODE, LocalDate.of(2026, 8, 17), SkinCaptureQualityStatus.VALID
+        )).thenReturn(false);
+        when(storage.store(file)).thenReturn("/images/low.jpg");
+        when(skinCaptureRepository.save(any(SkinCapture.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        SkinCapture result = service.create(USER_CODE, file);
+
+        assertThat(result.getQualityStatus()).isEqualTo(SkinCaptureQualityStatus.QUALITY_CHECK_FAILED);
+        verify(storage).store(file);
+    }
+
+    @Test
+    void storesUndecodableCaptureAsQualityCheckFailed() {
+        User user = new User(USER_CODE, "테스트 사용자", "010-1234-1234");
+        SkinCaptureFile file = jpegFile();
+        when(userRepository.findByUserCode(USER_CODE)).thenReturn(Optional.of(user));
+        when(skinCaptureRepository.existsByUser_UserCodeAndCapturedDateAndQualityStatus(
+                USER_CODE, LocalDate.of(2026, 8, 17), SkinCaptureQualityStatus.VALID
+        )).thenReturn(false);
+        when(storage.store(file)).thenReturn("/images/corrupt.jpg");
+        when(skinCaptureRepository.save(any(SkinCapture.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        SkinCapture result = service.create(USER_CODE, file);
+
+        assertThat(result.getQualityStatus()).isEqualTo(SkinCaptureQualityStatus.QUALITY_CHECK_FAILED);
     }
 
     @Test
@@ -100,5 +138,17 @@ class SkinCaptureServiceTest {
                 4,
                 new byte[]{(byte) 0xFF, (byte) 0xD8, (byte) 0xFF, 0}
         );
+    }
+
+    private SkinCaptureFile realJpeg(String filename, int width, int height) {
+        try {
+            BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            ImageIO.write(image, "jpg", out);
+            byte[] bytes = out.toByteArray();
+            return new SkinCaptureFile(filename, "image/jpeg", bytes.length, bytes);
+        } catch (Exception exception) {
+            throw new IllegalStateException(exception);
+        }
     }
 }

@@ -1,0 +1,1099 @@
+[
+  {
+    "treatment_code": "LASER_TONING",
+    "treatment_name": "레이저 토닝",
+    "treatment_name_en": "Laser Toning (Q-switched Nd:YAG)",
+    "treatment_type": "LASER_TONING",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 2,
+    "expected_recovery_days_max": 5,
+    "normal_symptoms": [
+      "mild redness (subsides within 1-2 days)",
+      "slight warmth sensation",
+      "minor dryness or tightness"
+    ],
+    "warning_symptoms": [
+      "severe swelling lasting over 3 days",
+      "blistering or burn marks",
+      "pus or discharge",
+      "hyper-pigmentation flare-up with severe itching"
+    ],
+    "aftercare_restrictions": [
+      "direct sun exposure without SPF50+ sunscreen",
+      "sauna, steam room, or hot bath for 3 days",
+      "excessive cardio exercise causing heavy sweating for 2 days",
+      "alcohol-based toner or harsh astringents",
+      "physical scrub or peeling pads for 5 days",
+      "high-concentration pure vitamin C or retinol for 3 days"
+    ],
+    "allowed_product_tags": [
+      "soothing",
+      "barrier",
+      "ceramide",
+      "centella",
+      "panthenol",
+      "mineral_sunscreen",
+      "gentle_cleanser",
+      "hydration"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "peel",
+      "AHA",
+      "BHA",
+      "retinol",
+      "high_concentration_vitamin_c",
+      "alcohol"
+    ],
+    "aftercare_guide": "시술 후 3~5일간 자외선 차단제(SPF50+/PA++++)를 필수로 도포하고, 피부가 일시적으로 건조해질 수 있으므로 수분 토너와 세라마이드/판테놀 보습제를 충분히 레이어링해 주세요. 세안 시 미온수를 사용하고 각질 제거는 5일간 피해야 합니다.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "PICO_TONING",
+    "treatment_name": "피코 토닝 (피코슈어 / 피코웨이)",
+    "treatment_name_en": "Pico Toning (PicoSure / PicoWay)",
+    "treatment_type": "LASER_TONING",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 3,
+    "normal_symptoms": [
+      "faint pink flush resolving within 2-6 hours",
+      "mild warmth and temporary dryness"
+    ],
+    "warning_symptoms": [
+      "petechiae (micro-bruising) lasting >5 days",
+      "severe burning pain",
+      "mottled hypopigmentation"
+    ],
+    "aftercare_restrictions": [
+      "sun exposure without broad spectrum protection",
+      "scrubbing and hot baths for 48 hours",
+      "strong exfoliating acids for 4 days"
+    ],
+    "allowed_product_tags": [
+      "hydration",
+      "barrier",
+      "ceramide",
+      "soothing",
+      "mineral_sunscreen",
+      "tranexamic_acid"
+    ],
+    "restricted_product_tags": [
+      "AHA",
+      "BHA",
+      "scrub",
+      "retinol"
+    ],
+    "aftercare_guide": "피코초 단위의 초미세 충격파로 멜라닌을 분해하는 시술로 열 손상이 적습니다. 시술 후 보습제와 트라넥삼산/미백 세럼을 병용하면 색소 침착 억제 시너지를 얻을 수 있습니다.",
+    "source": "DERNA Clinic protocol",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "VBEAM_PERFECTA",
+    "treatment_name": "브이빔 퍼펙타 (혈관 / 안면홍조 레이저)",
+    "treatment_name_en": "Vbeam Perfecta Pulsed Dye Laser",
+    "treatment_type": "LASER_TONING",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 2,
+    "expected_recovery_days_max": 5,
+    "normal_symptoms": [
+      "mild purpura (bruising) or dark pink spots at vascular target points",
+      "temporary facial puffiness around cheeks for 24-48 hours",
+      "warm flushed feeling"
+    ],
+    "warning_symptoms": [
+      "blister formation over treated vessels",
+      "severe periorbital edema closing the eyes",
+      "ulceration or severe burning pain"
+    ],
+    "aftercare_restrictions": [
+      "drinking alcohol, spicy foods, and hot showers for 5 days (triggers vasodilation)",
+      "strenuous cardio and sauna for 5 days",
+      "rubbing or massaging bruised vascular spots"
+    ],
+    "allowed_product_tags": [
+      "soothing",
+      "cooling",
+      "azulene",
+      "centella",
+      "mineral_sunscreen",
+      "barrier"
+    ],
+    "restricted_product_tags": [
+      "retinol",
+      "scrub",
+      "hot_steam",
+      "alcohol",
+      "menthol"
+    ],
+    "aftercare_guide": "확장된 모세혈관을 응고시키는 시술이므로 혈관 확장을 유발하는 음주, 사우나, 매운 음식을 5일간 엄격히 금지합니다. 아줄렌 수딩 크림과 크라이오 진정 젤로 피부 온도를 차분하게 낮춰주세요.",
+    "source": "DERNA Clinic vascular center",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "FRACTIONAL_LASER",
+    "treatment_name": "프랙셔널 레이저",
+    "treatment_name_en": "Fractional Laser",
+    "treatment_type": "FRACTIONAL_LASER",
+    "treatment_area": ["face", "neck"],
+    "expected_recovery_days_min": 5,
+    "expected_recovery_days_max": 10,
+    "normal_symptoms": [
+      "moderate redness and warmth (2-4 days)",
+      "micro-crusts/scabs forming like fine dots (day 3-7)",
+      "rough sandpaper texture and natural peeling",
+      "mild swelling (first 48 hours)"
+    ],
+    "warning_symptoms": [
+      "severe, spreading redness beyond treatment area",
+      "fever or acute hot sensation lasting over 4 days",
+      "yellow discharge, pus, or severe weeping crusts",
+      "clustered vesicles (herpes simplex suspect)"
+    ],
+    "aftercare_restrictions": [
+      "forcefully picking or peeling off micro-scabs",
+      "direct sun exposure (strict shade and physical UV protection required)",
+      "sauna, hot yoga, and swimming pool for 7 days",
+      "makeup application during the first 48 hours",
+      "any functional acid (AHA, BHA, PHA, LHA), retinol, or vitamin C for 7-10 days"
+    ],
+    "allowed_product_tags": [
+      "barrier",
+      "growth_factor",
+      "egf",
+      "peptide",
+      "cica",
+      "madecassoside",
+      "azulene",
+      "panthenol",
+      "post_procedure"
+    ],
+    "restricted_product_tags": [
+      "AHA",
+      "BHA",
+      "LHA",
+      "retinol",
+      "scrub",
+      "peel",
+      "vitamin_c",
+      "essential_oils",
+      "alcohol"
+    ],
+    "aftercare_guide": "미세 딱지는 5~7일에 걸쳐 자연 탈락하므로 절대 억지로 떼어내지 마세요. 시술 후 2일간은 물 세안 또는 저자극 아미노 클렌저로 조심스럽게 세안하고, EGF 성장인자 크림이나 시카 재생밤을 수시로 덧발라 밀폐 보습을 유지해 주세요.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "FRAXEL_DUAL",
+    "treatment_name": "프락셀 듀얼 (Fraxel DUAL 1550/1927)",
+    "treatment_name_en": "Fraxel DUAL Laser (1550nm/1927nm)",
+    "treatment_type": "FRACTIONAL_LASER",
+    "treatment_area": ["face", "neck"],
+    "expected_recovery_days_min": 5,
+    "expected_recovery_days_max": 8,
+    "normal_symptoms": [
+      "bronzing (skin takes on a bronze tan appearance day 2-4)",
+      "microscopic epidermal necrotic debris (MENDs) flaking off (day 4-7)",
+      "edema around cheeks and eyes (first 48 hours)"
+    ],
+    "warning_symptoms": [
+      "herpetic breakout",
+      "oozing, yellow honey-colored crusts (impetigo sign)",
+      "persistent severe erythema >10 days"
+    ],
+    "aftercare_restrictions": [
+      "scrubbing or using face washcloths",
+      "retinoids, AHA/BHA, and pure vitamin C for 14 days",
+      "sunbathing without mineral physical sunscreen"
+    ],
+    "allowed_product_tags": [
+      "growth_factor",
+      "egf",
+      "barrier",
+      "ceramide",
+      "cica",
+      "panthenol",
+      "mineral_sunscreen"
+    ],
+    "restricted_product_tags": [
+      "retinol",
+      "AHA",
+      "BHA",
+      "vitamin_c",
+      "scrub",
+      "peeling_pad"
+    ],
+    "aftercare_guide": "표피 색소(1927nm)와 진피 모공/흉터(1550nm)를 동시 치료하는 듀얼 프락셀입니다. 브론징 현상과 미세 딱지가 일어날 때 엑소좀 재생 크림을 하루 3회 이상 덧발라 각질이 부드럽게 탈락되도록 보호해 주세요.",
+    "source": "DERNA Clinic Fraxel specialist",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "IPL",
+    "treatment_name": "IPL 광선 치료",
+    "treatment_name_en": "IPL (Intense Pulsed Light)",
+    "treatment_type": "IPL",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 3,
+    "expected_recovery_days_max": 7,
+    "normal_symptoms": [
+      "temporary darkening of pigmented spots (micro-scabs like coffee grounds)",
+      "mild redness and warmth for 24 hours",
+      "dry sensation in pigmented areas"
+    ],
+    "warning_symptoms": [
+      "water blisters (bullae) or thermal burn sensation",
+      "persistent intense erythema (>72 hours)",
+      "post-inflammatory hyperpigmentation (PIH) accompanied by pain"
+    ],
+    "aftercare_restrictions": [
+      "rubbing or scrubbing off dark coffee-ground spots",
+      "sun tanning and outdoor sports without broad-spectrum SPF",
+      "sauna and drinking alcohol for 3 days",
+      "strong chemical exfoliants (AHA/BHA) for 5 days"
+    ],
+    "allowed_product_tags": [
+      "soothing",
+      "cooling",
+      "azulene",
+      "hydration",
+      "barrier",
+      "ceramide",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "peel",
+      "AHA",
+      "BHA",
+      "retinol",
+      "alcohol"
+    ],
+    "aftercare_guide": "색소 부위가 딱지처럼 어두워지는 것은 멜라닌 색소가 배출되는 정상 과정입니다. 5~7일 내에 자연스럽게 떨어지도록 보습을 충분히 해 주시고, 자외선 차단제를 꼼꼼히 도포해 색소 재침착을 예방하세요.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "HYDRAFACIAL",
+    "treatment_name": "하이드라페이셜",
+    "treatment_name_en": "HydraFacial MD",
+    "treatment_type": "HYDRAFACIAL",
+    "treatment_area": ["face", "neck"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 2,
+    "normal_symptoms": [
+      "immediate radiant glow",
+      "temporary slight flushing for 1-2 hours",
+      "smooth skin texture"
+    ],
+    "warning_symptoms": [
+      "severe allergic hives",
+      "intense itching or persistent redness over 24 hours",
+      "papular breakouts across the entire face"
+    ],
+    "aftercare_restrictions": [
+      "additional chemical/physical exfoliation for 48 hours",
+      "heavy pore-clogging makeup immediately after treatment",
+      "sauna and high-intensity workout on the day of treatment"
+    ],
+    "allowed_product_tags": [
+      "hydration",
+      "hyaluronic_acid",
+      "barrier",
+      "peptide",
+      "gentle",
+      "sunscreen",
+      "antioxidant"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "strong_peel",
+      "high_percentage_acid"
+    ],
+    "aftercare_guide": "각질과 노폐물이 정리되어 유효 성분 흡수율이 극대화된 상태입니다. 히알루론산과 펩타이드 에센스를 충분히 공급하고, 자외선 차단제로 피부를 보호해 맑은 광채를 오래 유지하세요.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "AQUAPEEL",
+    "treatment_name": "아쿠아필",
+    "treatment_name_en": "Aqua Peel",
+    "treatment_type": "AQUAPEEL",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 2,
+    "normal_symptoms": [
+      "refreshed and cleaned pores",
+      "temporary mild redness around T-zone (1-3 hours)"
+    ],
+    "warning_symptoms": [
+      "bruising from excessive suction pressure",
+      "severe contact dermatitis reaction"
+    ],
+    "aftercare_restrictions": [
+      "scrub or peel pads on the same day",
+      "pore strips or physical extraction tools"
+    ],
+    "allowed_product_tags": [
+      "hydration",
+      "soothing",
+      "sebum_control",
+      "centella",
+      "barrier",
+      "low_ph"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "alcohol"
+    ],
+    "aftercare_guide": "모공 속 피지가 제거되어 비어있는 상태이므로, 모공 수렴 및 수분 진정 토너를 듬뿍 흡수시켜 유수분 밸런스를 맞춰주세요.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "LHALALA_PEEL",
+    "treatment_name": "라라필 (4세대 LHA 알칼리 필링)",
+    "treatment_name_en": "LHALALA Peel (4th Gen LHA/Lipids)",
+    "treatment_type": "CHEMICAL_PEEL",
+    "treatment_area": ["face", "neck"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 3,
+    "normal_symptoms": [
+      "soft porcelain skin texture",
+      "instant brightening and mild tightness",
+      "no visible peeling or downtime"
+    ],
+    "warning_symptoms": [
+      "allergic rash or itching",
+      "persistent erythema >48 hours"
+    ],
+    "aftercare_restrictions": [
+      "scrubbing or using peeling pads for 3 days",
+      "strong alcohol toners"
+    ],
+    "allowed_product_tags": [
+      "hydration",
+      "barrier",
+      "ceramide",
+      "cica",
+      "sunscreen",
+      "peptide"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "strong_acid"
+    ],
+    "aftercare_guide": "피부 표피를 깎아내지 않고 지질막을 채워주는 4세대 필링입니다. 시술 후 피부가 수분을 흡수하기 가장 좋은 상태이므로 세라마이드 보습제를 듬뿍 발라 장벽을 탄탄하게 만들어주세요.",
+    "source": "DERNA Clinic aesthetic care",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "BLACK_PEEL",
+    "treatment_name": "블랙필 (천연 흑초 발효 필링)",
+    "treatment_name_en": "Black Peel (Acetic Acid Fermentation)",
+    "treatment_type": "CHEMICAL_PEEL",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 2,
+    "expected_recovery_days_max": 5,
+    "normal_symptoms": [
+      "light micro-flaking (day 2-4)",
+      "temporary dry sensation",
+      "purified acne lesions"
+    ],
+    "warning_symptoms": [
+      "chemical burn blisters",
+      "severe spreading pustules"
+    ],
+    "aftercare_restrictions": [
+      "picking flaking skin",
+      "sauna and hot yoga for 3 days",
+      "retinol for 5 days"
+    ],
+    "allowed_product_tags": [
+      "soothing",
+      "barrier",
+      "centella",
+      "tea_tree",
+      "hydration",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "retinol",
+      "AHA",
+      "BHA"
+    ],
+    "aftercare_guide": "흑초 발효 유기산이 여드름균을 억제하고 피지를 정돈합니다. 미세 각질이 일어날 때는 손으로 밀지 마시고, 아미노 클렌저 세안과 시카 수딩 크림으로 관리해 주세요.",
+    "source": "DERNA Clinic acne center",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "TCA_DEEP_PEEL",
+    "treatment_name": "TCA 딥 필링",
+    "treatment_name_en": "Deep Chemical Peel (TCA 30-50%)",
+    "treatment_type": "DEEP_PEEL",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 10,
+    "expected_recovery_days_max": 21,
+    "normal_symptoms": [
+      "frosting followed by intense redness and dark crusting",
+      "significant sheet-like skin peeling (days 4-10)",
+      "skin tightness, moderate swelling, and burning sensation (first 3 days)"
+    ],
+    "warning_symptoms": [
+      "bacterial infection with pus, ooze, or foul odor",
+      "persistent severe pain uncontrolled by mild analgesics",
+      "hypertrophic scarring or uneven hypopigmentation",
+      "fever or systemic illness"
+    ],
+    "aftercare_restrictions": [
+      "forcible peeling or pulling of hanging skin flaps",
+      "all active cosmetic products (retinol, acids, vitamin C, fragrance) for 14-21 days",
+      "sun exposure (strict indoor avoidance and physical shielding for 14 days)",
+      "makeup for at least 10 days",
+      "hot water cleansing and soap-based surfactant cleansers"
+    ],
+    "allowed_product_tags": [
+      "barrier",
+      "cica",
+      "growth_factor",
+      "ceramide",
+      "medical_barrier_cream",
+      "sterile_soothing"
+    ],
+    "restricted_product_tags": [
+      "AHA",
+      "BHA",
+      "PHA",
+      "LHA",
+      "retinol",
+      "vitamin_c",
+      "fragrance",
+      "essential_oils",
+      "chemical_sunscreen",
+      "scrub",
+      "alcohol"
+    ],
+    "aftercare_guide": "표피층이 대규모로 탈락 및 재생되는 고난도 시술입니다. 의료용 멸균 재생 크림과 연고를 두텁게 도포해 피부가 마르지 않도록 밀폐해 주시고, 껍질을 손으로 뜯지 마십시오. 감염 징후(진물, 열감) 시 즉시 클리닉에 연락하세요.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "CHEMICAL_PEEL",
+    "treatment_name": "일반 케미컬 필링 (AHA / BHA / Jessner)",
+    "treatment_name_en": "Standard Chemical Peel (AHA/BHA/Jessner)",
+    "treatment_type": "CHEMICAL_PEEL",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 3,
+    "expected_recovery_days_max": 7,
+    "normal_symptoms": [
+      "mild to moderate erythema (1-2 days)",
+      "light flaking and peeling (day 3-5)",
+      "temporary dry and tight sensation"
+    ],
+    "warning_symptoms": [
+      "chemical burn blisters",
+      "severe pain and continuous weeping of clear fluid",
+      "persistent dark pigmentation"
+    ],
+    "aftercare_restrictions": [
+      "additional exfoliating agents (retinol, scrub, peeling gel) for 7 days",
+      "picking at flaking skin",
+      "sauna and strenuous exercise for 3 days",
+      "sunbathing"
+    ],
+    "allowed_product_tags": [
+      "soothing",
+      "barrier",
+      "ceramide",
+      "panthenol",
+      "centella",
+      "hydration",
+      "mineral_sunscreen"
+    ],
+    "restricted_product_tags": [
+      "AHA",
+      "BHA",
+      "LHA",
+      "retinol",
+      "vitamin_c",
+      "scrub",
+      "alcohol"
+    ],
+    "aftercare_guide": "각질 세포가 정돈되는 3~5일 동안 미세한 각질이 일어날 수 있습니다. 보습 크림을 평소보다 1.5배 자주 덧발라주시고, 무자극 보습제와 자외선 차단제를 철저히 발라주세요.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "MICRONEEDLING",
+    "treatment_name": "마이크로니들링 (일반 MTS)",
+    "treatment_name_en": "Microneedling (Standard MTS)",
+    "treatment_type": "MICRONEEDLING",
+    "treatment_area": ["face", "neck"],
+    "expected_recovery_days_min": 3,
+    "expected_recovery_days_max": 5,
+    "normal_symptoms": [
+      "sunburn-like redness and pinpoint bleeding spots (first 24-48 hours)",
+      "mild edema and warmth",
+      "sandpaper-like rough texture and slight flaking (day 3-5)"
+    ],
+    "warning_symptoms": [
+      "folliculitis or clustered pustules appearing over needle tracks",
+      "severe swelling around eyes or cheeks lasting >3 days",
+      "severe pain with purulent discharge"
+    ],
+    "aftercare_restrictions": [
+      "touching face with unwashed hands",
+      "makeup application within the first 24 hours",
+      "swimming pool, sauna, and heavy cardio sweating for 4 days",
+      "exfoliating acids and retinol for 7 days"
+    ],
+    "allowed_product_tags": [
+      "growth_factor",
+      "egf",
+      "peptide",
+      "cica",
+      "azulene",
+      "hyaluronic_acid",
+      "sterile_soothing",
+      "barrier"
+    ],
+    "restricted_product_tags": [
+      "retinol",
+      "AHA",
+      "BHA",
+      "scrub",
+      "high_concentration_vitamin_c",
+      "fragrance",
+      "alcohol"
+    ],
+    "aftercare_guide": "미세 바늘로 형성된 마이크로 홀이 24시간 동안 열려 있으므로 감염 예방에 각별히 주의해야 합니다. 멸균된 EGF 앰플과 블루 리페어 수딩 크림으로 피부 진정 및 콜라겐 합성을 유도해 주세요.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "POTENZA_PUMPING",
+    "treatment_name": "포텐자 펌핑팁 (RF 니들 + 스킨부스터)",
+    "treatment_name_en": "Potenza Microneedle RF (Pumping Tip)",
+    "treatment_type": "MICRONEEDLING",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 3,
+    "expected_recovery_days_max": 6,
+    "normal_symptoms": [
+      "grid-pattern micro-redness and mild edema (1-2 days)",
+      "micro-crusting feeling rough like fine sand (day 3-5)",
+      "skin tightness and warmth"
+    ],
+    "warning_symptoms": [
+      "bacterial folliculitis flare-up",
+      "thermal grid burns",
+      "continuous weeping fluid >48 hours"
+    ],
+    "aftercare_restrictions": [
+      "makeup for 24 hours",
+      "scrubbing, peeling, and retinol for 7 days",
+      "sauna and vigorous gym workouts for 3 days"
+    ],
+    "allowed_product_tags": [
+      "growth_factor",
+      "egf",
+      "pdrn",
+      "cica",
+      "ceramide",
+      "panthenol",
+      "mineral_sunscreen"
+    ],
+    "restricted_product_tags": [
+      "retinol",
+      "AHA",
+      "BHA",
+      "vitamin_c",
+      "scrub",
+      "alcohol"
+    ],
+    "aftercare_guide": "고주파(RF) 열과 미세바늘 약물 주입이 동시에 이루어진 시술입니다. 격자형 미세 딱지가 자연 탈락할 때까지 PDRN 앰플과 코어 리빌드 크림을 도포하여 피부 속 콜라겐 생성을 극대화해 주세요.",
+    "source": "DERNA Clinic Potenza center",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "BOTOX",
+    "treatment_name": "보톡스 (보툴리눔 톡신 / 스킨보톡스)",
+    "treatment_name_en": "Botox / Dermotoxin Injection",
+    "treatment_type": "BOTOX",
+    "treatment_area": ["face", "neck"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 3,
+    "normal_symptoms": [
+      "tiny pinpoint needle marks and slight bruising",
+      "mild tightness or heavy feeling in injected muscle (onset day 3-7)"
+    ],
+    "warning_symptoms": [
+      "ptosis (drooping eyelid) or asymmetrical facial weakness",
+      "difficulty swallowing or breathing (extremely rare)",
+      "severe allergic anaphylactoid reaction"
+    ],
+    "aftercare_restrictions": [
+      "lying down flat for 4 hours post-injection",
+      "rubbing, massaging, or pressing the injection site for 7 days",
+      "facial massage, gua sha, or laser treatment for 2 weeks",
+      "sauna, hot bath, and intense workout for 48 hours"
+    ],
+    "allowed_product_tags": [
+      "gentle",
+      "hydration",
+      "soothing",
+      "barrier",
+      "sunscreen",
+      "anti_aging"
+    ],
+    "restricted_product_tags": [
+      "facial_massage_roller",
+      "high_pressure_device"
+    ],
+    "aftercare_guide": "약물이 주변 다른 근육으로 확산되는 것을 막기 위해 시술 후 4시간 동안 눕지 마시고, 1주일간 시술 부위를 문지르거나 경락 마사지를 받지 마세요. 가벼운 스킨케어는 당일 바로 가능합니다.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "FILLER",
+    "treatment_name": "필러 (히알루론산 필러)",
+    "treatment_name_en": "Dermal Filler (Hyaluronic Acid)",
+    "treatment_type": "FILLER",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 3,
+    "expected_recovery_days_max": 7,
+    "normal_symptoms": [
+      "mild swelling, redness, and tenderness at injection points",
+      "minor bruising (resolves within 5-7 days)",
+      "temporary palpable firmness under the skin"
+    ],
+    "warning_symptoms": [
+      "vascular occlusion signs: severe blanching (pale/mottled skin), severe throbbing pain",
+      "expanding dark purple skin discoloration with blistering",
+      "delayed nodule formation or persistent fever and redness (infection sign)"
+    ],
+    "aftercare_restrictions": [
+      "applying hard pressure or molding the treated area",
+      "wearing tight glasses or hats if injected on nose/forehead for 2 weeks",
+      "sauna, high temperature baths, and heavy drinking for 7 days",
+      "dental treatments or facial laser on the area for 2 weeks"
+    ],
+    "allowed_product_tags": [
+      "gentle",
+      "soothing",
+      "cooling",
+      "barrier",
+      "hydration"
+    ],
+    "restricted_product_tags": [
+      "facial_roller",
+      "deep_massage_tools"
+    ],
+    "aftercare_guide": "필러가 자리 잡는 2주간 강한 압박이나 마사지를 피해야 합니다. 만약 시술 부위 피부가 하얗게 변하거나 극심한 통증, 그물 모양의 붉은 반점이 나타나면 즉시 클리닉에 응급 연락하셔야 합니다.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "THERMAGE_FLX",
+    "treatment_name": "써마지 FLX (5세대 모노폴라 고주파)",
+    "treatment_name_en": "Thermage FLX (Monopolar RF)",
+    "treatment_type": "RF_TREATMENT",
+    "treatment_area": ["face", "neck", "eyes"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 3,
+    "normal_symptoms": [
+      "mild warmth and faint pink flush (subsides within 2-4 hours)",
+      "slight tight tingling sensation in deep dermis",
+      "no surface peeling (zero surface downtime)"
+    ],
+    "warning_symptoms": [
+      "second-degree thermal burns or blisters",
+      "persistent hard fat atrophy depression"
+    ],
+    "aftercare_restrictions": [
+      "ice packs or cold ice sheet masks on face for 24-48 hours (cool packs diminish collagen-stimulating heat shock response)",
+      "cold water face washing on the day of treatment",
+      "sauna and hot springs for 3 days"
+    ],
+    "allowed_product_tags": [
+      "peptide",
+      "growth_factor",
+      "barrier",
+      "ceramide",
+      "hydration",
+      "sunscreen",
+      "exosome"
+    ],
+    "restricted_product_tags": [
+      "extreme_cooling_ice_mask",
+      "scrub"
+    ],
+    "aftercare_guide": "진피층에 전달된 60~70℃ 심부열이 콜라겐 수축 및 신생을 유도하므로, 시술 당일 얼음찜질이나 찬물 세안은 피하고 미온수를 사용하세요. 펩타이드 탄력 크림과 충분한 수분 섭취로 리프팅 시너지를 높여주세요.",
+    "source": "DERNA Clinic lifting center",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "ULTHERAPY",
+    "treatment_name": "울쎄라 (집속초음파 HIFU 리프팅)",
+    "treatment_name_en": "Ultherapy (Micro-focused Ultrasound with Visualization)",
+    "treatment_type": "RF_TREATMENT",
+    "treatment_area": ["face", "neck"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 4,
+    "normal_symptoms": [
+      "deep muscular soreness/tenderness when touching jawline (lasts 3-7 days)",
+      "mild lower cheek edema/swelling (lasts 2-3 days)",
+      "faint flush resolving in hours"
+    ],
+    "warning_symptoms": [
+      "facial nerve branch paresis (temporary numbness or asymmetric smile)",
+      "linear surface wheals/striations (ultrasound burns on superficial skin)"
+    ],
+    "aftercare_restrictions": [
+      "deep pressure facial massage on SMAS layer for 2 weeks",
+      "anti-inflammatory NSAID painkillers unless severely needed (mild inflammation triggers collagen rebuilding)",
+      "cold ice packs directly on treated areas"
+    ],
+    "allowed_product_tags": [
+      "barrier",
+      "peptide",
+      "hydration",
+      "ceramide",
+      "growth_factor",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [
+      "gua_sha",
+      "hard_massage_roller"
+    ],
+    "aftercare_guide": "SMAS 근막층에 열 응고점을 형성하여 탄력을 끌어올리는 시술입니다. 턱선 부위의 뻐근한 근육통은 리프팅이 진행되는 정상 과정입니다. 고단백 식단(윔 쉐이크)과 펩타이드 보습제로 피부 재생을 도와주세요.",
+    "source": "DERNA Clinic Ultherapy center",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "INMODE_FX_FORMA",
+    "treatment_name": "인모드 리프팅 (FX / Forma)",
+    "treatment_name_en": "InMode Lifting (Mini FX & Forma)",
+    "treatment_type": "RF_TREATMENT",
+    "treatment_area": ["face", "double_chin"],
+    "expected_recovery_days_min": 2,
+    "expected_recovery_days_max": 5,
+    "normal_symptoms": [
+      "suction bruises / petechiae (hickey-like red/purple marks from vacuum FX handpiece, resolves in 3-5 days)",
+      "warmth and mild flushing"
+    ],
+    "warning_symptoms": [
+      "thermal blister burns at RF contact points",
+      "persistent severe hematoma"
+    ],
+    "aftercare_restrictions": [
+      "cold packs (heat must be maintained inside adipocytes)",
+      "cold showers on treated face",
+      "sauna and high heat baths for 3 days"
+    ],
+    "allowed_product_tags": [
+      "soothing",
+      "barrier",
+      "centella",
+      "hydration",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [
+      "extreme_ice_pack",
+      "scrub"
+    ],
+    "aftercare_guide": "음압 흡입으로 인한 붉은 멍 자국은 3~5일 내에 자연 흡수됩니다. 지방세포 사멸 유도를 위해 시술 후 24시간 동안 찬물 세안을 피하고 따뜻한 미온수로 세안해 주세요.",
+    "source": "DERNA Clinic contouring team",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "SERF_RF",
+    "treatment_name": "세르프 (SERF 3D 듀얼 뎁스 고주파)",
+    "treatment_name_en": "SERF 3D Dual Frequency RF",
+    "treatment_type": "RF_TREATMENT",
+    "treatment_area": ["face", "neck"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 2,
+    "normal_symptoms": [
+      "immediate skin plumpness and firming",
+      "light transient erythema (subsides in 1-2 hours)"
+    ],
+    "warning_symptoms": [
+      "contact burn blistering",
+      "persistent facial pain"
+    ],
+    "aftercare_restrictions": [
+      "ice packs on face for 24 hours",
+      "chemical exfoliants for 3 days"
+    ],
+    "allowed_product_tags": [
+      "peptide",
+      "exosome",
+      "barrier",
+      "hydration",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [
+      "ice_cooling_mask",
+      "scrub"
+    ],
+    "aftercare_guide": "표피층과 진피층을 듀얼 주파수로 맞춤 자극하는 차세대 3D 고주파 시술입니다. 통증과 다운타임이 거의 없으며, 시술 후 엑소좀 펩타이드 크림을 덧바르면 탄력 효과가 극대화됩니다.",
+    "source": "DERNA Clinic premier anti-aging",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "VOLNEWMER",
+    "treatment_name": "볼뉴머 (Volnewmer 6.78MHz 모노폴라 고주파)",
+    "treatment_name_en": "Volnewmer Monopolar RF Lifting",
+    "treatment_type": "RF_TREATMENT",
+    "treatment_area": ["face", "eyes", "neck"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 2,
+    "normal_symptoms": [
+      "pleasant deep skin warmth",
+      "faint flushing lasting 1-2 hours",
+      "zero recovery downtime"
+    ],
+    "warning_symptoms": [
+      "surface contact blisters"
+    ],
+    "aftercare_restrictions": [
+      "direct cold pack application for 24 hours",
+      "sauna for 3 days"
+    ],
+    "allowed_product_tags": [
+      "peptide",
+      "growth_factor",
+      "barrier",
+      "ceramide",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "cold_ice_mask"
+    ],
+    "aftercare_guide": "연속 쿨링 시스템으로 통증을 최소화하며 심부열을 전달하는 고주파입니다. 피부가 촉촉하고 탄탄하게 유지되도록 수분 크림과 비타민 영양제를 충분히 섭취해 주세요.",
+    "source": "DERNA Clinic lifting center",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "TITANIUM_LIFTING",
+    "treatment_name": "티타늄 리프팅 (3파장 동시 다이오드 레이저)",
+    "treatment_name_en": "Titanium Lifting (755/810/1064nm)",
+    "treatment_type": "RF_TREATMENT",
+    "treatment_area": ["face"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 2,
+    "normal_symptoms": [
+      "instant brightening and jawline slimming",
+      "mild redness resolving in 2 hours",
+      "dryness in hair follicle areas"
+    ],
+    "warning_symptoms": [
+      "follicular thermal burns or hyperpigmentation"
+    ],
+    "aftercare_restrictions": [
+      "facial waxing or shaving for 3 days",
+      "sun exposure without SPF50+",
+      "scrubs for 5 days"
+    ],
+    "allowed_product_tags": [
+      "hydration",
+      "soothing",
+      "barrier",
+      "ceramide",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "retinol",
+      "AHA"
+    ],
+    "aftercare_guide": "3가지 레이저 파장이 진피와 유지인대를 수축시켜 즉각적인 화이트닝과 리프팅을 선사합니다. 자외선 차단제를 필수로 바르고 보습 앰플을 꼼꼼히 레이어링해 주세요.",
+    "source": "DERNA Clinic laser center",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "ONDA_LIFTING",
+    "treatment_name": "온다 리프팅 (ONDA 쿨웨이브 극초단파)",
+    "treatment_name_en": "ONDA Coolwaves Microwave Lifting",
+    "treatment_type": "RF_TREATMENT",
+    "treatment_area": ["face", "double_chin"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 2,
+    "normal_symptoms": [
+      "smooth skin contouring",
+      "transient warmth subsiding in 1 hour"
+    ],
+    "warning_symptoms": [
+      "deep subcutaneous burns"
+    ],
+    "aftercare_restrictions": [
+      "intense cold ice massage for 24 hours",
+      "sauna for 3 days"
+    ],
+    "allowed_product_tags": [
+      "barrier",
+      "hydration",
+      "peptide",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [
+      "ice_cooling_mask"
+    ],
+    "aftercare_guide": "표피를 보호하면서 지방층과 콜라겐에 특화된 극초단파 에너지를 전달합니다. 시술 후 물을 하루 1.5L 이상 충분히 마셔 림프 순환과 지방 배출을 도와주세요.",
+    "source": "DERNA Clinic body & face contouring",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "REJURAN_HEALER",
+    "treatment_name": "리쥬란 힐러 (PN 연어 DNA 스킨부스터)",
+    "treatment_name_en": "Rejuran Healer (Polynucleotide PN)",
+    "treatment_type": "INJECTION",
+    "treatment_area": ["face", "eyes", "neck"],
+    "expected_recovery_days_min": 2,
+    "expected_recovery_days_max": 4,
+    "normal_symptoms": [
+      "embossing bumps (wheals at hundreds of micro-puncture sites, resolves in 24-48 hours)",
+      "pinpoint bruising and mild redness",
+      "slight tightness and itching"
+    ],
+    "warning_symptoms": [
+      "severe spreading cellulitis (hot red swollen face)",
+      "persisting firm granulomatous nodules >14 days",
+      "purulent discharge from injection marks"
+    ],
+    "aftercare_restrictions": [
+      "rubbing, squeezing, or massaging embossed bumps",
+      "touching face with dirty hands for 24 hours",
+      "makeup for 24 hours",
+      "sauna, swimming pool, and heavy workout for 3 days",
+      "exfoliating acids and retinol for 5 days"
+    ],
+    "allowed_product_tags": [
+      "cica",
+      "growth_factor",
+      "egf",
+      "pdrn",
+      "azulene",
+      "panthenol",
+      "mineral_sunscreen"
+    ],
+    "restricted_product_tags": [
+      "retinol",
+      "AHA",
+      "BHA",
+      "scrub",
+      "vitamin_c",
+      "alcohol"
+    ],
+    "aftercare_guide": "주사 부위의 엠보싱은 PN 성분이 진피층에 직접 주입된 정상 현상으로 24~48시간 내에 자연스럽게 흡수됩니다. 손으로 만지지 마시고, 마데카 스팟 패치와 코어 리빌드 크림으로 진정 보습해 주세요.",
+    "source": "DERNA Clinic skin booster center",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "JUVELOOK_SKIN",
+    "treatment_name": "쥬베룩 스킨 (PDLLA + 히알루론산 콜라겐 부스터)",
+    "treatment_name_en": "Juvelook Skin (PDLLA + Non-crosslinked HA)",
+    "treatment_type": "INJECTION",
+    "treatment_area": ["face", "neck", "under_eyes"],
+    "expected_recovery_days_min": 2,
+    "expected_recovery_days_max": 4,
+    "normal_symptoms": [
+      "micro-embossing and needle marks (resolves in 24-36 hours)",
+      "mild pinpoint bruises around eyes",
+      "gradual skin hydration and pore tightening over 2-4 weeks"
+    ],
+    "warning_symptoms": [
+      "non-inflammatory hard nodules or lumps",
+      "severe infection or pus"
+    ],
+    "aftercare_restrictions": [
+      "massaging or pressing injection marks roughly",
+      "unwashed hands touching face for 24 hours",
+      "sauna and alcohol for 3 days"
+    ],
+    "allowed_product_tags": [
+      "hydration",
+      "barrier",
+      "cica",
+      "peptide",
+      "ceramide",
+      "mineral_sunscreen"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "retinol",
+      "AHA"
+    ],
+    "aftercare_guide": "미세 구형의 PDLLA가 자가 콜라겐 생성을 서서히 유도합니다. 시술 후 2~3일간 충분한 수분 크림과 비타민 C 섭취가 결합조직 형성에 큰 도움이 됩니다.",
+    "source": "DERNA Clinic collagen center",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "EXOSOME_ASCE",
+    "treatment_name": "ASCE+ 엑소좀 (줄기세포 유래 스킨부스터)",
+    "treatment_name_en": "ASCE+ Exosome Regenerative Therapy",
+    "treatment_type": "INJECTION",
+    "treatment_area": ["face", "scalp"],
+    "expected_recovery_days_min": 1,
+    "expected_recovery_days_max": 3,
+    "normal_symptoms": [
+      "rapid reduction of skin inflammation",
+      "mild pink flush or needle marks for 24 hours"
+    ],
+    "warning_symptoms": [
+      "allergic urticaria",
+      "folliculitis"
+    ],
+    "aftercare_restrictions": [
+      "makeup for 12 hours",
+      "harsh cleansing for 2 days"
+    ],
+    "allowed_product_tags": [
+      "barrier",
+      "growth_factor",
+      "exosome",
+      "soothing",
+      "ceramide",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [
+      "scrub",
+      "alcohol"
+    ],
+    "aftercare_guide": "줄기세포 배양액에서 추출한 순수 엑소좀이 손상된 피부 세포 간 재생 신호를 전달합니다. 시술 후 피부가 빠르게 진정되며, 엑소좀 리바이탈 크림을 병용하면 효과가 배가됩니다.",
+    "source": "DERNA Clinic regenerative medicine",
+    "version": "1.1.0"
+  },
+  {
+    "treatment_code": "LED_THERAPY",
+    "treatment_name": "스마트룩스 의료용 LED 테라피",
+    "treatment_name_en": "Smartlux Medical LED Phototherapy",
+    "treatment_type": "LED_THERAPY",
+    "treatment_area": ["face", "neck"],
+    "expected_recovery_days_min": 0,
+    "expected_recovery_days_max": 1,
+    "normal_symptoms": [
+      "immediate skin soothing and comfort",
+      "no visible downtime"
+    ],
+    "warning_symptoms": [
+      "photosensitivity reaction in patients on phototoxic drugs"
+    ],
+    "aftercare_restrictions": [
+      "none (safe for immediate daily life)"
+    ],
+    "allowed_product_tags": [
+      "soothing",
+      "hydration",
+      "barrier",
+      "antioxidant",
+      "sunscreen"
+    ],
+    "restricted_product_tags": [],
+    "aftercare_guide": "세포 내 미토콘드리아를 활성화하여 상처 회복과 부기 완화를 돕는 비침습 테라피입니다. 시술 직후 기능성 앰플을 듬뿍 흡수시켜 주세요.",
+    "source": "WHS dermatologist & clinical guideline",
+    "version": "1.1.0"
+  }
+]

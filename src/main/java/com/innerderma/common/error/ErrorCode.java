@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCode {
     INVALID_REQUEST(HttpStatus.BAD_REQUEST, "COMMON_001", "요청값이 올바르지 않습니다."),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_002", "서버 내부 오류가 발생했습니다."),
-    UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "AUTH_001", "인증이 필요합니다."),
-    FORBIDDEN(HttpStatus.FORBIDDEN, "AUTH_002", "접근 권한이 없습니다."),
+    UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "AUTH_001", "인증 정보가 필요합니다."),
+    FORBIDDEN(HttpStatus.FORBIDDEN, "AUTH_002", "해당 사용자의 데이터에 접근할 수 없습니다."),
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "USER_001", "사용자를 찾을 수 없습니다."),
     SKIN_DIAGNOSIS_NOT_FOUND(HttpStatus.NOT_FOUND, "SKIN_001", "피부 진단 결과를 찾을 수 없습니다."),
     PROCEDURE_NOT_FOUND(HttpStatus.NOT_FOUND, "PROCEDURE_001", "시술 기록을 찾을 수 없습니다."),

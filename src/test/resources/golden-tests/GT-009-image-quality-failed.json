@@ -1,0 +1,22 @@
+{
+  "id": "GT-009",
+  "category": "IMAGE_QUALITY",
+  "description": "이미지 품질 실패 시 R002 발화하여 재촬영 요청",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_stable": true,
+      "has_severe_symptom": false,
+      "image_quality_failed": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R002", "R022", "R030", "R010"],
+    "not_fired_rules": ["R000"],
+    "actions_contain": {
+      "request_retake": true,
+      "confidence_policy": "REDUCE"
+    },
+    "restrictions_contain": ["NO_DEFINITIVE_STATE"]
+  }
+}

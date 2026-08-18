@@ -1,0 +1,21 @@
+{
+  "id": "GT-008",
+  "category": "LOW_CONFIDENCE",
+  "description": "low_confidence 신호가 있어도 현재 규칙에서 별도 action 없음 (R025 미시드)",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_stable": true,
+      "has_severe_symptom": false,
+      "low_confidence": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R022", "R030", "R010"],
+    "not_fired_rules": ["R000"],
+    "actions_contain": {
+      "recommendation_mode": "NORMAL"
+    },
+    "restrictions_contain": []
+  }
+}

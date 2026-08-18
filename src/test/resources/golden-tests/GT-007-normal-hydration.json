@@ -1,0 +1,23 @@
+{
+  "id": "GT-007",
+  "category": "NORMAL",
+  "description": "일반 상태에서 HYDRATION concern 제품 매칭 가능",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_stable": true,
+      "has_severe_symptom": false,
+      "dominant_dryness": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R022", "R030", "R010"],
+    "not_fired_rules": ["R000", "R020", "R021"],
+    "actions_contain": {
+      "recommendation_mode": "NORMAL",
+      "night_max_steps": 4,
+      "morning_max_steps": 3
+    },
+    "restrictions_contain": []
+  }
+}

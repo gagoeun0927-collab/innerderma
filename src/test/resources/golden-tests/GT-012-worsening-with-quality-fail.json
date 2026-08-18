@@ -1,0 +1,23 @@
+{
+  "id": "GT-012",
+  "category": "WORSENING",
+  "description": "악화 추세 + 이미지 품질 실패: 두 규칙 동시 발화",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_worsening": true,
+      "has_severe_symptom": false,
+      "image_quality_failed": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R002", "R021", "R030", "R010"],
+    "not_fired_rules": ["R000", "R020", "R022", "R023"],
+    "actions_contain": {
+      "request_retake": true,
+      "recommendation_mode": "CONSERVATIVE",
+      "require_safety_reevaluation": true
+    },
+    "restrictions_contain": ["NO_DEFINITIVE_STATE", "REEVALUATE_SAFETY"]
+  }
+}

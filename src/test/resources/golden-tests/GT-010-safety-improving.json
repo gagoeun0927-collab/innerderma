@@ -1,0 +1,21 @@
+{
+  "id": "GT-010",
+  "category": "SAFETY",
+  "description": "Safety attention + improving: Safety가 우선이지만 improving도 동시 발화",
+  "input": {
+    "signals": {
+      "requires_safety_attention": true,
+      "trend_improving": true,
+      "has_severe_symptom": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R000", "R020", "R030", "R010"],
+    "not_fired_rules": ["R021", "R022", "R023"],
+    "actions_contain": {
+      "safety_status": "CAUTION",
+      "recommendation_mode": "CONSERVATIVE"
+    },
+    "restrictions_contain": ["NO_AGGRESSIVE_ROUTINE", "MAINTAIN_EXISTING_ROUTINE"]
+  }
+}

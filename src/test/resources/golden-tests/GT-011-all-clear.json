@@ -1,0 +1,23 @@
+{
+  "id": "GT-011",
+  "category": "NORMAL",
+  "description": "모든 신호가 정상인 최소 케이스: stable + no safety + always 규칙만",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_stable": true,
+      "has_severe_symptom": false,
+      "image_quality_failed": false,
+      "low_confidence": false
+    }
+  },
+  "expected": {
+    "fired_rules": ["R022", "R030", "R010"],
+    "not_fired_rules": ["R000", "R002", "R020", "R021", "R023"],
+    "actions_contain": {
+      "recommendation_mode": "NORMAL",
+      "concern_source": "SELF_REPORT"
+    },
+    "restrictions_contain": ["NO_UNNECESSARY_PRODUCT_ADDITION"]
+  }
+}

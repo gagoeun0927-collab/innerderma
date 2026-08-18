@@ -44,7 +44,8 @@ class RulePipelineServiceTest {
         trendService = mock(SkinStateTrendService.class);
         ObjectMapper objectMapper = new ObjectMapper();
         com.innerderma.skincapture.domain.SkinCaptureRepository skinCaptureRepository = mock(com.innerderma.skincapture.domain.SkinCaptureRepository.class);
-        SignalAssembler assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, trendService, objectMapper);
+        com.innerderma.skinanalysis.domain.SkinAnalysisRepository skinAnalysisRepository = mock(com.innerderma.skinanalysis.domain.SkinAnalysisRepository.class);
+        SignalAssembler assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, skinAnalysisRepository, trendService, objectMapper);
         RuleEngine ruleEngine = new RuleEngine(ruleRepository, objectMapper);
         pipeline = new RulePipelineService(assembler, ruleEngine);
         when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
@@ -81,7 +82,7 @@ class RulePipelineServiceTest {
         when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc(USER_CODE))
                 .thenReturn(Optional.of(new SkinStateSnapshot(
                         new User(USER_CODE, "테스트 사용자", "010-1234-1234"),
-                        LocalDate.of(2026, 8, 17), "selfcheck-ordinal-v1", scores(3), "dryness", 1L, null,
+                        LocalDate.of(2026, 8, 17), "selfcheck-ordinal-v1", scores(3), null, "dryness", 1L, null,
                         LocalDateTime.of(2026, 8, 17, 12, 30))));
 
         RuleEvaluationResult result = pipeline.evaluateForUser(USER_CODE);

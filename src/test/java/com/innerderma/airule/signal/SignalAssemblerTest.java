@@ -39,8 +39,9 @@ class SignalAssemblerTest {
         snapshotRepository = mock(SkinStateSnapshotRepository.class);
         selfCheckRepository = mock(SelfCheckRepository.class);
         skinCaptureRepository = mock(SkinCaptureRepository.class);
+        com.innerderma.skinanalysis.domain.SkinAnalysisRepository skinAnalysisRepository = mock(com.innerderma.skinanalysis.domain.SkinAnalysisRepository.class);
         trendService = mock(SkinStateTrendService.class);
-        assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, trendService, new ObjectMapper());
+        assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, skinAnalysisRepository, trendService, new ObjectMapper());
         when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
                 .thenReturn(Optional.empty());
         when(skinCaptureRepository.findFirstByUser_UserCodeOrderByCapturedAtDesc(USER_CODE))
@@ -55,7 +56,7 @@ class SignalAssemblerTest {
 
     private SkinStateSnapshot snapshot(String scoresJson, String dominant) {
         return new SkinStateSnapshot(new User(USER_CODE, "테스트 사용자", "010-1234-1234"),
-                LocalDate.of(2026, 8, 17), "selfcheck-ordinal-v1", scoresJson, dominant, 1L, null,
+                LocalDate.of(2026, 8, 17), "selfcheck-ordinal-v1", scoresJson, null, dominant, 1L, null,
                 LocalDateTime.of(2026, 8, 17, 12, 30));
     }
 

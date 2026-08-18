@@ -42,7 +42,8 @@ class SolutionAssemblerPipelineTest {
         trendService = mock(SkinStateTrendService.class);
         ObjectMapper objectMapper = new ObjectMapper();
         com.innerderma.skincapture.domain.SkinCaptureRepository skinCaptureRepository = mock(com.innerderma.skincapture.domain.SkinCaptureRepository.class);
-        SignalAssembler signalAssembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, trendService, objectMapper);
+        com.innerderma.skinanalysis.domain.SkinAnalysisRepository skinAnalysisRepository = mock(com.innerderma.skinanalysis.domain.SkinAnalysisRepository.class);
+        SignalAssembler signalAssembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, skinAnalysisRepository, trendService, objectMapper);
         RuleEngine ruleEngine = new RuleEngine(ruleRepository, objectMapper);
         RulePipelineService pipeline = new RulePipelineService(signalAssembler, ruleEngine);
         assembler = new SolutionAssembler(pipeline, objectMapper);

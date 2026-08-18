@@ -47,6 +47,10 @@ public class SkinStateSnapshot {
     @Column(name = "symptom_scores_json", nullable = false)
     private String symptomScoresJson;
 
+    @Lob
+    @Column(name = "analysis_scores_json")
+    private String analysisScoresJson;
+
     @Column(name = "dominant_symptom", length = 40)
     private String dominantSymptom;
 
@@ -66,12 +70,13 @@ public class SkinStateSnapshot {
     }
 
     public SkinStateSnapshot(User user, LocalDate snapshotDate, String scoringVersion,
-                             String symptomScoresJson, String dominantSymptom,
+                             String symptomScoresJson, String analysisScoresJson, String dominantSymptom,
                              Long sourceSelfCheckId, Long sourceAnalysisId, LocalDateTime now) {
         this.user = user;
         this.snapshotDate = snapshotDate;
         this.scoringVersion = scoringVersion;
         this.symptomScoresJson = symptomScoresJson;
+        this.analysisScoresJson = analysisScoresJson;
         this.dominantSymptom = dominantSymptom;
         this.sourceSelfCheckId = sourceSelfCheckId;
         this.sourceAnalysisId = sourceAnalysisId;
@@ -80,10 +85,12 @@ public class SkinStateSnapshot {
     }
 
     /** 같은 현지 날짜에 재생성될 때 기존 스냅샷을 결정적으로 갱신한다. */
-    public void applyScoring(String scoringVersion, String symptomScoresJson, String dominantSymptom,
-                             Long sourceSelfCheckId, Long sourceAnalysisId, LocalDateTime now) {
+    public void applyScoring(String scoringVersion, String symptomScoresJson, String analysisScoresJson,
+                             String dominantSymptom, Long sourceSelfCheckId, Long sourceAnalysisId,
+                             LocalDateTime now) {
         this.scoringVersion = scoringVersion;
         this.symptomScoresJson = symptomScoresJson;
+        this.analysisScoresJson = analysisScoresJson;
         this.dominantSymptom = dominantSymptom;
         this.sourceSelfCheckId = sourceSelfCheckId;
         this.sourceAnalysisId = sourceAnalysisId;
@@ -95,6 +102,7 @@ public class SkinStateSnapshot {
     public LocalDate getSnapshotDate() { return snapshotDate; }
     public String getScoringVersion() { return scoringVersion; }
     public String getSymptomScoresJson() { return symptomScoresJson; }
+    public String getAnalysisScoresJson() { return analysisScoresJson; }
     public String getDominantSymptom() { return dominantSymptom; }
     public Long getSourceSelfCheckId() { return sourceSelfCheckId; }
     public Long getSourceAnalysisId() { return sourceAnalysisId; }

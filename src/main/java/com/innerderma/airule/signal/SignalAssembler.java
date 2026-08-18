@@ -2,6 +2,8 @@ package com.innerderma.airule.signal;
 
 import com.innerderma.airule.engine.RuleEvaluationContext;
 import com.innerderma.selfcheck.domain.SelfCheckRepository;
+import com.innerderma.skinanalysis.domain.SkinAnalysis;
+import com.innerderma.skinanalysis.domain.SkinAnalysisRepository;
 import com.innerderma.skincapture.domain.SkinCaptureQualityStatus;
 import com.innerderma.skincapture.domain.SkinCaptureRepository;
 import com.innerderma.skinstate.application.SkinStateSnapshotService;
@@ -14,6 +16,7 @@ import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,21 +36,25 @@ public class SignalAssembler {
 
     static final String HAS_SEVERE_SYMPTOM = "has_severe_symptom";
     static final String REQUIRES_SAFETY_ATTENTION = "requires_safety_attention";
+    static final double CONFIDENCE_THRESHOLD = 0.80;
     private static final int SEVERE_SCORE = 3;
 
     private final SkinStateSnapshotRepository snapshotRepository;
     private final SelfCheckRepository selfCheckRepository;
     private final SkinCaptureRepository skinCaptureRepository;
+    private final SkinAnalysisRepository skinAnalysisRepository;
     private final SkinStateTrendService trendService;
     private final ObjectMapper objectMapper;
 
     public SignalAssembler(SkinStateSnapshotRepository snapshotRepository,
                            SelfCheckRepository selfCheckRepository,
                            SkinCaptureRepository skinCaptureRepository,
+                           SkinAnalysisRepository skinAnalysisRepository,
                            SkinStateTrendService trendService, ObjectMapper objectMapper) {
         this.snapshotRepository = snapshotRepository;
         this.selfCheckRepository = selfCheckRepository;
         this.skinCaptureRepository = skinCaptureRepository;
+        this.skinAnalysisRepository = skinAnalysisRepository;
         this.trendService = trendService;
         this.objectMapper = objectMapper;
     }
@@ -83,7 +90,40 @@ public class SignalAssembler {
                 .orElse(false);
         signals.put("image_quality_failed", imageQualityFailed);
 
+        // Confidence: 최신 SkinAnalysis의 zone occlusion_confidence 최솟값 기반
+        boolean lowConfidence = computeLowConfidence(userCode);
+        signals.put("low_confidence", lowConfidence);
+
         return RuleEvaluationContext.of(signals);
+    }
+
+    /**
+     * 최신 SkinAnalysis의 rawResult에서 7개 zone의 occlusion_confidence 최솟값을 추출한다.
+     * 최솟값이 0.80 미만이면 low_confidence = true.
+     * 분석이 없으면 false (신호 미발생, 보수적이지 않음 — 데이터 없음은 trend_unknown이 처리).
+     */
+    @SuppressWarnings("unchecked")
+    private boolean computeLowConfidence(String userCode) {
+        var analysisOpt = skinAnalysisRepository
+                .findFirstBySkinCapture_User_UserCodeOrderByAnalyzedAtDesc(userCode);
+        if (analysisOpt.isEmpty()) return false;
+        try {
+            Map<String, Object> root = objectMapper.readValue(analysisOpt.get().getRawResult(), Map.class);
+            Object zoneScoresObj = root.get("zone_scores");
+            if (!(zoneScoresObj instanceof List<?> zones)) return false;
+            double minConfidence = 1.0;
+            for (Object zone : zones) {
+                if (zone instanceof Map<?, ?> zoneMap) {
+                    Object conf = zoneMap.get("occlusion_confidence");
+                    if (conf instanceof Number number) {
+                        minConfidence = Math.min(minConfidence, number.doubleValue());
+                    }
+                }
+            }
+            return minConfidence < CONFIDENCE_THRESHOLD;
+        } catch (JacksonException exception) {
+            return false;
+        }
     }
 
     @SuppressWarnings("unchecked")

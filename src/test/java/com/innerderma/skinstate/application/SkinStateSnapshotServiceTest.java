@@ -44,7 +44,7 @@ class SkinStateSnapshotServiceTest {
         selfCheckRepository = mock(SelfCheckRepository.class);
         userRepository = mock(UserRepository.class);
         service = new SkinStateSnapshotService(
-                snapshotRepository, selfCheckRepository, userRepository, new ObjectMapper(), CLOCK);
+                snapshotRepository, selfCheckRepository, mock(com.innerderma.skinanalysis.domain.SkinAnalysisRepository.class), userRepository, new ObjectMapper(), CLOCK);
     }
 
     private User user() {
@@ -119,7 +119,7 @@ class SkinStateSnapshotServiceTest {
     @Test
     void updatesExistingSnapshotInPlaceOnSameDate() {
         SkinStateSnapshot existing = new SkinStateSnapshot(user(), LocalDate.of(2026, 8, 17),
-                "old-version", "{}", "pain", 1L, null, LocalDateTime.of(2026, 8, 17, 9, 0));
+                "old-version", "{}", null, "pain", 1L, null, LocalDateTime.of(2026, 8, 17, 9, 0));
         when(userRepository.findByUserCode(USER_CODE)).thenReturn(Optional.of(user()));
         when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
                 .thenReturn(Optional.of(selfCheck(

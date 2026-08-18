@@ -5,6 +5,8 @@ import com.innerderma.common.error.ErrorCode;
 import com.innerderma.selfcheck.domain.SelfCheck;
 import com.innerderma.selfcheck.domain.SelfCheckRepository;
 import com.innerderma.selfcheck.domain.SymptomSeverity;
+import com.innerderma.skinanalysis.domain.SkinAnalysis;
+import com.innerderma.skinanalysis.domain.SkinAnalysisRepository;
 import com.innerderma.skinstate.domain.SkinStateSnapshot;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.user.domain.User;
@@ -47,6 +49,7 @@ public class SkinStateSnapshotService {
 
     private final SkinStateSnapshotRepository snapshotRepository;
     private final SelfCheckRepository selfCheckRepository;
+    private final SkinAnalysisRepository skinAnalysisRepository;
     private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
     private final Clock clock;
@@ -54,17 +57,20 @@ public class SkinStateSnapshotService {
     @Autowired
     public SkinStateSnapshotService(SkinStateSnapshotRepository snapshotRepository,
                                     SelfCheckRepository selfCheckRepository,
+                                    SkinAnalysisRepository skinAnalysisRepository,
                                     UserRepository userRepository,
                                     ObjectMapper objectMapper) {
-        this(snapshotRepository, selfCheckRepository, userRepository, objectMapper, Clock.system(MVP_ZONE));
+        this(snapshotRepository, selfCheckRepository, skinAnalysisRepository, userRepository, objectMapper, Clock.system(MVP_ZONE));
     }
 
     SkinStateSnapshotService(SkinStateSnapshotRepository snapshotRepository,
                              SelfCheckRepository selfCheckRepository,
+                             SkinAnalysisRepository skinAnalysisRepository,
                              UserRepository userRepository,
                              ObjectMapper objectMapper, Clock clock) {
         this.snapshotRepository = snapshotRepository;
         this.selfCheckRepository = selfCheckRepository;
+        this.skinAnalysisRepository = skinAnalysisRepository;
         this.userRepository = userRepository;
         this.objectMapper = objectMapper;
         this.clock = clock;
@@ -83,16 +89,27 @@ public class SkinStateSnapshotService {
         LocalDate snapshotDate = selfCheck.getCheckedAt().toLocalDate();
         LocalDateTime now = LocalDateTime.now(clock);
 
+        // SkinAge 분석 결과(선택): 최신 분석의 concern_averages를 원본 보존
+        String analysisScoresJson = null;
+        Long sourceAnalysisId = null;
+        var latestAnalysis = skinAnalysisRepository
+                .findFirstBySkinCapture_User_UserCodeOrderByAnalyzedAtDesc(userCode);
+        if (latestAnalysis.isPresent()) {
+            SkinAnalysis analysis = latestAnalysis.get();
+            sourceAnalysisId = analysis.getId();
+            analysisScoresJson = extractConcernAverages(analysis.getRawResult());
+        }
+
         SkinStateSnapshot snapshot = snapshotRepository
                 .findByUser_UserCodeAndSnapshotDate(userCode, snapshotDate)
                 .map(existing -> {
-                    existing.applyScoring(SCORING_VERSION, scoresJson, dominant,
-                            selfCheck.getId(), null, now);
+                    existing.applyScoring(SCORING_VERSION, scoresJson, analysisScoresJson, dominant,
+                            selfCheck.getId(), sourceAnalysisId, now);
                     return existing;
                 })
                 .orElseGet(() -> snapshotRepository.save(new SkinStateSnapshot(
-                        user, snapshotDate, SCORING_VERSION, scoresJson, dominant,
-                        selfCheck.getId(), null, now)));
+                        user, snapshotDate, SCORING_VERSION, scoresJson, analysisScoresJson, dominant,
+                        selfCheck.getId(), sourceAnalysisId, now)));
 
         return new SkinStateSnapshotResult(snapshot, scores);
     }
@@ -162,5 +179,23 @@ public class SkinStateSnapshotService {
         } catch (JacksonException exception) {
             return Map.of();
         }
+    }
+
+    /** SkinAge rawResult JSON에서 aggregate_metrics.concern_averages를 추출해 JSON 문자열로 반환. */
+    @SuppressWarnings("unchecked")
+    private String extractConcernAverages(String rawResult) {
+        try {
+            Map<String, Object> root = objectMapper.readValue(rawResult, Map.class);
+            Object metrics = root.get("aggregate_metrics");
+            if (metrics instanceof Map<?, ?> metricsMap) {
+                Object averages = metricsMap.get("concern_averages");
+                if (averages != null) {
+                    return objectMapper.writeValueAsString(averages);
+                }
+            }
+        } catch (JacksonException exception) {
+            // 파싱 실패 시 null(분석 데이터 없음 취급)
+        }
+        return null;
     }
 }

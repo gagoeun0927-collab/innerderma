@@ -47,7 +47,7 @@ class SkinStateTrendServiceTest {
     }
 
     private SkinStateSnapshot snap(LocalDate date, String version, String scoresJson) {
-        return new SkinStateSnapshot(user(), date, version, scoresJson, null, 1L, null,
+        return new SkinStateSnapshot(user(), date, version, scoresJson, null, null, 1L, null,
                 LocalDateTime.of(2026, 8, 17, 12, 30));
     }
 

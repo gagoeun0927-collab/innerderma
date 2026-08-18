@@ -39,7 +39,7 @@ class SkinStateSnapshotControllerTest {
         SkinStateSnapshot snapshot = new SkinStateSnapshot(
                 new User("WHS-DEMO-001", "테스트 사용자", "010-1234-1234"),
                 LocalDate.of(2026, 8, 17), "selfcheck-ordinal-v1",
-                "{\"dryness\":3}", "dryness", 5L, null, LocalDateTime.of(2026, 8, 17, 12, 30));
+                "{\"dryness\":3}", null, "dryness", 5L, null, LocalDateTime.of(2026, 8, 17, 12, 30));
         return new SkinStateSnapshotResult(snapshot, Map.of("dryness", 3));
     }
 

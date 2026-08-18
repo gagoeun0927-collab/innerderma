@@ -1,7 +1,7 @@
 {
   "id": "GT-008",
   "category": "LOW_CONFIDENCE",
-  "description": "low_confidence 신호가 있어도 현재 규칙에서 별도 action 없음 (R025 미시드)",
+  "description": "low_confidence 신호 시 R025 발화 → confidence_policy=REDUCE, limit_new_product_addition=true. recommendation_mode는 선순위 R022(NORMAL)가 유지됨",
   "input": {
     "signals": {
       "requires_safety_attention": false,
@@ -11,11 +11,13 @@
     }
   },
   "expected": {
-    "fired_rules": ["R022", "R030", "R010"],
+    "fired_rules": ["R025", "R022", "R030", "R010"],
     "not_fired_rules": ["R000"],
     "actions_contain": {
-      "recommendation_mode": "NORMAL"
+      "recommendation_mode": "NORMAL",
+      "confidence_policy": "REDUCE",
+      "limit_new_product_addition": true
     },
-    "restrictions_contain": []
+    "restrictions_contain": ["NO_DEFINITIVE_STATE"]
   }
 }

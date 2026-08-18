@@ -16,6 +16,8 @@ import com.innerderma.procedure.domain.ProcedureRecordRepository;
 import com.innerderma.skinstate.domain.SkinStateSnapshot;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.user.application.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,11 @@ import java.util.List;
  * AI 파이프라인 end-to-end 엔드포인트.
  * SignalAssembler → Rule Engine → SolutionObject → Product Matcher → LLM 렌더링 → Response Validator.
  * 기존 CareSolution과 독립적으로 동작한다.
+ *
+ * <p>Cache 동작: 같은 날 동일 userCode + scoringVersion + ruleVersion이면 캐시 적중하여
+ * LLM 재호출 없이 기존 Solution을 반환한다. 새 분석/문진/시술 등록 시 자동 무효화된다.
  */
+@Tag(name = "AI Care", description = "AI 피부 사후관리 파이프라인 — Solution 생성, LLM 렌더링, 캐시 적중")
 @RestController
 @RequestMapping("/api/users/{userCode}/ai-care")
 public class AiCareController {
@@ -62,6 +68,7 @@ public class AiCareController {
         this.solutionCache = solutionCache;
     }
 
+    @Operation(summary = "AI Care 생성", description = "피부 상태 기반 AI 케어 솔루션을 생성합니다. 같은 날 동일 조건이면 캐시 결과를 반환합니다.")
     @PostMapping
     public ApiResponse<AiCareResponse> generate(
             @PathVariable String userCode,
@@ -110,7 +117,8 @@ public class AiCareController {
         String llmSafety = llmResponse.caution() != null ? "CAUTION" : "NORMAL";
 
         ResponseValidationResult validation = responseValidator.validate(
-                productIds, nightSteps, morningSteps, innerCareCount, llmSafety, solution.actions());
+                productIds, nightSteps, morningSteps, innerCareCount, llmSafety, solution.actions(),
+                llmResponse.headline(), llmResponse.skinStateSummary());
 
         return ApiResponse.success(new AiCareResponse(
                 llmResponse,

@@ -107,7 +107,7 @@ class AiCareControllerTest {
         when(llmRenderer.render(any(), any(), eq("ko"))).thenReturn(llmResponse);
 
         // Validation
-        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any()))
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any(), any(), any()))
                 .thenReturn(ResponseValidationResult.success());
 
         mockMvc.perform(post("/api/users/WHS-DEMO-001/ai-care").param("locale", "ko"))
@@ -141,7 +141,7 @@ class AiCareControllerTest {
                 new LlmResponse.InnerCare(List.of(), List.of()),
                 "현재 주의가 필요한 상태입니다.");
         when(llmRenderer.render(any(), any(), eq("en"))).thenReturn(llmResponse);
-        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any()))
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any(), any(), any()))
                 .thenReturn(ResponseValidationResult.success());
 
         mockMvc.perform(post("/api/users/WHS-DEMO-001/ai-care").param("locale", "en"))
@@ -167,7 +167,7 @@ class AiCareControllerTest {
 
         LlmResponse llmResponse = new LlmResponse("Care", "STABLE", "", null, null, null, null);
         when(llmRenderer.render(any(), any(), any())).thenReturn(llmResponse);
-        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any()))
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any(), any(), any()))
                 .thenReturn(ResponseValidationResult.success());
 
         mockMvc.perform(post("/api/users/WHS-DEMO-001/ai-care"))

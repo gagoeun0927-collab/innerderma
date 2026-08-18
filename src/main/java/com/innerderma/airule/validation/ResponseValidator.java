@@ -54,7 +54,32 @@ public class ResponseValidator {
             String llmSafetyStatus,
             Map<String, Object> ruleActions
     ) {
+        return validate(productIds, nightStepCount, morningStepCount, innerCareCount,
+                llmSafetyStatus, ruleActions, null, null);
+    }
+
+    /**
+     * LLM 응답 전체를 검증한다 (headline/skinStateSummary 빈 값 포함).
+     */
+    public ResponseValidationResult validate(
+            List<String> productIds,
+            int nightStepCount,
+            int morningStepCount,
+            int innerCareCount,
+            String llmSafetyStatus,
+            Map<String, Object> ruleActions,
+            String headline,
+            String skinStateSummary
+    ) {
         List<String> violations = new ArrayList<>();
+
+        // 0. Headline / SkinStateSummary 빈 값 검증
+        if (headline != null && headline.isBlank()) {
+            violations.add("EMPTY_HEADLINE");
+        }
+        if (skinStateSummary != null && skinStateSummary.isBlank()) {
+            violations.add("EMPTY_SKIN_STATE_SUMMARY");
+        }
 
         // 1. Product ID 존재 확인
         Set<String> validPieceIds = pieceSeoulKb.findAll().stream()
@@ -65,6 +90,20 @@ public class ResponseValidator {
         for (String productId : productIds) {
             if (!validPieceIds.contains(productId) && !validWimIds.contains(productId)) {
                 violations.add("UNKNOWN_PRODUCT: " + productId);
+            }
+        }
+
+        // 1b. Product active 확인
+        Set<String> activePieceIds = pieceSeoulKb.findAll().stream()
+                .filter(PieceSeoulProduct::isActive)
+                .map(PieceSeoulProduct::productId).collect(Collectors.toSet());
+        Set<String> activeWimIds = wimStoreKb.findAll().stream()
+                .filter(WimStoreProduct::isActive)
+                .map(WimStoreProduct::productId).collect(Collectors.toSet());
+        for (String productId : productIds) {
+            if ((validPieceIds.contains(productId) && !activePieceIds.contains(productId))
+                    || (validWimIds.contains(productId) && !activeWimIds.contains(productId))) {
+                violations.add("INACTIVE_PRODUCT: " + productId);
             }
         }
 

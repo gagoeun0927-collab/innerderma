@@ -1,0 +1,24 @@
+{
+  "id": "GT-013",
+  "category": "LOW_CONFIDENCE",
+  "description": "low_confidence + trend_worsening → R021(800) + R025(650) 발화, R021이 먼저 CONSERVATIVE 설정 + 안전 재평가",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_worsening": true,
+      "has_severe_symptom": false,
+      "low_confidence": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R025", "R021", "R030", "R010"],
+    "not_fired_rules": ["R000", "R020", "R022"],
+    "actions_contain": {
+      "recommendation_mode": "CONSERVATIVE",
+      "confidence_policy": "REDUCE",
+      "limit_new_product_addition": true,
+      "require_safety_reevaluation": true
+    },
+    "restrictions_contain": ["NO_DEFINITIVE_STATE", "REEVALUATE_SAFETY"]
+  }
+}

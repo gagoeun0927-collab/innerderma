@@ -1,0 +1,24 @@
+{
+  "id": "GT-014",
+  "category": "LOW_CONFIDENCE",
+  "description": "low_confidence + safety attention → R000 + R025 발화, 가장 보수적 모드",
+  "input": {
+    "signals": {
+      "requires_safety_attention": true,
+      "trend_stable": true,
+      "has_severe_symptom": false,
+      "low_confidence": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R000", "R025", "R022", "R030", "R010"],
+    "not_fired_rules": ["R020", "R021"],
+    "actions_contain": {
+      "safety_status": "CAUTION",
+      "recommendation_mode": "CONSERVATIVE",
+      "confidence_policy": "REDUCE",
+      "limit_new_product_addition": true
+    },
+    "restrictions_contain": ["NO_AGGRESSIVE_ROUTINE", "NO_DEFINITIVE_STATE"]
+  }
+}

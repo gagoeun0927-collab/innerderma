@@ -40,4 +40,6 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+    environment 'SKINAGE_INTEGRATION', System.getenv('SKINAGE_INTEGRATION') ?: ''
+    systemProperty 'skinage.integration', System.getenv('SKINAGE_INTEGRATION') ?: ''
 }

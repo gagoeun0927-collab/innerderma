@@ -5,7 +5,7 @@ import com.innerderma.common.error.ErrorCode;
 import com.innerderma.skinanalysis.application.SkinAgeAnalysisResult;
 import com.innerderma.skinanalysis.application.SkinAgeClient;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -22,10 +22,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  *    "연결 자체는 가능"함을 확인 (SKINAGE_API_UNAVAILABLE이 아닌 SKINAGE_INVALID_RESPONSE 또는 성공)
  * 2. 실제 분석(선택): src/test/resources/에 test-face-real.jpg가 있으면 풀 분석 검증
  */
-@EnabledIfEnvironmentVariable(named = "SKINAGE_INTEGRATION", matches = "true")
+@EnabledIfSystemProperty(named = "skinage.integration", matches = "true")
 class SkinAgeIntegrationTest {
 
-    private final SkinAgeClient client = new HttpSkinAgeClient("http://localhost:8000");
+    private final SkinAgeClient client = new HttpSkinAgeClient("http://localhost:8000", new tools.jackson.databind.ObjectMapper(), java.net.http.HttpClient.newBuilder().version(java.net.http.HttpClient.Version.HTTP_1_1).build());
 
     @Test
     void serverIsReachableAndResponds() throws Exception {

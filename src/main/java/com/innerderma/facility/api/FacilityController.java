@@ -3,6 +3,7 @@ package com.innerderma.facility.api;
 import com.innerderma.common.response.ApiResponse;
 import com.innerderma.facility.application.FacilityService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,10 @@ public class FacilityController {
                 .map(FacilityResponse::from)
                 .toList();
         return ApiResponse.success(facilities);
+    }
+
+    @GetMapping("/{facilityCode}")
+    public ApiResponse<FacilityResponse> getFacility(@PathVariable String facilityCode) {
+        return ApiResponse.success(FacilityResponse.from(facilityService.getByFacilityCode(facilityCode)));
     }
 }

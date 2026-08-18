@@ -4,6 +4,8 @@ import com.innerderma.common.error.BusinessException;
 import com.innerderma.common.error.ErrorCode;
 import com.innerderma.skinanalysis.application.SkinAgeAnalysisResult;
 import com.innerderma.skinanalysis.application.SkinAgeClient;
+import com.innerderma.skinanalysis.application.SkinAgeQualityCheckFailedException;
+import com.innerderma.skinanalysis.application.SkinAgeQualityCheckResult;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -59,6 +61,13 @@ public class HttpSkinAgeClient implements SkinAgeClient {
 
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 422) {
+                SkinAgeQualityCheckResult qualityResult = parseQualityFailure(response.body());
+                if (qualityResult != null) {
+                    throw new SkinAgeQualityCheckFailedException(qualityResult);
+                }
+                throw new BusinessException(ErrorCode.SKINAGE_INVALID_RESPONSE);
+            }
             if (response.statusCode() != 200) {
                 throw new BusinessException(ErrorCode.SKINAGE_API_UNAVAILABLE);
             }
@@ -67,13 +76,39 @@ public class HttpSkinAgeClient implements SkinAgeClient {
                 throw new BusinessException(ErrorCode.SKINAGE_INVALID_RESPONSE);
             }
             return result;
-        } catch (BusinessException businessException) {
-            throw businessException;
+        } catch (BusinessException | SkinAgeQualityCheckFailedException passthrough) {
+            throw passthrough;
         } catch (IOException | InterruptedException exception) {
             if (exception instanceof InterruptedException) {
                 Thread.currentThread().interrupt();
             }
             throw new BusinessException(ErrorCode.SKINAGE_API_UNAVAILABLE);
+        }
+    }
+
+    private SkinAgeQualityCheckResult parseQualityFailure(String body) {
+        try {
+            var tree = objectMapper.readTree(body);
+            var detail = tree.get("detail");
+            if (detail == null) return null;
+            // FastAPI validation error format: detail is array
+            if (detail.isArray()) return null;
+            // SkinAge quality check format: detail is object with error/failed_checks
+            var error = detail.get("error");
+            if (error == null || !"quality_check_failed".equals(error.asText())) return null;
+            var failedChecks = detail.get("failed_checks");
+            var messages = detail.get("messages");
+            java.util.List<String> checks = new java.util.ArrayList<>();
+            java.util.List<String> msgs = new java.util.ArrayList<>();
+            if (failedChecks != null && failedChecks.isArray()) {
+                for (var node : failedChecks) checks.add(node.asText());
+            }
+            if (messages != null && messages.isArray()) {
+                for (var node : messages) msgs.add(node.asText());
+            }
+            return new SkinAgeQualityCheckResult(checks, msgs);
+        } catch (Exception exception) {
+            return null;
         }
     }
 

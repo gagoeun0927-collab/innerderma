@@ -2,6 +2,8 @@ package com.innerderma.airule.signal;
 
 import com.innerderma.airule.engine.RuleEvaluationContext;
 import com.innerderma.selfcheck.domain.SelfCheckRepository;
+import com.innerderma.skincapture.domain.SkinCaptureQualityStatus;
+import com.innerderma.skincapture.domain.SkinCaptureRepository;
 import com.innerderma.skinstate.application.SkinStateSnapshotService;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.skinstate.trend.SkinStateTrendService;
@@ -35,14 +37,17 @@ public class SignalAssembler {
 
     private final SkinStateSnapshotRepository snapshotRepository;
     private final SelfCheckRepository selfCheckRepository;
+    private final SkinCaptureRepository skinCaptureRepository;
     private final SkinStateTrendService trendService;
     private final ObjectMapper objectMapper;
 
     public SignalAssembler(SkinStateSnapshotRepository snapshotRepository,
                            SelfCheckRepository selfCheckRepository,
+                           SkinCaptureRepository skinCaptureRepository,
                            SkinStateTrendService trendService, ObjectMapper objectMapper) {
         this.snapshotRepository = snapshotRepository;
         this.selfCheckRepository = selfCheckRepository;
+        this.skinCaptureRepository = skinCaptureRepository;
         this.trendService = trendService;
         this.objectMapper = objectMapper;
     }
@@ -70,6 +75,13 @@ public class SignalAssembler {
                 .map(selfCheck -> selfCheck.requiresSafetyAttention())
                 .orElse(false);
         signals.put(REQUIRES_SAFETY_ATTENTION, safetyAttention);
+
+        // Image quality: 최신 SkinCapture가 QUALITY_CHECK_FAILED이면 R002 신호 생성
+        boolean imageQualityFailed = skinCaptureRepository
+                .findFirstByUser_UserCodeOrderByCapturedAtDesc(userCode)
+                .map(capture -> capture.getQualityStatus() == SkinCaptureQualityStatus.QUALITY_CHECK_FAILED)
+                .orElse(false);
+        signals.put("image_quality_failed", imageQualityFailed);
 
         return RuleEvaluationContext.of(signals);
     }

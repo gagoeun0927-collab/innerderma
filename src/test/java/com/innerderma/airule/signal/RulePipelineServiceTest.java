@@ -43,10 +43,13 @@ class RulePipelineServiceTest {
         selfCheckRepository = mock(SelfCheckRepository.class);
         trendService = mock(SkinStateTrendService.class);
         ObjectMapper objectMapper = new ObjectMapper();
-        SignalAssembler assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, trendService, objectMapper);
+        com.innerderma.skincapture.domain.SkinCaptureRepository skinCaptureRepository = mock(com.innerderma.skincapture.domain.SkinCaptureRepository.class);
+        SignalAssembler assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, trendService, objectMapper);
         RuleEngine ruleEngine = new RuleEngine(ruleRepository, objectMapper);
         pipeline = new RulePipelineService(assembler, ruleEngine);
         when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
+                .thenReturn(Optional.empty());
+        when(skinCaptureRepository.findFirstByUser_UserCodeOrderByCapturedAtDesc(USER_CODE))
                 .thenReturn(Optional.empty());
     }
 

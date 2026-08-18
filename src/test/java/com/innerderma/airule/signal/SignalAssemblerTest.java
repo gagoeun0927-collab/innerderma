@@ -4,6 +4,7 @@ import com.innerderma.airule.engine.RuleEvaluationContext;
 import com.innerderma.selfcheck.domain.SelfCheck;
 import com.innerderma.selfcheck.domain.SelfCheckRepository;
 import com.innerderma.selfcheck.domain.SymptomSeverity;
+import com.innerderma.skincapture.domain.SkinCaptureRepository;
 import com.innerderma.skinstate.domain.SkinStateSnapshot;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.skinstate.trend.SkinStateTrend;
@@ -29,6 +30,7 @@ class SignalAssemblerTest {
 
     private SkinStateSnapshotRepository snapshotRepository;
     private SelfCheckRepository selfCheckRepository;
+    private SkinCaptureRepository skinCaptureRepository;
     private SkinStateTrendService trendService;
     private SignalAssembler assembler;
 
@@ -36,9 +38,12 @@ class SignalAssemblerTest {
     void setUp() {
         snapshotRepository = mock(SkinStateSnapshotRepository.class);
         selfCheckRepository = mock(SelfCheckRepository.class);
+        skinCaptureRepository = mock(SkinCaptureRepository.class);
         trendService = mock(SkinStateTrendService.class);
-        assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, trendService, new ObjectMapper());
+        assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, trendService, new ObjectMapper());
         when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
+                .thenReturn(Optional.empty());
+        when(skinCaptureRepository.findFirstByUser_UserCodeOrderByCapturedAtDesc(USER_CODE))
                 .thenReturn(Optional.empty());
     }
 

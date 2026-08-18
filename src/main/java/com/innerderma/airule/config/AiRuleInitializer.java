@@ -19,9 +19,9 @@ public class AiRuleInitializer {
                     "[\"NO_AGGRESSIVE_ROUTINE\",\"MINIMIZE_PRODUCT_PROMOTION\"]",
                     "현재 상태에서는 일반 루틴보다 주의가 필요합니다. 새로운 제품 추가를 제한합니다.");
 
-            // Image Quality Gate (기존 유지, 소스 미연결)
+            // Image Quality Gate — image_quality_failed 신호 또는 기존 개별 플래그
             create(repository, "R002", AiRuleCategory.INPUT_IMAGE, "Image Quality Gate", 900,
-                    "{\"face_not_detected\":true,\"or_image_blurry\":true,\"or_lighting_insufficient\":true,\"or_face_partially_occluded\":true}",
+                    "{\"image_quality_failed\":true,\"face_not_detected\":true,\"or_image_blurry\":true,\"or_lighting_insufficient\":true,\"or_face_partially_occluded\":true}",
                     "{\"request_retake\":true,\"confidence_policy\":\"REDUCE\"}",
                     "[\"NO_DEFINITIVE_STATE\"]", "촬영 상태를 확인한 뒤 밝은 곳에서 다시 촬영해 주세요.");
 

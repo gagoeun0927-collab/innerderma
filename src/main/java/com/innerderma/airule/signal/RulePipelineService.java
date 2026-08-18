@@ -23,6 +23,12 @@ public class RulePipelineService {
     }
 
     public RuleEvaluationResult evaluateForUser(String userCode) {
-        return ruleEngine.evaluate(signalAssembler.assemble(userCode));
+        return runForUser(userCode).result();
+    }
+
+    /** 신호 컨텍스트와 발화 규칙을 함께 반환해 후속 단계(Solution 조립 등)가 재실행 없이 재사용하도록 한다. */
+    public RulePipelineOutcome runForUser(String userCode) {
+        var context = signalAssembler.assemble(userCode);
+        return new RulePipelineOutcome(context, ruleEngine.evaluate(context));
     }
 }

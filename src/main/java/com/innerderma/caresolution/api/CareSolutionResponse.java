@@ -1,5 +1,6 @@
 package com.innerderma.caresolution.api;
 
+import com.innerderma.carehistory.application.CareGenerationType;
 import com.innerderma.caresolution.application.CareSolutionResult;
 import com.innerderma.caresolution.domain.CareSeason;
 import com.innerderma.caresolution.domain.SafetyLevel;
@@ -10,8 +11,8 @@ import java.util.List;
 
 public record CareSolutionResponse(
         Long id, Long careCycleId, LocalDate originCaptureDate, LocalDate servedDate,
-        boolean inherited, CareSeason season, SafetyLevel safetyLevel, String headline,
-        String primaryConcern, List<String> eveningSteps, List<String> morningSteps,
+        boolean inherited, CareGenerationType generationType, CareSeason season, SafetyLevel safetyLevel,
+        String headline, String primaryConcern, List<String> eveningSteps, List<String> morningSteps,
         String safetyMessage, String whsDiagnosisSummary, String procedureName,
         String procedureCareGuide, LocalDateTime generatedAt
 ) {
@@ -21,6 +22,7 @@ public record CareSolutionResponse(
         var procedure = solution.getProcedureRecord();
         return new CareSolutionResponse(solution.getId(), solution.getCareCycle().getId(),
                 solution.getCareCycle().getOriginCaptureDate(), result.servedDate(), result.inherited(),
+                CareGenerationType.of(result.inherited()),
                 solution.getSeason(), solution.getSafetyLevel(), solution.getHeadline(),
                 solution.getPrimaryConcern(), result.eveningSteps(), result.morningSteps(),
                 solution.getSafetyMessage(), diagnosis == null ? null : diagnosis.getResultSummary(),

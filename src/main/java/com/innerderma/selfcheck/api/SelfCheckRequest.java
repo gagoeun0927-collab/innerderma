@@ -14,11 +14,15 @@ public record SelfCheckRequest(
         @NotNull SymptomSeverity swelling,
         @NotNull SymptomSeverity peeling,
         @NotNull SymptomSeverity breakout,
+        @NotNull SymptomSeverity oozing,
+        @NotNull SymptomSeverity bleeding,
+        @NotNull SymptomSeverity barrierDamage,
         @Size(max = 500) String note
 ) {
     SelfCheckCommand toCommand() {
         return new SelfCheckCommand(
-                pain, heatSensation, tightness, dryness, itching, swelling, peeling, breakout, note
+                pain, heatSensation, tightness, dryness, itching, swelling, peeling, breakout,
+                oozing, bleeding, barrierDamage, note
         );
     }
 }

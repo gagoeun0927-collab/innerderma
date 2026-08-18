@@ -47,6 +47,32 @@ class SelfCheckTest {
         assertThat(selfCheck.requiresSafetyAttention()).isFalse();
     }
 
+    @Test
+    void mildBleedingRequiresSafetyAttention() {
+        SelfCheck selfCheck = withWarningSignals(SymptomSeverity.NONE, SymptomSeverity.MILD);
+
+        assertThat(selfCheck.requiresSafetyAttention()).isTrue();
+    }
+
+    @Test
+    void mildOozingRequiresSafetyAttention() {
+        SelfCheck selfCheck = withWarningSignals(SymptomSeverity.MILD, SymptomSeverity.NONE);
+
+        assertThat(selfCheck.requiresSafetyAttention()).isTrue();
+    }
+
+    @Test
+    void severeBarrierDamageRequiresSafetyAttention() {
+        SelfCheck selfCheck = new SelfCheck(
+                user, LocalDateTime.of(2026, 8, 17, 12, 30),
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.MILD,
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE,
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.SEVERE, null
+        );
+
+        assertThat(selfCheck.requiresSafetyAttention()).isTrue();
+    }
+
     private SelfCheck selfCheck(
             SymptomSeverity pain,
             SymptomSeverity heat,
@@ -64,7 +90,20 @@ class SelfCheckTest {
                 swelling,
                 SymptomSeverity.NONE,
                 SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
+                SymptomSeverity.NONE,
                 "  오늘 상태  "
+        );
+    }
+
+    private SelfCheck withWarningSignals(SymptomSeverity oozing, SymptomSeverity bleeding) {
+        return new SelfCheck(
+                user,
+                LocalDateTime.of(2026, 8, 17, 12, 30),
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE,
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE,
+                oozing, bleeding, SymptomSeverity.NONE, null
         );
     }
 }

@@ -17,6 +17,9 @@ public record SelfCheckResponse(
         SymptomSeverity swelling,
         SymptomSeverity peeling,
         SymptomSeverity breakout,
+        SymptomSeverity oozing,
+        SymptomSeverity bleeding,
+        SymptomSeverity barrierDamage,
         String note,
         boolean requiresSafetyAttention
 ) {
@@ -33,6 +36,9 @@ public record SelfCheckResponse(
                 selfCheck.getSwelling(),
                 selfCheck.getPeeling(),
                 selfCheck.getBreakout(),
+                selfCheck.getOozing(),
+                selfCheck.getBleeding(),
+                selfCheck.getBarrierDamage(),
                 selfCheck.getNote(),
                 selfCheck.requiresSafetyAttention()
         );

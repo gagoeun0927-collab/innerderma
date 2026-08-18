@@ -63,6 +63,18 @@ public class SelfCheck {
     @Column(nullable = false, length = 20)
     private SymptomSeverity breakout;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private SymptomSeverity oozing;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private SymptomSeverity bleeding;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "barrier_damage", nullable = false, length = 20)
+    private SymptomSeverity barrierDamage;
+
     @Column(length = 500)
     private String note;
 
@@ -80,6 +92,9 @@ public class SelfCheck {
             SymptomSeverity swelling,
             SymptomSeverity peeling,
             SymptomSeverity breakout,
+            SymptomSeverity oozing,
+            SymptomSeverity bleeding,
+            SymptomSeverity barrierDamage,
             String note
     ) {
         this.user = user;
@@ -92,17 +107,26 @@ public class SelfCheck {
         this.swelling = swelling;
         this.peeling = peeling;
         this.breakout = breakout;
+        this.oozing = oozing;
+        this.bleeding = bleeding;
+        this.barrierDamage = barrierDamage;
         this.note = normalizeNote(note);
     }
 
     public boolean requiresSafetyAttention() {
         boolean anySevere = Stream.of(
-                pain, heatSensation, tightness, dryness, itching, swelling, peeling, breakout
+                pain, heatSensation, tightness, dryness, itching, swelling, peeling, breakout,
+                oozing, bleeding, barrierDamage
         ).anyMatch(severity -> severity == SymptomSeverity.SEVERE);
 
         boolean procedureRiskSignal = Stream.of(pain, heatSensation, swelling)
                 .anyMatch(severity -> severity == SymptomSeverity.MODERATE);
-        return anySevere || procedureRiskSignal;
+
+        // 진물과 출혈은 기획서상 위험 신호이므로 경미(MILD)해도 안전 안내를 우선한다.
+        boolean warningSignal = Stream.of(oozing, bleeding)
+                .anyMatch(severity -> severity != null && severity != SymptomSeverity.NONE);
+
+        return anySevere || procedureRiskSignal || warningSignal;
     }
 
     private String normalizeNote(String note) {
@@ -120,5 +144,8 @@ public class SelfCheck {
     public SymptomSeverity getSwelling() { return swelling; }
     public SymptomSeverity getPeeling() { return peeling; }
     public SymptomSeverity getBreakout() { return breakout; }
+    public SymptomSeverity getOozing() { return oozing; }
+    public SymptomSeverity getBleeding() { return bleeding; }
+    public SymptomSeverity getBarrierDamage() { return barrierDamage; }
     public String getNote() { return note; }
 }

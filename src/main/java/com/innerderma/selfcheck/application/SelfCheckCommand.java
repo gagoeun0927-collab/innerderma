@@ -11,6 +11,9 @@ public record SelfCheckCommand(
         SymptomSeverity swelling,
         SymptomSeverity peeling,
         SymptomSeverity breakout,
+        SymptomSeverity oozing,
+        SymptomSeverity bleeding,
+        SymptomSeverity barrierDamage,
         String note
 ) {
 }

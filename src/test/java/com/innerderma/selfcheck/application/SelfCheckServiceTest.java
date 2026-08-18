@@ -37,7 +37,7 @@ class SelfCheckServiceTest {
     void setUp() {
         selfCheckRepository = mock(SelfCheckRepository.class);
         userRepository = mock(UserRepository.class);
-        service = new SelfCheckService(selfCheckRepository, userRepository, CLOCK);
+        service = new SelfCheckService(selfCheckRepository, userRepository, mock(com.innerderma.airule.cache.SolutionCache.class), CLOCK);
     }
 
     @Test

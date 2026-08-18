@@ -54,7 +54,7 @@ class SkinAnalysisServiceTest {
         client = mock(SkinAgeClient.class);
         service = new SkinAnalysisService(
                 analysisRepository, captureRepository, userRepository, storage, client,
-                new ObjectMapper(), CLOCK
+                new ObjectMapper(), mock(com.innerderma.airule.cache.SolutionCache.class), CLOCK
         );
     }
 

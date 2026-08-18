@@ -44,7 +44,7 @@ class SkinStateSnapshotServiceTest {
         selfCheckRepository = mock(SelfCheckRepository.class);
         userRepository = mock(UserRepository.class);
         service = new SkinStateSnapshotService(
-                snapshotRepository, selfCheckRepository, mock(com.innerderma.skinanalysis.domain.SkinAnalysisRepository.class), userRepository, new ObjectMapper(), CLOCK);
+                snapshotRepository, selfCheckRepository, mock(com.innerderma.skinanalysis.domain.SkinAnalysisRepository.class), userRepository, new ObjectMapper(), mock(com.innerderma.airule.cache.SolutionCache.class), CLOCK);
     }
 
     private User user() {

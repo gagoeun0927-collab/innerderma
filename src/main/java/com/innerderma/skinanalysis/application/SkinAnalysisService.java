@@ -1,5 +1,6 @@
 package com.innerderma.skinanalysis.application;
 
+import com.innerderma.airule.cache.SolutionCache;
 import com.innerderma.common.error.BusinessException;
 import com.innerderma.common.error.ErrorCode;
 import com.innerderma.skinanalysis.domain.SkinAnalysis;
@@ -34,6 +35,7 @@ public class SkinAnalysisService {
     private final SkinCaptureStorage storage;
     private final SkinAgeClient skinAgeClient;
     private final ObjectMapper objectMapper;
+    private final SolutionCache solutionCache;
     private final Clock clock;
 
     @Autowired
@@ -43,10 +45,11 @@ public class SkinAnalysisService {
             UserRepository userRepository,
             SkinCaptureStorage storage,
             SkinAgeClient skinAgeClient,
-            ObjectMapper objectMapper
+            ObjectMapper objectMapper,
+            SolutionCache solutionCache
     ) {
         this(analysisRepository, captureRepository, userRepository, storage, skinAgeClient,
-                objectMapper, Clock.system(MVP_ZONE));
+                objectMapper, solutionCache, Clock.system(MVP_ZONE));
     }
 
     SkinAnalysisService(
@@ -56,6 +59,7 @@ public class SkinAnalysisService {
             SkinCaptureStorage storage,
             SkinAgeClient skinAgeClient,
             ObjectMapper objectMapper,
+            SolutionCache solutionCache,
             Clock clock
     ) {
         this.analysisRepository = analysisRepository;
@@ -64,6 +68,7 @@ public class SkinAnalysisService {
         this.storage = storage;
         this.skinAgeClient = skinAgeClient;
         this.objectMapper = objectMapper;
+        this.solutionCache = solutionCache;
         this.clock = clock;
     }
 
@@ -99,7 +104,9 @@ public class SkinAnalysisService {
                 result.metadata().modelVersion(),
                 serialize(result)
         );
-        return new SkinAnalysisResult(analysisRepository.save(analysis), result);
+        SkinAnalysis saved = analysisRepository.save(analysis);
+        solutionCache.invalidate(userCode);
+        return new SkinAnalysisResult(saved, result);
     }
 
     public SkinAnalysisResult getLatest(String userCode) {

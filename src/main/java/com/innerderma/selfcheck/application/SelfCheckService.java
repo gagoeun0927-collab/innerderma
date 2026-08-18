@@ -1,5 +1,6 @@
 package com.innerderma.selfcheck.application;
 
+import com.innerderma.airule.cache.SolutionCache;
 import com.innerderma.common.error.BusinessException;
 import com.innerderma.common.error.ErrorCode;
 import com.innerderma.selfcheck.domain.SelfCheck;
@@ -22,16 +23,18 @@ public class SelfCheckService {
 
     private final SelfCheckRepository selfCheckRepository;
     private final UserRepository userRepository;
+    private final SolutionCache solutionCache;
     private final Clock clock;
 
     @Autowired
-    public SelfCheckService(SelfCheckRepository selfCheckRepository, UserRepository userRepository) {
-        this(selfCheckRepository, userRepository, Clock.system(MVP_ZONE));
+    public SelfCheckService(SelfCheckRepository selfCheckRepository, UserRepository userRepository, SolutionCache solutionCache) {
+        this(selfCheckRepository, userRepository, solutionCache, Clock.system(MVP_ZONE));
     }
 
-    SelfCheckService(SelfCheckRepository selfCheckRepository, UserRepository userRepository, Clock clock) {
+    SelfCheckService(SelfCheckRepository selfCheckRepository, UserRepository userRepository, SolutionCache solutionCache, Clock clock) {
         this.selfCheckRepository = selfCheckRepository;
         this.userRepository = userRepository;
+        this.solutionCache = solutionCache;
         this.clock = clock;
     }
 
@@ -53,7 +56,9 @@ public class SelfCheckService {
                 command.breakout(),
                 command.note()
         );
-        return selfCheckRepository.save(selfCheck);
+        SelfCheck saved = selfCheckRepository.save(selfCheck);
+        solutionCache.invalidate(userCode);
+        return saved;
     }
 
     public SelfCheck getLatest(String userCode) {

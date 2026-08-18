@@ -1,5 +1,6 @@
 package com.innerderma.skinstate.application;
 
+import com.innerderma.airule.cache.SolutionCache;
 import com.innerderma.common.error.BusinessException;
 import com.innerderma.common.error.ErrorCode;
 import com.innerderma.selfcheck.domain.SelfCheck;
@@ -52,6 +53,7 @@ public class SkinStateSnapshotService {
     private final SkinAnalysisRepository skinAnalysisRepository;
     private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
+    private final SolutionCache solutionCache;
     private final Clock clock;
 
     @Autowired
@@ -59,20 +61,23 @@ public class SkinStateSnapshotService {
                                     SelfCheckRepository selfCheckRepository,
                                     SkinAnalysisRepository skinAnalysisRepository,
                                     UserRepository userRepository,
-                                    ObjectMapper objectMapper) {
-        this(snapshotRepository, selfCheckRepository, skinAnalysisRepository, userRepository, objectMapper, Clock.system(MVP_ZONE));
+                                    ObjectMapper objectMapper,
+                                    SolutionCache solutionCache) {
+        this(snapshotRepository, selfCheckRepository, skinAnalysisRepository, userRepository, objectMapper, solutionCache, Clock.system(MVP_ZONE));
     }
 
     SkinStateSnapshotService(SkinStateSnapshotRepository snapshotRepository,
                              SelfCheckRepository selfCheckRepository,
                              SkinAnalysisRepository skinAnalysisRepository,
                              UserRepository userRepository,
-                             ObjectMapper objectMapper, Clock clock) {
+                             ObjectMapper objectMapper,
+                             SolutionCache solutionCache, Clock clock) {
         this.snapshotRepository = snapshotRepository;
         this.selfCheckRepository = selfCheckRepository;
         this.skinAnalysisRepository = skinAnalysisRepository;
         this.userRepository = userRepository;
         this.objectMapper = objectMapper;
+        this.solutionCache = solutionCache;
         this.clock = clock;
     }
 
@@ -114,6 +119,7 @@ public class SkinStateSnapshotService {
                         user, snapshotDate, SCORING_VERSION, scoresJson, analysisScoresJson, dominant,
                         selfCheck.getId(), sourceAnalysisId, now)));
 
+        solutionCache.invalidate(userCode);
         return new SkinStateSnapshotResult(snapshot, scores);
     }
 

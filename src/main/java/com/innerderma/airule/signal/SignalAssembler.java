@@ -1,6 +1,7 @@
 package com.innerderma.airule.signal;
 
 import com.innerderma.airule.engine.RuleEvaluationContext;
+import com.innerderma.selfcheck.domain.SelfCheckRepository;
 import com.innerderma.skinstate.application.SkinStateSnapshotService;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.skinstate.trend.SkinStateTrendService;
@@ -29,15 +30,19 @@ import java.util.Map;
 public class SignalAssembler {
 
     static final String HAS_SEVERE_SYMPTOM = "has_severe_symptom";
+    static final String REQUIRES_SAFETY_ATTENTION = "requires_safety_attention";
     private static final int SEVERE_SCORE = 3;
 
     private final SkinStateSnapshotRepository snapshotRepository;
+    private final SelfCheckRepository selfCheckRepository;
     private final SkinStateTrendService trendService;
     private final ObjectMapper objectMapper;
 
     public SignalAssembler(SkinStateSnapshotRepository snapshotRepository,
+                           SelfCheckRepository selfCheckRepository,
                            SkinStateTrendService trendService, ObjectMapper objectMapper) {
         this.snapshotRepository = snapshotRepository;
+        this.selfCheckRepository = selfCheckRepository;
         this.trendService = trendService;
         this.objectMapper = objectMapper;
     }
@@ -58,6 +63,13 @@ public class SignalAssembler {
             }
         });
         signals.putIfAbsent(HAS_SEVERE_SYMPTOM, false);
+
+        // Safety attention: 기존 SelfCheck.requiresSafetyAttention()을 canonical safety signal로 사용
+        boolean safetyAttention = selfCheckRepository
+                .findFirstByUser_UserCodeOrderByCheckedAtDesc(userCode)
+                .map(selfCheck -> selfCheck.requiresSafetyAttention())
+                .orElse(false);
+        signals.put(REQUIRES_SAFETY_ATTENTION, safetyAttention);
 
         return RuleEvaluationContext.of(signals);
     }

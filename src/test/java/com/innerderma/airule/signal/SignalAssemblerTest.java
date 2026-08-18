@@ -1,6 +1,9 @@
 package com.innerderma.airule.signal;
 
 import com.innerderma.airule.engine.RuleEvaluationContext;
+import com.innerderma.selfcheck.domain.SelfCheck;
+import com.innerderma.selfcheck.domain.SelfCheckRepository;
+import com.innerderma.selfcheck.domain.SymptomSeverity;
 import com.innerderma.skinstate.domain.SkinStateSnapshot;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.skinstate.trend.SkinStateTrend;
@@ -25,14 +28,18 @@ class SignalAssemblerTest {
     private static final String USER_CODE = "WHS-DEMO-001";
 
     private SkinStateSnapshotRepository snapshotRepository;
+    private SelfCheckRepository selfCheckRepository;
     private SkinStateTrendService trendService;
     private SignalAssembler assembler;
 
     @BeforeEach
     void setUp() {
         snapshotRepository = mock(SkinStateSnapshotRepository.class);
+        selfCheckRepository = mock(SelfCheckRepository.class);
         trendService = mock(SkinStateTrendService.class);
-        assembler = new SignalAssembler(snapshotRepository, trendService, new ObjectMapper());
+        assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, trendService, new ObjectMapper());
+        when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
+                .thenReturn(Optional.empty());
     }
 
     private String scores(int pain, int heat, int tight, int dry, int itch, int swell, int peel, int breakout) {
@@ -88,6 +95,27 @@ class SignalAssemblerTest {
 
         assertThat(context.isActive("trend_unknown")).isTrue();
         assertThat(context.isActive("has_severe_symptom")).isFalse();
+        assertThat(context.isActive("requires_safety_attention")).isFalse();
         assertThat(context.signals().keySet().stream().noneMatch(key -> key.startsWith("dominant_"))).isTrue();
+    }
+
+    @Test
+    void emitsSafetyAttentionWhenSelfCheckRequiresIt() {
+        when(trendService.evaluateLatest(USER_CODE)).thenReturn(new TrendResult(
+                SkinStateTrend.STABLE, Map.of(), "selfcheck-ordinal-v1",
+                LocalDate.of(2026, 8, 17), LocalDate.of(2026, 8, 16)));
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc(USER_CODE))
+                .thenReturn(Optional.empty());
+        SelfCheck severeCheck = new SelfCheck(
+                new User(USER_CODE, "test", "010-1234-1234"),
+                LocalDateTime.of(2026, 8, 17, 12, 0),
+                SymptomSeverity.SEVERE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE,
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, null);
+        when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
+                .thenReturn(Optional.of(severeCheck));
+
+        RuleEvaluationContext context = assembler.assemble(USER_CODE);
+
+        assertThat(context.isActive("requires_safety_attention")).isTrue();
     }
 }

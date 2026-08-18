@@ -12,19 +12,53 @@ public class AiRuleInitializer {
     @Bean
     CommandLineRunner initializeAiRules(AiRuleRepository repository) {
         return args -> {
-            create(repository, "R000", AiRuleCategory.SAFETY, "Safety First", 1000,
-                    "{\"severe_or_unusual_symptom\":true,\"or_rapidly_worsening\":true,\"or_professional_review_required\":true}",
-                    "{\"safety_status\":\"CAUTION\",\"recommendation_mode\":\"CAUTION\"}",
-                    "[\"NO_AGGRESSIVE_ROUTINE\",\"MINIMIZE_PRODUCT_PROMOTION\",\"REQUIRE_PROFESSIONAL_GUIDANCE\"]",
-                    "증상이 지속되거나 악화되는 경우 전문가 확인이 필요합니다.");
+            // Safety Gate — requires_safety_attention(canonical signal from SelfCheck) 사용
+            create(repository, "R000", AiRuleCategory.SAFETY, "Safety Attention Gate", 1000,
+                    "{\"requires_safety_attention\":true}",
+                    "{\"safety_status\":\"CAUTION\",\"recommendation_mode\":\"CONSERVATIVE\",\"require_professional_review_message\":true,\"limit_new_product_addition\":true}",
+                    "[\"NO_AGGRESSIVE_ROUTINE\",\"MINIMIZE_PRODUCT_PROMOTION\"]",
+                    "현재 상태에서는 일반 루틴보다 주의가 필요합니다. 새로운 제품 추가를 제한합니다.");
+
+            // Image Quality Gate (기존 유지, 소스 미연결)
             create(repository, "R002", AiRuleCategory.INPUT_IMAGE, "Image Quality Gate", 900,
                     "{\"face_not_detected\":true,\"or_image_blurry\":true,\"or_lighting_insufficient\":true,\"or_face_partially_occluded\":true}",
                     "{\"request_retake\":true,\"confidence_policy\":\"REDUCE\"}",
                     "[\"NO_DEFINITIVE_STATE\"]", "촬영 상태를 확인한 뒤 밝은 곳에서 다시 촬영해 주세요.");
+
+            // Minimum Intervention (기존 유지)
             create(repository, "R010", AiRuleCategory.PRIORITY_GOAL, "Minimum Intervention", 500,
                     "{\"always\":true}",
                     "{\"night_max_steps\":4,\"morning_max_steps\":3,\"inner_care_max_items\":1}",
                     "[\"NO_UNNECESSARY_PRODUCT_ADDITION\"]", "오늘 필요한 최소한의 관리만 안내합니다.");
+
+            // Trend Rules
+            create(repository, "R020", AiRuleCategory.TREND, "Trend Improving", 800,
+                    "{\"trend_improving\":true}",
+                    "{\"recommendation_mode\":\"MAINTENANCE\",\"no_additional_product\":true}",
+                    "[\"MAINTAIN_EXISTING_ROUTINE\"]",
+                    "피부 상태가 개선되고 있습니다. 기존 루틴을 유지합니다.");
+
+            create(repository, "R021", AiRuleCategory.TREND, "Trend Worsening", 800,
+                    "{\"trend_worsening\":true}",
+                    "{\"recommendation_mode\":\"CONSERVATIVE\",\"require_safety_reevaluation\":true,\"limit_new_product_addition\":true}",
+                    "[\"REEVALUATE_SAFETY\"]",
+                    "피부 상태 변화가 감지되었습니다. 보수적인 관리를 우선합니다.");
+
+            create(repository, "R022", AiRuleCategory.TREND, "Trend Stable", 700,
+                    "{\"trend_stable\":true}",
+                    "{\"recommendation_mode\":\"NORMAL\"}",
+                    "[]", "피부 상태가 안정적입니다.");
+
+            create(repository, "R023", AiRuleCategory.TREND, "Trend Unknown", 750,
+                    "{\"trend_unknown\":true}",
+                    "{\"recommendation_mode\":\"CONSERVATIVE\",\"limit_new_product_addition\":true}",
+                    "[]", "비교할 수 있는 이전 데이터가 부족합니다. 보수적인 관리를 우선합니다.");
+
+            // Concern Mapping (always 발화, 실제 concern은 SignalAssembler→MappedConcern에서 제공)
+            create(repository, "R030", AiRuleCategory.SKIN_STATE, "Self Report Concern Mapping", 600,
+                    "{\"always\":true}",
+                    "{\"concern_source\":\"SELF_REPORT\"}",
+                    "[]", "자가문진 기반 피부 관심사를 매핑합니다.");
         };
     }
 

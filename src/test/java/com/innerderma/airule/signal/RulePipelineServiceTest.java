@@ -5,6 +5,7 @@ import com.innerderma.airule.domain.AiRuleCategory;
 import com.innerderma.airule.domain.AiRuleRepository;
 import com.innerderma.airule.engine.RuleEngine;
 import com.innerderma.airule.engine.RuleEvaluationResult;
+import com.innerderma.selfcheck.domain.SelfCheckRepository;
 import com.innerderma.skinstate.domain.SkinStateSnapshot;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.skinstate.trend.SkinStateTrend;
@@ -31,6 +32,7 @@ class RulePipelineServiceTest {
 
     private AiRuleRepository ruleRepository;
     private SkinStateSnapshotRepository snapshotRepository;
+    private SelfCheckRepository selfCheckRepository;
     private SkinStateTrendService trendService;
     private RulePipelineService pipeline;
 
@@ -38,11 +40,14 @@ class RulePipelineServiceTest {
     void setUp() {
         ruleRepository = mock(AiRuleRepository.class);
         snapshotRepository = mock(SkinStateSnapshotRepository.class);
+        selfCheckRepository = mock(SelfCheckRepository.class);
         trendService = mock(SkinStateTrendService.class);
         ObjectMapper objectMapper = new ObjectMapper();
-        SignalAssembler assembler = new SignalAssembler(snapshotRepository, trendService, objectMapper);
+        SignalAssembler assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, trendService, objectMapper);
         RuleEngine ruleEngine = new RuleEngine(ruleRepository, objectMapper);
         pipeline = new RulePipelineService(assembler, ruleEngine);
+        when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
+                .thenReturn(Optional.empty());
     }
 
     private AiRule rule(String ruleId, AiRuleCategory category, int priority, String conditions) {
@@ -94,5 +99,36 @@ class RulePipelineServiceTest {
         RuleEvaluationResult result = pipeline.evaluateForUser(USER_CODE);
 
         assertThat(result.firedRuleIds()).containsExactly("R010");
+    }
+
+    @Test
+    void firesSafetyGateWhenRequiresSafetyAttentionIsTrue() {
+        List<AiRule> rules = new java.util.ArrayList<>(seedRules());
+        rules.add(rule("R000", AiRuleCategory.SAFETY, 1000, "{\"requires_safety_attention\":true}"));
+        when(ruleRepository.findByEnabledTrueOrderByPriorityDescRuleIdAsc()).thenReturn(rules);
+        when(trendService.evaluateLatest(USER_CODE)).thenReturn(new TrendResult(
+                com.innerderma.skinstate.trend.SkinStateTrend.STABLE, Map.of(), "selfcheck-ordinal-v1",
+                LocalDate.of(2026, 8, 17), LocalDate.of(2026, 8, 16)));
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc(USER_CODE))
+                .thenReturn(Optional.empty());
+        // SelfCheck with SEVERE → requiresSafetyAttention()=true
+        com.innerderma.selfcheck.domain.SelfCheck severeCheck = new com.innerderma.selfcheck.domain.SelfCheck(
+                new com.innerderma.user.domain.User(USER_CODE, "test", "010-1234-1234"),
+                LocalDateTime.of(2026, 8, 17, 12, 0),
+                com.innerderma.selfcheck.domain.SymptomSeverity.SEVERE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE, null);
+        when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
+                .thenReturn(Optional.of(severeCheck));
+
+        RuleEvaluationResult result = pipeline.evaluateForUser(USER_CODE);
+
+        assertThat(result.hasFired("R000")).isTrue();
+        assertThat(result.hasFired("R010")).isTrue();
     }
 }

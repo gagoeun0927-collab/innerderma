@@ -6,6 +6,7 @@ import com.innerderma.airule.domain.AiRuleRepository;
 import com.innerderma.airule.engine.RuleEngine;
 import com.innerderma.airule.signal.RulePipelineService;
 import com.innerderma.airule.signal.SignalAssembler;
+import com.innerderma.selfcheck.domain.SelfCheckRepository;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.skinstate.trend.SkinStateTrend;
 import com.innerderma.skinstate.trend.SkinStateTrendService;
@@ -29,6 +30,7 @@ class SolutionAssemblerPipelineTest {
 
     private AiRuleRepository ruleRepository;
     private SkinStateSnapshotRepository snapshotRepository;
+    private SelfCheckRepository selfCheckRepository;
     private SkinStateTrendService trendService;
     private SolutionAssembler assembler;
 
@@ -36,12 +38,15 @@ class SolutionAssemblerPipelineTest {
     void setUp() {
         ruleRepository = mock(AiRuleRepository.class);
         snapshotRepository = mock(SkinStateSnapshotRepository.class);
+        selfCheckRepository = mock(SelfCheckRepository.class);
         trendService = mock(SkinStateTrendService.class);
         ObjectMapper objectMapper = new ObjectMapper();
-        SignalAssembler signalAssembler = new SignalAssembler(snapshotRepository, trendService, objectMapper);
+        SignalAssembler signalAssembler = new SignalAssembler(snapshotRepository, selfCheckRepository, trendService, objectMapper);
         RuleEngine ruleEngine = new RuleEngine(ruleRepository, objectMapper);
         RulePipelineService pipeline = new RulePipelineService(signalAssembler, ruleEngine);
         assembler = new SolutionAssembler(pipeline, objectMapper);
+        when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
+                .thenReturn(Optional.empty());
     }
 
     @Test

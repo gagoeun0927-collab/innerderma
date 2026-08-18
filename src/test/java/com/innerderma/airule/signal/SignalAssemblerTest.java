@@ -116,7 +116,8 @@ class SignalAssemblerTest {
                 new User(USER_CODE, "test", "010-1234-1234"),
                 LocalDateTime.of(2026, 8, 17, 12, 0),
                 SymptomSeverity.SEVERE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE,
-                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, null);
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE,
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, null);
         when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
                 .thenReturn(Optional.of(severeCheck));
 

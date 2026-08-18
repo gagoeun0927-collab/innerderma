@@ -55,7 +55,8 @@ class SkinStateSnapshotServiceTest {
                                 SymptomSeverity dryness, SymptomSeverity itching, SymptomSeverity swelling,
                                 SymptomSeverity peeling, SymptomSeverity breakout) {
         return new SelfCheck(user(), LocalDateTime.of(2026, 8, 17, 12, 30),
-                pain, heat, tightness, dryness, itching, swelling, peeling, breakout, null);
+                pain, heat, tightness, dryness, itching, swelling, peeling, breakout,
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, null);
     }
 
     @Test

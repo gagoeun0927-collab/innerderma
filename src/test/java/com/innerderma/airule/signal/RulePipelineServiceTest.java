@@ -126,6 +126,9 @@ class RulePipelineServiceTest {
                 com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
                 com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
                 com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
+                com.innerderma.selfcheck.domain.SymptomSeverity.NONE,
                 com.innerderma.selfcheck.domain.SymptomSeverity.NONE, null);
         when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
                 .thenReturn(Optional.of(severeCheck));

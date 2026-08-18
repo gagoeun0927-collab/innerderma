@@ -93,7 +93,8 @@ class SelfCheckControllerTest {
         SelfCheck record = new SelfCheck(
                 user, LocalDateTime.of(2026, 8, 17, 12, 30),
                 SymptomSeverity.MILD, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.MILD,
-                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, null);
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE,
+                SymptomSeverity.NONE, SymptomSeverity.NONE, SymptomSeverity.NONE, null);
         when(service.getHistory("WHS-DEMO-001", LocalDate.of(2026, 8, 1), LocalDate.of(2026, 8, 17)))
                 .thenReturn(new com.innerderma.selfcheck.application.SelfCheckHistoryResult(
                         LocalDate.of(2026, 8, 1), LocalDate.of(2026, 8, 17), java.util.List.of(record)));

@@ -1,0 +1,21 @@
+{
+  "id": "GT-003",
+  "category": "IMPROVING",
+  "description": "개선 추세에서 기존 루틴 유지, 제품 추가 금지",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_improving": true,
+      "has_severe_symptom": false
+    }
+  },
+  "expected": {
+    "fired_rules": ["R020", "R030", "R010"],
+    "not_fired_rules": ["R000", "R021", "R022", "R023"],
+    "actions_contain": {
+      "recommendation_mode": "MAINTENANCE",
+      "no_additional_product": true
+    },
+    "restrictions_contain": ["MAINTAIN_EXISTING_ROUTINE"]
+  }
+}

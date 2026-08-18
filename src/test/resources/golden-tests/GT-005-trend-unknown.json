@@ -1,0 +1,21 @@
+{
+  "id": "GT-005",
+  "category": "LOW_CONFIDENCE",
+  "description": "비교 데이터 부족(unknown)에서 보수적 모드",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_unknown": true,
+      "has_severe_symptom": false
+    }
+  },
+  "expected": {
+    "fired_rules": ["R023", "R030", "R010"],
+    "not_fired_rules": ["R000", "R020", "R021", "R022"],
+    "actions_contain": {
+      "recommendation_mode": "CONSERVATIVE",
+      "limit_new_product_addition": true
+    },
+    "restrictions_contain": []
+  }
+}

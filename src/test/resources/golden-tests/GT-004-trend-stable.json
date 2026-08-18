@@ -1,0 +1,20 @@
+{
+  "id": "GT-004",
+  "category": "NORMAL",
+  "description": "안정 추세에서 일반 모드",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_stable": true,
+      "has_severe_symptom": false
+    }
+  },
+  "expected": {
+    "fired_rules": ["R022", "R030", "R010"],
+    "not_fired_rules": ["R000", "R020", "R021", "R023"],
+    "actions_contain": {
+      "recommendation_mode": "NORMAL"
+    },
+    "restrictions_contain": []
+  }
+}

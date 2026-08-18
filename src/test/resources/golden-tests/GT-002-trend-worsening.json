@@ -1,0 +1,22 @@
+{
+  "id": "GT-002",
+  "category": "WORSENING",
+  "description": "악화 추세에서 보수적 모드 적용",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "trend_worsening": true,
+      "has_severe_symptom": false
+    }
+  },
+  "expected": {
+    "fired_rules": ["R021", "R030", "R010"],
+    "not_fired_rules": ["R000", "R020", "R022", "R023"],
+    "actions_contain": {
+      "recommendation_mode": "CONSERVATIVE",
+      "require_safety_reevaluation": true,
+      "limit_new_product_addition": true
+    },
+    "restrictions_contain": ["REEVALUATE_SAFETY"]
+  }
+}

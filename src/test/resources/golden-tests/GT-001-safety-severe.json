@@ -1,0 +1,22 @@
+{
+  "id": "GT-001",
+  "category": "SAFETY",
+  "description": "SEVERE 증상으로 requiresSafetyAttention 발동 시 Safety Gate와 Minimum Intervention 발화",
+  "input": {
+    "signals": {
+      "requires_safety_attention": true,
+      "trend_stable": true,
+      "has_severe_symptom": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R000", "R022", "R030", "R010"],
+    "not_fired_rules": ["R002", "R020", "R021", "R023"],
+    "actions_contain": {
+      "safety_status": "CAUTION",
+      "recommendation_mode": "CONSERVATIVE",
+      "limit_new_product_addition": true
+    },
+    "restrictions_contain": ["NO_AGGRESSIVE_ROUTINE", "MINIMIZE_PRODUCT_PROMOTION"]
+  }
+}

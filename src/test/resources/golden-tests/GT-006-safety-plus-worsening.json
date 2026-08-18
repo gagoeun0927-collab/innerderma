@@ -1,0 +1,21 @@
+{
+  "id": "GT-006",
+  "category": "SAFETY",
+  "description": "Safety attention + worsening 동시 발생: Safety가 우선순위 높음",
+  "input": {
+    "signals": {
+      "requires_safety_attention": true,
+      "trend_worsening": true,
+      "has_severe_symptom": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R000", "R021", "R030", "R010"],
+    "not_fired_rules": ["R002", "R020", "R022", "R023"],
+    "actions_contain": {
+      "safety_status": "CAUTION",
+      "recommendation_mode": "CONSERVATIVE"
+    },
+    "restrictions_contain": ["NO_AGGRESSIVE_ROUTINE", "REEVALUATE_SAFETY"]
+  }
+}

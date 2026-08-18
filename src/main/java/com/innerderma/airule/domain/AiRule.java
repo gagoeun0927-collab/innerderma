@@ -78,5 +78,6 @@ public class AiRule {
     public String getExplanationTemplate() { return explanationTemplate; }
     public String getVersion() { return version; }
     public boolean isEnabled() { return enabled; }
+    public void setEnabled(boolean enabled) { this.enabled = enabled; }
     public LocalDateTime getCreatedAt() { return createdAt; }
 }

@@ -1,5 +1,6 @@
 package com.innerderma.llm;
 
+import com.innerderma.airule.cache.SolutionCache;
 import com.innerderma.airule.signal.MappedConcern;
 import com.innerderma.airule.solution.SolutionAssembler;
 import com.innerderma.airule.solution.SolutionObject;
@@ -41,6 +42,7 @@ class AiCareControllerTest {
     private SkinStateSnapshotRepository snapshotRepository;
     private com.innerderma.procedure.domain.ProcedureRecordRepository procedureRecordRepository;
     private com.innerderma.user.application.UserService userService;
+    private SolutionCache solutionCache;
     private MockMvc mockMvc;
 
     @BeforeEach
@@ -52,8 +54,10 @@ class AiCareControllerTest {
         snapshotRepository = mock(SkinStateSnapshotRepository.class);
         procedureRecordRepository = mock(com.innerderma.procedure.domain.ProcedureRecordRepository.class);
         userService = mock(com.innerderma.user.application.UserService.class);
+        solutionCache = mock(SolutionCache.class);
+        when(solutionCache.get(any())).thenReturn(Optional.empty());
         mockMvc = MockMvcBuilders.standaloneSetup(
-                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository, procedureRecordRepository, userService))
+                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository, procedureRecordRepository, userService, solutionCache))
                 .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
         when(procedureRecordRepository.findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDesc(any(), any()))

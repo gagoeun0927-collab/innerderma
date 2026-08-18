@@ -1,5 +1,8 @@
 package com.innerderma.llm;
 
+import com.innerderma.airule.cache.SolutionCache;
+import com.innerderma.airule.cache.SolutionCacheEntry;
+import com.innerderma.airule.cache.SolutionCacheKey;
 import com.innerderma.airule.signal.MappedConcern;
 import com.innerderma.airule.solution.SolutionAssembler;
 import com.innerderma.airule.solution.SolutionObject;
@@ -39,6 +42,7 @@ public class AiCareController {
     private final SkinStateSnapshotRepository snapshotRepository;
     private final ProcedureRecordRepository procedureRecordRepository;
     private final UserService userService;
+    private final SolutionCache solutionCache;
 
     public AiCareController(SolutionAssembler solutionAssembler,
                             ProductMatcher productMatcher,
@@ -46,7 +50,8 @@ public class AiCareController {
                             ResponseValidator responseValidator,
                             SkinStateSnapshotRepository snapshotRepository,
                             ProcedureRecordRepository procedureRecordRepository,
-                            UserService userService) {
+                            UserService userService,
+                            SolutionCache solutionCache) {
         this.solutionAssembler = solutionAssembler;
         this.productMatcher = productMatcher;
         this.llmRenderer = llmRenderer;
@@ -54,6 +59,7 @@ public class AiCareController {
         this.snapshotRepository = snapshotRepository;
         this.procedureRecordRepository = procedureRecordRepository;
         this.userService = userService;
+        this.solutionCache = solutionCache;
     }
 
     @PostMapping
@@ -65,6 +71,19 @@ public class AiCareController {
         String resolvedLocale = (locale != null && !locale.isBlank())
                 ? locale.trim().toLowerCase()
                 : userService.getByUserCode(userCode).getPreferredLocale();
+
+        // Cache 적중 확인 (§33 멱등성: 같은 날 동일 조건이면 LLM 재호출 안 함)
+        String scoringVersion = snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc(userCode)
+                .map(s -> s.getScoringVersion()).orElse("none");
+        SolutionCacheKey cacheKey = SolutionCacheKey.of(userCode, LocalDate.now(), scoringVersion, "1.0.0");
+        var cached = solutionCache.get(cacheKey);
+        if (cached.isPresent()) {
+            SolutionCacheEntry entry = cached.get();
+            LlmResponse llmResponse = llmRenderer.render(entry.solution(), entry.products(), resolvedLocale);
+            return ApiResponse.success(new AiCareResponse(llmResponse, entry.solution().appliedRules(),
+                    entry.products().primaryConcern(), resolvedLocale, true, List.of()));
+        }
+
         // 1. Rule Engine 실행 → Solution Object
         SolutionObject solution = solutionAssembler.assembleForUser(userCode);
 
@@ -76,6 +95,9 @@ public class AiCareController {
 
         // 4. Product Matching (treatment 유형에 따라 자동 필터)
         ProductMatchResult products = productMatcher.match(solution, primaryConcern, treatmentCode, List.of());
+
+        // Cache 저장
+        solutionCache.put(cacheKey, new SolutionCacheEntry(solution, products, java.time.LocalDateTime.now()));
 
         // 5. LLM 렌더링 (locale 기반 다국어)
         LlmResponse llmResponse = llmRenderer.render(solution, products, resolvedLocale);

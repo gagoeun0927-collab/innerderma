@@ -59,6 +59,12 @@ public class AiRuleInitializer {
                     "{\"always\":true}",
                     "{\"concern_source\":\"SELF_REPORT\"}",
                     "[]", "자가문진 기반 피부 관심사를 매핑합니다.");
+
+            // Confidence Rule
+            create(repository, "R025", AiRuleCategory.SKIN_STATE, "Low Confidence Gate", 650,
+                    "{\"low_confidence\":true}",
+                    "{\"recommendation_mode\":\"CONSERVATIVE\",\"confidence_policy\":\"REDUCE\",\"limit_new_product_addition\":true}",
+                    "[\"NO_DEFINITIVE_STATE\"]", "분석 신뢰도가 낮습니다. 보수적인 관리를 우선합니다.");
         };
     }
 

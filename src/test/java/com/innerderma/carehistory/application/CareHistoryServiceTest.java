@@ -156,8 +156,10 @@ class CareHistoryServiceTest {
         assertThat(result.items()).extracting(DailyCareHistoryItem::phase)
                 .containsExactly(CarePhase.MORNING, CarePhase.EVENING);
         assertThat(result.items().get(0).inherited()).isTrue();
+        assertThat(result.items().get(0).generationType()).isEqualTo(CareGenerationType.CARRIED_FORWARD);
         assertThat(result.items().get(0).history().careCycleId()).isEqualTo(21L);
         assertThat(result.items().get(1).inherited()).isFalse();
+        assertThat(result.items().get(1).generationType()).isEqualTo(CareGenerationType.NEW_ANALYSIS);
         assertThat(result.items().get(1).history().careCycleId()).isEqualTo(22L);
     }
 
@@ -182,6 +184,8 @@ class CareHistoryServiceTest {
         assertThat(result.items()).extracting(DailyCareHistoryItem::phase)
                 .containsExactly(CarePhase.MORNING, CarePhase.EVENING);
         assertThat(result.items()).allMatch(DailyCareHistoryItem::inherited);
+        assertThat(result.items())
+                .allMatch(item -> item.generationType() == CareGenerationType.CARRIED_FORWARD);
     }
 
     private CareSolution solution(LocalDate date) {

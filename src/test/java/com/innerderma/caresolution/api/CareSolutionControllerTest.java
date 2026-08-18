@@ -48,6 +48,7 @@ class CareSolutionControllerTest {
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.data.safetyLevel").value("ATTENTION"))
                 .andExpect(jsonPath("$.data.inherited").value(true))
+                .andExpect(jsonPath("$.data.generationType").value("CARRIED_FORWARD"))
                 .andExpect(jsonPath("$.data.eveningSteps[0]").value("저녁 최소 보습"))
                 .andExpect(jsonPath("$.data.morningSteps[0]").value("아침 자외선 차단"));
     }

@@ -16,4 +16,9 @@ public class ProductController {
     public ApiResponse<List<ProductResponse>> getProducts() {
         return ApiResponse.success(service.getActiveProducts());
     }
+
+    @GetMapping("/{productCode}")
+    public ApiResponse<ProductResponse> getProduct(@PathVariable String productCode) {
+        return ApiResponse.success(service.getProduct(productCode));
+    }
 }

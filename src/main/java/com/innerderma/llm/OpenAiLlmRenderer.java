@@ -33,6 +33,7 @@ public class OpenAiLlmRenderer implements LlmRenderer {
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
 
+    @org.springframework.beans.factory.annotation.Autowired
     public OpenAiLlmRenderer(
             @Value("${openai.api-key:}") String apiKey,
             ObjectMapper objectMapper

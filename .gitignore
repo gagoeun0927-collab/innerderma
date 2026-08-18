@@ -41,3 +41,6 @@ out/
 /data/
 /.tools/
 /.omx/
+
+# 로컬 secret 설정 (커밋 금지)
+application-local.properties

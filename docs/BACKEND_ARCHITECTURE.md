@@ -49,6 +49,7 @@ Controller(API)
 | `GET` | `/api/users/{userCode}` | 사용자 기본정보 조회 |
 | `GET` | `/api/facilities` | 시설 목록 조회 |
 | `GET` | `/api/users/{userCode}/procedures?facilityCode={code}&date={date}` | 시설과 날짜에 해당하는 시술 기록 조회 |
+| `GET` | `/api/users/{userCode}/procedures/treatment-context?date={date}` | 지정일에 적용되는 최신 검증 시술 컨텍스트 조회 |
 | `GET` | `/api/users/{userCode}/skin-diagnosis` | 최신 WHS 피부 진단 조회 |
 | `GET` | `/api/ai-rules` | 현재 활성화된 버전별 AI 규칙 목록 조회 |
 
@@ -157,6 +158,9 @@ Controller(API)
 - `User`
 - `Facility`
 - `ProcedureRecord`
+  - 기존 `procedureName`, `careGuide` 조회 계약을 유지한다.
+  - Treatment Context는 nullable 시술 코드·유형·부위, nullable 예상 회복일 최소/최대, 정상/경고 증상, 사후 제한, 허용/제한 제품 태그, nullable 출처·규칙 버전으로 저장한다.
+  - 컨텍스트 조회는 지정일 이하 기록 중 가장 최신 시술을 사용하여 `daysSinceTreatment`를 계산한다. 미래 시술은 제외하며, 원본에 없는 의학적 값은 채우지 않는다.
 - `WhsSkinDiagnosis` (WHS 초기 Baseline)
   - `WhsSkinDiagnosisMetric`: 진단당 항목별 1건. 피부 나이, 이마·눈꼬리·눈밑 주름, 색소, 피부 균일도, 여드름, 블랙헤드, 다크서클, 눈처짐, 모공을 지원한다.
   - `userScore`와 `averageScore`는 nullable 원본값이며 서비스가 평균·차이·종합점수를 추론해 저장하지 않는다. `grade`는 `EXCELLENT`, `NORMAL`, `NEEDS_IMPROVEMENT` 또는 미제공(null)이다.

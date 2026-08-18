@@ -37,4 +37,12 @@ public class ProcedureRecordService {
         }
         return records;
     }
+
+    public TreatmentContext getTreatmentContext(String userCode, LocalDate referenceDate) {
+        ProcedureRecord record = procedureRecordRepository
+                .findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDescIdDesc(
+                        userCode, referenceDate)
+                .orElseThrow(() -> new BusinessException(ErrorCode.PROCEDURE_NOT_FOUND));
+        return TreatmentContext.from(record, referenceDate);
+    }
 }

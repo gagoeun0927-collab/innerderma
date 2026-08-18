@@ -45,4 +45,9 @@ public class ProcedureRecordService {
                 .orElseThrow(() -> new BusinessException(ErrorCode.PROCEDURE_NOT_FOUND));
         return TreatmentContext.from(record, referenceDate);
     }
+
+    public ProcedureRecord getProcedureRecord(String userCode, Long id) {
+        return procedureRecordRepository.findByIdAndUser_UserCode(id, userCode)
+                .orElseThrow(() -> new BusinessException(ErrorCode.PROCEDURE_NOT_FOUND));
+    }
 }

@@ -153,7 +153,6 @@ public class SkinCaptureService {
                         userCode, resolvedFrom, resolvedTo, SkinCaptureQualityStatus.VALID);
         return new SkinCaptureHistoryResult(resolvedFrom, resolvedTo, items);
     }
-    }
 
     private void validate(SkinCaptureFile file) {
         if (file == null || file.bytes() == null || file.size() <= 0 || file.size() != file.bytes().length) {

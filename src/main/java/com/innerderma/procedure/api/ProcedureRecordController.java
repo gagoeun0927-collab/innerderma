@@ -44,4 +44,13 @@ public class ProcedureRecordController {
         return ApiResponse.success(TreatmentContextResponse.from(
                 procedureRecordService.getTreatmentContext(userCode, date)));
     }
+
+    @GetMapping("/{id}")
+    public ApiResponse<ProcedureRecordResponse> getProcedureRecord(
+            @PathVariable String userCode,
+            @PathVariable Long id
+    ) {
+        return ApiResponse.success(ProcedureRecordResponse.from(
+                procedureRecordService.getProcedureRecord(userCode, id)));
+    }
 }

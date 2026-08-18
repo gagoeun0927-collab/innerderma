@@ -70,7 +70,6 @@ class SkinCaptureServiceTest {
     }
 
     @Test
-    @Test
     void storesLowResolutionCaptureAsQualityCheckFailed() {
         User user = new User(USER_CODE, "테스트 사용자", "010-1234-1234");
         SkinCaptureFile file = realJpeg("face.jpg", 200, 200);
@@ -148,7 +147,6 @@ class SkinCaptureServiceTest {
                 .isInstanceOfSatisfying(BusinessException.class, exception ->
                         assertThat(exception.errorCode()).isEqualTo(ErrorCode.USER_NOT_FOUND)
                 );
-    }
     }
 
     @Test

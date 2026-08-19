@@ -1,0 +1,23 @@
+name: Deploy InnerDerma
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /opt/innerderma
+            git pull origin main
+            docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml build app-api
+            docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d app-api
+            docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml restart frontend

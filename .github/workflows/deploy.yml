@@ -26,7 +26,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Build & Test
-        run: ./gradlew build --no-daemon
+        run: chmod +x ./gradlew && ./gradlew build --no-daemon
 
   deploy:
     runs-on: ubuntu-latest

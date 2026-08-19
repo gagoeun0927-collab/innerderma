@@ -17,4 +17,7 @@ public interface SkinStateSnapshotRepository extends JpaRepository<SkinStateSnap
 
     @EntityGraph(attributePaths = "user")
     List<SkinStateSnapshot> findTop2ByUser_UserCodeOrderBySnapshotDateDesc(String userCode);
+
+    List<SkinStateSnapshot> findByUser_UserCodeAndSnapshotDateAfterOrderBySnapshotDateDesc(
+            String userCode, LocalDate after);
 }

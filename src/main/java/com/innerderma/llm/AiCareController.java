@@ -11,6 +11,8 @@ import com.innerderma.airule.validation.ResponseValidator;
 import com.innerderma.common.response.ApiResponse;
 import com.innerderma.knowledge.product.ProductMatchResult;
 import com.innerderma.knowledge.product.ProductMatcher;
+import com.innerderma.knowledge.product.usage.ProductRecommendationLog;
+import com.innerderma.knowledge.product.usage.ProductRecommendationLogRepository;
 import com.innerderma.procedure.domain.ProcedureRecord;
 import com.innerderma.procedure.domain.ProcedureRecordRepository;
 import com.innerderma.skinstate.domain.SkinStateSnapshot;
@@ -51,6 +53,7 @@ public class AiCareController {
     private final ProcedureRecordRepository procedureRecordRepository;
     private final UserService userService;
     private final SolutionCache solutionCache;
+    private final ProductRecommendationLogRepository recommendationLogRepository;
 
     public AiCareController(SolutionAssembler solutionAssembler,
                             ProductMatcher productMatcher,
@@ -59,7 +62,8 @@ public class AiCareController {
                             SkinStateSnapshotRepository snapshotRepository,
                             ProcedureRecordRepository procedureRecordRepository,
                             UserService userService,
-                            SolutionCache solutionCache) {
+                            SolutionCache solutionCache,
+                            ProductRecommendationLogRepository recommendationLogRepository) {
         this.solutionAssembler = solutionAssembler;
         this.productMatcher = productMatcher;
         this.llmRenderer = llmRenderer;
@@ -68,6 +72,7 @@ public class AiCareController {
         this.procedureRecordRepository = procedureRecordRepository;
         this.userService = userService;
         this.solutionCache = solutionCache;
+        this.recommendationLogRepository = recommendationLogRepository;
     }
 
     @Operation(summary = "AI Care 생성", description = "피부 상태 기반 AI 케어 솔루션을 생성합니다. 같은 날 동일 조건이면 캐시 결과를 반환합니다.")
@@ -104,10 +109,13 @@ public class AiCareController {
         String treatmentCode = resolveLatestTreatmentCode(userCode);
 
         // 4. Product Matching (treatment 유형에 따라 자동 필터)
-        ProductMatchResult products = productMatcher.match(solution, primaryConcern, treatmentCode, List.of());
+        ProductMatchResult products = productMatcher.match(solution, primaryConcern, treatmentCode, List.of(), userCode);
 
         // Cache 저장
         solutionCache.put(cacheKey, new SolutionCacheEntry(solution, products, java.time.LocalDateTime.now()));
+
+        // 추천 이력 저장 (빈도 제한용)
+        saveRecommendationLog(userCode, products);
 
         // 5. LLM 렌더링 (locale 기반 다국어)
         LlmResponse llmResponse = llmRenderer.render(solution, products, resolvedLocale);
@@ -161,6 +169,17 @@ public class AiCareController {
         products.morningProducts().forEach(p -> sources.put(p.productId(), "PIECE_SEOUL"));
         products.innerCareProducts().forEach(p -> sources.put(p.productId(), "WIM_STORE"));
         return sources;
+    }
+
+    private void saveRecommendationLog(String userCode, ProductMatchResult products) {
+        var user = userService.getByUserCode(userCode);
+        LocalDate today = LocalDate.now();
+        products.nightProducts().forEach(p ->
+                recommendationLogRepository.save(new ProductRecommendationLog(user, p.productId(), "PIECE_SEOUL", today)));
+        products.morningProducts().forEach(p ->
+                recommendationLogRepository.save(new ProductRecommendationLog(user, p.productId(), "PIECE_SEOUL", today)));
+        products.innerCareProducts().forEach(p ->
+                recommendationLogRepository.save(new ProductRecommendationLog(user, p.productId(), "WIM_STORE", today)));
     }
 
     private String resolvePrimaryConcern(String userCode) {

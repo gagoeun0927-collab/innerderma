@@ -1,12 +1,16 @@
 package com.innerderma.knowledge.product;
 
 import com.innerderma.airule.solution.SolutionObject;
+import com.innerderma.knowledge.product.usage.ProductRecommendationLogRepository;
 import com.innerderma.knowledge.treatment.TreatmentKnowledgeBase;
 import com.innerderma.knowledge.treatment.TreatmentRule;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Rule Engine의 SolutionObject 결과와 Knowledge Base를 조합해 적합 제품을 선택한다.
@@ -29,17 +33,26 @@ public class ProductMatcher {
     private final PieceSeoulKnowledgeBase pieceSeoulKb;
     private final WimStoreKnowledgeBase wimStoreKb;
     private final TreatmentKnowledgeBase treatmentKb;
+    private final ProductRecommendationLogRepository recommendationLogRepository;
 
     public ProductMatcher(PieceSeoulKnowledgeBase pieceSeoulKb,
                           WimStoreKnowledgeBase wimStoreKb,
-                          TreatmentKnowledgeBase treatmentKb) {
+                          TreatmentKnowledgeBase treatmentKb,
+                          ProductRecommendationLogRepository recommendationLogRepository) {
         this.pieceSeoulKb = pieceSeoulKb;
         this.wimStoreKb = wimStoreKb;
         this.treatmentKb = treatmentKb;
+        this.recommendationLogRepository = recommendationLogRepository;
     }
 
     public ProductMatchResult match(SolutionObject solution, String primaryConcern,
                                     String treatmentCode, List<String> userAllergens) {
+        return match(solution, primaryConcern, treatmentCode, userAllergens, null);
+    }
+
+    public ProductMatchResult match(SolutionObject solution, String primaryConcern,
+                                    String treatmentCode, List<String> userAllergens,
+                                    String userCode) {
         Map<String, Object> actions = solution.actions();
         List<String> restrictions = solution.restrictions();
 
@@ -66,10 +79,22 @@ public class ProductMatcher {
         List<WimStoreProduct> innerCareCandidates = wimStoreKb.filter(
                 primaryConcern, userAllergens, List.of());
 
+        // 빈도 제한: 최근 추천된 제품 제외
+        Set<String> recentlyRecommended = getRecentlyRecommendedProducts(userCode);
+        List<PieceSeoulProduct> nightFiltered = nightCandidates.stream()
+                .filter(p -> !isFrequencyLimited(p.productId(), p.frequencyDays(), recentlyRecommended, userCode))
+                .toList();
+        List<PieceSeoulProduct> morningFiltered = morningCandidates.stream()
+                .filter(p -> !isFrequencyLimited(p.productId(), p.frequencyDays(), recentlyRecommended, userCode))
+                .toList();
+        List<WimStoreProduct> innerCareFiltered = innerCareCandidates.stream()
+                .filter(p -> !isFrequencyLimited(p.productId(), p.frequencyDays(), recentlyRecommended, userCode))
+                .toList();
+
         // Step 상한 적용
-        List<PieceSeoulProduct> nightProducts = nightCandidates.stream().limit(nightMax).toList();
-        List<PieceSeoulProduct> morningProducts = morningCandidates.stream().limit(morningMax).toList();
-        List<WimStoreProduct> innerCareProducts = innerCareCandidates.stream().limit(innerCareMax).toList();
+        List<PieceSeoulProduct> nightProducts = nightFiltered.stream().limit(nightMax).toList();
+        List<PieceSeoulProduct> morningProducts = morningFiltered.stream().limit(morningMax).toList();
+        List<WimStoreProduct> innerCareProducts = innerCareFiltered.stream().limit(innerCareMax).toList();
 
         return new ProductMatchResult(nightProducts, morningProducts, innerCareProducts,
                 primaryConcern, treatmentCode);
@@ -88,5 +113,35 @@ public class ProductMatcher {
             return number.intValue();
         }
         return defaultValue;
+    }
+
+    /**
+     * 최근 추천 로그에서 빈도 제한 내에 추천된 제품 ID 집합을 조회한다.
+     * userCode가 null이면 빈 집합 (빈도 체크 안 함).
+     */
+    private Set<String> getRecentlyRecommendedProducts(String userCode) {
+        if (userCode == null) return Set.of();
+        LocalDate cutoff = LocalDate.now().minusDays(7); // 최대 7일 내 이력만 조회
+        return recommendationLogRepository
+                .findByUser_UserCodeAndRecommendedDateAfter(userCode, cutoff)
+                .stream()
+                .map(log -> log.getProductId() + ":" + log.getRecommendedDate())
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * 제품의 빈도 제한에 걸렸는지 확인.
+     * frequencyDays=1이면 매일 추천 → 제한 없음.
+     * frequencyDays=2이면 어제 추천됐으면 제외.
+     */
+    private boolean isFrequencyLimited(String productId, int frequencyDays,
+                                       Set<String> recentlyRecommended, String userCode) {
+        if (userCode == null || frequencyDays <= 1) return false;
+        LocalDate today = LocalDate.now();
+        for (int i = 1; i < frequencyDays; i++) {
+            String key = productId + ":" + today.minusDays(i);
+            if (recentlyRecommended.contains(key)) return true;
+        }
+        return false;
     }
 }

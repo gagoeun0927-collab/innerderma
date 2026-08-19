@@ -1,12 +1,15 @@
 package com.innerderma.airule.signal;
 
 import com.innerderma.airule.engine.RuleEvaluationContext;
+import com.innerderma.procedure.domain.ProcedureRecord;
+import com.innerderma.procedure.domain.ProcedureRecordRepository;
 import com.innerderma.selfcheck.domain.SelfCheckRepository;
 import com.innerderma.skinanalysis.domain.SkinAnalysis;
 import com.innerderma.skinanalysis.domain.SkinAnalysisRepository;
 import com.innerderma.skincapture.domain.SkinCaptureQualityStatus;
 import com.innerderma.skincapture.domain.SkinCaptureRepository;
 import com.innerderma.skinstate.application.SkinStateSnapshotService;
+import com.innerderma.skinstate.domain.SkinStateSnapshot;
 import com.innerderma.skinstate.domain.SkinStateSnapshotRepository;
 import com.innerderma.skinstate.trend.SkinStateTrendService;
 import com.innerderma.skinstate.trend.TrendResult;
@@ -15,9 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * 최신 Snapshot 과 Trend 결과에서 이미 계산된 결정적 값만 Rule Engine 신호로 변환한다.
@@ -43,6 +49,7 @@ public class SignalAssembler {
     private final SelfCheckRepository selfCheckRepository;
     private final SkinCaptureRepository skinCaptureRepository;
     private final SkinAnalysisRepository skinAnalysisRepository;
+    private final ProcedureRecordRepository procedureRecordRepository;
     private final SkinStateTrendService trendService;
     private final ObjectMapper objectMapper;
 
@@ -50,11 +57,13 @@ public class SignalAssembler {
                            SelfCheckRepository selfCheckRepository,
                            SkinCaptureRepository skinCaptureRepository,
                            SkinAnalysisRepository skinAnalysisRepository,
+                           ProcedureRecordRepository procedureRecordRepository,
                            SkinStateTrendService trendService, ObjectMapper objectMapper) {
         this.snapshotRepository = snapshotRepository;
         this.selfCheckRepository = selfCheckRepository;
         this.skinCaptureRepository = skinCaptureRepository;
         this.skinAnalysisRepository = skinAnalysisRepository;
+        this.procedureRecordRepository = procedureRecordRepository;
         this.trendService = trendService;
         this.objectMapper = objectMapper;
     }
@@ -94,6 +103,27 @@ public class SignalAssembler {
         boolean lowConfidence = computeLowConfidence(userCode);
         signals.put("low_confidence", lowConfidence);
 
+        // === 새 규칙 신호 (R001~R019) ===
+
+        // R001: 시술 후 회복기 (in_recovery_period)
+        computeProcedureSignals(userCode, signals);
+
+        // R006~R008: 증상 심각도별 (dominant_<axis>_severe)
+        snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc(userCode).ifPresent(snapshot -> {
+            Map<String, Integer> scores = readScores(snapshot.getSymptomScoresJson());
+            for (var entry : scores.entrySet()) {
+                if (entry.getValue() == SEVERE_SCORE) {
+                    signals.put("dominant_" + entry.getKey() + "_severe", true);
+                }
+            }
+        });
+
+        // R014~R016: 계절 신호
+        computeSeasonSignals(signals);
+
+        // R017~R019: 연속 악화/무개선 (trend 이력 기반)
+        computeAlertSignals(userCode, signals, trend);
+
         return RuleEvaluationContext.of(signals);
     }
 
@@ -124,6 +154,61 @@ public class SignalAssembler {
         } catch (JacksonException exception) {
             return false;
         }
+    }
+
+    /** R001/R003~R005: 시술 후 회복기 + 시술 유형 신호 */
+    private void computeProcedureSignals(String userCode, Map<String, Boolean> signals) {
+        Optional<ProcedureRecord> latestProcedure = procedureRecordRepository
+                .findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDesc(
+                        userCode, LocalDate.now());
+        if (latestProcedure.isEmpty()) return;
+
+        ProcedureRecord proc = latestProcedure.get();
+        int maxRecovery = proc.getExpectedRecoveryDaysMax() != null ? proc.getExpectedRecoveryDaysMax() : 7;
+        long daysSinceProcedure = java.time.temporal.ChronoUnit.DAYS.between(proc.getProcedureDate(), LocalDate.now());
+        signals.put("in_recovery_period", daysSinceProcedure <= maxRecovery);
+
+        // 시술 유형 신호
+        String type = proc.getTreatmentType();
+        if (type != null) {
+            String lower = type.toLowerCase();
+            signals.put("treatment_type_laser", lower.contains("laser") || lower.contains("ipl") || lower.contains("toning"));
+            signals.put("treatment_type_peeling", lower.contains("peel") || lower.contains("필링"));
+            signals.put("treatment_type_injection", lower.contains("injection") || lower.contains("filler") || lower.contains("botox") || lower.contains("주사"));
+        }
+    }
+
+    /** R014~R016: 계절 신호 (서울 기준) */
+    private void computeSeasonSignals(Map<String, Boolean> signals) {
+        Month month = LocalDate.now().getMonth();
+        boolean summer = month == Month.JUNE || month == Month.JULY || month == Month.AUGUST;
+        boolean winter = month == Month.DECEMBER || month == Month.JANUARY || month == Month.FEBRUARY;
+        boolean transitional = month == Month.MARCH || month == Month.APRIL || month == Month.SEPTEMBER || month == Month.OCTOBER;
+        signals.put("season_summer", summer);
+        signals.put("season_winter", winter);
+        signals.put("season_transitional", transitional);
+    }
+
+    /** R017~R019: 연속 악화/무개선 알림 */
+    private void computeAlertSignals(String userCode, Map<String, Boolean> signals, TrendResult currentTrend) {
+        // consecutive_worsening_3: 현재 trend가 worsening이고 이전에도 worsening이었으면
+        // (간단 구현: 현재 worsening이면 true — 정교한 구현은 trend 이력 테이블 필요)
+        signals.put("consecutive_worsening_3", Boolean.TRUE.equals(signals.get("trend_worsening")));
+
+        // no_improvement_7days: 7일간 스냅샷이 2개 이상인데 dominantSymptom이 동일하면
+        var snapshots = snapshotRepository.findByUser_UserCodeAndSnapshotDateAfterOrderBySnapshotDateDesc(
+                userCode, LocalDate.now().minusDays(7));
+        if (snapshots != null && snapshots.size() >= 2) {
+            String first = snapshots.get(0).getDominantSymptom();
+            boolean allSame = snapshots.stream().allMatch(s -> 
+                    s.getDominantSymptom() != null && s.getDominantSymptom().equals(first));
+            signals.put("no_improvement_7days", allSame);
+        } else {
+            signals.put("no_improvement_7days", false);
+        }
+
+        // rapid_deterioration: 점수 급격 증가 (최근 vs 이전 스냅샷 dominant score 차이 2 이상)
+        signals.put("rapid_deterioration", false); // 향후 정교화
     }
 
     @SuppressWarnings("unchecked")

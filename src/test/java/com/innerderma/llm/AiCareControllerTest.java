@@ -57,7 +57,7 @@ class AiCareControllerTest {
         solutionCache = mock(SolutionCache.class);
         when(solutionCache.get(any())).thenReturn(Optional.empty());
         mockMvc = MockMvcBuilders.standaloneSetup(
-                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository, procedureRecordRepository, userService, solutionCache))
+                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository, procedureRecordRepository, userService, solutionCache, mock(com.innerderma.knowledge.product.usage.ProductRecommendationLogRepository.class)))
                 .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
         when(procedureRecordRepository.findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDesc(any(), any()))
@@ -90,7 +90,7 @@ class AiCareControllerTest {
                 "WIM_001", "WIM", "콜라겐 젤리", "JELLY",
                 List.of("HYDRATION"), List.of(), List.of(), List.of(),
                 "1일 1포", List.of("콜라겐 함유"), List.of(), List.of(), true, 45000, null, null, null);
-        when(productMatcher.match(any(), eq("HYDRATION"), any(), any()))
+        when(productMatcher.match(any(), eq("HYDRATION"), any(), any(), any()))
                 .thenReturn(new ProductMatchResult(List.of(nightProduct), List.of(), List.of(innerProduct), "HYDRATION", null));
 
         // LLM response
@@ -131,7 +131,7 @@ class AiCareControllerTest {
         when(solutionAssembler.assembleForUser("WHS-DEMO-001")).thenReturn(solution);
         when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
                 .thenReturn(Optional.empty());
-        when(productMatcher.match(any(), any(), any(), any()))
+        when(productMatcher.match(any(), any(), any(), any(), any()))
                 .thenReturn(new ProductMatchResult(List.of(), List.of(), List.of(), "STABLE", null));
 
         LlmResponse llmResponse = new LlmResponse(
@@ -157,7 +157,7 @@ class AiCareControllerTest {
         when(solutionAssembler.assembleForUser("WHS-DEMO-001")).thenReturn(solution);
         when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
                 .thenReturn(Optional.empty());
-        when(productMatcher.match(any(), eq("STABLE"), any(), any()))
+        when(productMatcher.match(any(), eq("STABLE"), any(), any(), any()))
                 .thenReturn(new ProductMatchResult(List.of(), List.of(), List.of(), "STABLE", null));
 
         // locale 미지정 → userService에서 preferredLocale 조회

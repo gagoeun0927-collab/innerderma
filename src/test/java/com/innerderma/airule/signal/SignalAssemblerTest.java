@@ -41,7 +41,7 @@ class SignalAssemblerTest {
         skinCaptureRepository = mock(SkinCaptureRepository.class);
         com.innerderma.skinanalysis.domain.SkinAnalysisRepository skinAnalysisRepository = mock(com.innerderma.skinanalysis.domain.SkinAnalysisRepository.class);
         trendService = mock(SkinStateTrendService.class);
-        assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, skinAnalysisRepository, trendService, new ObjectMapper());
+        assembler = new SignalAssembler(snapshotRepository, selfCheckRepository, skinCaptureRepository, skinAnalysisRepository, mock(com.innerderma.procedure.domain.ProcedureRecordRepository.class), trendService, new ObjectMapper());
         when(selfCheckRepository.findFirstByUser_UserCodeOrderByCheckedAtDesc(USER_CODE))
                 .thenReturn(Optional.empty());
         when(skinCaptureRepository.findFirstByUser_UserCodeOrderByCapturedAtDesc(USER_CODE))

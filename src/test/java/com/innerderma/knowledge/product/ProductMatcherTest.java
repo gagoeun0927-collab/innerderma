@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
 class ProductMatcherTest {
 
@@ -24,7 +25,7 @@ class ProductMatcherTest {
         wimKb.load();
         TreatmentKnowledgeBase treatmentKb = new TreatmentKnowledgeBase(om);
         treatmentKb.load();
-        matcher = new ProductMatcher(pieceKb, wimKb, treatmentKb);
+        matcher = new ProductMatcher(pieceKb, wimKb, treatmentKb, mock(com.innerderma.knowledge.product.usage.ProductRecommendationLogRepository.class));
     }
 
     @Test

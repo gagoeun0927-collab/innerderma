@@ -9,6 +9,8 @@ import com.innerderma.skincapture.application.SkinCaptureFile;
 import com.innerderma.skincapture.application.SkinCaptureService;
 import com.innerderma.skincapture.domain.SkinCapture;
 import com.innerderma.skincapture.domain.SkinCaptureQualityStatus;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.time.LocalDate;
 
+@Tag(name = "Skin Capture", description = "피부 사진 촬영 — 업로드, 이력, 분석 원스텝")
 @RestController
 @RequestMapping("/api/users/{userCode}/skin-captures")
 public class SkinCaptureController {
@@ -36,6 +39,7 @@ public class SkinCaptureController {
         this.skinAnalysisService = skinAnalysisService;
     }
 
+    @Operation(summary = "피부 사진 업로드", description = "피부 사진을 업로드합니다. 품질 게이트를 통과해야 VALID 상태가 됩니다.")
     @PostMapping(consumes = "multipart/form-data")
     @ResponseStatus(HttpStatus.CREATED)
     public ApiResponse<SkinCaptureResponse> create(
@@ -55,10 +59,7 @@ public class SkinCaptureController {
         }
     }
 
-    /**
-     * 사진 업로드 + SkinAge 분석을 한 번에 수행하는 원스텝 API.
-     * 업로드 → 품질 게이트 → VALID이면 자동으로 SkinAge 분석 호출 → 결과 반환.
-     */
+    @Operation(summary = "사진 업로드 + 분석 원스텝", description = "사진 업로드 후 품질 통과 시 자동으로 SkinAge 분석까지 수행합니다.")
     @PostMapping(value = "/analyze", consumes = "multipart/form-data")
     public ApiResponse<CaptureAndAnalyzeResponse> captureAndAnalyze(
             @PathVariable String userCode,
@@ -85,16 +86,19 @@ public class SkinCaptureController {
         }
     }
 
+    @Operation(summary = "최신 촬영 조회")
     @GetMapping("/latest")
     public ApiResponse<SkinCaptureResponse> getLatest(@PathVariable String userCode) {
         return ApiResponse.success(SkinCaptureResponse.from(skinCaptureService.getLatest(userCode)));
     }
 
+    @Operation(summary = "오늘 촬영 상태")
     @GetMapping("/today")
     public ApiResponse<DailyCaptureStatusResponse> getToday(@PathVariable String userCode) {
         return ApiResponse.success(DailyCaptureStatusResponse.from(skinCaptureService.getTodayStatus(userCode)));
     }
 
+    @Operation(summary = "촬영 이력 조회", description = "기간별 유효 촬영 기록을 조회합니다 (최대 31일).")
     @GetMapping("/history")
     public ApiResponse<SkinCaptureHistoryResponse> getHistory(
             @PathVariable String userCode,

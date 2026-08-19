@@ -32,7 +32,15 @@ class SelfCheckControllerTest {
     @BeforeEach
     void setUp() {
         service = mock(SelfCheckService.class);
-        mockMvc = MockMvcBuilders.standaloneSetup(new SelfCheckController(service))
+        var snapshotService = mock(com.innerderma.skinstate.application.SkinStateSnapshotService.class);
+        when(snapshotService.refreshFromLatestSelfCheck(any())).thenReturn(
+                new com.innerderma.skinstate.application.SkinStateSnapshotResult(
+                        new com.innerderma.skinstate.domain.SkinStateSnapshot(
+                                new User("WHS-DEMO-001", "test", "010"), java.time.LocalDate.of(2026, 8, 17),
+                                "selfcheck-ordinal-v1", "{}", null, "pain", 1L, null,
+                                LocalDateTime.of(2026, 8, 17, 12, 30)),
+                        java.util.Map.of()));
+        mockMvc = MockMvcBuilders.standaloneSetup(new SelfCheckController(service, snapshotService))
                 .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
     }
@@ -63,8 +71,9 @@ class SelfCheckControllerTest {
                         .content(validRequest("MODERATE")))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.success").value(true))
-                .andExpect(jsonPath("$.data.pain").value("MODERATE"))
-                .andExpect(jsonPath("$.data.requiresSafetyAttention").value(true));
+                .andExpect(jsonPath("$.data.selfCheck.pain").value("MODERATE"))
+                .andExpect(jsonPath("$.data.selfCheck.requiresSafetyAttention").value(true))
+                .andExpect(jsonPath("$.data.snapshot.dominantSymptom").value("pain"));
     }
 
     @Test

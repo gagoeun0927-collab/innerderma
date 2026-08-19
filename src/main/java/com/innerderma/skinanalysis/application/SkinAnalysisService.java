@@ -8,6 +8,7 @@ import com.innerderma.skinanalysis.domain.SkinAnalysisRepository;
 import com.innerderma.skincapture.application.SkinCaptureStorage;
 import com.innerderma.skincapture.domain.SkinCapture;
 import com.innerderma.skincapture.domain.SkinCaptureRepository;
+import com.innerderma.skinstate.application.SkinStateSnapshotService;
 import com.innerderma.user.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,7 @@ public class SkinAnalysisService {
     private final SkinAgeClient skinAgeClient;
     private final ObjectMapper objectMapper;
     private final SolutionCache solutionCache;
+    private final SkinStateSnapshotService snapshotService;
     private final Clock clock;
 
     @Autowired
@@ -50,10 +52,11 @@ public class SkinAnalysisService {
             SkinCaptureStorage storage,
             SkinAgeClient skinAgeClient,
             ObjectMapper objectMapper,
-            SolutionCache solutionCache
+            SolutionCache solutionCache,
+            SkinStateSnapshotService snapshotService
     ) {
         this(analysisRepository, captureRepository, userRepository, storage, skinAgeClient,
-                objectMapper, solutionCache, Clock.system(MVP_ZONE));
+                objectMapper, solutionCache, snapshotService, Clock.system(MVP_ZONE));
     }
 
     SkinAnalysisService(
@@ -64,6 +67,7 @@ public class SkinAnalysisService {
             SkinAgeClient skinAgeClient,
             ObjectMapper objectMapper,
             SolutionCache solutionCache,
+            SkinStateSnapshotService snapshotService,
             Clock clock
     ) {
         this.analysisRepository = analysisRepository;
@@ -73,6 +77,7 @@ public class SkinAnalysisService {
         this.skinAgeClient = skinAgeClient;
         this.objectMapper = objectMapper;
         this.solutionCache = solutionCache;
+        this.snapshotService = snapshotService;
         this.clock = clock;
     }
 
@@ -110,6 +115,10 @@ public class SkinAnalysisService {
         );
         SkinAnalysis saved = analysisRepository.save(analysis);
         solutionCache.invalidate(userCode);
+
+        // SkinAge 분석 결과를 최신 스냅샷에 자동 반영
+        snapshotService.updateAnalysisScores(userCode, saved.getId(), saved.getRawResult());
+
         return new SkinAnalysisResult(saved, result);
     }
 

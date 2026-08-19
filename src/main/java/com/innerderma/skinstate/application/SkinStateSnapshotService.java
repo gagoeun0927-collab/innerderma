@@ -133,6 +133,19 @@ public class SkinStateSnapshotService {
         return new SkinStateSnapshotResult(snapshot, readScores(snapshot.getSymptomScoresJson()));
     }
 
+    /**
+     * SkinAge 분석 완료 시 최신 스냅샷에 analysisScoresJson을 업데이트한다.
+     * 스냅샷이 없으면 무시 (아직 자가문진 전).
+     */
+    @Transactional
+    public void updateAnalysisScores(String userCode, Long analysisId, String rawResult) {
+        snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc(userCode)
+                .ifPresent(snapshot -> {
+                    String analysisScoresJson = extractConcernAverages(rawResult);
+                    snapshot.applyAnalysisScores(analysisId, analysisScoresJson, LocalDateTime.now(clock));
+                });
+    }
+
     private Map<String, Integer> scoreSelfCheck(SelfCheck selfCheck) {
         Map<String, Integer> scores = new LinkedHashMap<>();
         scores.put("pain", ordinalScore(selfCheck.getPain()));

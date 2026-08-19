@@ -97,6 +97,13 @@ public class SkinStateSnapshot {
         this.updatedAt = now;
     }
 
+    /** SkinAge 분석 완료 시 analysisScoresJson만 업데이트한다. */
+    public void applyAnalysisScores(Long sourceAnalysisId, String analysisScoresJson, LocalDateTime now) {
+        this.sourceAnalysisId = sourceAnalysisId;
+        this.analysisScoresJson = analysisScoresJson;
+        this.updatedAt = now;
+    }
+
     public Long getId() { return id; }
     public User getUser() { return user; }
     public LocalDate getSnapshotDate() { return snapshotDate; }

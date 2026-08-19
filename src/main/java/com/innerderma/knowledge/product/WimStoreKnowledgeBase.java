@@ -83,6 +83,7 @@ public class WimStoreKnowledgeBase {
         Integer price;
         @JsonProperty("official_url") String officialUrl;
         @JsonProperty("image_url") String imageUrl;
+        @JsonProperty("recommend_frequency_days") Integer recommendFrequencyDays;
 
         WimStoreProduct toProduct() {
             return new WimStoreProduct(productId, brand, name, category,
@@ -94,7 +95,7 @@ public class WimStoreKnowledgeBase {
                     verifiedClaims != null ? verifiedClaims : List.of(),
                     ingredientsHighlight != null ? ingredientsHighlight : List.of(),
                     warnings != null ? warnings : List.of(),
-                    isActive, price, officialUrl, imageUrl);
+                    isActive, price, officialUrl, imageUrl, recommendFrequencyDays);
         }
     }
 }

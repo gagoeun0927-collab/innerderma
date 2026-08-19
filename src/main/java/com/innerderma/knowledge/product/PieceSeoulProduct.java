@@ -25,9 +25,15 @@ public record PieceSeoulProduct(
         boolean isActive,
         Integer price,
         String officialUrl,
-        String imageUrl
+        String imageUrl,
+        Integer recommendFrequencyDays
 ) {
     public record RestrictedTreatment(String treatment, int restrictDays) {}
+
+    /** 추천 빈도 일수. null이면 1(매일). */
+    public int frequencyDays() {
+        return recommendFrequencyDays != null ? recommendFrequencyDays : 1;
+    }
 
     public boolean isCompatibleWith(String treatmentCode) {
         if (treatmentCompatibility == null || treatmentCompatibility.isEmpty()) return true;

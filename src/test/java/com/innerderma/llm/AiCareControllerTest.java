@@ -85,11 +85,11 @@ class AiCareControllerTest {
                 "PSS_001", "Piece Seoul", "Cica Cream", "MOISTURIZER",
                 List.of("barrier"), List.of("HYDRATION"), List.of(), List.of(),
                 List.of("night"), "daily", "fingertip", "얼굴 전체 도포",
-                List.of(), List.of("장벽 강화"), List.of(), List.of(), true, 38000, null, null);
+                List.of(), List.of("장벽 강화"), List.of(), List.of(), true, 38000, null, null, null);
         WimStoreProduct innerProduct = new WimStoreProduct(
                 "WIM_001", "WIM", "콜라겐 젤리", "JELLY",
                 List.of("HYDRATION"), List.of(), List.of(), List.of(),
-                "1일 1포", List.of("콜라겐 함유"), List.of(), List.of(), true, 45000, null, null);
+                "1일 1포", List.of("콜라겐 함유"), List.of(), List.of(), true, 45000, null, null, null);
         when(productMatcher.match(any(), eq("HYDRATION"), any(), any()))
                 .thenReturn(new ProductMatchResult(List.of(nightProduct), List.of(), List.of(innerProduct), "HYDRATION", null));
 

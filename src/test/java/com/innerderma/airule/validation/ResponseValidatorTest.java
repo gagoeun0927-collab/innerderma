@@ -138,12 +138,12 @@ class ResponseValidatorTest {
         return new PieceSeoulProduct(id, "Brand", "Name", "MOISTURIZER",
                 List.of(), List.of(), List.of(), List.of(),
                 List.of("night"), "daily", "1ml", "도포",
-                List.of(), List.of(), List.of(), List.of(), active, 10000, null, null);
+                List.of(), List.of(), List.of(), List.of(), active, 10000, null, null, null);
     }
 
     private WimStoreProduct wimProduct(String id, boolean active) {
         return new WimStoreProduct(id, "Brand", "Name", "JELLY",
                 List.of(), List.of(), List.of(), List.of(),
-                "1일 1포", List.of(), List.of(), List.of(), active, 20000, null, null);
+                "1일 1포", List.of(), List.of(), List.of(), active, 20000, null, null, null);
     }
 }

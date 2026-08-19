@@ -8,10 +8,13 @@ package com.innerderma.airule.domain;
 public enum AiRuleCategory {
     SAFETY,
     INPUT_IMAGE,
+    PROCEDURE,
     TREATMENT,
     TREND,
     SKIN_STATE,
     PRIORITY_GOAL,
+    SEASON,
+    ALERT,
     PIECE_SEOUL,
     WIM_INNER_CARE,
     NIGHT_CARE,

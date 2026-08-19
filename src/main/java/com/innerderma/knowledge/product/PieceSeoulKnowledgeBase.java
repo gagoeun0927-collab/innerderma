@@ -100,6 +100,7 @@ public class PieceSeoulKnowledgeBase {
         Integer price;
         @JsonProperty("official_url") String officialUrl;
         @JsonProperty("image_url") String imageUrl;
+        @JsonProperty("recommend_frequency_days") Integer recommendFrequencyDays;
 
         PieceSeoulProduct toProduct() {
             List<PieceSeoulProduct.RestrictedTreatment> restricted = restrictedAfterTreatments == null
@@ -117,7 +118,7 @@ public class PieceSeoulKnowledgeBase {
                     verifiedClaims != null ? verifiedClaims : List.of(),
                     ingredientsHighlight != null ? ingredientsHighlight : List.of(),
                     allergens != null ? allergens : List.of(),
-                    isActive, price, officialUrl, imageUrl);
+                    isActive, price, officialUrl, imageUrl, recommendFrequencyDays);
         }
     }
 

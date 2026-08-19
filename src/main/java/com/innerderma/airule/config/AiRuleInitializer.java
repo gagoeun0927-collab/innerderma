@@ -65,6 +65,103 @@ public class AiRuleInitializer {
                     "{\"low_confidence\":true}",
                     "{\"recommendation_mode\":\"CONSERVATIVE\",\"confidence_policy\":\"REDUCE\",\"limit_new_product_addition\":true}",
                     "[\"NO_DEFINITIVE_STATE\"]", "분석 신뢰도가 낮습니다. 보수적인 관리를 우선합니다.");
+
+            // === R001: 시술 후 회복기 제한 ===
+            create(repository, "R001", AiRuleCategory.SAFETY, "Post-Procedure Recovery Gate", 950,
+                    "{\"in_recovery_period\":true}",
+                    "{\"recommendation_mode\":\"CONSERVATIVE\",\"apply_treatment_restrictions\":true,\"limit_new_product_addition\":true}",
+                    "[\"NO_AGGRESSIVE_ROUTINE\",\"FOLLOW_AFTERCARE_RESTRICTIONS\"]",
+                    "시술 후 회복 기간입니다. 시술 aftercare 지침을 우선 적용합니다.");
+
+            // === R003~R005: 시술 유형별 제품 제한 ===
+            create(repository, "R003", AiRuleCategory.PROCEDURE, "Laser Treatment Restriction", 850,
+                    "{\"treatment_type_laser\":true}",
+                    "{\"restrict_tags\":[\"retinol\",\"aha\",\"bha\",\"scrub\"],\"prioritize_tags\":[\"barrier\",\"moisturizer\",\"soothing\"]}",
+                    "[\"NO_ACTIVE_INGREDIENTS_DURING_RECOVERY\"]",
+                    "레이저 시술 후에는 자극 성분을 제한하고 보습/진정을 우선합니다.");
+
+            create(repository, "R004", AiRuleCategory.PROCEDURE, "Peeling Treatment Restriction", 850,
+                    "{\"treatment_type_peeling\":true}",
+                    "{\"restrict_tags\":[\"retinol\",\"aha\",\"bha\",\"vitamin_c\"],\"prioritize_tags\":[\"moisturizer\",\"barrier\",\"sunscreen\"]}",
+                    "[\"NO_EXFOLIATION_DURING_RECOVERY\"]",
+                    "필링 시술 후에는 각질 제거 성분을 제한하고 보습/자외선 차단을 강화합니다.");
+
+            create(repository, "R005", AiRuleCategory.PROCEDURE, "Injection Treatment Restriction", 850,
+                    "{\"treatment_type_injection\":true}",
+                    "{\"restrict_tags\":[\"massage\",\"pressure\"],\"prioritize_tags\":[\"soothing\",\"moisturizer\"]}",
+                    "[\"NO_PRESSURE_ON_TREATMENT_AREA\"]",
+                    "주사 시술 후에는 시술 부위 압박을 피하고 진정 케어를 우선합니다.");
+
+            // === R006~R008: 증상 심각도별 대응 ===
+            create(repository, "R006", AiRuleCategory.SKIN_STATE, "Severe Dryness Response", 750,
+                    "{\"dominant_dryness_severe\":true}",
+                    "{\"prioritize_concern\":\"HYDRATION\",\"night_max_steps\":3,\"prioritize_tags\":[\"moisturizer\",\"barrier\",\"oil\"]}",
+                    "[\"HYDRATION_PRIORITY\"]",
+                    "심한 건조 상태입니다. 보습 집중 케어를 우선합니다.");
+
+            create(repository, "R007", AiRuleCategory.SKIN_STATE, "Severe Redness Response", 750,
+                    "{\"dominant_redness_severe\":true}",
+                    "{\"prioritize_concern\":\"REDNESS\",\"restrict_tags\":[\"retinol\",\"aha\",\"bha\"],\"prioritize_tags\":[\"soothing\",\"cica\"]}",
+                    "[\"SOOTHING_PRIORITY\",\"NO_IRRITANT_PRODUCTS\"]",
+                    "심한 홍조 상태입니다. 진정 케어를 우선하고 자극 성분을 제한합니다.");
+
+            create(repository, "R008", AiRuleCategory.SKIN_STATE, "Severe Breakout Response", 750,
+                    "{\"dominant_breakout_severe\":true}",
+                    "{\"prioritize_concern\":\"ACNE\",\"restrict_tags\":[\"oil\",\"heavy_cream\"],\"prioritize_tags\":[\"non_comedogenic\",\"lightweight\"]}",
+                    "[\"LIGHTWEIGHT_PRODUCTS_ONLY\"]",
+                    "심한 트러블 상태입니다. 가벼운 제형을 우선하고 유분기 높은 제품을 제한합니다.");
+
+            // === R011~R013: 루틴 복잡도 제한 ===
+            create(repository, "R011", AiRuleCategory.PRIORITY_GOAL, "Beginner Routine Limit", 450,
+                    "{\"user_experience_beginner\":true}",
+                    "{\"night_max_steps\":2,\"morning_max_steps\":2,\"inner_care_max_items\":0}",
+                    "[\"SIMPLE_ROUTINE_FOR_BEGINNER\"]",
+                    "간단한 루틴부터 시작합니다.");
+
+            create(repository, "R012", AiRuleCategory.PRIORITY_GOAL, "Intermediate Routine", 450,
+                    "{\"user_experience_intermediate\":true}",
+                    "{\"night_max_steps\":3,\"morning_max_steps\":2,\"inner_care_max_items\":1}",
+                    "[]", "적절한 단계의 루틴을 구성합니다.");
+
+            create(repository, "R013", AiRuleCategory.PRIORITY_GOAL, "Advanced Routine", 450,
+                    "{\"user_experience_advanced\":true}",
+                    "{\"night_max_steps\":5,\"morning_max_steps\":3,\"inner_care_max_items\":2}",
+                    "[]", "충분한 경험을 바탕으로 집중 루틴을 구성합니다.");
+
+            // === R014~R016: 계절별 조정 ===
+            create(repository, "R014", AiRuleCategory.SEASON, "Summer Season", 400,
+                    "{\"season_summer\":true}",
+                    "{\"prioritize_tags\":[\"sunscreen\",\"lightweight\",\"oil_control\"],\"restrict_tags\":[\"heavy_cream\",\"oil\"]}",
+                    "[]", "여름철에는 자외선 차단을 강화하고 가벼운 제형을 우선합니다.");
+
+            create(repository, "R015", AiRuleCategory.SEASON, "Winter Season", 400,
+                    "{\"season_winter\":true}",
+                    "{\"prioritize_tags\":[\"moisturizer\",\"barrier\",\"oil\",\"rich_cream\"],\"restrict_tags\":[\"lightweight_only\"]}",
+                    "[]", "겨울철에는 보습을 강화합니다.");
+
+            create(repository, "R016", AiRuleCategory.SEASON, "Transitional Season", 400,
+                    "{\"season_transitional\":true}",
+                    "{\"prioritize_tags\":[\"barrier\",\"soothing\"]}",
+                    "[]", "환절기에는 피부 장벽 강화와 진정을 우선합니다.");
+
+            // === R017~R019: 연속 악화 알림 ===
+            create(repository, "R017", AiRuleCategory.ALERT, "Consecutive Worsening Alert", 900,
+                    "{\"consecutive_worsening_3\":true}",
+                    "{\"safety_status\":\"CAUTION\",\"require_professional_review_message\":true,\"limit_new_product_addition\":true}",
+                    "[\"RECOMMEND_PROFESSIONAL_CONSULTATION\"]",
+                    "3회 연속 피부 상태가 악화되고 있습니다. 전문가 상담을 권장합니다.");
+
+            create(repository, "R018", AiRuleCategory.ALERT, "No Improvement Alert", 850,
+                    "{\"no_improvement_7days\":true}",
+                    "{\"recommendation_mode\":\"CONSERVATIVE\",\"suggest_routine_change\":true}",
+                    "[\"CONSIDER_ROUTINE_CHANGE\"]",
+                    "7일간 개선이 없습니다. 루틴 변경을 고려해 보세요.");
+
+            create(repository, "R019", AiRuleCategory.ALERT, "Rapid Deterioration Alert", 950,
+                    "{\"rapid_deterioration\":true}",
+                    "{\"safety_status\":\"CAUTION\",\"recommendation_mode\":\"CONSERVATIVE\",\"require_professional_review_message\":true,\"limit_new_product_addition\":true}",
+                    "[\"URGENT_PROFESSIONAL_CONSULTATION\"]",
+                    "급격한 피부 상태 악화가 감지되었습니다. 즉시 전문가 상담을 권장합니다.");
         };
     }
 

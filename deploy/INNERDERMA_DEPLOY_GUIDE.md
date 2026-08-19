@@ -235,15 +235,28 @@ docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml restart
 
 ## 인증서 자동 갱신
 
+certbot이 자동 갱신할 때 nginx에 새 인증서를 반영하는 훅을 설정합니다.
+
 ```bash
+# 훅 디렉토리 생성
 sudo mkdir -p /etc/letsencrypt/renewal-hooks/deploy
+
+# nginx reload 훅 작성
 sudo tee /etc/letsencrypt/renewal-hooks/deploy/00-reload-nginx.sh > /dev/null <<'EOF'
 #!/bin/sh
 docker compose --env-file /opt/innerderma.env -f /opt/innerderma/docker-compose.prod.yml exec -T frontend nginx -s reload
 EOF
 sudo chmod +x /etc/letsencrypt/renewal-hooks/deploy/00-reload-nginx.sh
+
+# skinage 인증서의 webroot도 InnerDerma nginx를 사용하도록 통합
+sudo sed -i 's|skinage-api.duckdns.org = .*|skinage-api.duckdns.org = /opt/innerderma/certbot-webroot|' /etc/letsencrypt/renewal/skinage-api.duckdns.org.conf
+
+# 검증 (실제 갱신 없이 dry-run)
 sudo certbot renew --dry-run
 ```
+
+> certbot.timer가 기본 활성화되어 있으므로 별도 cron은 추가하지 마세요.
+> 확인: `sudo systemctl is-enabled certbot.timer`
 
 ---
 

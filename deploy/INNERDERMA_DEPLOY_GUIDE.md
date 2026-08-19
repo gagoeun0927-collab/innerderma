@@ -57,12 +57,20 @@ docker ps | grep skinage   # 아무것도 안 나오면 OK
 
 ---
 
-## Step 2: InnerDerma 레포 클론
+## Step 2: 레포 클론
 
 ```bash
+# InnerDerma (메인 백엔드)
 sudo mkdir -p /opt/innerderma && sudo chown $USER:$USER /opt/innerderma
-git clone https://github.com/<owner>/InnerDerma.git /opt/innerderma
+git clone https://github.com/gagoeun0927-collab/InnerDerma.git /opt/innerderma
 cd /opt/innerderma
+
+# 프론트엔드
+sudo mkdir -p /opt/innerderma-frontend && sudo chown $USER:$USER /opt/innerderma-frontend
+git clone https://github.com/dunsan1008/innerderma_front.git /opt/innerderma-frontend
+
+# SkinAge (이미 /opt/skinage에 있으면 스킵)
+# Dockerfile 위치: /opt/skinage/SkinAge/Dockerfile
 ```
 
 ---
@@ -208,18 +216,17 @@ curl -X POST https://inner-derma.duckdns.org/api/auth/register \
 cd /opt/innerderma
 
 # 백엔드 업데이트
-git pull origin main
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml build app-api
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d app-api
 
 # SkinAge 업데이트
-cd /opt/skinage && git pull origin main
+cd /opt/skinage && git pull origin master
 cd /opt/innerderma
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml build skinage
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d skinage
-
+docker compose --env
 # 프론트엔드 업데이트
-cd /opt/innerderma-frontend && git pull && npm run build
+cd /opt/innerderma-frontend && git pull origin main && npm install && npm run build
 cd /opt/innerderma
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml restart frontend
 ```
@@ -247,7 +254,8 @@ sudo certbot renew --dry-run
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f
 
 # 서비스별
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f app-api
+docker compose --git pull origin main
+env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f app-api
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f skinage
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f mysql
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f frontend

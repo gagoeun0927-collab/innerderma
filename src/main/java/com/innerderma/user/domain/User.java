@@ -61,4 +61,9 @@ public class User {
         this.preferredLocale = locale != null && !locale.isBlank() ? locale.trim().toLowerCase() : "en";
     }
 
+    public void updateProfile(String name, String phoneNumber) {
+        if (name != null && !name.isBlank()) this.name = name.trim();
+        if (phoneNumber != null && !phoneNumber.isBlank()) this.phoneNumber = phoneNumber.trim();
+    }
+
 }

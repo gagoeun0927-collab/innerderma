@@ -3,8 +3,12 @@ package com.innerderma.skincapture.api;
 import com.innerderma.common.error.BusinessException;
 import com.innerderma.common.error.ErrorCode;
 import com.innerderma.common.response.ApiResponse;
+import com.innerderma.skinanalysis.application.SkinAnalysisResult;
+import com.innerderma.skinanalysis.application.SkinAnalysisService;
 import com.innerderma.skincapture.application.SkinCaptureFile;
 import com.innerderma.skincapture.application.SkinCaptureService;
+import com.innerderma.skincapture.domain.SkinCapture;
+import com.innerderma.skincapture.domain.SkinCaptureQualityStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +29,11 @@ import java.time.LocalDate;
 public class SkinCaptureController {
 
     private final SkinCaptureService skinCaptureService;
+    private final SkinAnalysisService skinAnalysisService;
 
-    public SkinCaptureController(SkinCaptureService skinCaptureService) {
+    public SkinCaptureController(SkinCaptureService skinCaptureService, SkinAnalysisService skinAnalysisService) {
         this.skinCaptureService = skinCaptureService;
+        this.skinAnalysisService = skinAnalysisService;
     }
 
     @PostMapping(consumes = "multipart/form-data")
@@ -44,6 +50,36 @@ public class SkinCaptureController {
                     file.getBytes()
             );
             return ApiResponse.success(SkinCaptureResponse.from(skinCaptureService.create(userCode, captureFile)));
+        } catch (IOException exception) {
+            throw new BusinessException(ErrorCode.INVALID_SKIN_CAPTURE_IMAGE);
+        }
+    }
+
+    /**
+     * 사진 업로드 + SkinAge 분석을 한 번에 수행하는 원스텝 API.
+     * 업로드 → 품질 게이트 → VALID이면 자동으로 SkinAge 분석 호출 → 결과 반환.
+     */
+    @PostMapping(value = "/analyze", consumes = "multipart/form-data")
+    public ApiResponse<CaptureAndAnalyzeResponse> captureAndAnalyze(
+            @PathVariable String userCode,
+            @RequestPart("file") MultipartFile file,
+            @RequestParam(required = false) Integer actualAge
+    ) {
+        try {
+            SkinCaptureFile captureFile = new SkinCaptureFile(
+                    file.getOriginalFilename(),
+                    file.getContentType(),
+                    file.getSize(),
+                    file.getBytes()
+            );
+            SkinCapture capture = skinCaptureService.create(userCode, captureFile);
+
+            if (capture.getQualityStatus() != SkinCaptureQualityStatus.VALID) {
+                return ApiResponse.success(CaptureAndAnalyzeResponse.qualityFailed(capture));
+            }
+
+            SkinAnalysisResult analysisResult = skinAnalysisService.analyze(userCode, capture.getId(), actualAge);
+            return ApiResponse.success(CaptureAndAnalyzeResponse.success(capture, analysisResult));
         } catch (IOException exception) {
             throw new BusinessException(ErrorCode.INVALID_SKIN_CAPTURE_IMAGE);
         }

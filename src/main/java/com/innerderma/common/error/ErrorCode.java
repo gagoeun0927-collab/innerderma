@@ -8,6 +8,7 @@ public enum ErrorCode {
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "AUTH_001", "인증 정보가 필요합니다."),
     FORBIDDEN(HttpStatus.FORBIDDEN, "AUTH_002", "해당 사용자의 데이터에 접근할 수 없습니다."),
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "USER_001", "사용자를 찾을 수 없습니다."),
+    USER_ALREADY_EXISTS(HttpStatus.CONFLICT, "USER_002", "이미 존재하는 사용자입니다."),
     SKIN_DIAGNOSIS_NOT_FOUND(HttpStatus.NOT_FOUND, "SKIN_001", "피부 진단 결과를 찾을 수 없습니다."),
     PROCEDURE_NOT_FOUND(HttpStatus.NOT_FOUND, "PROCEDURE_001", "시술 기록을 찾을 수 없습니다."),
     FACILITY_NOT_FOUND(HttpStatus.NOT_FOUND, "FACILITY_001", "시설을 찾을 수 없습니다."),

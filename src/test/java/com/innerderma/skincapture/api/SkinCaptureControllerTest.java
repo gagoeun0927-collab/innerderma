@@ -29,7 +29,7 @@ class SkinCaptureControllerTest {
     @BeforeEach
     void setUp() {
         service = mock(SkinCaptureService.class);
-        mockMvc = MockMvcBuilders.standaloneSetup(new SkinCaptureController(service))
+        mockMvc = MockMvcBuilders.standaloneSetup(new SkinCaptureController(service, mock(com.innerderma.skinanalysis.application.SkinAnalysisService.class)))
                 .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
     }

@@ -31,25 +31,12 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_FLYWAY_BASELINE_ON_MIGRATE: "true"
       INNERDERMA_SKIN_CAPTURE_STORAGE_PATH: /data/skin-captures
-      SKINAGE_BASE_URL: http://skinage:8000
+      SKINAGE_BASE_URL: ${SKINAGE_BASE_URL:-https://skinage-api.duckdns.org}
       TZ: Asia/Seoul
     volumes:
       - skin-captures:/data/skin-captures
     expose:
       - "8080"
-
-  skinage:
-    image: ${SKINAGE_IMAGE:-innerderma/skinage:latest}
-    restart: unless-stopped
-    environment:
-      TZ: Asia/Seoul
-    expose:
-      - "8000"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 15s
-      timeout: 5s
-      retries: 3
 
   frontend:
     image: nginx:alpine

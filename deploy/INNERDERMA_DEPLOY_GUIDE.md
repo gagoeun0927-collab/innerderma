@@ -1,216 +1,233 @@
 # InnerDerma 서버 배포 가이드
 
-InnerDerma 백엔드(Spring Boot 4.x + Java 21) + SkinAge(Python FastAPI) + MySQL + Nginx를 가비아 서버(Ubuntu)에 배포하는 절차입니다.
+**동일 서버에 SkinAge(`skinage-api.duckdns.org`)가 이미 배포된 상태**에서 InnerDerma를 추가 배포합니다.
 
-## 전제 조건
+- 도메인: `inner-derma.duckdns.org`
+- 구성: Spring Boot (백엔드) + MySQL + 프론트엔드 (React/SPA) + Nginx
+- SkinAge 연동: 같은 서버 내부 `http://localhost:8000` 또는 `https://skinage-api.duckdns.org`
 
-- Ubuntu 22.04+ 서버 (RAM 4GB 이상 권장, 2GB면 스왑 필수)
-- 루트 50GB + 데이터 50GB 디스크 구성
-- 공인 IP + DuckDNS 도메인 (예: `innerderma.duckdns.org`)
-- SSH 키 접속 설정 완료
-- SkinAge 레포에 Dockerfile 준비됨
+---
 
-## 0. 디스크 마운트 (데이터 볼륨)
+## 아키텍처 (같은 서버)
 
-```bash
-# 데이터 디스크 확인
-lsblk
-# 포맷 (첫 배포 시만 — 기존 데이터 있으면 절대 실행 금지)
-sudo mkfs.ext4 /dev/vdb
-sudo mkdir -p /data
-sudo mount /dev/vdb /data
-echo '/dev/vdb /data ext4 defaults 0 2' | sudo tee -a /etc/fstab
-
-# 디렉토리 구조
-sudo mkdir -p /data/mysql /data/skin-captures /data/logs
-sudo chown -R $USER:$USER /data
+```
+인터넷
+  │
+  ├── inner-derma.duckdns.org:443 → [InnerDerma Nginx :8443]
+  │       ├── /api/*          → app-api :8080
+  │       ├── /swagger-ui/*   → app-api :8080
+  │       ├── /api-docs       → app-api :8080
+  │       └── /*              → 프론트엔드 정적 파일
+  │
+  └── skinage-api.duckdns.org:443 → [SkinAge Nginx :443] (기존)
+          └── /api/*          → skinage :8000
 ```
 
-## 1. Docker 설치
+**포트 전략:** SkinAge가 이미 80/443을 점유하므로 InnerDerma nginx는 **8443(HTTPS) / 8080(HTTP redirect)** 를 사용하거나, **하나의 nginx로 통합**합니다.
+
+---
+
+## Option A: 통합 Nginx (권장)
+
+SkinAge의 nginx를 확장해서 두 도메인을 모두 처리합니다.
+
+### A-1. DuckDNS 도메인 추가
+
+https://www.duckdns.org 에서 `inner-derma` 서브도메인 추가, 같은 서버 IP로 설정.
+
+### A-2. InnerDerma 인증서 발급
 
 ```bash
-curl -fsSL https://get.docker.com | sh
-sudo usermod -aG docker $USER
-newgrp docker
-docker --version
+# SkinAge nginx가 80을 서빙 중이므로 webroot 방식 사용
+sudo certbot certonly --webroot \
+  -w /opt/skinage/SkinAge/certbot-webroot \
+  -d inner-derma.duckdns.org
 ```
 
-## 2. 방화벽
-
-**가비아 콘솔**: 인바운드 규칙에 TCP 80, 443 추가
-
-**서버 ufw**:
-```bash
-sudo ufw allow 22/tcp
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
-sudo ufw enable
-```
-
-## 3. DuckDNS 도메인 설정
-
-1. https://www.duckdns.org 에서 서브도메인 생성
-2. A 레코드를 가비아 공인 IP로 설정
-3. 이 문서의 `<domain>`을 실제 도메인으로 치환 (예: `innerderma.duckdns.org`)
-
-## 4. certbot 설치
+### A-3. InnerDerma 레포 클론
 
 ```bash
-sudo apt-get update && sudo apt-get install -y certbot
-```
-
-## 5. 레포 클론
-
-```bash
-# InnerDerma 백엔드
 sudo mkdir -p /opt/innerderma && sudo chown $USER:$USER /opt/innerderma
 git clone https://github.com/<owner>/InnerDerma.git /opt/innerderma
 cd /opt/innerderma
-
-# SkinAge (별도 레포)
-sudo mkdir -p /opt/skinage && sudo chown $USER:$USER /opt/skinage
-git clone https://github.com/<owner>/SkinAge.git /opt/skinage
 ```
 
-## 6. SkinAge Docker 이미지 빌드
+### A-4. MySQL + app-api 기동 (nginx 없이)
+
+`docker-compose.prod.yml`에서 `frontend` 서비스를 제거하고 InnerDerma 백엔드만 띄움:
 
 ```bash
-cd /opt/skinage
-docker build -t innerderma/skinage:latest .
-```
-
-## 7. 환경변수 설정
-
-```bash
-sudo cp /opt/innerderma/deploy/.env.example /opt/innerderma.env
+# 환경변수 설정
+sudo cp deploy/.env.example /opt/innerderma.env
 sudo chown $USER:$USER /opt/innerderma.env
 chmod 600 /opt/innerderma.env
+# 에디터로 값 채우기 (아래 참조)
 ```
 
-에디터로 `/opt/innerderma.env` 값 채우기:
-
-```bash
-# 생성 도구
-openssl rand -hex 20   # DB_PASSWORD용
-openssl rand -hex 32   # JWT_SECRET용
-```
-
+`/opt/innerderma.env`:
 ```env
-MYSQL_ROOT_PASSWORD=<생성된 값>
+MYSQL_ROOT_PASSWORD=<openssl rand -hex 20>
 DB_USER=innerderma_app
-DB_PASSWORD=<생성된 값>
-JWT_SECRET=<생성된 값>
+DB_PASSWORD=<openssl rand -hex 20>
+JWT_SECRET=<openssl rand -hex 32>
 OPENAI_API_KEY=sk-...
-SKINAGE_IMAGE=innerderma/skinage:latest
-SKINAGE_BASE_URL=http://skinage:8000
-CORS_ALLOWED_ORIGINS=https://<domain>
+SKINAGE_BASE_URL=http://host.docker.internal:8000
+CORS_ALLOWED_ORIGINS=https://inner-derma.duckdns.org
 INNERDERMA_SKIN_CAPTURE_STORAGE_PATH=/data/skin-captures
 TZ=Asia/Seoul
 ```
 
-## 8. 인증서 발급 (2단계 부트스트랩)
+> **SKINAGE_BASE_URL**: 같은 서버에서 SkinAge가 Docker로 돌고 있으면 `http://172.17.0.1:8000` 또는 Docker network로 연결. SkinAge가 host network에서 돌면 `http://localhost:8000`. 확실하면 외부 URL `https://skinage-api.duckdns.org`도 가능.
 
+기동:
 ```bash
 cd /opt/innerderma
-mkdir -p certbot-webroot
-
-# 1단계: HTTP 전용 nginx로 frontend만 기동
-cp deploy/nginx/nginx.http-only.conf deploy/nginx/active.conf
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d frontend
-
-# 인증서 발급
-sudo certbot certonly --webroot -w /opt/innerderma/certbot-webroot -d <domain>
-
-# 2단계: HTTPS conf로 교체
-cp deploy/nginx/nginx.innerderma.conf deploy/nginx/active.conf
-sed -i "s/<domain>/<domain>/g" deploy/nginx/active.conf
+docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d mysql app-api
 ```
 
-## 9. 전체 스택 기동
+### A-5. SkinAge nginx에 InnerDerma 서버 블록 추가
+
+SkinAge의 `deploy/nginx/active.conf`를 수정하여 `inner-derma.duckdns.org` 서버 블록을 추가합니다:
 
 ```bash
-cd /opt/innerderma
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d
-
-# nginx conf 반영
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml restart frontend
+# SkinAge nginx 설정 편집
+vi /opt/skinage/SkinAge/deploy/nginx/active.conf
 ```
 
-## 10. 스왑 설정 (RAM < 4GB)
+기존 내용 뒤에 추가:
 
-```bash
-sudo fallocate -l 2G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```nginx
+# === InnerDerma ===
+server {
+    listen 80;
+    server_name inner-derma.duckdns.org;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name inner-derma.duckdns.org;
+
+    ssl_certificate     /etc/letsencrypt/live/inner-derma.duckdns.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/inner-derma.duckdns.org/privkey.pem;
+
+    client_max_body_size 12m;
+
+    # InnerDerma API
+    location /api/ {
+        proxy_pass http://172.17.0.1:8080/api/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # Swagger
+    location /swagger-ui/ {
+        proxy_pass http://172.17.0.1:8080/swagger-ui/;
+        proxy_set_header Host $host;
+    }
+
+    location /api-docs {
+        proxy_pass http://172.17.0.1:8080/api-docs;
+        proxy_set_header Host $host;
+    }
+
+    # 프론트엔드 (정적 파일)
+    location / {
+        root /usr/share/nginx/html/innerderma;
+        try_files $uri /index.html;
+    }
+}
 ```
 
-## 11. 검증
+> **172.17.0.1**은 Docker bridge network에서 호스트를 가리키는 IP. InnerDerma app-api가 Docker로 돌면서 port 8080을 publish하면 이 주소로 접근 가능.
+
+### A-6. InnerDerma app-api 포트 공개
+
+`docker-compose.prod.yml`에서 app-api의 `expose`를 `ports`로 변경:
+
+```yaml
+  app-api:
+    ...
+    ports:
+      - "8080:8080"
+```
+
+### A-7. 프론트엔드 배포
+
+프론트엔드 빌드 결과물을 SkinAge nginx 컨테이너에서 접근할 수 있는 위치에 놓습니다:
 
 ```bash
-# 전 서비스 상태 확인
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml ps
+# 프론트엔드 빌드 (프론트 레포에서)
+cd /opt/innerderma-frontend
+npm run build
 
-# Health Check
-curl -fsSL https://<domain>/api/innerderma/health
+# 빌드 결과물을 SkinAge nginx에서 접근할 위치에 복사
+sudo mkdir -p /opt/skinage/SkinAge/frontend-innerderma
+cp -r dist/* /opt/skinage/SkinAge/frontend-innerderma/
+```
 
-# Swagger UI 접근
-# 브라우저: https://<domain>/swagger-ui/index.html
+SkinAge `docker-compose.prod.yml`의 nginx 볼륨에 추가:
+```yaml
+  nginx:
+    volumes:
+      - ./deploy/nginx/active.conf:/etc/nginx/conf.d/default.conf:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./certbot-webroot:/var/www/certbot:ro
+      - ./frontend-innerderma:/usr/share/nginx/html/innerderma:ro   # 추가
+```
 
-# API 테스트
-curl -X POST https://<domain>/api/auth/register \
+### A-8. nginx 재시작
+
+```bash
+cd /opt/skinage/SkinAge
+docker compose -f docker-compose.prod.yml restart nginx
+```
+
+---
+
+## Option B: 별도 Nginx (포트 분리)
+
+InnerDerma만의 nginx를 별도 포트(8443)에서 실행. Cloudflare나 외부 로드밸런서가 있을 때 적합.
+
+이 방식은 클라이언트가 `https://inner-derma.duckdns.org:8443/api/...`로 접근해야 하므로 Option A보다 불편합니다.
+
+---
+
+## 검증
+
+```bash
+# InnerDerma Health Check
+curl -fsSL https://inner-derma.duckdns.org/api/innerderma/health
+
+# 회원가입
+curl -X POST https://inner-derma.duckdns.org/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{"userCode":"DEMO-001","name":"테스트","phoneNumber":"010-1234-1234"}'
+
+# Swagger UI
+# 브라우저: https://inner-derma.duckdns.org/swagger-ui/index.html
+
+# SkinAge 연동 확인 (토큰 필요)
+TOKEN=$(curl -s -X POST "https://inner-derma.duckdns.org/api/auth/token?userCode=DEMO-001" | jq -r '.data.token')
+curl -X POST https://inner-derma.duckdns.org/api/users/DEMO-001/skin-captures/analyze \
+  -H "Authorization: Bearer $TOKEN" \
+  -F "file=@face.jpg"
 ```
 
-## 12. 인증서 자동 갱신
-
-```bash
-sudo mkdir -p /etc/letsencrypt/renewal-hooks/deploy
-sudo tee /etc/letsencrypt/renewal-hooks/deploy/00-reload-nginx.sh > /dev/null <<'EOF'
-#!/bin/sh
-docker compose --env-file /opt/innerderma.env -f /opt/innerderma/docker-compose.prod.yml exec -T frontend nginx -s reload
-EOF
-sudo chmod +x /etc/letsencrypt/renewal-hooks/deploy/00-reload-nginx.sh
-sudo certbot renew --dry-run
-```
-
-## 13. 업데이트 배포
+## 업데이트 배포
 
 ```bash
 cd /opt/innerderma
 git pull origin main
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml build app-api
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d app-api
-```
-
-SkinAge 업데이트:
-```bash
-cd /opt/skinage
-git pull origin main
-docker build -t innerderma/skinage:latest .
-cd /opt/innerderma
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d skinage
-```
-
-## 14. 로그 확인
-
-```bash
-# 전체 로그
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f
-
-# 특정 서비스
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f app-api
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f skinage
-docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs -f mysql
-```
-
-## 15. 롤백
-
-```bash
-cd /opt/innerderma
-git checkout <이전-commit>
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml build app-api
 docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d app-api
 ```
@@ -219,24 +236,8 @@ docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d a
 
 | 증상 | 원인 | 해결 |
 |---|---|---|
-| `certbot: Timeout during connect` | 가비아 콘솔에서 80 안 열림 | 인바운드 규칙 추가 |
-| `app-api` 기동 실패 | MySQL 아직 안 뜸 | `depends_on: mysql (service_healthy)` 확인, 재시도 |
-| `SKINAGE_API_UNAVAILABLE` | SkinAge 컨테이너 다운 | `docker compose logs skinage` 확인 |
-| Flyway migration 실패 | 기존 테이블과 V1 스키마 불일치 | `baseline-on-migrate=true` 확인, 또는 DB 초기화 |
-| OOM Kill | 메모리 부족 | 스왑 확인, SkinAge 모델 로딩 시 메모리 사용량 체크 |
-| nginx 502 Bad Gateway | app-api 아직 기동 중 | 30초 대기 후 재시도 |
-
-## 파일 구조 (서버)
-
-```
-/opt/innerderma/          ← InnerDerma 레포 클론
-  ├─ docker-compose.prod.yml
-  ├─ Dockerfile
-  ├─ deploy/nginx/active.conf
-  └─ ...
-/opt/innerderma.env       ← 시크릿 (레포 밖)
-/opt/skinage/             ← SkinAge 레포 클론
-/data/mysql/              ← MySQL 데이터
-/data/skin-captures/      ← 피부 사진 파일
-/data/logs/               ← 앱 로그
-```
+| nginx 502 on inner-derma | app-api 미기동 또는 포트 미공개 | `docker ps`로 app-api 확인, ports 8080 공개 확인 |
+| SKINAGE_API_UNAVAILABLE | SkinAge URL 접근 불가 | `curl http://172.17.0.1:8000/api/v1/health` 확인 |
+| Flyway 실패 | MySQL 아직 안 뜸 | `depends_on: mysql (service_healthy)` + 재시도 |
+| CORS 에러 | `CORS_ALLOWED_ORIGINS` 미설정 | `/opt/innerderma.env`에 도메인 설정 |
+| certbot 실패 | SkinAge nginx가 inner-derma 도메인의 challenge를 서빙 못 함 | nginx conf에 `server_name _` 대신 도메인별 분리 |

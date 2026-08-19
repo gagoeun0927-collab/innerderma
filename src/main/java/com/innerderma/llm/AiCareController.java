@@ -120,14 +120,35 @@ public class AiCareController {
                 productIds, nightSteps, morningSteps, innerCareCount, llmSafety, solution.actions(),
                 llmResponse.headline(), llmResponse.skinStateSummary());
 
+        // Validation fail 시 안전한 fallback 응답 (LLM 원본 대신 최소 구조 반환)
+        LlmResponse finalResponse = validation.valid() ? llmResponse : buildFallbackResponse(llmResponse, primaryConcern);
+
         return ApiResponse.success(new AiCareResponse(
-                llmResponse,
+                finalResponse,
                 solution.appliedRules(),
                 primaryConcern,
                 resolvedLocale,
                 validation.valid(),
                 validation.violations()
         ));
+    }
+
+    /**
+     * Validation 실패 시 LLM 응답의 headline/summary만 보존하고
+     * steps/products는 비워서 잘못된 제품이 노출되지 않게 한다.
+     */
+    private LlmResponse buildFallbackResponse(LlmResponse original, String concern) {
+        String headline = (original.headline() != null && !original.headline().isBlank())
+                ? original.headline() : "InnerDerma Care";
+        String summary = (original.skinStateSummary() != null && !original.skinStateSummary().isBlank())
+                ? original.skinStateSummary() : concern;
+        return new LlmResponse(
+                headline, summary, original.todayGoal(),
+                new LlmResponse.NightCare("RECOVERY", List.of()),
+                new LlmResponse.MorningCare("PROTECTION", List.of()),
+                new LlmResponse.InnerCare(List.of(), List.of()),
+                original.caution()
+        );
     }
 
     private String resolvePrimaryConcern(String userCode) {

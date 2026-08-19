@@ -95,7 +95,8 @@ public class WimStoreKnowledgeBase {
                     verifiedClaims != null ? verifiedClaims : List.of(),
                     ingredientsHighlight != null ? ingredientsHighlight : List.of(),
                     warnings != null ? warnings : List.of(),
-                    isActive, price, officialUrl, imageUrl, recommendFrequencyDays);
+                    isActive, price, officialUrl, imageUrl,
+                    recommendFrequencyDays != null ? recommendFrequencyDays : 1);
         }
     }
 }

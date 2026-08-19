@@ -118,7 +118,18 @@ public class PieceSeoulKnowledgeBase {
                     verifiedClaims != null ? verifiedClaims : List.of(),
                     ingredientsHighlight != null ? ingredientsHighlight : List.of(),
                     allergens != null ? allergens : List.of(),
-                    isActive, price, officialUrl, imageUrl, recommendFrequencyDays);
+                    isActive, price, officialUrl, imageUrl,
+                    recommendFrequencyDays != null ? recommendFrequencyDays : frequencyToDays(frequency));
+        }
+        private static Integer frequencyToDays(String frequency) {
+            if (frequency == null) return 1;
+            return switch (frequency.toLowerCase()) {
+                case "daily" -> 1;
+                case "every_other_day" -> 2;
+                case "twice_a_week" -> 3;
+                case "weekly" -> 7;
+                default -> 1;
+            };
         }
     }
 

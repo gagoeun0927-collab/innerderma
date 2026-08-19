@@ -15,7 +15,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    # ports는 의도적으로 노출하지 않음 (Docker 내부 네트워크만)
 
   app-api:
     build: .
@@ -31,18 +30,37 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_FLYWAY_BASELINE_ON_MIGRATE: "true"
       INNERDERMA_SKIN_CAPTURE_STORAGE_PATH: /data/skin-captures
-      SKINAGE_BASE_URL: ${SKINAGE_BASE_URL:-https://skinage-api.duckdns.org}
+      SKINAGE_BASE_URL: http://skinage:8000
       TZ: Asia/Seoul
     volumes:
       - skin-captures:/data/skin-captures
     expose:
       - "8080"
 
+  skinage:
+    build:
+      context: /opt/skinage
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Seoul
+    expose:
+      - "8000"
+    volumes:
+      - /opt/skinage/outputs/models:/app/outputs/models:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
   frontend:
     image: nginx:alpine
     restart: unless-stopped
     depends_on:
       - app-api
+      - skinage
     ports:
       - "80:80"
       - "443:443"
@@ -50,6 +68,7 @@ services:
       - ./deploy/nginx/active.conf:/etc/nginx/conf.d/default.conf:ro
       - ./certbot-webroot:/var/www/certbot:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ${FRONTEND_BUILD_PATH:-./frontend-dist}:/usr/share/nginx/html/innerderma:ro
 
 volumes:
   mysql-data:

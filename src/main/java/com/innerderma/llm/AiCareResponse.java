@@ -1,6 +1,7 @@
 package com.innerderma.llm;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * AI 파이프라인 end-to-end 응답.
@@ -12,5 +13,6 @@ public record AiCareResponse(
         String primaryConcern,
         String locale,
         boolean validated,
-        List<String> validationViolations
+        List<String> validationViolations,
+        Map<String, String> productSources
 ) {}

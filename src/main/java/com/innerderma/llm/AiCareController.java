@@ -26,7 +26,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * AI 파이프라인 end-to-end 엔드포인트.
@@ -88,7 +90,8 @@ public class AiCareController {
             SolutionCacheEntry entry = cached.get();
             LlmResponse llmResponse = llmRenderer.render(entry.solution(), entry.products(), resolvedLocale);
             return ApiResponse.success(new AiCareResponse(llmResponse, entry.solution().appliedRules(),
-                    entry.products().primaryConcern(), resolvedLocale, true, List.of()));
+                    entry.products().primaryConcern(), resolvedLocale, true, List.of(),
+                    buildProductSources(entry.products())));
         }
 
         // 1. Rule Engine 실행 → Solution Object
@@ -129,7 +132,8 @@ public class AiCareController {
                 primaryConcern,
                 resolvedLocale,
                 validation.valid(),
-                validation.violations()
+                validation.violations(),
+                buildProductSources(products)
         ));
     }
 
@@ -149,6 +153,14 @@ public class AiCareController {
                 new LlmResponse.InnerCare(List.of(), List.of()),
                 original.caution()
         );
+    }
+
+    private Map<String, String> buildProductSources(ProductMatchResult products) {
+        Map<String, String> sources = new HashMap<>();
+        products.nightProducts().forEach(p -> sources.put(p.productId(), "PIECE_SEOUL"));
+        products.morningProducts().forEach(p -> sources.put(p.productId(), "PIECE_SEOUL"));
+        products.innerCareProducts().forEach(p -> sources.put(p.productId(), "WIM_STORE"));
+        return sources;
     }
 
     private String resolvePrimaryConcern(String userCode) {

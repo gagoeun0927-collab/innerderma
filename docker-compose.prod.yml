@@ -39,7 +39,7 @@ services:
 
   skinage:
     build:
-      context: /opt/skinage
+      context: /opt/skinage/SkinAge
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
@@ -47,7 +47,7 @@ services:
     expose:
       - "8000"
     volumes:
-      - /opt/skinage/outputs/models:/app/outputs/models:ro
+      - /opt/skinage/SkinAge/outputs/models:/app/outputs/models:ro
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
       interval: 30s

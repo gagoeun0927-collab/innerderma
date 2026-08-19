@@ -16,18 +16,16 @@ import com.innerderma.user.domain.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Seeds hackathon demo/dummy data (a single demo user, facilities, a baseline diagnosis, a
- * procedure, and [데모] products). Excluded from the {@code prod} profile so real deployments do
- * not receive placeholder data.
+ * Seeds hackathon demo/dummy data (demo users, facilities, baseline diagnosis,
+ * procedures, and products). Runs on all profiles including prod for demo/hackathon purposes.
+ * Idempotent — existing data is not overwritten.
  */
 @Configuration
-@Profile("!prod")
 public class DemoDataInitializer {
 
     public static final String DEMO_USER_CODE = "WHS-DEMO-001";
@@ -84,18 +82,18 @@ public class DemoDataInitializer {
                         DEMO_DATE,
                         "진정 및 피부 장벽 관리",
                         "자극적인 제품을 피하고 보습제를 충분히 사용할 것",
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        List.of(),
-                        List.of(),
-                        List.of("자극적인 제품을 피하고 보습제를 충분히 사용할 것"),
-                        List.of(),
-                        List.of(),
-                        null,
-                        null
+                        "BARRIER_CARE",
+                        "피부 장벽 강화",
+                        "전체 얼굴",
+                        3,
+                        7,
+                        List.of("약간의 당김감", "일시적 홍조"),
+                        List.of("48시간 이상 지속되는 부종", "심한 통증"),
+                        List.of("자극적인 제품 사용 금지", "충분한 보습"),
+                        List.of("moisturizer", "barrier"),
+                        List.of("retinol", "aha", "bha"),
+                        "AAC_CLINIC",
+                        "1.0.0"
                 ));
             }
 

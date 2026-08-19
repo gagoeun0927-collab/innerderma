@@ -1,0 +1,25 @@
+{
+  "id": "GT-019",
+  "category": "PROCEDURE",
+  "description": "필링 시술 후 + 홍조 심각 → R001 + R004 + R007 발화, 보수적 + 진정 우선",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "in_recovery_period": true,
+      "treatment_type_peeling": true,
+      "dominant_redness_severe": true,
+      "trend_stable": true,
+      "has_severe_symptom": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R001", "R004", "R007", "R022", "R030", "R010"],
+    "not_fired_rules": ["R000", "R003", "R005"],
+    "actions_contain": {
+      "apply_treatment_restrictions": true,
+      "prioritize_concern": "REDNESS",
+      "limit_new_product_addition": true
+    },
+    "restrictions_contain": ["FOLLOW_AFTERCARE_RESTRICTIONS", "NO_EXFOLIATION_DURING_RECOVERY", "SOOTHING_PRIORITY"]
+  }
+}

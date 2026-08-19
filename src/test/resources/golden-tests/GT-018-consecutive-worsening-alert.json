@@ -1,0 +1,23 @@
+{
+  "id": "GT-018",
+  "category": "ALERT",
+  "description": "연속 악화 3회 → R017 발화, 전문가 상담 권장 + 보수적 모드",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "consecutive_worsening_3": true,
+      "trend_worsening": true,
+      "has_severe_symptom": false
+    }
+  },
+  "expected": {
+    "fired_rules": ["R017", "R021", "R030", "R010"],
+    "not_fired_rules": ["R020", "R022"],
+    "actions_contain": {
+      "safety_status": "CAUTION",
+      "require_professional_review_message": true,
+      "limit_new_product_addition": true
+    },
+    "restrictions_contain": ["RECOMMEND_PROFESSIONAL_CONSULTATION", "REEVALUATE_SAFETY"]
+  }
+}

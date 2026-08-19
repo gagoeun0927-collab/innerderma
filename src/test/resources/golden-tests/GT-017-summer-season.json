@@ -1,0 +1,19 @@
+{
+  "id": "GT-017",
+  "category": "SEASON",
+  "description": "여름 계절 → R014 발화, 자외선 차단 + 가벼운 제형 우선",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "season_summer": true,
+      "trend_stable": true,
+      "has_severe_symptom": false
+    }
+  },
+  "expected": {
+    "fired_rules": ["R014", "R022", "R030", "R010"],
+    "not_fired_rules": ["R015", "R016"],
+    "actions_contain": {},
+    "restrictions_contain": []
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "GT-015",
+  "category": "PROCEDURE",
+  "description": "시술 후 회복기 + 레이저 시술 → R001 + R003 발화, 보수적 모드 + retinol 제한",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "in_recovery_period": true,
+      "treatment_type_laser": true,
+      "trend_stable": true,
+      "has_severe_symptom": false
+    }
+  },
+  "expected": {
+    "fired_rules": ["R001", "R003", "R022", "R030", "R010"],
+    "not_fired_rules": ["R000", "R004", "R005"],
+    "actions_contain": {
+      "apply_treatment_restrictions": true,
+      "limit_new_product_addition": true
+    },
+    "restrictions_contain": ["FOLLOW_AFTERCARE_RESTRICTIONS", "NO_ACTIVE_INGREDIENTS_DURING_RECOVERY"]
+  }
+}

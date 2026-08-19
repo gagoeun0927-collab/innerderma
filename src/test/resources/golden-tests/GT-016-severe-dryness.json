@@ -1,0 +1,21 @@
+{
+  "id": "GT-016",
+  "category": "SKIN_STATE",
+  "description": "심한 건조 증상 → R006 발화, 보습 집중 우선",
+  "input": {
+    "signals": {
+      "requires_safety_attention": false,
+      "dominant_dryness_severe": true,
+      "trend_stable": true,
+      "has_severe_symptom": true
+    }
+  },
+  "expected": {
+    "fired_rules": ["R006", "R022", "R030", "R010"],
+    "not_fired_rules": ["R000", "R007", "R008"],
+    "actions_contain": {
+      "prioritize_concern": "HYDRATION"
+    },
+    "restrictions_contain": ["HYDRATION_PRIORITY"]
+  }
+}

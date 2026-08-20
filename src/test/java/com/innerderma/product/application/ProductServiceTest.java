@@ -7,6 +7,8 @@ import com.innerderma.product.domain.Product;
 import com.innerderma.product.domain.ProductCategory;
 import com.innerderma.product.domain.ProductConcern;
 import com.innerderma.product.domain.ProductRepository;
+import com.innerderma.product.domain.ProductTranslation;
+import com.innerderma.product.domain.ProductTranslationRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,18 +17,22 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class ProductServiceTest {
 
     private ProductRepository repository;
+    private ProductTranslationRepository translationRepository;
     private ProductService service;
 
     @BeforeEach
     void setUp() {
         repository = mock(ProductRepository.class);
-        service = new ProductService(repository);
+        translationRepository = mock(ProductTranslationRepository.class);
+        service = new ProductService(repository, translationRepository);
         when(repository.findAllByActiveTrueOrderByDisplayPriorityAscProductCodeAsc())
                 .thenReturn(catalog());
     }
@@ -86,6 +92,76 @@ class ProductServiceTest {
                 service.getActiveProducts(ProductCategory.CLEANSER, ProductConcern.REDNESS);
 
         assertThat(result).isEmpty();
+    }
+
+    @Test
+    void returnsTranslationWhenLocaleSpecified() {
+        Product product = new Product("PRD-001", "이너덤", "수분 크림",
+                ProductCategory.MOISTURIZER, ProductConcern.GENERAL,
+                true, true, false, "https://example.com/prd-001", 1);
+        when(repository.findByProductCode("PRD-001")).thenReturn(Optional.of(product));
+        ProductTranslation tr = new ProductTranslation(
+                "PRD-001", "en", "Moisture Cream", "Apply daily",
+                "[\"Hydrates skin\"]", "For external use only.");
+        when(translationRepository.findByProductCodeAndLocale("PRD-001", "en"))
+                .thenReturn(Optional.of(tr));
+
+        ProductResponse result = service.getProduct("PRD-001", "en");
+
+        assertThat(result.translation()).isNotNull();
+        assertThat(result.translation().locale()).isEqualTo("en");
+        assertThat(result.translation().name()).isEqualTo("Moisture Cream");
+        assertThat(result.translation().features()).containsExactly("Hydrates skin");
+    }
+
+    @Test
+    void returnsNoTranslationWhenLocaleIsKo() {
+        Product product = new Product("PRD-001", "이너덤", "수분 크림",
+                ProductCategory.MOISTURIZER, ProductConcern.GENERAL,
+                true, true, false, "https://example.com/prd-001", 1);
+        when(repository.findByProductCode("PRD-001")).thenReturn(Optional.of(product));
+
+        ProductResponse result = service.getProduct("PRD-001", "ko");
+
+        assertThat(result.translation()).isNull();
+    }
+
+    @Test
+    void normalizesLocaleFromAcceptLanguageFormat() {
+        Product product = new Product("PRD-001", "이너덤", "수분 크림",
+                ProductCategory.MOISTURIZER, ProductConcern.GENERAL,
+                true, true, false, "https://example.com/prd-001", 1);
+        when(repository.findByProductCode("PRD-001")).thenReturn(Optional.of(product));
+        ProductTranslation tr = new ProductTranslation(
+                "PRD-001", "ja", "モイスチャークリーム", "毎日塗布",
+                "[\"肌を保湿\"]", "外用専用。");
+        when(translationRepository.findByProductCodeAndLocale("PRD-001", "ja"))
+                .thenReturn(Optional.of(tr));
+
+        ProductResponse result = service.getProduct("PRD-001", "ja-JP");
+
+        assertThat(result.translation()).isNotNull();
+        assertThat(result.translation().locale()).isEqualTo("ja");
+    }
+
+    @Test
+    void listEndpointIncludesTranslationsForLocale() {
+        ProductTranslation tr = new ProductTranslation(
+                "CLEANSER", "en", "Gentle Cleanser", "Use daily", "[]", "None.");
+        when(translationRepository.findAllByProductCodeInAndLocale(anyList(), eq("en")))
+                .thenReturn(List.of(tr));
+
+        List<ProductResponse> result = service.getActiveProducts(null, null, null, "en");
+
+        ProductResponse cleanser = result.stream()
+                .filter(p -> "CLEANSER".equals(p.productCode())).findFirst().orElseThrow();
+        assertThat(cleanser.translation()).isNotNull();
+        assertThat(cleanser.translation().name()).isEqualTo("Gentle Cleanser");
+
+        // Products without translation should have null translation
+        ProductResponse moisturizer = result.stream()
+                .filter(p -> "MOISTURIZER".equals(p.productCode())).findFirst().orElseThrow();
+        assertThat(moisturizer.translation()).isNull();
     }
 
     private List<Product> catalog() {

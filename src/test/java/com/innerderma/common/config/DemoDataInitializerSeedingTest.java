@@ -5,6 +5,8 @@ import com.innerderma.knowledge.product.WimStoreKnowledgeBase;
 import com.innerderma.product.domain.Product;
 import com.innerderma.product.domain.ProductCategory;
 import com.innerderma.product.domain.ProductRepository;
+import com.innerderma.product.domain.ProductTranslation;
+import com.innerderma.product.domain.ProductTranslationRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +25,9 @@ class DemoDataInitializerSeedingTest {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ProductTranslationRepository translationRepository;
 
     @Autowired
     private PieceSeoulKnowledgeBase pieceSeoulKb;
@@ -87,5 +92,38 @@ class DemoDataInitializerSeedingTest {
 
         assertThat(demo).isNotEmpty();
         assertThat(demo).allSatisfy(p -> assertThat(p.getSource()).isNull());
+    }
+
+    @Test
+    void seedsTranslationsForAllKbProducts() {
+        // 22 piece_seoul × 3 locales + 18 wim_store × 3 locales = 120 translations
+        List<ProductTranslation> all = translationRepository.findAll();
+        assertThat(all).hasSize(120);
+    }
+
+    @Test
+    void seedsEnglishTranslationForPieceSeoulProduct() {
+        var tr = translationRepository.findByProductCodeAndLocale("PSS_001", "en");
+        assertThat(tr).isPresent();
+        assertThat(tr.get().getName()).isEqualTo("Core Rebuild Cream");
+        assertThat(tr.get().getUsage()).isNotBlank();
+        assertThat(tr.get().getFeaturesJson()).contains("growth factor");
+        assertThat(tr.get().getCaution()).isNotBlank();
+    }
+
+    @Test
+    void seedsJapaneseTranslationForWimStoreProduct() {
+        var tr = translationRepository.findByProductCodeAndLocale("WIM_001", "ja");
+        assertThat(tr).isPresent();
+        assertThat(tr.get().getName()).contains("プロテインシェイク");
+        assertThat(tr.get().getLocale()).isEqualTo("ja");
+    }
+
+    @Test
+    void seedsChineseTranslationExists() {
+        var tr = translationRepository.findByProductCodeAndLocale("PSS_010", "zh");
+        assertThat(tr).isPresent();
+        assertThat(tr.get().getLocale()).isEqualTo("zh");
+        assertThat(tr.get().getName()).isNotBlank();
     }
 }

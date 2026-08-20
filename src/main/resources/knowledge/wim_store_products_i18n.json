@@ -1,0 +1,416 @@
+[
+  {
+    "product_id": "WIM_001",
+    "translations": {
+      "en": {
+        "name": "WIM High Protein Shake - Grain",
+        "usage": "Mix one packet (40g) with 150-200ml of water, milk, or soy milk. Shake well and consume once daily.",
+        "features": ["Contains 20g pure protein per serving, designed by internal medicine specialists for skin recovery", "Low sugar (less than 1g) formulation prevents blood sugar spikes while supplying essential amino acids"],
+        "caution": "Contains milk and soy. Not suitable for those with severe lactose intolerance. Check ingredients if you have allergies or special conditions."
+      },
+      "ja": {
+        "name": "WIM ハイプロテインシェイク グレイン",
+        "usage": "1包（40g）を水・牛乳・豆乳150〜200mlに入れてよく振って1日1回お召し上がりください。",
+        "features": ["内科専門医が設計した1包あたり純タンパク質20g高含有", "糖類1g未満の低糖設計で血糖スパイクなく肌再生に必要な必須アミノ酸を供給"],
+        "caution": "乳・大豆を含みます。重度の乳糖不耐症の方には適しません。アレルギー体質の方は成分をご確認ください。"
+      },
+      "zh": {
+        "name": "WIM高蛋白奶昔 谷物味",
+        "usage": "将一包(40g)加入150-200ml水、牛奶或豆浆中摇匀，每日一次饮用。",
+        "features": ["由内科专家设计，每份含20g纯蛋白质，助力肌肤修复", "低糖配方（糖分不足1g），避免血糖波动同时补充肌肤再生所需必需氨基酸"],
+        "caution": "含牛奶和大豆成分。严重乳糖不耐受者不适用。过敏体质请确认成分后食用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_002",
+    "translations": {
+      "en": {
+        "name": "Before Meal Fiber - Apple",
+        "usage": "Mix one packet with 200ml of water 30 minutes before a meal. Consume immediately as it may gel.",
+        "features": ["5g dietary fiber per serving supports gut health and toxin elimination for clearer skin", "Apple flavor with natural sweetener for pleasant pre-meal consumption"],
+        "caution": "Take with plenty of water. May cause choking if consumed as powder. Start with half a packet for first-time users."
+      },
+      "ja": {
+        "name": "食前ファイバー アップル",
+        "usage": "食事の30分前に1包を200mlの水に溶かしてお召し上がりください。ゼリー状に固まるため溶かしたらすぐにお飲みください。",
+        "features": ["1包あたり食物繊維5gで腸内環境を整え、老廃物排出で肌のクリア感をサポート", "りんご風味の天然甘味料で食前も美味しく摂取"],
+        "caution": "十分な水と一緒に摂取してください。粉のまま飲むと喉に詰まる恐れがあります。初回は半包から始めることをお勧めします。"
+      },
+      "zh": {
+        "name": "餐前纤维 苹果味",
+        "usage": "餐前30分钟将一包溶于200ml水中，搅匀后立即饮用（放置可能结冻）。",
+        "features": ["每份含5g膳食纤维，支持肠道健康和毒素排出，促进肌肤通透", "苹果风味天然甜味剂，餐前饮用口感宜人"],
+        "caution": "请配合充足水分服用。粉末直接吞服可能导致噎住。首次服用建议从半包开始。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_003",
+    "translations": {
+      "en": {
+        "name": "Glutathione Radiance Jelly",
+        "usage": "Chew 1-2 sticks daily after a meal. No water needed.",
+        "features": ["Glutathione and vitamin C combination supports skin brightening from within", "Convenient jelly stick format with pleasant berry flavor for daily compliance"],
+        "caution": "Pregnant or breastfeeding women and those with specific medical conditions should consult a doctor before consumption. Do not exceed recommended daily intake."
+      },
+      "ja": {
+        "name": "グルタチオンラディアンスジェリー",
+        "usage": "1日1〜2本を食後にお召し上がりください。水なしでそのまま摂取できます。",
+        "features": ["グルタチオンとビタミンCの組み合わせが内側から肌の透明感をサポート", "ベリー風味の便利なジェリースティックで毎日の継続摂取が容易"],
+        "caution": "妊娠中・授乳中の方、特定の疾患をお持ちの方は摂取前に医師にご相談ください。1日の推奨摂取量を超えないでください。"
+      },
+      "zh": {
+        "name": "谷胱甘肽亮肤果冻",
+        "usage": "每日饭后嚼食1-2条。无需配水。",
+        "features": ["谷胱甘肽与维生素C组合从内部支持肌肤提亮", "便携果冻条形式，莓果风味，便于每日坚持服用"],
+        "caution": "孕妇、哺乳期妇女及特定疾病患者请在食用前咨询医生。请勿超过每日推荐摄入量。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_004",
+    "translations": {
+      "en": {
+        "name": "Hydra Barrier Ceramide Capsule",
+        "usage": "Take 1 capsule daily with water after a meal.",
+        "features": ["Plant-derived ceramides reinforce skin's moisture barrier from within", "Added hyaluronic acid and vitamin D support overall skin hydration and health"],
+        "caution": "Those with hypercalcemia or taking medications should consult a healthcare professional. Store in a cool, dry place away from direct sunlight."
+      },
+      "ja": {
+        "name": "ハイドラバリアセラミドカプセル",
+        "usage": "1日1カプセルを食後に水と一緒にお召し上がりください。",
+        "features": ["植物由来セラミドが内側から肌の水分バリアを強化", "ヒアルロン酸とビタミンD配合で肌全体の保湿と健康をサポート"],
+        "caution": "高カルシウム血症の方や医薬品を服用中の方は専門家にご相談ください。直射日光を避け涼しく乾燥した場所に保管してください。"
+      },
+      "zh": {
+        "name": "水润屏障神经酰胺胶囊",
+        "usage": "每日饭后用水送服1粒。",
+        "features": ["植物来源神经酰胺从内部强化肌肤水分屏障", "添加透明质酸和维生素D支持整体肌肤保湿和健康"],
+        "caution": "高钙血症患者或正在服药者请咨询医疗专业人士。请存放于阴凉干燥处，避免阳光直射。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_005",
+    "translations": {
+      "en": {
+        "name": "WIM Calming Tea",
+        "usage": "Steep one tea bag in 200ml hot water for 3-5 minutes. Drink 1-2 cups daily.",
+        "features": ["Chamomile and rooibos blend provides natural calming and anti-inflammatory support", "Caffeine-free formula suitable for evening consumption to support skin recovery during sleep"],
+        "caution": "Those with kidney disease should be cautious of potassium intake. Store refrigerated after opening. Consult a doctor if taking blood pressure medications."
+      },
+      "ja": {
+        "name": "WIM カーミングティー",
+        "usage": "ティーバッグ1個を200mlの熱湯に3〜5分間浸してください。1日1〜2杯をお飲みください。",
+        "features": ["カモミールとルイボスのブレンドが自然な鎮静と抗炎症をサポート", "カフェインフリーで夜の摂取にも適し、睡眠中の肌回復をサポート"],
+        "caution": "腎臓疾患のある方はカリウム摂取にご注意ください。開封後は冷蔵保管してください。血圧の薬を服用中の方は医師にご相談ください。"
+      },
+      "zh": {
+        "name": "WIM舒缓茶",
+        "usage": "将一个茶包浸入200ml热水中3-5分钟。每日饮用1-2杯。",
+        "features": ["洋甘菊和路易波士混合提供天然舒缓和抗炎支持", "无咖啡因配方适合晚间饮用，支持睡眠中的肌肤修复"],
+        "caution": "肾脏疾病患者请注意钾摄入量。开封后请冷藏保存。正在服用血压药物者请咨询医生。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_006",
+    "translations": {
+      "en": {
+        "name": "WIM Daily Multivitamin",
+        "usage": "Take 1 tablet daily after a meal with water.",
+        "features": ["Comprehensive vitamin and mineral formula optimized for skin health (A, C, E, Zinc, Selenium)", "Includes biotin and pantothenic acid for skin, hair, and nail support"],
+        "caution": "Take after meals to avoid stomach upset. If you have a sensitive stomach, take with food. Do not exceed the recommended daily dose."
+      },
+      "ja": {
+        "name": "WIM デイリーマルチビタミン",
+        "usage": "1日1錠を食後に水と一緒にお召し上がりください。",
+        "features": ["肌の健康に最適化されたビタミン・ミネラル総合処方（A、C、E、亜鉛、セレン）", "ビオチンとパントテン酸配合で肌・髪・爪をサポート"],
+        "caution": "胃の不調を避けるため食後に摂取してください。胃が弱い方は食事と一緒にお召し上がりください。1日の推奨摂取量を超えないでください。"
+      },
+      "zh": {
+        "name": "WIM每日多维片",
+        "usage": "每日饭后用水送服1片。",
+        "features": ["针对肌肤健康优化的综合维生素矿物质配方（A、C、E、锌、硒）", "含生物素和泛酸，支持皮肤、头发和指甲健康"],
+        "caution": "请在饭后服用以避免胃部不适。胃部敏感者请配合食物服用。请勿超过每日推荐剂量。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_007",
+    "translations": {
+      "en": {
+        "name": "WIM High Protein Shake - Cacao",
+        "usage": "Mix one packet (40g) with 150-200ml of water or milk. Shake well and consume once daily.",
+        "features": ["20g high-quality protein per serving supports skin collagen synthesis and muscle recovery", "Rich cacao flavor with low sugar for satisfying nutrition without guilt"],
+        "caution": "Contains milk and soy. Not suitable for dairy allergies or severe lactose intolerance."
+      },
+      "ja": {
+        "name": "WIM ハイプロテインシェイク カカオ",
+        "usage": "1包（40g）を水または牛乳150〜200mlに溶かしてよく振り、1日1回お召し上がりください。",
+        "features": ["1包あたり高品質タンパク質20gが肌のコラーゲン合成と筋肉回復をサポート", "リッチなカカオ風味で低糖、罪悪感なく満足感のある栄養補給"],
+        "caution": "乳・大豆を含みます。乳アレルギーや重度の乳糖不耐症の方には適しません。"
+      },
+      "zh": {
+        "name": "WIM高蛋白奶昔 可可味",
+        "usage": "将一包(40g)加入150-200ml水或牛奶中摇匀，每日一次饮用。",
+        "features": ["每份含20g优质蛋白质，支持肌肤胶原合成和肌肉恢复", "浓郁可可风味低糖配方，满足营养需求无负担"],
+        "caution": "含牛奶和大豆成分。乳制品过敏或严重乳糖不耐受者不适用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_008",
+    "translations": {
+      "en": {
+        "name": "WIM High Protein Shake - Matcha",
+        "usage": "Mix one packet (40g) with 150-200ml of cold water or milk. Shake well and consume once daily.",
+        "features": ["Matcha-sourced L-theanine provides calm focus alongside 20g skin-nourishing protein", "Natural antioxidants from matcha support skin defense against environmental stress"],
+        "caution": "Contains caffeine from matcha. Children, pregnant women, and caffeine-sensitive individuals should moderate intake. Contains milk and soy."
+      },
+      "ja": {
+        "name": "WIM ハイプロテインシェイク 抹茶",
+        "usage": "1包（40g）を冷水または牛乳150〜200mlに溶かしてよく振り、1日1回お召し上がりください。",
+        "features": ["抹茶由来のL-テアニンがリラックス集中力を提供しつつ20gの肌栄養タンパク質を補給", "抹茶の天然抗酸化成分が環境ストレスから肌を守る"],
+        "caution": "抹茶由来のカフェインを含みます。小児、妊婦、カフェインに敏感な方は摂取量を調整してください。乳・大豆を含みます。"
+      },
+      "zh": {
+        "name": "WIM高蛋白奶昔 抹茶味",
+        "usage": "将一包(40g)加入150-200ml冷水或牛奶中摇匀，每日一次饮用。",
+        "features": ["抹茶来源L-茶氨酸带来平静专注，同时补充20g滋养肌肤的蛋白质", "抹茶天然抗氧化成分支持肌肤抵御环境压力"],
+        "caution": "含抹茶来源咖啡因。儿童、孕妇及咖啡因敏感人群请适量。含牛奶和大豆成分。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_009",
+    "translations": {
+      "en": {
+        "name": "WIM Digestive Enzyme",
+        "usage": "Take 1 packet mixed with lukewarm or cold water before or during a meal.",
+        "features": ["Comprehensive digestive enzyme blend supports nutrient absorption for skin health", "Improves gut-skin axis by optimizing digestion of proteins, fats, and carbohydrates"],
+        "caution": "Hot water may reduce enzyme activity — use lukewarm or cold water. Start with half a packet if experiencing digestive sensitivity."
+      },
+      "ja": {
+        "name": "WIM 消化酵素",
+        "usage": "1包をぬるま湯または冷水に溶かして食前または食中にお召し上がりください。",
+        "features": ["総合消化酵素ブレンドが肌の健康に必要な栄養素の吸収をサポート", "タンパク質・脂質・炭水化物の消化を最適化し腸-肌軸を改善"],
+        "caution": "熱いお湯は酵素活性を低下させる場合があります。ぬるま湯または冷水でお召し上がりください。消化器が敏感な方は半包から始めてください。"
+      },
+      "zh": {
+        "name": "WIM消化酶",
+        "usage": "取一包溶于温水或冷水中，餐前或餐中服用。",
+        "features": ["综合消化酶混合物支持肌肤健康所需营养素的吸收", "优化蛋白质、脂肪和碳水化合物的消化，改善肠-皮轴"],
+        "caution": "热水可能降低酶活性——请用温水或冷水。消化敏感者建议从半包开始。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_010",
+    "translations": {
+      "en": {
+        "name": "Glutathione ODF Film",
+        "usage": "Place 1 film on the inner cheek or under the tongue. Allow to dissolve naturally without chewing.",
+        "features": ["Oral dissolving film delivers glutathione directly through oral mucosa for rapid absorption", "Sublingual delivery bypasses digestive degradation for superior bioavailability"],
+        "caution": "Do not touch the film with your tongue after application — let it dissolve naturally. Not recommended for children under 12."
+      },
+      "ja": {
+        "name": "グルタチオンODFフィルム",
+        "usage": "1枚を頬の内側または舌の下に貼り、噛まずに自然に溶かしてください。",
+        "features": ["口腔内溶解フィルムがグルタチオンを口腔粘膜から直接吸収", "舌下吸収で消化による分解を回避し優れたバイオアベイラビリティを実現"],
+        "caution": "貼った後は舌で触らず自然に溶かしてください。12歳未満のお子様には推奨しません。"
+      },
+      "zh": {
+        "name": "谷胱甘肽口溶膜",
+        "usage": "将1片贴于颊内侧或舌下。自然溶解，请勿咀嚼。",
+        "features": ["口腔溶解膜通过口腔黏膜直接递送谷胱甘肽，快速吸收", "舌下给药绕过消化降解，生物利用度更优"],
+        "caution": "贴片后请勿用舌头触碰，让其自然溶解吸收。不建议12岁以下儿童使用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_011",
+    "translations": {
+      "en": {
+        "name": "WIM Balance Meal Kit",
+        "usage": "Heat the meal kit and consume as a replacement for one meal. Refrigerate unused portions.",
+        "features": ["Nutritionally balanced meal designed by dietitians to support post-procedure skin recovery", "Complete macronutrient profile with anti-inflammatory ingredients"],
+        "caution": "Must be stored frozen. Do not refreeze after thawing. Consume within 24 hours of thawing."
+      },
+      "ja": {
+        "name": "WIM バランスミールキット",
+        "usage": "ミールキットを温めて1食分としてお召し上がりください。未使用分は冷蔵保管してください。",
+        "features": ["管理栄養士が設計した施術後の肌回復をサポートする栄養バランス食", "抗炎症成分を含む完全な三大栄養素プロファイル"],
+        "caution": "冷凍保存必須です。解凍後の再冷凍は禁止です。解凍後24時間以内にお召し上がりください。"
+      },
+      "zh": {
+        "name": "WIM均衡餐盒",
+        "usage": "加热餐盒作为一餐食用。未食用部分请冷藏。",
+        "features": ["由营养师设计的营养均衡餐，支持术后肌肤恢复", "含抗炎成分的完整宏量营养素配比"],
+        "caution": "必须冷冻保存。解冻后禁止再次冷冻。解冻后24小时内食用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_012",
+    "translations": {
+      "en": {
+        "name": "Biotin Zinc Booster",
+        "usage": "Take 1 tablet daily with water after a meal.",
+        "features": ["Biotin and zinc combination supports skin cell regeneration, hair strength, and nail health", "Optimized dosage for post-procedure recovery without exceeding safe upper limits"],
+        "caution": "Water-soluble vitamins are excreted in excess, but avoid over-dosing. Take after meals for better absorption."
+      },
+      "ja": {
+        "name": "ビオチンジンクブースター",
+        "usage": "1日1錠を食後に水と一緒にお召し上がりください。",
+        "features": ["ビオチンと亜鉛の組み合わせが肌の細胞再生、毛髪の強度、爪の健康をサポート", "施術後の回復に最適化された用量で安全上限を超えない設計"],
+        "caution": "水溶性ビタミンは余剰分が排出されますが、過剰摂取は避けてください。吸収を良くするため食後に摂取してください。"
+      },
+      "zh": {
+        "name": "生物素锌补充片",
+        "usage": "每日饭后用水送服1片。",
+        "features": ["生物素和锌组合支持肌肤细胞再生、发质强韧和指甲健康", "针对术后恢复优化剂量，不超过安全上限"],
+        "caution": "水溶性维生素过量会排出体外，但仍请避免过量服用。饭后服用吸收更佳。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_013",
+    "translations": {
+      "en": {
+        "name": "Lymph Detox Juice",
+        "usage": "Drink one bottle (200ml) daily in the morning on an empty stomach or between meals.",
+        "features": ["Cold-pressed vegetable and fruit blend supports lymphatic drainage and detoxification", "Rich in potassium and natural enzymes for reducing post-procedure swelling"],
+        "caution": "Those with kidney disease should be cautious of potassium intake. Store refrigerated. Consume within 3 days of opening."
+      },
+      "ja": {
+        "name": "リンパデトックスジュース",
+        "usage": "1本（200ml）を毎朝空腹時または食間にお飲みください。",
+        "features": ["コールドプレス野菜・果物ブレンドがリンパの流れとデトックスをサポート", "カリウムと天然酵素が豊富で施術後のむくみ軽減に"],
+        "caution": "腎臓機能が低下している方はカリウム摂取にご注意ください。冷蔵保管してください。開封後3日以内にお飲みください。"
+      },
+      "zh": {
+        "name": "淋巴排毒果汁",
+        "usage": "每日早晨空腹或两餐之间饮用一瓶(200ml)。",
+        "features": ["冷压蔬果混合支持淋巴引流和排毒", "富含钾和天然酶，有助减轻术后浮肿"],
+        "caution": "肾功能下降者请注意钾摄入量。请冷藏保存。开封后3天内饮用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_014",
+    "translations": {
+      "en": {
+        "name": "Collagen Smoothie Powder",
+        "usage": "Mix one scoop (10g) with 200ml water, smoothie, or yogurt. Consume once daily.",
+        "features": ["Low-molecular-weight marine collagen peptides (1000 Dalton) for maximum skin absorption", "Added vitamin C enhances collagen synthesis and provides antioxidant protection"],
+        "caution": "Not suitable for those with fish allergies. Store in a cool, dry place. Do not mix with hot beverages above 60°C."
+      },
+      "ja": {
+        "name": "コラーゲンスムージーパウダー",
+        "usage": "1スクープ（10g）を水、スムージー、またはヨーグルト200mlに混ぜて1日1回お召し上がりください。",
+        "features": ["低分子海洋コラーゲンペプチド（1000ダルトン）で肌への吸収を最大化", "ビタミンC配合でコラーゲン合成を促進し抗酸化保護も提供"],
+        "caution": "魚アレルギーの方は摂取できません。涼しく乾燥した場所に保管してください。60°C以上の熱い飲み物に混ぜないでください。"
+      },
+      "zh": {
+        "name": "胶原蛋白果昔粉",
+        "usage": "取一勺(10g)与200ml水、果昔或酸奶混合，每日一次饮用。",
+        "features": ["低分子海洋胶原蛋白肽（1000道尔顿），最大化肌肤吸收", "添加维生素C促进胶原合成并提供抗氧化保护"],
+        "caution": "鱼类过敏者禁止服用。请存放于阴凉干燥处。请勿与60°C以上热饮混合。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_015",
+    "translations": {
+      "en": {
+        "name": "Longevity NMN Capsule",
+        "usage": "Take 1 capsule daily in the morning with water.",
+        "features": ["NMN (Nicotinamide Mononucleotide) supports cellular NAD+ levels for skin cell vitality", "Anti-aging from the cellular level — promotes DNA repair and mitochondrial function"],
+        "caution": "Not recommended for infants, pregnant or breastfeeding women. Consult a specialist if taking other medications. Store in a cool, dark place."
+      },
+      "ja": {
+        "name": "ロンジェビティNMNカプセル",
+        "usage": "毎朝1カプセルを水と一緒にお召し上がりください。",
+        "features": ["NMN（ニコチンアミドモノヌクレオチド）が細胞のNAD+レベルを維持し肌細胞の活力をサポート", "細胞レベルからのエイジングケア — DNA修復とミトコンドリア機能を促進"],
+        "caution": "乳幼児、妊娠中・授乳中の方は摂取をお控えください。他の医薬品を服用中の方は専門家にご相談ください。涼しく暗い場所に保管してください。"
+      },
+      "zh": {
+        "name": "长寿NMN胶囊",
+        "usage": "每日早晨用水送服1粒。",
+        "features": ["NMN（烟酰胺单核苷酸）支持细胞NAD+水平，维持肌肤细胞活力", "从细胞层面抗衰老——促进DNA修复和线粒体功能"],
+        "caution": "不建议婴幼儿、孕妇及哺乳期妇女服用。正在服用其他药物者请咨询专家。请存放于阴凉避光处。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_016",
+    "translations": {
+      "en": {
+        "name": "Deep Sleep Magnesium Tea",
+        "usage": "Steep one tea bag in warm water (not boiling) for 5 minutes. Drink 30 minutes before bed.",
+        "features": ["Magnesium glycinate promotes muscle relaxation and quality sleep for overnight skin repair", "Valerian root and passionflower support natural sleep cycle without morning grogginess"],
+        "caution": "May cause drowsiness — avoid driving or operating machinery after consumption. Not recommended for those taking sedative medications."
+      },
+      "ja": {
+        "name": "ディープスリープマグネシウムティー",
+        "usage": "ティーバッグ1個をぬるま湯（沸騰させない）に5分間浸し、就寝30分前にお飲みください。",
+        "features": ["グリシン酸マグネシウムが筋肉のリラックスと質の良い睡眠を促し、夜間の肌修復をサポート", "バレリアンルートとパッションフラワーが朝のだるさなく自然な睡眠サイクルをサポート"],
+        "caution": "眠気を催す場合があります。摂取後の運転や機械操作は避けてください。鎮静剤を服用中の方にはお勧めしません。"
+      },
+      "zh": {
+        "name": "深度睡眠镁茶",
+        "usage": "将一个茶包浸入温水（非沸水）中5分钟。睡前30分钟饮用。",
+        "features": ["甘氨酸镁促进肌肉放松和优质睡眠，支持夜间肌肤修复", "缬草根和西番莲支持自然睡眠周期，早起不昏沉"],
+        "caution": "可能引起嗜睡——服用后避免驾驶或操作机械。不建议正在服用镇静药物者使用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_017",
+    "translations": {
+      "en": {
+        "name": "Before Meal Fiber Stick - Shine Muscat",
+        "usage": "Mix one stick with 200ml of water 30 minutes before a meal. Consume immediately.",
+        "features": ["5g dietary fiber per serving supports digestive health and skin clarity", "Refreshing shine muscat flavor makes daily fiber intake enjoyable"],
+        "caution": "Consume with sufficient water. May gel if left standing — drink immediately after mixing. Start with half a stick for first-time users."
+      },
+      "ja": {
+        "name": "食前ファイバースティック シャインマスカット",
+        "usage": "食事の30分前に1本を200mlの水に溶かしてすぐにお飲みください。",
+        "features": ["1本あたり食物繊維5gで消化の健康と肌の透明感をサポート", "さわやかなシャインマスカット風味で毎日の食物繊維摂取が楽しくなる"],
+        "caution": "十分な水と一緒に摂取してください。放置するとゼリー状に固まるため溶かしたらすぐにお飲みください。初回は半本から始めてください。"
+      },
+      "zh": {
+        "name": "餐前纤维棒 阳光玫瑰葡萄味",
+        "usage": "餐前30分钟将一条溶于200ml水中，立即饮用。",
+        "features": ["每份含5g膳食纤维，支持消化健康和肌肤通透", "清爽阳光玫瑰葡萄风味，让每日纤维摄取变得愉快"],
+        "caution": "请配合充足水分服用。放置可能凝固，请溶解后立即饮用。首次服用建议从半条开始。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_018",
+    "translations": {
+      "en": {
+        "name": "Organic C8 MCT Oil",
+        "usage": "Add 1 tablespoon (15ml) to coffee, smoothies, or salad. Start with 1 teaspoon and gradually increase.",
+        "features": ["Pure C8 caprylic acid MCT provides rapid energy for cellular repair and skin vitality", "Organic, unflavored formula blends seamlessly into any beverage or food"],
+        "caution": "Excessive initial intake may cause abdominal discomfort or diarrhea — start with a small amount. Not suitable for those with coconut allergy."
+      },
+      "ja": {
+        "name": "オーガニックC8 MCTオイル",
+        "usage": "1回大さじ1杯（15ml）をコーヒー、スムージー、またはサラダに加えてください。小さじ1杯から始めて徐々に増やしてください。",
+        "features": ["純粋なC8カプリル酸MCTが細胞修復と肌の活力に素早いエネルギーを提供", "有機・無味の処方でどんな飲み物や食事にもシームレスに溶け込む"],
+        "caution": "初回から過量摂取すると腹痛や下痢を起こす場合があります。少量から始めてください。ココナッツアレルギーの方には適しません。"
+      },
+      "zh": {
+        "name": "有机C8 MCT油",
+        "usage": "将1汤匙(15ml)加入咖啡、果昔或沙拉中。从1茶匙开始逐渐增加。",
+        "features": ["纯C8辛酸MCT为细胞修复和肌肤活力提供快速能量", "有机无味配方，可无缝融入任何饮品或食物"],
+        "caution": "初次过量摄入可能引起腹部不适或腹泻——请从少量开始。椰子过敏者不适用。"
+      }
+    }
+  }
+]

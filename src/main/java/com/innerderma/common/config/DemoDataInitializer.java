@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Seeds hackathon demo/dummy data (demo users, facilities, baseline diagnosis,
@@ -41,6 +42,7 @@ public class DemoDataInitializer {
             WhsSkinDiagnosisRepository diagnosisRepository,
             ProcedureRecordRepository procedureRecordRepository,
             ProductRepository productRepository,
+            ProductTranslationRepository translationRepository,
             com.innerderma.knowledge.product.PieceSeoulKnowledgeBase pieceSeoulKb,
             com.innerderma.knowledge.product.WimStoreKnowledgeBase wimStoreKb
     ) {
@@ -104,6 +106,7 @@ public class DemoDataInitializer {
 
             initializeDemoProducts(productRepository);
             seedKnowledgeBaseProducts(productRepository, pieceSeoulKb, wimStoreKb);
+            seedProductTranslations(translationRepository);
         };
     }
 
@@ -213,5 +216,65 @@ public class DemoDataInitializer {
         } catch (Exception e) {
             return "[]";
         }
+    }
+
+    // === i18n 번역 시딩 ===
+
+    private static final String PIECE_SEOUL_I18N_PATH = "knowledge/piece_seoul_products_i18n.json";
+    private static final String WIM_STORE_I18N_PATH = "knowledge/wim_store_products_i18n.json";
+
+    private void seedProductTranslations(ProductTranslationRepository translationRepository) {
+        int saved = 0;
+        saved += seedTranslationsFromFile(translationRepository, PIECE_SEOUL_I18N_PATH);
+        saved += seedTranslationsFromFile(translationRepository, WIM_STORE_I18N_PATH);
+        log.info("Product translation seeding done. {} translations saved.", saved);
+    }
+
+    private int seedTranslationsFromFile(ProductTranslationRepository repo, String resourcePath) {
+        int saved = 0;
+        try {
+            var is = new org.springframework.core.io.ClassPathResource(resourcePath).getInputStream();
+            var mapper = new tools.jackson.databind.ObjectMapper()
+                    .rebuild()
+                    .disable(tools.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                    .build();
+            List<I18nProductEntry> entries = mapper.readValue(is,
+                    mapper.getTypeFactory().constructCollectionType(List.class, I18nProductEntry.class));
+
+            for (var entry : entries) {
+                if (entry.productId == null || entry.translations == null) continue;
+                for (var localeEntry : entry.translations.entrySet()) {
+                    String locale = localeEntry.getKey();
+                    I18nTranslation t = localeEntry.getValue();
+                    if (t == null || t.name == null) continue;
+                    if (!repo.existsByProductCodeAndLocale(entry.productId, locale)) {
+                        String featuresJson = toJson(t.features);
+                        repo.save(new ProductTranslation(
+                                entry.productId, locale, t.name, t.usage, featuresJson, t.caution
+                        ));
+                        saved++;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            log.error("Failed to seed translations from {}: {}", resourcePath, e.getMessage());
+        }
+        return saved;
+    }
+
+    @com.fasterxml.jackson.annotation.JsonAutoDetect(
+            fieldVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY)
+    private static class I18nProductEntry {
+        @com.fasterxml.jackson.annotation.JsonProperty("product_id") String productId;
+        java.util.Map<String, I18nTranslation> translations;
+    }
+
+    @com.fasterxml.jackson.annotation.JsonAutoDetect(
+            fieldVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY)
+    private static class I18nTranslation {
+        String name;
+        String usage;
+        List<String> features;
+        String caution;
     }
 }

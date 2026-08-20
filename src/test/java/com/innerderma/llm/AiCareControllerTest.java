@@ -306,4 +306,65 @@ class AiCareControllerTest {
         // GET은 읽기 전용이어야 한다
         org.mockito.Mockito.verify(demoUserDataSeeder, org.mockito.Mockito.never()).ensureMinimumData(any());
     }
+
+    @Test
+    void marksRoutineWithheldWhenRuleLimitsNewProducts() throws Exception {
+        // R001(시술 회복기)이 limit_new_product_addition을 적용한 상황
+        SolutionObject solution = new SolutionObject(
+                Map.of("limit_new_product_addition", true, "recommendation_mode", "CONSERVATIVE"),
+                List.of("NO_AGGRESSIVE_ROUTINE"),
+                List.of("R001@1.0.0", "R010@1.0.0"),
+                List.of(),
+                Map.of("R001", "시술 후 회복 기간입니다. 시술 aftercare 지침을 우선 적용합니다."),
+                Map.of());
+        when(solutionAssembler.assembleForUser("WHS-DEMO-001")).thenReturn(solution);
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
+                .thenReturn(Optional.empty());
+        // limit_new_product_addition이면 ProductMatcher가 빈 목록을 반환한다
+        when(productMatcher.match(any(), any(), any(), any(), any()))
+                .thenReturn(new ProductMatchResult(List.of(), List.of(), List.of(), "STABLE", null));
+        com.innerderma.user.domain.User user =
+                new com.innerderma.user.domain.User("WHS-DEMO-001", "test", "010-1234-1234");
+        user.updatePreferredLocale("ko");
+        when(userService.getByUserCode("WHS-DEMO-001")).thenReturn(user);
+        when(llmRenderer.render(any(), any(), any()))
+                .thenReturn(new LlmResponse("Care", "STABLE", "", null, null, null, null));
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any(), any(), any()))
+                .thenReturn(ResponseValidationResult.success());
+
+        mockMvc.perform(post("/api/users/WHS-DEMO-001/ai-care"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.routineWithheld").value(true))
+                .andExpect(jsonPath("$.data.routineWithheldReason")
+                        .value("시술 후 회복 기간입니다. 시술 aftercare 지침을 우선 적용합니다."));
+    }
+
+    @Test
+    void doesNotMarkWithheldWhenProductsAreProvided() throws Exception {
+        SolutionObject solution = new SolutionObject(
+                Map.of("night_max_steps", 4), List.of(), List.of("R010@1.0.0"), List.of(), Map.of(), Map.of());
+        when(solutionAssembler.assembleForUser("WHS-DEMO-001")).thenReturn(solution);
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
+                .thenReturn(Optional.empty());
+        PieceSeoulProduct nightProduct = new PieceSeoulProduct(
+                "PSS_001", "Piece Seoul", "Cica Cream", "MOISTURIZER",
+                List.of("barrier"), List.of("HYDRATION"), List.of(), List.of(),
+                List.of("night"), "daily", "fingertip", "얼굴 전체 도포",
+                List.of(), List.of("장벽 강화"), List.of(), List.of(), true, 38000, null, null, null);
+        when(productMatcher.match(any(), any(), any(), any(), any()))
+                .thenReturn(new ProductMatchResult(List.of(nightProduct), List.of(), List.of(), "HYDRATION", null));
+        com.innerderma.user.domain.User user =
+                new com.innerderma.user.domain.User("WHS-DEMO-001", "test", "010-1234-1234");
+        user.updatePreferredLocale("ko");
+        when(userService.getByUserCode("WHS-DEMO-001")).thenReturn(user);
+        when(llmRenderer.render(any(), any(), any()))
+                .thenReturn(new LlmResponse("Care", "HYDRATION", "", null, null, null, null));
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any(), any(), any()))
+                .thenReturn(ResponseValidationResult.success());
+
+        mockMvc.perform(post("/api/users/WHS-DEMO-001/ai-care"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.routineWithheld").value(false))
+                .andExpect(jsonPath("$.data.routineWithheldReason").doesNotExist());
+    }
 }

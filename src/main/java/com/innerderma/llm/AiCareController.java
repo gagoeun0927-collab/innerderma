@@ -56,6 +56,13 @@ public class AiCareController {
     private final ProductRecommendationLogRepository recommendationLogRepository;
     private final com.innerderma.common.demo.DemoUserDataSeeder demoUserDataSeeder;
 
+    /**
+     * limit_new_product_addition을 설정하는 규칙들 (AiRuleInitializer 기준).
+     * 제품 보류 이유를 찾을 때 이 규칙들의 explanationTemplate만 참조한다.
+     */
+    private static final java.util.Set<String> PRODUCT_GATING_RULES =
+            java.util.Set.of("R000", "R001", "R017", "R019", "R021", "R023", "R025");
+
     public AiCareController(SolutionAssembler solutionAssembler,
                             ProductMatcher productMatcher,
                             LlmRenderer llmRenderer,
@@ -101,9 +108,8 @@ public class AiCareController {
                         com.innerderma.common.error.ErrorCode.AI_CARE_NOT_GENERATED));
 
         LlmResponse llmResponse = llmRenderer.render(entry.solution(), entry.products(), resolvedLocale);
-        return ApiResponse.success(new AiCareResponse(llmResponse, entry.solution().appliedRules(),
-                entry.products().primaryConcern(), resolvedLocale, true, List.of(),
-                buildProductSources(entry.products())));
+        return ApiResponse.success(buildResponse(llmResponse, entry.solution(),
+                entry.products(), resolvedLocale, true, List.of()));
     }
 
     @Operation(summary = "AI Care 생성", description = "피부 상태 기반 AI 케어 솔루션을 생성합니다. 같은 날 동일 조건이면 캐시 결과를 반환합니다.")
@@ -124,9 +130,8 @@ public class AiCareController {
         if (cached.isPresent()) {
             SolutionCacheEntry entry = cached.get();
             LlmResponse llmResponse = llmRenderer.render(entry.solution(), entry.products(), resolvedLocale);
-            return ApiResponse.success(new AiCareResponse(llmResponse, entry.solution().appliedRules(),
-                    entry.products().primaryConcern(), resolvedLocale, true, List.of(),
-                    buildProductSources(entry.products())));
+            return ApiResponse.success(buildResponse(llmResponse, entry.solution(),
+                    entry.products(), resolvedLocale, true, List.of()));
         }
 
         // 1. Rule Engine 실행 → Solution Object
@@ -164,15 +169,43 @@ public class AiCareController {
         // Validation fail 시 안전한 fallback 응답 (LLM 원본 대신 최소 구조 반환)
         LlmResponse finalResponse = validation.valid() ? llmResponse : buildFallbackResponse(llmResponse, primaryConcern);
 
-        return ApiResponse.success(new AiCareResponse(
-                finalResponse,
-                solution.appliedRules(),
-                primaryConcern,
-                resolvedLocale,
-                validation.valid(),
-                validation.violations(),
-                buildProductSources(products)
-        ));
+        return ApiResponse.success(buildResponse(finalResponse, solution, products, resolvedLocale,
+                validation.valid(), validation.violations()));
+    }
+
+    /**
+     * Rule Engine이 limit_new_product_addition을 적용했는지 판단해 응답을 만든다.
+     * 적용됐다면 제품이 비어 있는 것이 정상 동작이므로, 그 사실과 이유를 명시해
+     * 프론트가 오류로 표시하지 않게 한다.
+     */
+    private AiCareResponse buildResponse(LlmResponse care, SolutionObject solution,
+                                         ProductMatchResult products, String locale,
+                                         boolean validated, List<String> violations) {
+        Map<String, String> sources = buildProductSources(products);
+        if (Boolean.TRUE.equals(solution.actions().get("limit_new_product_addition"))) {
+            return AiCareResponse.withheld(care, solution.appliedRules(), products.primaryConcern(),
+                    locale, validated, violations, sources, resolveWithheldReason(solution));
+        }
+        return AiCareResponse.of(care, solution.appliedRules(), products.primaryConcern(),
+                locale, validated, violations, sources);
+    }
+
+    /**
+     * 제품 추천을 보류시킨 규칙의 explanationTemplate을 그대로 사용한다.
+     * 새 문구를 만들지 않고 규칙이 제공한 설명만 노출한다(§37).
+     * appliedRules는 실행 순서(priority desc)이므로 가장 우선한 게이팅 규칙의 설명이 선택된다.
+     */
+    private String resolveWithheldReason(SolutionObject solution) {
+        for (String applied : solution.appliedRules()) {
+            String ruleId = applied.contains("@") ? applied.substring(0, applied.indexOf('@')) : applied;
+            if (PRODUCT_GATING_RULES.contains(ruleId)) {
+                String template = solution.explanationTemplates().get(ruleId);
+                if (template != null && !template.isBlank()) {
+                    return template;
+                }
+            }
+        }
+        return null;
     }
 
     /**

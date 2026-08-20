@@ -26,15 +26,15 @@ public class AiRule {
     private int priority;
 
     @Lob
-    @Column(name = "conditions_json", nullable = false)
+    @Column(name = "conditions_json", nullable = false, length = Integer.MAX_VALUE)
     private String conditionsJson;
 
     @Lob
-    @Column(name = "actions_json", nullable = false)
+    @Column(name = "actions_json", nullable = false, length = Integer.MAX_VALUE)
     private String actionsJson;
 
     @Lob
-    @Column(name = "restrictions_json", nullable = false)
+    @Column(name = "restrictions_json", nullable = false, length = Integer.MAX_VALUE)
     private String restrictionsJson;
 
     @Column(name = "explanation_template", length = 1000)

@@ -29,7 +29,7 @@ public class ProductTranslation {
 
     /** JSON array of feature strings (verified_claims 번역) */
     @Lob
-    @Column(name = "features_json")
+    @Column(name = "features_json", length = Integer.MAX_VALUE)
     private String featuresJson;
 
     /** 주의사항 (warnings + allergens 통합 번역) */

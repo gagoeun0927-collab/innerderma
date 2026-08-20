@@ -58,15 +58,15 @@ public class Product {
     private String applicationMethod;
 
     @Lob
-    @Column(name = "verified_claims_json")
+    @Column(name = "verified_claims_json", length = Integer.MAX_VALUE)
     private String verifiedClaimsJson;
 
     @Lob
-    @Column(name = "ingredients_highlight_json")
+    @Column(name = "ingredients_highlight_json", length = Integer.MAX_VALUE)
     private String ingredientsHighlightJson;
 
     @Lob
-    @Column(name = "skin_state_tags_json")
+    @Column(name = "skin_state_tags_json", length = Integer.MAX_VALUE)
     private String skinStateTagsJson;
 
     protected Product() {}

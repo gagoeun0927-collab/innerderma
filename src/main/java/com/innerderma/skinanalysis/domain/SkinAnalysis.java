@@ -39,7 +39,7 @@ public class SkinAnalysis {
     private String modelVersion;
 
     @Lob
-    @Column(name = "raw_result", nullable = false)
+    @Column(name = "raw_result", nullable = false, length = Integer.MAX_VALUE)
     private String rawResult;
 
     protected SkinAnalysis() {}

@@ -44,11 +44,11 @@ public class SkinStateSnapshot {
     private String scoringVersion;
 
     @Lob
-    @Column(name = "symptom_scores_json", nullable = false)
+    @Column(name = "symptom_scores_json", nullable = false, length = Integer.MAX_VALUE)
     private String symptomScoresJson;
 
     @Lob
-    @Column(name = "analysis_scores_json")
+    @Column(name = "analysis_scores_json", length = Integer.MAX_VALUE)
     private String analysisScoresJson;
 
     @Column(name = "dominant_symptom", length = 40)

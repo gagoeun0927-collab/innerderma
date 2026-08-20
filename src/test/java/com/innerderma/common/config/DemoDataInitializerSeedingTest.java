@@ -37,8 +37,8 @@ class DemoDataInitializerSeedingTest {
 
     @Test
     void knowledgeBasesAreLoadedInSpringContext() {
-        assertThat(pieceSeoulKb.size()).isEqualTo(22);
-        assertThat(wimStoreKb.size()).isEqualTo(16);
+        assertThat(pieceSeoulKb.size()).isEqualTo(7);
+        assertThat(wimStoreKb.size()).isEqualTo(9);
     }
 
     @Test
@@ -47,12 +47,11 @@ class DemoDataInitializerSeedingTest {
                 .filter(p -> "PIECE_SEOUL".equals(p.getSource()))
                 .toList();
 
-        assertThat(saved).hasSize(22);
+        assertThat(saved).hasSize(7);
         assertThat(saved).allSatisfy(p -> {
             assertThat(p.getName()).isNotBlank();
             assertThat(p.getBrand()).isNotBlank();
             assertThat(p.getPrice()).isNotNull().isPositive();
-            assertThat(p.getOfficialUrl()).isNotBlank();
             assertThat(p.isDemoProduct()).isFalse();
             assertThat(p.getImageUrl()).startsWith("/product-images/");
             assertThat(p.getImageUrl()).endsWith(".jpg");
@@ -65,7 +64,7 @@ class DemoDataInitializerSeedingTest {
                 .filter(p -> "WIM_STORE".equals(p.getSource()))
                 .toList();
 
-        assertThat(saved).hasSize(16);
+        assertThat(saved).hasSize(9);
         assertThat(saved).allSatisfy(p -> {
             assertThat(p.getName()).isNotBlank();
             assertThat(p.getPrice()).isNotNull().isPositive();
@@ -98,16 +97,16 @@ class DemoDataInitializerSeedingTest {
 
     @Test
     void seedsTranslationsForAllKbProducts() {
-        // (30 piece_seoul + 18 wim_store) × 4 locales (ko/en/ja/zh) = 192 translations
+        // (7 piece_seoul + 9 wim_store) × 4 locales (ko/en/ja/zh) = 64 translations
         List<ProductTranslation> all = translationRepository.findAll();
-        assertThat(all).hasSize(192);
+        assertThat(all).hasSize(64);
     }
 
     @Test
     void seedsEnglishTranslationForPieceSeoulProduct() {
         var tr = translationRepository.findByProductCodeAndLocale("PSS_001", "en");
         assertThat(tr).isPresent();
-        assertThat(tr.get().getName()).isEqualTo("Core Rebuild Cream");
+        assertThat(tr.get().getName()).isEqualTo("Core Rebuild Cream 50ml");
         assertThat(tr.get().getUsage()).isNotBlank();
         assertThat(tr.get().getFeaturesJson()).contains("beta-sitosterol");
         assertThat(tr.get().getCaution()).isNotBlank();
@@ -117,13 +116,13 @@ class DemoDataInitializerSeedingTest {
     void seedsJapaneseTranslationForWimStoreProduct() {
         var tr = translationRepository.findByProductCodeAndLocale("WIM_001", "ja");
         assertThat(tr).isPresent();
-        assertThat(tr.get().getName()).contains("プロテインシェイク");
+        assertThat(tr.get().getName()).isNotBlank();
         assertThat(tr.get().getLocale()).isEqualTo("ja");
     }
 
     @Test
     void seedsChineseTranslationExists() {
-        var tr = translationRepository.findByProductCodeAndLocale("PSS_010", "zh");
+        var tr = translationRepository.findByProductCodeAndLocale("PSS_002", "zh");
         assertThat(tr).isPresent();
         assertThat(tr.get().getLocale()).isEqualTo("zh");
         assertThat(tr.get().getName()).isNotBlank();

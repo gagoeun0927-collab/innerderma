@@ -77,7 +77,7 @@ class SchemaMigrationValidationTest {
                 .filter(p -> p.getSource() != null)
                 .toList();
 
-        assertThat(kbProducts).hasSize(38);
+        assertThat(kbProducts).hasSize(16);
         assertThat(kbProducts).allSatisfy(p -> {
             assertThat(p.getPrice()).isNotNull();
             assertThat(p.getImageUrl()).startsWith("/product-images/");
@@ -90,6 +90,6 @@ class SchemaMigrationValidationTest {
 
     @Test
     void translationSeedingWorksOnMysqlSchema() {
-        assertThat(translationRepository.count()).isEqualTo(192);
+        assertThat(translationRepository.count()).isEqualTo(64);
     }
 }

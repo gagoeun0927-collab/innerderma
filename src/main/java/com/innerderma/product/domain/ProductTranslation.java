@@ -28,7 +28,7 @@ public class ProductTranslation {
     private String usage;
 
     /** JSON array of feature strings (verified_claims 번역) */
-    @Lob
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
     @Column(name = "features_json", length = Integer.MAX_VALUE)
     private String featuresJson;
 

@@ -1,0 +1,1453 @@
+[
+  {
+    "product_id": "PSS_001",
+    "brand": "Pith.",
+    "category": "MOISTURIZER",
+    "tags": [
+      "barrier",
+      "growth_factor",
+      "peptide",
+      "ceramide",
+      "soothing",
+      "recovery"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "HYDRATION",
+      "IRRITATION",
+      "STABLE"
+    ],
+    "treatment_compatibility": [
+      "laser_toning",
+      "pico_toning",
+      "fractional_laser",
+      "fraxel_dual",
+      "ipl",
+      "hydrafacial",
+      "aquapeel",
+      "lhalala_peel",
+      "black_peel",
+      "chemical_peel",
+      "microneedling",
+      "potenza_pumping",
+      "botox",
+      "filler",
+      "rf_treatment",
+      "thermage_flx",
+      "ultherapy",
+      "inmode_fx_forma",
+      "serf_rf",
+      "volnewmer",
+      "titanium_lifting",
+      "onda_lifting",
+      "led_therapy",
+      "injection",
+      "rejuran_healer",
+      "juvelook_skin",
+      "juvelook_volume",
+      "exosome_asce"
+    ],
+    "restricted_after_treatments": [
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 3
+      }
+    ],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
+    "frequency": "daily",
+    "amount": "fingertip amount (1~2 pea-sized)",
+    "warnings": [
+      "상처 부위 직접 도포 피하기",
+      "사용 중 붉은 반점이나 가려움 발생 시 사용 중단"
+    ],
+    "verified_claims": [
+      "베타-시토스테롤 및 10종 피부 성장인자(EGF/FGF 등) 복합체 함유로 손상된 피부 장벽 회복 지원",
+      "피부과 시술 후 약해진 피부 밀도 개선 및 보습 유지력 강화"
+    ],
+    "ingredients_highlight": [
+      "beta-sitosterol",
+      "growth factor complex (10 GF)",
+      "ceramide NP",
+      "panthenol",
+      "copper tripeptide-1"
+    ],
+    "allergens": [],
+    "price": 54000,
+    "is_active": true,
+    "store": "piece_seoul",
+    "image_path": "images/PSS_001.jpg",
+    "translations": {
+      "ko": {
+        "name": "코어 리빌드 크림 50ml",
+        "usage": "세안 및 토너/세럼 사용 후 적당량을 덜어 피부 결을 따라 얼굴 전체와 목에 부드럽게 펴 바르고 체온으로 흡수시켜요.",
+        "features": [
+          "베타-시토스테롤과 10종 피부 성장인자 복합체로 손상된 피부 장벽 회복을 도와요",
+          "시술 후 약해진 피부 밀도와 보습 유지력을 강화해요"
+        ],
+        "caution": "상처 부위에는 직접 바르지 말고, 사용 중 붉은 반점이나 가려움이 느껴지면 사용을 중단하세요."
+      },
+      "en": {
+        "name": "Core Rebuild Cream 50ml",
+        "usage": "After cleansing and toner/serum, smooth an appropriate amount over the face and neck along your skin's natural lines, then pat gently to help it absorb.",
+        "features": [
+          "Contains beta-sitosterol and a 10-growth-factor complex (including EGF/FGF) to support a damaged skin barrier",
+          "Helps restore skin density and moisture retention weakened after in-clinic treatments"
+        ],
+        "caution": "Avoid applying directly to open wounds, and discontinue use if redness or itching occurs."
+      },
+      "ja": {
+        "name": "コアリビルドクリーム 50ml",
+        "usage": "洗顔・トナー/セラム使用後、適量を肌のキメに沿って顔全体と首に優しく伸ばし、軽く押さえるように浸透させてください。",
+        "features": [
+          "ベータ-シトステロールと10種の皮膚成長因子(EGF/FGFなど)複合体配合で、ダメージを受けた肌のバリア機能回復をサポート",
+          "施術後に弱まった肌の密度改善と保湿力強化に役立ちます"
+        ],
+        "caution": "傷のある部位への直接使用は避け、使用中に赤みやかゆみを感じた場合は使用を中止してください。"
+      },
+      "zh": {
+        "name": "核心重建霜 50ml",
+        "usage": "洁面及使用爽肤水/精华后，取适量沿肌肤纹理均匀涂抹于全脸及颈部，轻拍至吸收。",
+        "features": [
+          "含β-谷甾醇及10种皮肤生长因子复合物(含EGF/FGF等)，帮助修复受损肌肤屏障",
+          "有助改善光电疗程后肌肤密度下降及维持保湿力"
+        ],
+        "caution": "请避免直接涂抹于伤口，使用过程中如出现泛红或瘙痒请立即停用。"
+      }
+    }
+  },
+  {
+    "product_id": "PSS_002",
+    "brand": "Pith.",
+    "category": "MOISTURIZER",
+    "tags": [
+      "soothing",
+      "calming",
+      "azulene",
+      "centella",
+      "redness",
+      "cooling"
+    ],
+    "skin_state_tags": [
+      "REDNESS",
+      "IRRITATION",
+      "BARRIER_RECOVERY",
+      "SWELLING"
+    ],
+    "treatment_compatibility": [
+      "laser_toning",
+      "pico_toning",
+      "vbeam_perfecta",
+      "fractional_laser",
+      "fraxel_dual",
+      "ipl",
+      "hydrafacial",
+      "aquapeel",
+      "lhalala_peel",
+      "microneedling",
+      "potenza_pumping",
+      "rf_treatment",
+      "thermage_flx",
+      "ultherapy",
+      "inmode_fx_forma",
+      "serf_rf",
+      "volnewmer",
+      "led_therapy",
+      "injection",
+      "rejuran_healer",
+      "exosome_asce"
+    ],
+    "restricted_after_treatments": [],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
+    "frequency": "daily",
+    "amount": "1~2 pumps",
+    "warnings": [
+      "자외선 노출 전 단독 사용 시 자외선 차단제 병행 권장"
+    ],
+    "verified_claims": [
+      "구아이아줄렌 성분이 시술 및 자극으로 인한 일시적 붉은기 및 열감 진정",
+      "병풀추출물 기반의 저자극 수분 젤 크림 포뮬러"
+    ],
+    "ingredients_highlight": [
+      "guaiazulene",
+      "centella asiatica extract",
+      "madecassoside",
+      "allantoin",
+      "hyaluronic acid"
+    ],
+    "allergens": [],
+    "price": 76000,
+    "is_active": true,
+    "store": "piece_seoul",
+    "image_path": "images/PSS_002.jpg",
+    "translations": {
+      "ko": {
+        "name": "블루 리페어 하이드로 수딩 크림 120ml",
+        "usage": "열감이나 붉은기가 있는 부위를 중심으로 가볍게 펴 바른 뒤 가볍게 두드려 흡수시켜요. 필요하면 얇게 덧발라요.",
+        "features": [
+          "구아이아줄렌 성분이 시술이나 자극으로 인한 일시적 붉은기와 열감을 진정시켜요",
+          "병풀추출물 기반의 저자극 수분 젤 크림이에요"
+        ],
+        "caution": "단독 사용 후 자외선에 노출된다면 자외선 차단제를 함께 발라주세요."
+      },
+      "en": {
+        "name": "Blue Repair Soothing Cream 120ml",
+        "usage": "Apply gently over areas with heat or redness and pat to absorb; layer a thin extra coat if needed.",
+        "features": [
+          "Guaiazulene helps calm temporary redness and heat from treatments or irritation",
+          "Low-irritation, water-gel cream formula based on centella asiatica extract"
+        ],
+        "caution": "If used alone before sun exposure, pairing with sunscreen is recommended."
+      },
+      "ja": {
+        "name": "ブルーリペアスージングクリーム 120ml",
+        "usage": "ほてりや赤みが気になる部分を中心に軽く伸ばし、軽くたたくように浸透させてください。必要に応じて重ね付けします。",
+        "features": [
+          "グアイアズレン配合で、施術や刺激による一時的な赤み・ほてりを鎮静",
+          "ツボクサエキスベースの低刺激ウォータージェルクリーム処方"
+        ],
+        "caution": "単独使用後に紫外線を浴びる場合は、日焼け止めの併用をおすすめします。"
+      },
+      "zh": {
+        "name": "蓝色舒缓修护霜 120ml",
+        "usage": "以有灼热感或泛红的部位为中心轻轻涂抹，轻拍吸收，如有需要可薄薄叠涂一层。",
+        "features": [
+          "含愈创薁烷成分，舒缓术后或刺激引起的暂时性泛红与灼热感",
+          "以积雪草提取物为基础的低刺激水凝霜配方"
+        ],
+        "caution": "单独使用后如需外出见光，建议搭配防晒产品使用。"
+      }
+    }
+  },
+  {
+    "product_id": "PSS_003",
+    "brand": "Pith.",
+    "category": "SUNSCREEN",
+    "tags": [
+      "sunscreen",
+      "uv_protection",
+      "panthenol",
+      "anti_aging",
+      "moisture_sun"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "HYDRATION",
+      "PIGMENTATION",
+      "BARRIER_RECOVERY"
+    ],
+    "treatment_compatibility": [
+      "laser_toning",
+      "pico_toning",
+      "ipl",
+      "hydrafacial",
+      "aquapeel",
+      "lhalala_peel",
+      "black_peel",
+      "botox",
+      "filler",
+      "rf_treatment",
+      "thermage_flx",
+      "ultherapy",
+      "volnewmer",
+      "led_therapy"
+    ],
+    "restricted_after_treatments": [
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 5
+      }
+    ],
+    "usage_time": [
+      "morning"
+    ],
+    "frequency": "daily",
+    "amount": "two-finger length (약 1.2g)",
+    "warnings": [
+      "상처가 아물지 않은 시술 직후 피부에는 무기자차 전용 또는 재생 밴드 위 사용 권장",
+      "눈가 피하여 도포"
+    ],
+    "verified_claims": [
+      "SPF50+ PA++++ 강력한 자외선 차단(UVA/UVB 동시 차단)",
+      "판테놀과 저자극 안티에이징 복합체가 결합되어 자외선 자극으로부터 피부 장벽 동시 보호"
+    ],
+    "ingredients_highlight": [
+      "panthenol",
+      "retinyl palmitate (micro-dosed)",
+      "tocopherol",
+      "niacinamide",
+      "adenosine"
+    ],
+    "allergens": [],
+    "price": 15000,
+    "is_active": true,
+    "store": "piece_seoul",
+    "image_path": "images/PSS_003.jpg",
+    "translations": {
+      "ko": {
+        "name": "판테티놀 선 에센스 SPF50+ PA++++ 10ml",
+        "usage": "아침 스킨케어 마지막 단계에서 외출 20~30분 전 얼굴 전체와 목에 골고루 펴 바르고, 야외 활동 시 2~3시간마다 덧발라요.",
+        "features": [
+          "SPF50+ PA++++로 UVA/UVB를 동시에 강력하게 차단해요",
+          "판테놀과 저자극 안티에이징 성분이 자외선 자극으로부터 피부 장벽을 함께 지켜줘요"
+        ],
+        "caution": "상처가 아물지 않은 시술 직후 피부에는 무기자차 제품을 쓰고, 눈가는 피해서 발라주세요."
+      },
+      "en": {
+        "name": "Panthetinol Sun Essence SPF50+ PA++++ 10ml",
+        "usage": "As the last step of your morning routine, apply evenly over the face and neck 20-30 minutes before going out, and reapply every 2-3 hours during extended outdoor activity.",
+        "features": [
+          "SPF50+ PA++++ for strong, broad-spectrum UVA/UVB protection",
+          "Combines panthenol with a gentle anti-aging complex to protect the skin barrier from UV-induced stress"
+        ],
+        "caution": "On freshly treated skin that hasn't fully healed, use a mineral-only sunscreen or apply over a recovery dressing, and avoid the eye area."
+      },
+      "ja": {
+        "name": "パンテチノールサンエッセンス SPF50+ PA++++ 10ml",
+        "usage": "朝のスキンケアの最後に、外出20〜30分前に顔全体と首に均一に伸ばしてください。屋外活動時は2〜3時間ごとに塗り直します。",
+        "features": [
+          "SPF50+ PA++++でUVA/UVBを同時にしっかりカット",
+          "パンテノールと低刺激エイジングケア複合成分が紫外線ダメージから肌バリアを保護"
+        ],
+        "caution": "施術直後で傷が完全に治っていない肌には、ノンケミカルタイプまたは保護テープの上からの使用をおすすめし、目元は避けてください。"
+      },
+      "zh": {
+        "name": "泛醇防晒精华 SPF50+ PA++++ 10ml",
+        "usage": "作为早间护肤最后一步，在外出前20~30分钟均匀涂抹于全脸及颈部，户外活动时每2~3小时补涂一次。",
+        "features": [
+          "SPF50+ PA++++高倍防护，同时阻隔UVA/UVB",
+          "泛醇搭配低刺激抗老复合成分，在防晒的同时保护肌肤屏障"
+        ],
+        "caution": "术后伤口未完全愈合的肌肤，建议单独使用物理防晒或涂于修复贴之上，并避开眼周。"
+      }
+    }
+  },
+  {
+    "product_id": "PSS_004",
+    "brand": "Pith.",
+    "category": "MASK",
+    "tags": [
+      "mask_sheet",
+      "soothing",
+      "cooling",
+      "azulene",
+      "calming",
+      "post_treatment"
+    ],
+    "skin_state_tags": [
+      "REDNESS",
+      "IRRITATION",
+      "SWELLING",
+      "HYDRATION",
+      "BARRIER_RECOVERY"
+    ],
+    "treatment_compatibility": [
+      "laser_toning",
+      "pico_toning",
+      "vbeam_perfecta",
+      "fractional_laser",
+      "fraxel_dual",
+      "ipl",
+      "hydrafacial",
+      "aquapeel",
+      "lhalala_peel",
+      "microneedling",
+      "potenza_pumping",
+      "rf_treatment",
+      "thermage_flx",
+      "ultherapy",
+      "serf_rf",
+      "inmode_fx_forma",
+      "volnewmer",
+      "led_therapy",
+      "injection",
+      "rejuran_healer",
+      "juvelook_skin",
+      "exosome_asce"
+    ],
+    "restricted_after_treatments": [
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 3
+      }
+    ],
+    "usage_time": [
+      "night"
+    ],
+    "frequency": "every_other_day",
+    "amount": "1 sheet",
+    "warnings": [
+      "시트 부착 시간을 20분 이상 초과하지 말 것"
+    ],
+    "verified_claims": [
+      "임상 검증된 급속 쿨링 및 시술 후 피부 온도 감소 효과",
+      "멸균 극세사 시트로 민감성 피부 물리적 자극 최소화"
+    ],
+    "ingredients_highlight": [
+      "guaiazulene",
+      "chamomile flower extract",
+      "hydrolyzed hyaluronic acid",
+      "panthenol",
+      "dipotassium glycyrrhizate"
+    ],
+    "allergens": [],
+    "price": 18000,
+    "is_active": true,
+    "store": "piece_seoul",
+    "image_path": "images/PSS_004.jpg",
+    "translations": {
+      "ko": {
+        "name": "블루 리페어 솔루션 1매",
+        "usage": "세안 후 토너로 피부결을 정돈한 뒤 마스크 시트를 얼굴 전체에 밀착시키고 15~20분 후 제거해요. 남은 에센스는 가볍게 두드려 흡수시켜요.",
+        "features": [
+          "임상으로 검증된 급속 쿨링 효과로 시술 후 피부 온도를 낮춰줘요",
+          "멸균 극세사 시트라 민감성 피부에도 물리적 자극이 적어요"
+        ],
+        "caution": "시트 부착 시간은 20분을 넘기지 마세요."
+      },
+      "en": {
+        "name": "Blue Repair Soothing Mask 1 sheet",
+        "usage": "After cleansing and toning, smooth the sheet mask over the whole face, leave on for 15-20 minutes, then remove and pat any remaining essence into the skin.",
+        "features": [
+          "Clinically shown to cool skin quickly and lower post-treatment skin temperature",
+          "Sterile microfiber sheet minimizes physical friction on sensitive skin"
+        ],
+        "caution": "Do not leave the sheet on for longer than 20 minutes."
+      },
+      "ja": {
+        "name": "ブルーリペアスージングマスク 1枚",
+        "usage": "洗顔後、トナーで肌を整えてからシートを顔全体に密着させ、15〜20分後に剥がしてください。残ったエッセンスは軽くたたいて浸透させます。",
+        "features": [
+          "施術後の肌温度を素早く下げる冷却効果が臨床で確認済み",
+          "滅菌済みの極細繊維シートで敏感肌への物理的な摩擦を最小限に"
+        ],
+        "caution": "シートの装着時間は20分を超えないようにしてください。"
+      },
+      "zh": {
+        "name": "蓝色舒缓修护面膜 1片",
+        "usage": "洁面并用爽肤水打底后，将面膜贴均匀敷于全脸，15~20分钟后取下，剩余精华轻拍吸收。",
+        "features": [
+          "经临床验证可快速降温，缓解术后肌肤灼热",
+          "无菌超细纤维面膜布，最大限度减少对敏感肌的摩擦刺激"
+        ],
+        "caution": "敷贴时间请勿超过20分钟。"
+      }
+    }
+  },
+  {
+    "product_id": "PSS_005",
+    "brand": "Pith.",
+    "category": "TONER",
+    "tags": [
+      "toner",
+      "hydration",
+      "clarifying",
+      "soothing",
+      "gentle",
+      "barrier_safe"
+    ],
+    "skin_state_tags": [
+      "HYDRATION",
+      "BARRIER_RECOVERY",
+      "IRRITATION",
+      "STABLE"
+    ],
+    "treatment_compatibility": [
+      "laser_toning",
+      "pico_toning",
+      "fractional_laser",
+      "fraxel_dual",
+      "ipl",
+      "hydrafacial",
+      "aquapeel",
+      "lhalala_peel",
+      "chemical_peel",
+      "microneedling",
+      "potenza_pumping",
+      "botox",
+      "filler",
+      "rf_treatment",
+      "thermage_flx",
+      "ultherapy",
+      "serf_rf",
+      "volnewmer",
+      "led_therapy",
+      "injection",
+      "rejuran_healer",
+      "juvelook_skin"
+    ],
+    "restricted_after_treatments": [
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 3
+      }
+    ],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
+    "frequency": "daily",
+    "amount": "coin-sized amount (약 2~3ml)",
+    "warnings": [
+      "사용 중 붉은 반점, 부어오름, 가려움증 등의 이상 증상이나 부작용이 있는 경우 전문의 등과 상담"
+    ],
+    "verified_claims": [
+      "피부 정화 및 유수분 균형을 맞춰주는 클래리파잉 겔 토너",
+      "피부 저자극 테스트를 완료하여 민감한 피부에도 안심하고 사용 가능"
+    ],
+    "ingredients_highlight": [
+      "centella asiatica extract",
+      "panthenol",
+      "glycerin",
+      "hyaluronic acid",
+      "betaine"
+    ],
+    "allergens": [],
+    "price": 54000,
+    "is_active": true,
+    "store": "piece_seoul",
+    "image_path": "images/PSS_005.jpg",
+    "translations": {
+      "ko": {
+        "name": "클래리파이 겔 토너 340g",
+        "usage": "세안 후 적당량을 손에 덜거나 솜에 묻혀 피부결을 따라 부드럽게 펴 바른 뒤 흡수시켜 줍니다.",
+        "features": [
+          "피부 정화 및 유수분 균형을 맞춰주는 클래리파잉 겔 토너입니다.",
+          "피부 저자극 테스트를 완료하여 민감한 피부에도 안심하고 사용할 수 있습니다."
+        ],
+        "caution": "사용 중 붉은 반점, 부어오름, 가려움증 등의 이상 증상이나 부작용이 있는 경우 전문의 등과 상담하세요."
+      },
+      "en": {
+        "name": "Clarify Gel Toner 340g",
+        "usage": "After cleansing, take an appropriate amount on your hands or a cotton pad, gently spread along the skin texture, and let it absorb.",
+        "features": [
+          "A clarifying gel toner that purifies the skin and restores moisture balance.",
+          "Completed skin irritation testing, making it safe for sensitive skin."
+        ],
+        "caution": "Consult a specialist if you experience abnormal symptoms or side effects such as red spots, swelling, or itching during use."
+      },
+      "ja": {
+        "name": "クラリファイ ゲルトナー 340g",
+        "usage": "洗顔後、適量を手またはコットンに取り、肌のキメに沿って優しく伸ばして馴染ませます。",
+        "features": [
+          "肌を浄化し、油分と水分のバランスを整えるクラリファイニングゲルトナーです。",
+          "皮膚低刺激テスト済みで、敏感肌の方でも安心してお使いいただけます。"
+        ],
+        "caution": "使用中に赤み、腫れ、かゆみなどの異常が現れた場合は、専門医等にご相談ください。"
+      },
+      "zh": {
+        "name": "净致舒缓凝胶爽肤水 340g",
+        "usage": "洁面后，取适量于手心或化妆棉上，顺着肌肤纹理轻轻涂抹，并轻拍至充分吸收。",
+        "features": [
+          "帮助净化肌肤、调节水油平衡的凝胶型净致爽肤水。",
+          "已通过皮肤低刺激测试，敏感肌肤也可安心使用。"
+        ],
+        "caution": "使用过程中如出现红斑、肿胀、瘙痒等异常症状或副作用，请立即停用并咨询专业医生。"
+      }
+    }
+  },
+  {
+    "product_id": "PSS_006",
+    "brand": "Pith.",
+    "category": "MOISTURIZER",
+    "tags": [
+      "barrier",
+      "growth_factor",
+      "peptide",
+      "ceramide",
+      "soothing",
+      "recovery"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "HYDRATION",
+      "IRRITATION",
+      "STABLE"
+    ],
+    "treatment_compatibility": [
+      "laser_toning",
+      "pico_toning",
+      "fractional_laser",
+      "fraxel_dual",
+      "ipl",
+      "hydrafacial",
+      "aquapeel",
+      "lhalala_peel",
+      "black_peel",
+      "chemical_peel",
+      "microneedling",
+      "potenza_pumping",
+      "botox",
+      "filler",
+      "rf_treatment",
+      "thermage_flx",
+      "ultherapy",
+      "inmode_fx_forma",
+      "serf_rf",
+      "volnewmer",
+      "titanium_lifting",
+      "onda_lifting",
+      "led_therapy",
+      "injection",
+      "rejuran_healer",
+      "juvelook_skin",
+      "juvelook_volume",
+      "exosome_asce"
+    ],
+    "restricted_after_treatments": [
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 3
+      }
+    ],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
+    "frequency": "daily",
+    "amount": "fingertip amount (1~2 pea-sized)",
+    "warnings": [
+      "상처 부위 직접 도포 피하기",
+      "사용 중 붉은 반점이나 가려움 발생 시 사용 중단"
+    ],
+    "verified_claims": [
+      "베타-시토스테롤 및 10종 피부 성장인자(EGF/FGF 등) 복합체 함유로 손상된 피부 장벽 회복 지원",
+      "피부과 시술 후 약해진 피부 밀도 개선 및 보습 유지력 강화"
+    ],
+    "ingredients_highlight": [
+      "beta-sitosterol",
+      "growth factor complex (10 GF)",
+      "ceramide NP",
+      "panthenol",
+      "copper tripeptide-1"
+    ],
+    "allergens": [],
+    "price": 21000,
+    "is_active": true,
+    "store": "piece_seoul",
+    "image_path": "images/PSS_006.jpg",
+    "translations": {
+      "ko": {
+        "name": "코어 리빌드 크림 15ml",
+        "usage": "세안 및 토너/세럼 사용 후 적당량을 덜어 피부 결을 따라 얼굴 전체와 목에 부드럽게 펴 바르고 체온으로 흡수시켜요.",
+        "features": [
+          "베타-시토스테롤과 10종 피부 성장인자 복합체로 손상된 피부 장벽 회복을 도와요",
+          "시술 후 약해진 피부 밀도와 보습 유지력을 강화해요"
+        ],
+        "caution": "상처 부위에는 직접 바르지 말고, 사용 중 붉은 반점이나 가려움이 느껴지면 사용을 중단하세요."
+      },
+      "en": {
+        "name": "Core Rebuild Cream 15ml",
+        "usage": "After cleansing and toner/serum, smooth an appropriate amount over the face and neck along your skin's natural lines, then pat gently to help it absorb.",
+        "features": [
+          "Contains beta-sitosterol and a 10-growth-factor complex (including EGF/FGF) to support a damaged skin barrier",
+          "Helps restore skin density and moisture retention weakened after in-clinic treatments"
+        ],
+        "caution": "Avoid applying directly to open wounds, and discontinue use if redness or itching occurs."
+      },
+      "ja": {
+        "name": "コアリビルドクリーム 15ml",
+        "usage": "洗顔・トナー/セラム使用後、適量を肌のキメに沿って顔全体と首に優しく伸ばし、軽く押さえるように浸透させてください。",
+        "features": [
+          "ベータ-シトステロールと10種の皮膚成長因子(EGF/FGFなど)複合体配合で、ダメージを受けた肌のバリア機能回復をサポート",
+          "施術後に弱まった肌の密度改善と保湿力強化に役立ちます"
+        ],
+        "caution": "傷のある部位への直接使用は避け、使用中に赤みやかゆみを感じた場合は使用を中止してください。"
+      },
+      "zh": {
+        "name": "核心重建霜 15ml",
+        "usage": "洁面及使用爽肤水/精华后，取适量沿肌肤纹理均匀涂抹于全脸及颈部，轻拍至吸收。",
+        "features": [
+          "含β-谷甾醇及10种皮肤生长因子复合物(含EGF/FGF等)，帮助修复受损肌肤屏障",
+          "有助改善光电疗程后肌肤密度下降及维持保湿力"
+        ],
+        "caution": "请避免直接涂抹于伤口，使用过程中如出现泛红或瘙痒请立即停用。"
+      }
+    }
+  },
+  {
+    "product_id": "PSS_007",
+    "brand": "Pith.",
+    "category": "SUNSCREEN",
+    "tags": [
+      "sunscreen",
+      "uv_protection",
+      "panthenol",
+      "anti_aging",
+      "moisture_sun"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "HYDRATION",
+      "PIGMENTATION",
+      "BARRIER_RECOVERY"
+    ],
+    "treatment_compatibility": [
+      "laser_toning",
+      "pico_toning",
+      "ipl",
+      "hydrafacial",
+      "aquapeel",
+      "lhalala_peel",
+      "black_peel",
+      "botox",
+      "filler",
+      "rf_treatment",
+      "thermage_flx",
+      "ultherapy",
+      "volnewmer",
+      "led_therapy"
+    ],
+    "restricted_after_treatments": [
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 5
+      }
+    ],
+    "usage_time": [
+      "morning"
+    ],
+    "frequency": "daily",
+    "amount": "two-finger length (약 1.2g)",
+    "warnings": [
+      "상처가 아물지 않은 시술 직후 피부에는 무기자차 전용 또는 재생 밴드 위 사용 권장",
+      "눈가 피하여 도포"
+    ],
+    "verified_claims": [
+      "SPF50+ PA++++ 강력한 자외선 차단(UVA/UVB 동시 차단)",
+      "판테놀과 저자극 안티에이징 복합체가 결합되어 자외선 자극으로부터 피부 장벽 동시 보호"
+    ],
+    "ingredients_highlight": [
+      "panthenol",
+      "retinyl palmitate (micro-dosed)",
+      "tocopherol",
+      "niacinamide",
+      "adenosine"
+    ],
+    "allergens": [],
+    "price": 42000,
+    "is_active": true,
+    "store": "piece_seoul",
+    "image_path": "images/PSS_007.jpg",
+    "translations": {
+      "ko": {
+        "name": "판테티놀 선 에센스 SPF50+ PA++++ 30ml",
+        "usage": "아침 스킨케어 마지막 단계에서 외출 20~30분 전 얼굴 전체와 목에 골고루 펴 바르고, 야외 활동 시 2~3시간마다 덧발라요.",
+        "features": [
+          "SPF50+ PA++++로 UVA/UVB를 동시에 강력하게 차단해요",
+          "판테놀과 저자극 안티에이징 성분이 자외선 자극으로부터 피부 장벽을 함께 지켜줘요"
+        ],
+        "caution": "상처가 아물지 않은 시술 직후 피부에는 무기자차 제품을 쓰고, 눈가는 피해서 발라주세요."
+      },
+      "en": {
+        "name": "Panthetinol Sun Essence SPF50+ PA++++ 30ml",
+        "usage": "As the last step of your morning routine, apply evenly over the face and neck 20-30 minutes before going out, and reapply every 2-3 hours during extended outdoor activity.",
+        "features": [
+          "SPF50+ PA++++ for strong, broad-spectrum UVA/UVB protection",
+          "Combines panthenol with a gentle anti-aging complex to protect the skin barrier from UV-induced stress"
+        ],
+        "caution": "On freshly treated skin that hasn't fully healed, use a mineral-only sunscreen or apply over a recovery dressing, and avoid the eye area."
+      },
+      "ja": {
+        "name": "パンテチノールサンエッセンス SPF50+ PA++++ 30ml",
+        "usage": "朝のスキンケアの最後に、外出20〜30分前に顔全体と首に均一に伸ばしてください。屋外活動時は2〜3時間ごとに塗り直します。",
+        "features": [
+          "SPF50+ PA++++でUVA/UVBを同時にしっかりカット",
+          "パンテノールと低刺激エイジングケア複合成分が紫外線ダメージから肌バリアを保護"
+        ],
+        "caution": "施術直後で傷が完全に治っていない肌には、ノンケミカルタイプまたは保護テープの上からの使用をおすすめし、目元は避けてください。"
+      },
+      "zh": {
+        "name": "泛醇防晒精华 SPF50+ PA++++ 30ml",
+        "usage": "作为早间护肤最后一步，在外出前20~30分钟均匀涂抹于全脸及颈部，户外活动时每2~3小时补涂一次。",
+        "features": [
+          "SPF50+ PA++++高倍防护，同时阻隔UVA/UVB",
+          "泛醇搭配低刺激抗老复合成分，在防晒的同时保护肌肤屏障"
+        ],
+        "caution": "术后伤口未完全愈合的肌肤，建议单独使用物理防晒或涂于修复贴之上，并避开眼周。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_001",
+    "brand": "WIM",
+    "category": "POWDER",
+    "tags": [
+      "fiber",
+      "blood_sugar",
+      "pre_meal",
+      "gut_health",
+      "dietary_management"
+    ],
+    "dietary_tags": [
+      "vegan",
+      "gluten_free",
+      "sugar_free",
+      "non_gmo"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "SEBUM",
+      "ACNE"
+    ],
+    "treatment_compatibility": [],
+    "restricted_after_treatments": [],
+    "allergens": [],
+    "restrictions": [],
+    "price": 34000,
+    "is_active": true,
+    "store": "wim_store",
+    "image_path": "images/WIM_001.jpg",
+    "translations": {
+      "ko": {
+        "name": "마시는 식이섬유 비포밀 (30포/BOX)",
+        "usage": "식사 10~20분 전, 1포를 충분한 물(200~300ml)에 타서 섭취하세요.",
+        "features": [
+          "내과 전문의가 직접 설계하여 식후 혈당 상승 억제와 탄수화물 관리를 돕는 식이섬유입니다.",
+          "매일 식전 루틴으로 가볍고 깔끔하게 섭취하기 좋습니다."
+        ],
+        "caution": "가루째 드시지 마시고 반드시 물과 함께 충분히 섞어서 섭취하세요."
+      },
+      "en": {
+        "name": "WIM Before-Meal Fruit & Vegetable Fiber (30 packs)",
+        "usage": "Mix 1 pack with 200-300ml of water and drink 10-20 minutes before meals.",
+        "features": [
+          "Formulated by an internal medicine specialist to support post-meal blood sugar balance.",
+          "An easy pre-meal routine to control carbohydrate intake."
+        ],
+        "caution": "Do not swallow the dry powder directly; always mix with water."
+      },
+      "ja": {
+        "name": "飲む食物繊維 ビフォーミール (30包/BOX)",
+        "usage": "食事の10〜20分前に、1包を十分な水(200〜300ml)に溶かしてお召し上がりください。",
+        "features": [
+          "内科専門医が直接設計し、食後血糖値の急上昇抑制と糖質管理をサポートする食物繊維です。",
+          "毎日の食前ルーティンとして軽く手軽に摂取できます。"
+        ],
+        "caution": "粉末のまま摂取せず、必ず水としっかり混ぜてからお召し上がりください。"
+      },
+      "zh": {
+        "name": "餐前膳食纤维（30包/盒）",
+        "usage": "餐前10~20分钟，将1包充分溶于200~300ml水中饮用。",
+        "features": [
+          "由内科专科医生亲自设计，帮助抑制餐后血糖上升并管理碳水化合物摄入的膳食纤维。",
+          "适合作为每日餐前的轻负担摄入习惯。"
+        ],
+        "caution": "请勿直接干吃粉末，务必与水充分混合后饮用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_002",
+    "brand": "WIM",
+    "category": "POWDER",
+    "tags": [
+      "fiber",
+      "blood_sugar",
+      "pre_meal",
+      "gut_health",
+      "dietary_management",
+      "flavored"
+    ],
+    "dietary_tags": [
+      "vegan",
+      "gluten_free",
+      "sugar_free",
+      "non_gmo"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "SEBUM",
+      "ACNE"
+    ],
+    "treatment_compatibility": [],
+    "restricted_after_treatments": [],
+    "allergens": [],
+    "restrictions": [],
+    "price": 36000,
+    "is_active": true,
+    "store": "wim_store",
+    "image_path": "images/WIM_002.jpg",
+    "translations": {
+      "ko": {
+        "name": "마시는 식이섬유 비포밀 스위치 (30포/BOX)",
+        "usage": "1일 1~2회, 식전 1포를 시원한 물에 타서 음료처럼 섭취하세요.",
+        "features": [
+          "기존 비포밀 성분에 상큼한 맛을 더해 음료처럼 맛있게 즐기는 식이섬유 제품입니다.",
+          "식사 후 혈당 오르내림 완화 및 원활한 배변 활동을 지원합니다."
+        ],
+        "caution": "물에 타서 오랫동안 방치하면 겔 형태로 변할 수 있으니 타서 즉시 마세요."
+      },
+      "en": {
+        "name": "WIM Before-Meal Fiber Switch (30 packs)",
+        "usage": "Mix 1 pack with cold water 1-2 times daily before meals.",
+        "features": [
+          "A refreshingly flavored fiber drink designed to make daily pre-meal intake enjoyable.",
+          "Supports digestion and curbs sharp post-meal glucose spikes."
+        ],
+        "caution": "Drink immediately after mixing, as it may thicken if left standing."
+      },
+      "ja": {
+        "name": "飲む食物繊維 ビフォーミール スイッチ (30包/BOX)",
+        "usage": "1日1〜2回、食前に1包を冷たい水に溶かして飲料のようにお召し上がりください。",
+        "features": [
+          "従来のビフォーミール成分にさわやかな風味を加え、飲料感覚で楽しめる食物繊維製品です。",
+          "食後の血糖値の変動緩和とスムーズな排便活動をサポートします。"
+        ],
+        "caution": "水に溶かしたまま長時間放置するとゲル状になることがあるため、溶かしたらすぐにお飲みください。"
+      },
+      "zh": {
+        "name": "餐前膳食纤维 焕新版（30包/盒）",
+        "usage": "每日1~2次，餐前将1包溶于冰水中，如饮料般饮用。",
+        "features": [
+          "在原版膳食纤维基础上加入清爽风味，可像饮料一样轻松享用。",
+          "有助于缓解餐后血糖波动并促进排便顺畅。"
+        ],
+        "caution": "溶于水后如长时间放置可能变为凝胶状，请溶解后立即饮用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_003",
+    "brand": "WIM",
+    "category": "POWDER",
+    "tags": [
+      "fiber",
+      "blood_sugar",
+      "pre_meal",
+      "starter_pack",
+      "dietary_management"
+    ],
+    "dietary_tags": [
+      "vegan",
+      "gluten_free",
+      "sugar_free",
+      "non_gmo"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "SEBUM",
+      "ACNE"
+    ],
+    "treatment_compatibility": [],
+    "restricted_after_treatments": [],
+    "allergens": [],
+    "restrictions": [],
+    "price": 70000,
+    "is_active": true,
+    "store": "wim_store",
+    "image_path": "images/WIM_003.jpg",
+    "translations": {
+      "ko": {
+        "name": "비포밀 + 비포밀 스위치 스타터 패키지",
+        "usage": "식사 전 취향이나 스케줄에 맞춰 비포밀 또는 비포밀 스위치 1포를 물에 타서 드세요.",
+        "features": [
+          "오리지널 비포밀과 상큼한 비포밀 스위치를 한 번에 경험할 수 있는 결합 구성입니다.",
+          "체중 및 식단 관리를 시작하는 분들을 위한 맞춤형 패키지입니다."
+        ],
+        "caution": "두 제품 모두 개봉 후 가루째 섭취하지 마시고 물에 잘 녹여 마셔야 합니다."
+      },
+      "en": {
+        "name": "WIM Before-Meal Starter Package",
+        "usage": "Enjoy 1 pack of either original or Switch edition mixed with water prior to meals.",
+        "features": [
+          "A combo pack combining both Original and Switch versions of Before-Meal fiber.",
+          "Ideal starter set for structured dietary and glucose management."
+        ],
+        "caution": "Always dissolve in water before consuming."
+      },
+      "ja": {
+        "name": "ビフォーミール + ビフォーミール スイッチ スターターパッケージ",
+        "usage": "食事前、好みやスケジュールに合わせてビフォーミールまたはビフォーミール スイッチ1包を水に溶かしてお召し上がりください。",
+        "features": [
+          "オリジナルのビフォーミールとさわやかなビフォーミール スイッチを一度に体験できるセット構成です。",
+          "体重・食事管理を始めたい方のためのスターターパッケージです。"
+        ],
+        "caution": "どちらの製品も開封後は粉末のまま摂取せず、必ず水によく溶かしてお召し上がりください。"
+      },
+      "zh": {
+        "name": "餐前膳食纤维 + 焕新版 尝鲜套装",
+        "usage": "餐前根据个人喜好或安排，选择原味或焕新版膳食纤维1包溶于水中饮用。",
+        "features": [
+          "可一次体验原味膳食纤维与清爽焕新版的组合套装。",
+          "适合刚开始体重与饮食管理的人群的入门套装。"
+        ],
+        "caution": "两款产品开封后均不可直接干吃粉末，务必充分溶于水后饮用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_004",
+    "brand": "WIM",
+    "category": "POWDER",
+    "tags": [
+      "protein_shake",
+      "high_protein",
+      "low_sugar",
+      "low_carb",
+      "meal_replacement",
+      "chocolate"
+    ],
+    "dietary_tags": [
+      "vegetarian",
+      "gluten_free",
+      "sugar_free",
+      "high_protein"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "STABLE"
+    ],
+    "treatment_compatibility": [],
+    "restricted_after_treatments": [],
+    "allergens": [
+      "milk",
+      "soy"
+    ],
+    "restrictions": [
+      "severe_lactose_intolerance"
+    ],
+    "price": 65000,
+    "is_active": true,
+    "store": "wim_store",
+    "image_path": "images/WIM_004.jpg",
+    "translations": {
+      "ko": {
+        "name": "저당 저탄수 고단백 윔쉐이크 초코 대용량 (800g)",
+        "usage": "1일 1회, 전용 스쿱으로 동봉된 가루를 물이나 우유 150~200ml와 함께 섞어 드세요.",
+        "features": [
+          "당류와 탄수화물 부담을 낮추고 고단백 영양을 채운 진한 초콜릿 맛 대용량 쉐이크입니다.",
+          "가성비 있게 매일 식사 대용으로 즐기기 좋습니다."
+        ],
+        "caution": "우유, 대두가 함유되어 있으므로 알레르기 체질인 경우 성분을 확인하세요."
+      },
+      "en": {
+        "name": "WIM High Protein Shake - Choco Bulk (800g)",
+        "usage": "Mix scoops with 150-200ml of water or milk once daily.",
+        "features": [
+          "Rich chocolate-flavored high-protein shake in a cost-effective bulk tub.",
+          "Low in sugar and net carbs, perfect for long-term daily meal replacement."
+        ],
+        "caution": "Contains milk and soy ingredients."
+      },
+      "ja": {
+        "name": "低糖質・低炭水化物・高たんぱく WIMシェイク チョコ 大容量 (800g)",
+        "usage": "1日1回、専用スクープで付属の粉末を水または牛乳150〜200mlと混ぜてお召し上がりください。",
+        "features": [
+          "糖質・炭水化物の負担を抑えつつ高たんぱく質を補える、濃厚チョコレート味の大容量シェイクです。",
+          "コストパフォーマンスに優れ、毎日の食事代わりとして続けやすい設計です。"
+        ],
+        "caution": "牛乳・大豆を含むため、アレルギー体質の方は成分をご確認ください。"
+      },
+      "zh": {
+        "name": "低糖低碳高蛋白WIM奶昔 巧克力 大容量装（800g）",
+        "usage": "每日1次，用专用量勺取粉末与150~200ml水或牛奶混合饮用。",
+        "features": [
+          "降低糖分与碳水负担、补充高蛋白营养的浓郁巧克力口味大容量奶昔。",
+          "高性价比，适合每日代餐饮用。"
+        ],
+        "caution": "含有牛奶、大豆成分，过敏体质者请提前确认成分。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_005",
+    "brand": "WIM",
+    "category": "POWDER",
+    "tags": [
+      "protein_shake",
+      "high_protein",
+      "low_sugar",
+      "low_carb",
+      "portable",
+      "chocolate"
+    ],
+    "dietary_tags": [
+      "vegetarian",
+      "gluten_free",
+      "sugar_free",
+      "high_protein"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "STABLE"
+    ],
+    "treatment_compatibility": [],
+    "restricted_after_treatments": [],
+    "allergens": [
+      "milk",
+      "soy"
+    ],
+    "restrictions": [
+      "severe_lactose_intolerance"
+    ],
+    "price": 20000,
+    "is_active": true,
+    "store": "wim_store",
+    "image_path": "images/WIM_005.jpg",
+    "translations": {
+      "ko": {
+        "name": "저당 저탄수 고단백 윔쉐이크 초코 파우치 (30g x 5개입)",
+        "usage": "1포(30g)를 물 또는 두유 150~200ml와 함께 흔들어 간편하게 섭취하세요.",
+        "features": [
+          "외출 시나 운동 전후에 휴대하며 마실 수 있는 개별 포장 초코 쉐이크입니다.",
+          "내과 전문의 설계로 식후 당 걱정 없이 부족한 단백질을 보충해 줍니다."
+        ],
+        "caution": "개봉 후에는 바로 섭취하시고 직사광선을 피해 서늘한 곳에 보관하세요."
+      },
+      "en": {
+        "name": "WIM High Protein Shake - Choco Pouch (30g x 5ea)",
+        "usage": "Shake 1 pouch (30g) with 150-200ml of water or soy milk.",
+        "features": [
+          "Portably packaged single-serve protein pouches convenient for travel or gym workouts.",
+          "Provides protein replenishment without spiking sugar levels."
+        ],
+        "caution": "Consume immediately upon opening."
+      },
+      "ja": {
+        "name": "低糖質・低炭水化物・高たんぱく WIMシェイク チョコ パウチ (30g×5包)",
+        "usage": "1包(30g)を水または豆乳150〜200mlと一緒にシェイクして手軽にお召し上がりください。",
+        "features": [
+          "外出時や運動の前後に持ち運んで飲める個包装タイプのチョコシェイクです。",
+          "内科専門医設計で、食後の糖の心配なく不足しがちなたんぱく質を補えます。"
+        ],
+        "caution": "開封後はすぐにお召し上がりいただき、直射日光を避けて涼しい場所に保管してください。"
+      },
+      "zh": {
+        "name": "低糖低碳高蛋白WIM奶昔 巧克力独立包（30g×5袋）",
+        "usage": "取1袋（30g）与150~200ml水或豆浆混合摇匀后饮用，携带方便。",
+        "features": [
+          "外出或运动前后可随身携带饮用的独立包装巧克力奶昔。",
+          "由内科专科医生设计，餐后无需担心血糖，同时补充不足的蛋白质。"
+        ],
+        "caution": "开封后请尽快饮用，并避光置于阴凉处保存。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_006",
+    "brand": "WIM",
+    "category": "POWDER",
+    "tags": [
+      "protein_shake",
+      "high_protein",
+      "low_sugar",
+      "low_carb",
+      "meal_replacement",
+      "black_bean"
+    ],
+    "dietary_tags": [
+      "vegetarian",
+      "gluten_free",
+      "sugar_free",
+      "high_protein"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "STABLE"
+    ],
+    "treatment_compatibility": [],
+    "restricted_after_treatments": [],
+    "allergens": [
+      "soy"
+    ],
+    "restrictions": [],
+    "price": 65000,
+    "is_active": true,
+    "store": "wim_store",
+    "image_path": "images/WIM_006.jpg",
+    "translations": {
+      "ko": {
+        "name": "저당 저탄수 고단백 윔쉐이크 검은콩 대용량 (800g)",
+        "usage": "전용 스쿱을 이용해 1회 분량을 물이나 두유 150~200ml와 잘 섞어 섭취하세요.",
+        "features": [
+          "국산 검은콩의 고소함과 풍부한 단백질을 담은 대용량 건강 쉐이크입니다.",
+          "높은 포만감으로 든든한 아침이나 저녁 식사 대용으로 적합합니다."
+        ],
+        "caution": "대두 알레르기가 있으신 분은 섭취에 유의하시기 바랍니다."
+      },
+      "en": {
+        "name": "WIM High Protein Shake - Black Bean Bulk (800g)",
+        "usage": "Mix 1 serving with 150-200ml of water or soy milk.",
+        "features": [
+          "Nutty and savory black bean flavored protein powder in a large capacity size.",
+          "High satiety option for sustainable low-carb diets."
+        ],
+        "caution": "Check for soybean allergies prior to consumption."
+      },
+      "ja": {
+        "name": "低糖質・低炭水化物・高たんぱく WIMシェイク 黒豆 大容量 (800g)",
+        "usage": "専用スクープで1回分を水または豆乳150〜200mlとよく混ぜてお召し上がりください。",
+        "features": [
+          "国産黒豆の香ばしさと豊富なたんぱく質を詰め込んだ大容量ヘルシーシェイクです。",
+          "満腹感が高く、朝食や夕食の置き換えにもしっかり対応します。"
+        ],
+        "caution": "大豆アレルギーのある方はご注意の上お召し上がりください。"
+      },
+      "zh": {
+        "name": "低糖低碳高蛋白WIM奶昔 黑豆 大容量装（800g）",
+        "usage": "用专用量勺取1次用量，与150~200ml水或豆浆充分混合后饮用。",
+        "features": [
+          "选用韩国国产黑豆，香浓醇厚且富含丰富蛋白质的大容量健康奶昔。",
+          "饱腹感强，适合作为丰盛早餐或晚餐的代餐选择。"
+        ],
+        "caution": "大豆过敏者请谨慎饮用。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_007",
+    "brand": "WIM",
+    "category": "POWDER",
+    "tags": [
+      "protein_shake",
+      "high_protein",
+      "low_sugar",
+      "low_carb",
+      "portable",
+      "black_bean"
+    ],
+    "dietary_tags": [
+      "vegetarian",
+      "gluten_free",
+      "sugar_free",
+      "high_protein"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "STABLE"
+    ],
+    "treatment_compatibility": [],
+    "restricted_after_treatments": [],
+    "allergens": [
+      "soy"
+    ],
+    "restrictions": [],
+    "price": 20000,
+    "is_active": true,
+    "store": "wim_store",
+    "image_path": "images/WIM_007.jpg",
+    "translations": {
+      "ko": {
+        "name": "저당 저탄수 고단백 윔쉐이크 검은콩 파우치 (30g x 5개입)",
+        "usage": "1포를 물이나 두유 150~200ml에 넣고 잘 흔든 뒤 마셔줍니다.",
+        "features": [
+          "검은콩의 고소한 영양을 한 포씩 담아 어디서나 가볍게 마시는 단백질 파우치입니다.",
+          "당류 함량을 최소화하여 부담 없는 고단백 간식으로 적합합니다."
+        ],
+        "caution": "특이체질 및 알레르기 반응이 있으신 분은 재료를 미리 확인하세요."
+      },
+      "en": {
+        "name": "WIM High Protein Shake - Black Bean Pouch (30g x 5ea)",
+        "usage": "Shake 1 pouch with 150-200ml of water or soy milk.",
+        "features": [
+          "On-the-go pouches packed with savory black bean nutrition.",
+          "Low-sugar formulation designed for quick protein delivery."
+        ],
+        "caution": "Check allergy information before intake."
+      },
+      "ja": {
+        "name": "低糖質・低炭水化物・高たんぱく WIMシェイク 黒豆 パウチ (30g×5包)",
+        "usage": "1包を水または豆乳150〜200mlに入れてよく振ってからお召し上がりください。",
+        "features": [
+          "黒豆の香ばしい栄養を1包ずつ詰め込んだ、どこでも手軽に飲めるプロテインパウチです。",
+          "糖分を最小限に抑え、負担の少ない高たんぱくスナックとして最適です。"
+        ],
+        "caution": "体質やアレルギーに不安のある方は事前に原材料をご確認ください。"
+      },
+      "zh": {
+        "name": "低糖低碳高蛋白WIM奶昔 黑豆独立包（30g×5袋）",
+        "usage": "取1袋与150~200ml水或豆浆混合，充分摇匀后饮用。",
+        "features": [
+          "将黑豆的醇香营养逐袋独立包装，随时随地轻松饮用的蛋白质小包装。",
+          "糖分含量降至最低，是无负担的高蛋白零食之选。"
+        ],
+        "caution": "特殊体质或有过敏史者请提前确认成分。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_008",
+    "brand": "WIM",
+    "category": "POWDER",
+    "tags": [
+      "protein_shake",
+      "high_protein",
+      "low_sugar",
+      "low_carb",
+      "meal_replacement",
+      "matcha",
+      "antioxidant"
+    ],
+    "dietary_tags": [
+      "vegetarian",
+      "gluten_free",
+      "sugar_free",
+      "high_protein"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "STABLE",
+      "SEBUM"
+    ],
+    "treatment_compatibility": [],
+    "restricted_after_treatments": [],
+    "allergens": [
+      "milk",
+      "soy"
+    ],
+    "restrictions": [
+      "severe_lactose_intolerance"
+    ],
+    "price": 42000,
+    "is_active": true,
+    "store": "wim_store",
+    "image_path": "images/WIM_008.jpg",
+    "translations": {
+      "ko": {
+        "name": "저당 저탄수 고단백 윔쉐이크 말차 (420g)",
+        "usage": "1회 적당량을 물이나 우유 150~200ml에 섞어 시원하게 드세요.",
+        "features": [
+          "쌉싸름하고 깔끔한 말차 풍미를 살린 저당 고단백 쉐이크입니다.",
+          "영양 균형과 당 관리를 동시에 고려한 내과 전문의 설계 제품입니다."
+        ],
+        "caution": "말차 추출물이 들어있어 카페인에 매우 민감한 경우 섭취 시기에 유의하세요."
+      },
+      "en": {
+        "name": "WIM High Protein Shake - Matcha (420g)",
+        "usage": "Mix 1 serving with 150-200ml of water or milk.",
+        "features": [
+          "A clean, rich matcha protein shake formulated for low-sugar requirements.",
+          "Delivers both appetite satisfaction and vital daily nutrients."
+        ],
+        "caution": "Contains natural matcha caffeine."
+      },
+      "ja": {
+        "name": "低糖質・低炭水化物・高たんぱく WIMシェイク 抹茶 (420g)",
+        "usage": "1回分の適量を水または牛乳150〜200mlに混ぜ、冷やしてお召し上がりください。",
+        "features": [
+          "ほろ苦く上品な抹茶の風味を活かした低糖質・高たんぱくシェイクです。",
+          "栄養バランスと糖管理を同時に考慮した内科専門医設計の製品です。"
+        ],
+        "caution": "抹茶エキスを含むため、カフェインに敏感な方は摂取のタイミングにご注意ください。"
+      },
+      "zh": {
+        "name": "低糖低碳高蛋白WIM奶昔 抹茶（420g）",
+        "usage": "取适量与150~200ml水或牛奶混合，冰饮口感更佳。",
+        "features": [
+          "呈现微苦清爽抹茶风味的低糖高蛋白奶昔。",
+          "由内科专科医生设计，兼顾营养均衡与血糖管理。"
+        ],
+        "caution": "含抹茶提取物，对咖啡因非常敏感者请注意饮用时间。"
+      }
+    }
+  },
+  {
+    "product_id": "WIM_009",
+    "brand": "WIM",
+    "category": "FOOD",
+    "tags": [
+      "meal_kit",
+      "high_protein",
+      "low_sodium",
+      "balanced_diet",
+      "frozen_meal",
+      "recovery_diet"
+    ],
+    "dietary_tags": [
+      "high_protein",
+      "low_sodium"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "STABLE",
+      "SWELLING"
+    ],
+    "treatment_compatibility": [],
+    "restricted_after_treatments": [],
+    "allergens": [
+      "egg",
+      "soy"
+    ],
+    "restrictions": [],
+    "price": 13000,
+    "is_active": true,
+    "store": "wim_store",
+    "image_path": "images/WIM_009.jpg",
+    "translations": {
+      "ko": {
+        "name": "윔도시락 소불고기 곤드레밥 외 6종 세트",
+        "usage": "용기 필름을 약간 뜯은 뒤 전자레인지(700W 기준)에서 3분 30초~4분간 데워 드세요.",
+        "features": [
+          "내과 전문의가 나트륨과 탄단지 비율을 직접 세심하게 맞춘 저염·고단백 식단 도시락입니다.",
+          "소불고기, 곤드레밥 등 간편하고 맛있게 즐기는 건강 관리 식사입니다."
+        ],
+        "caution": "냉동 보관(-18℃ 이하)이 필수이며, 해동 후 재냉동하지 마세요."
+      },
+      "en": {
+        "name": "WIM Balanced Meal Box 6-Type Set",
+        "usage": "Peel open film corner and microwave for 3.5 to 4 minutes.",
+        "features": [
+          "Doctor-formulated low-sodium and high-protein frozen meal kits.",
+          "Provides convenient nutrition with menu items such as beef bulgogi and thistle rice."
+        ],
+        "caution": "Keep frozen under -18°C. Do not refreeze once thawed."
+      },
+      "ja": {
+        "name": "WIM弁当 牛プルコギ&ゴンドゥレご飯ほか全6種セット",
+        "usage": "容器のフィルムを少し剥がしてから、電子レンジ(700W基準)で3分30秒〜4分加熱してお召し上がりください。",
+        "features": [
+          "内科専門医がナトリウムとPFCバランスを緻密に設計した、低塩・高たんぱく食事弁当です。",
+          "牛プルコギやゴンドゥレご飯など、手軽においしく続けられる健康管理食です。"
+        ],
+        "caution": "冷凍保存(-18℃以下)が必須で、解凍後の再冷凍はしないでください。"
+      },
+      "zh": {
+        "name": "WIM健康餐盒 牛烤肉山蓟拌饭等6款套装",
+        "usage": "稍微撕开容器薄膜后，用微波炉（700W基准）加热3分30秒~4分钟后食用。",
+        "features": [
+          "由内科专科医生精心设计钠含量与三大营养素比例的低盐高蛋白餐盒。",
+          "牛肉烤肉、山蓟拌饭等口味丰富，方便美味的健康管理餐食。"
+        ],
+        "caution": "须冷冻保存（-18℃以下），解冻后请勿再次冷冻。"
+      }
+    }
+  }
+]

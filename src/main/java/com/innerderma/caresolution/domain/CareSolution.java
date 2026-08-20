@@ -37,10 +37,12 @@ public class CareSolution {
     @Column(nullable = false, length = 200)
     private String headline;
 
-    @Lob @Column(name = "evening_steps_json", nullable = false, length = Integer.MAX_VALUE)
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
+    @Column(name = "evening_steps_json", length = Integer.MAX_VALUE, nullable = false)
     private String eveningStepsJson;
 
-    @Lob @Column(name = "morning_steps_json", nullable = false, length = Integer.MAX_VALUE)
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
+    @Column(name = "morning_steps_json", length = Integer.MAX_VALUE, nullable = false)
     private String morningStepsJson;
 
     @Column(name = "safety_message", length = 1000)

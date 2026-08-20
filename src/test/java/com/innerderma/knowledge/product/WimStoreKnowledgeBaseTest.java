@@ -46,7 +46,7 @@ class WimStoreKnowledgeBaseTest {
 
     @Test
     void loadsOnlyWimStoreItems() {
-        assertThat(kb.size()).isEqualTo(16);
+        assertThat(kb.size()).isEqualTo(9);
     }
 
     @Test

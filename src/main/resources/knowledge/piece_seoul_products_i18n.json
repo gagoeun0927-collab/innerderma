@@ -1,1232 +1,289 @@
 [
-  {
-    "product_id": "PSS_001",
-    "translations": {
-      "ko": {
-        "name": "코어 리빌드 크림",
-        "usage": "세안 및 토너/세럼 사용 후 적당량을 덜어 피부 결을 따라 얼굴 전체와 목에 부드럽게 펴 바르고 체온으로 흡수시켜요.",
-        "features": [
-          "베타-시토스테롤과 10종 피부 성장인자 복합체로 손상된 피부 장벽 회복을 도와요",
-          "시술 후 약해진 피부 밀도와 보습 유지력을 강화해요"
-        ],
-        "caution": "상처 부위에는 직접 바르지 말고, 사용 중 붉은 반점이나 가려움이 느껴지면 사용을 중단하세요."
-      },
-      "en": {
-        "name": "Core Rebuild Cream",
-        "usage": "After cleansing and toner/serum, smooth an appropriate amount over the face and neck along your skin's natural lines, then pat gently to help it absorb.",
-        "features": [
-          "Contains beta-sitosterol and a 10-growth-factor complex (including EGF/FGF) to support a damaged skin barrier",
-          "Helps restore skin density and moisture retention weakened after in-clinic treatments"
-        ],
-        "caution": "Avoid applying directly to open wounds, and discontinue use if redness or itching occurs."
-      },
-      "ja": {
-        "name": "コアリビルドクリーム",
-        "usage": "洗顔・トナー/セラム使用後、適量を肌のキメに沿って顔全体と首に優しく伸ばし、軽く押さえるように浸透させてください。",
-        "features": [
-          "ベータ-シトステロールと10種の皮膚成長因子(EGF/FGFなど)複合体配合で、ダメージを受けた肌のバリア機能回復をサポート",
-          "施術後に弱まった肌の密度改善と保湿力強化に役立ちます"
-        ],
-        "caution": "傷のある部位への直接使用は避け、使用中に赤みやかゆみを感じた場合は使用を中止してください。"
-      },
-      "zh": {
-        "name": "核心重建霜",
-        "usage": "洁面及使用爽肤水/精华后，取适量沿肌肤纹理均匀涂抹于全脸及颈部，轻拍至吸收。",
-        "features": [
-          "含β-谷甾醇及10种皮肤生长因子复合物(含EGF/FGF等)，帮助修复受损肌肤屏障",
-          "有助改善光电疗程后肌肤密度下降及维持保湿力"
-        ],
-        "caution": "请避免直接涂抹于伤口，使用过程中如出现泛红或瘙痒请立即停用。"
-      }
+    {
+        "product_id":  "PSS_001",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "코어 리빌드 크림 50ml",
+                                        "usage":  "세안 및 토너/세럼 사용 후 적당량을 덜어 피부 결을 따라 얼굴 전체와 목에 부드럽게 펴 바르고 체온으로 흡수시켜요.",
+                                        "features":  [
+                                                         "베타-시토스테롤과 10종 피부 성장인자 복합체로 손상된 피부 장벽 회복을 도와요",
+                                                         "시술 후 약해진 피부 밀도와 보습 유지력을 강화해요"
+                                                     ],
+                                        "caution":  "상처 부위에는 직접 바르지 말고, 사용 중 붉은 반점이나 가려움이 느껴지면 사용을 중단하세요."
+                                    },
+                             "en":  {
+                                        "name":  "Core Rebuild Cream 50ml",
+                                        "usage":  "After cleansing and toner/serum, smooth an appropriate amount over the face and neck along your skin\u0027s natural lines, then pat gently to help it absorb.",
+                                        "features":  [
+                                                         "Contains beta-sitosterol and a 10-growth-factor complex (including EGF/FGF) to support a damaged skin barrier",
+                                                         "Helps restore skin density and moisture retention weakened after in-clinic treatments"
+                                                     ],
+                                        "caution":  "Avoid applying directly to open wounds, and discontinue use if redness or itching occurs."
+                                    },
+                             "ja":  {
+                                        "name":  "コアリビルドクリーム 50ml",
+                                        "usage":  "洗顔・トナー/セラム使用後、適量を肌のキメに沿って顔全体と首に優しく伸ばし、軽く押さえるように浸透させてください。",
+                                        "features":  [
+                                                         "ベータ-シトステロールと10種の皮膚成長因子(EGF/FGFなど)複合体配合で、ダメージを受けた肌のバリア機能回復をサポート",
+                                                         "施術後に弱まった肌の密度改善と保湿力強化に役立ちます"
+                                                     ],
+                                        "caution":  "傷のある部位への直接使用は避け、使用中に赤みやかゆみを感じた場合は使用を中止してください。"
+                                    },
+                             "zh":  {
+                                        "name":  "核心重建霜 50ml",
+                                        "usage":  "洁面及使用爽肤水/精华后，取适量沿肌肤纹理均匀涂抹于全脸及颈部，轻拍至吸收。",
+                                        "features":  [
+                                                         "含β-谷甾醇及10种皮肤生长因子复合物(含EGF/FGF等)，帮助修复受损肌肤屏障",
+                                                         "有助改善光电疗程后肌肤密度下降及维持保湿力"
+                                                     ],
+                                        "caution":  "请避免直接涂抹于伤口，使用过程中如出现泛红或瘙痒请立即停用。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "PSS_002",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "블루 리페어 하이드로 수딩 크림 120ml",
+                                        "usage":  "열감이나 붉은기가 있는 부위를 중심으로 가볍게 펴 바른 뒤 가볍게 두드려 흡수시켜요. 필요하면 얇게 덧발라요.",
+                                        "features":  [
+                                                         "구아이아줄렌 성분이 시술이나 자극으로 인한 일시적 붉은기와 열감을 진정시켜요",
+                                                         "병풀추출물 기반의 저자극 수분 젤 크림이에요"
+                                                     ],
+                                        "caution":  "단독 사용 후 자외선에 노출된다면 자외선 차단제를 함께 발라주세요."
+                                    },
+                             "en":  {
+                                        "name":  "Blue Repair Soothing Cream 120ml",
+                                        "usage":  "Apply gently over areas with heat or redness and pat to absorb; layer a thin extra coat if needed.",
+                                        "features":  [
+                                                         "Guaiazulene helps calm temporary redness and heat from treatments or irritation",
+                                                         "Low-irritation, water-gel cream formula based on centella asiatica extract"
+                                                     ],
+                                        "caution":  "If used alone before sun exposure, pairing with sunscreen is recommended."
+                                    },
+                             "ja":  {
+                                        "name":  "ブルーリペアスージングクリーム 120ml",
+                                        "usage":  "ほてりや赤みが気になる部分を中心に軽く伸ばし、軽くたたくように浸透させてください。必要に応じて重ね付けします。",
+                                        "features":  [
+                                                         "グアイアズレン配合で、施術や刺激による一時的な赤み・ほてりを鎮静",
+                                                         "ツボクサエキスベースの低刺激ウォータージェルクリーム処方"
+                                                     ],
+                                        "caution":  "単独使用後に紫外線を浴びる場合は、日焼け止めの併用をおすすめします。"
+                                    },
+                             "zh":  {
+                                        "name":  "蓝色舒缓修护霜 120ml",
+                                        "usage":  "以有灼热感或泛红的部位为中心轻轻涂抹，轻拍吸收，如有需要可薄薄叠涂一层。",
+                                        "features":  [
+                                                         "含愈创薁烷成分，舒缓术后或刺激引起的暂时性泛红与灼热感",
+                                                         "以积雪草提取物为基础的低刺激水凝霜配方"
+                                                     ],
+                                        "caution":  "单独使用后如需外出见光，建议搭配防晒产品使用。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "PSS_003",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "판테티놀 선 에센스 SPF50+ PA++++ 10ml",
+                                        "usage":  "아침 스킨케어 마지막 단계에서 외출 20~30분 전 얼굴 전체와 목에 골고루 펴 바르고, 야외 활동 시 2~3시간마다 덧발라요.",
+                                        "features":  [
+                                                         "SPF50+ PA++++로 UVA/UVB를 동시에 강력하게 차단해요",
+                                                         "판테놀과 저자극 안티에이징 성분이 자외선 자극으로부터 피부 장벽을 함께 지켜줘요"
+                                                     ],
+                                        "caution":  "상처가 아물지 않은 시술 직후 피부에는 무기자차 제품을 쓰고, 눈가는 피해서 발라주세요."
+                                    },
+                             "en":  {
+                                        "name":  "Panthetinol Sun Essence SPF50+ PA++++ 10ml",
+                                        "usage":  "As the last step of your morning routine, apply evenly over the face and neck 20-30 minutes before going out, and reapply every 2-3 hours during extended outdoor activity.",
+                                        "features":  [
+                                                         "SPF50+ PA++++ for strong, broad-spectrum UVA/UVB protection",
+                                                         "Combines panthenol with a gentle anti-aging complex to protect the skin barrier from UV-induced stress"
+                                                     ],
+                                        "caution":  "On freshly treated skin that hasn\u0027t fully healed, use a mineral-only sunscreen or apply over a recovery dressing, and avoid the eye area."
+                                    },
+                             "ja":  {
+                                        "name":  "パンテチノールサンエッセンス SPF50+ PA++++ 10ml",
+                                        "usage":  "朝のスキンケアの最後に、外出20〜30分前に顔全体と首に均一に伸ばしてください。屋外活動時は2〜3時間ごとに塗り直します。",
+                                        "features":  [
+                                                         "SPF50+ PA++++でUVA/UVBを同時にしっかりカット",
+                                                         "パンテノールと低刺激エイジングケア複合成分が紫外線ダメージから肌バリアを保護"
+                                                     ],
+                                        "caution":  "施術直後で傷が完全に治っていない肌には、ノンケミカルタイプまたは保護テープの上からの使用をおすすめし、目元は避けてください。"
+                                    },
+                             "zh":  {
+                                        "name":  "泛醇防晒精华 SPF50+ PA++++ 10ml",
+                                        "usage":  "作为早间护肤最后一步，在外出前20~30分钟均匀涂抹于全脸及颈部，户外活动时每2~3小时补涂一次。",
+                                        "features":  [
+                                                         "SPF50+ PA++++高倍防护，同时阻隔UVA/UVB",
+                                                         "泛醇搭配低刺激抗老复合成分，在防晒的同时保护肌肤屏障"
+                                                     ],
+                                        "caution":  "术后伤口未完全愈合的肌肤，建议单独使用物理防晒或涂于修复贴之上，并避开眼周。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "PSS_004",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "블루 리페어 솔루션 1매",
+                                        "usage":  "세안 후 토너로 피부결을 정돈한 뒤 마스크 시트를 얼굴 전체에 밀착시키고 15~20분 후 제거해요. 남은 에센스는 가볍게 두드려 흡수시켜요.",
+                                        "features":  [
+                                                         "임상으로 검증된 급속 쿨링 효과로 시술 후 피부 온도를 낮춰줘요",
+                                                         "멸균 극세사 시트라 민감성 피부에도 물리적 자극이 적어요"
+                                                     ],
+                                        "caution":  "시트 부착 시간은 20분을 넘기지 마세요."
+                                    },
+                             "en":  {
+                                        "name":  "Blue Repair Soothing Mask 1 sheet",
+                                        "usage":  "After cleansing and toning, smooth the sheet mask over the whole face, leave on for 15-20 minutes, then remove and pat any remaining essence into the skin.",
+                                        "features":  [
+                                                         "Clinically shown to cool skin quickly and lower post-treatment skin temperature",
+                                                         "Sterile microfiber sheet minimizes physical friction on sensitive skin"
+                                                     ],
+                                        "caution":  "Do not leave the sheet on for longer than 20 minutes."
+                                    },
+                             "ja":  {
+                                        "name":  "ブルーリペアスージングマスク 1枚",
+                                        "usage":  "洗顔後、トナーで肌を整えてからシートを顔全体に密着させ、15〜20分後に剥がしてください。残ったエッセンスは軽くたたいて浸透させます。",
+                                        "features":  [
+                                                         "施術後の肌温度を素早く下げる冷却効果が臨床で確認済み",
+                                                         "滅菌済みの極細繊維シートで敏感肌への物理的な摩擦を最小限に"
+                                                     ],
+                                        "caution":  "シートの装着時間は20分を超えないようにしてください。"
+                                    },
+                             "zh":  {
+                                        "name":  "蓝色舒缓修护面膜 1片",
+                                        "usage":  "洁面并用爽肤水打底后，将面膜贴均匀敷于全脸，15~20分钟后取下，剩余精华轻拍吸收。",
+                                        "features":  [
+                                                         "经临床验证可快速降温，缓解术后肌肤灼热",
+                                                         "无菌超细纤维面膜布，最大限度减少对敏感肌的摩擦刺激"
+                                                     ],
+                                        "caution":  "敷贴时间请勿超过20分钟。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "PSS_005",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "클래리파이 겔 토너 340g",
+                                        "usage":  "세안 후 적당량을 손에 덜거나 솜에 묻혀 피부결을 따라 부드럽게 펴 바른 뒤 흡수시켜 줍니다.",
+                                        "features":  [
+                                                         "피부 정화 및 유수분 균형을 맞춰주는 클래리파잉 겔 토너입니다.",
+                                                         "피부 저자극 테스트를 완료하여 민감한 피부에도 안심하고 사용할 수 있습니다."
+                                                     ],
+                                        "caution":  "사용 중 붉은 반점, 부어오름, 가려움증 등의 이상 증상이나 부작용이 있는 경우 전문의 등과 상담하세요."
+                                    },
+                             "en":  {
+                                        "name":  "Clarify Gel Toner 340g",
+                                        "usage":  "After cleansing, take an appropriate amount on your hands or a cotton pad, gently spread along the skin texture, and let it absorb.",
+                                        "features":  [
+                                                         "A clarifying gel toner that purifies the skin and restores moisture balance.",
+                                                         "Completed skin irritation testing, making it safe for sensitive skin."
+                                                     ],
+                                        "caution":  "Consult a specialist if you experience abnormal symptoms or side effects such as red spots, swelling, or itching during use."
+                                    },
+                             "ja":  {
+                                        "name":  "クラリファイ ゲルトナー 340g",
+                                        "usage":  "洗顔後、適量を手またはコットンに取り、肌のキメに沿って優しく伸ばして馴染ませます。",
+                                        "features":  [
+                                                         "肌を浄化し、油分と水分のバランスを整えるクラリファイニングゲルトナーです。",
+                                                         "皮膚低刺激テスト済みで、敏感肌の方でも安心してお使いいただけます。"
+                                                     ],
+                                        "caution":  "使用中に赤み、腫れ、かゆみなどの異常が現れた場合は、専門医等にご相談ください。"
+                                    },
+                             "zh":  {
+                                        "name":  "净致舒缓凝胶爽肤水 340g",
+                                        "usage":  "洁面后，取适量于手心或化妆棉上，顺着肌肤纹理轻轻涂抹，并轻拍至充分吸收。",
+                                        "features":  [
+                                                         "帮助净化肌肤、调节水油平衡的凝胶型净致爽肤水。",
+                                                         "已通过皮肤低刺激测试，敏感肌肤也可安心使用。"
+                                                     ],
+                                        "caution":  "使用过程中如出现红斑、肿胀、瘙痒等异常症状或副作用，请立即停用并咨询专业医生。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "PSS_006",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "코어 리빌드 크림 15ml",
+                                        "usage":  "세안 및 토너/세럼 사용 후 적당량을 덜어 피부 결을 따라 얼굴 전체와 목에 부드럽게 펴 바르고 체온으로 흡수시켜요.",
+                                        "features":  [
+                                                         "베타-시토스테롤과 10종 피부 성장인자 복합체로 손상된 피부 장벽 회복을 도와요",
+                                                         "시술 후 약해진 피부 밀도와 보습 유지력을 강화해요"
+                                                     ],
+                                        "caution":  "상처 부위에는 직접 바르지 말고, 사용 중 붉은 반점이나 가려움이 느껴지면 사용을 중단하세요."
+                                    },
+                             "en":  {
+                                        "name":  "Core Rebuild Cream 15ml",
+                                        "usage":  "After cleansing and toner/serum, smooth an appropriate amount over the face and neck along your skin\u0027s natural lines, then pat gently to help it absorb.",
+                                        "features":  [
+                                                         "Contains beta-sitosterol and a 10-growth-factor complex (including EGF/FGF) to support a damaged skin barrier",
+                                                         "Helps restore skin density and moisture retention weakened after in-clinic treatments"
+                                                     ],
+                                        "caution":  "Avoid applying directly to open wounds, and discontinue use if redness or itching occurs."
+                                    },
+                             "ja":  {
+                                        "name":  "コアリビルドクリーム 15ml",
+                                        "usage":  "洗顔・トナー/セラム使用後、適量を肌のキメに沿って顔全体と首に優しく伸ばし、軽く押さえるように浸透させてください。",
+                                        "features":  [
+                                                         "ベータ-シトステロールと10種の皮膚成長因子(EGF/FGFなど)複合体配合で、ダメージを受けた肌のバリア機能回復をサポート",
+                                                         "施術後に弱まった肌の密度改善と保湿力強化に役立ちます"
+                                                     ],
+                                        "caution":  "傷のある部位への直接使用は避け、使用中に赤みやかゆみを感じた場合は使用を中止してください。"
+                                    },
+                             "zh":  {
+                                        "name":  "核心重建霜 15ml",
+                                        "usage":  "洁面及使用爽肤水/精华后，取适量沿肌肤纹理均匀涂抹于全脸及颈部，轻拍至吸收。",
+                                        "features":  [
+                                                         "含β-谷甾醇及10种皮肤生长因子复合物(含EGF/FGF等)，帮助修复受损肌肤屏障",
+                                                         "有助改善光电疗程后肌肤密度下降及维持保湿力"
+                                                     ],
+                                        "caution":  "请避免直接涂抹于伤口，使用过程中如出现泛红或瘙痒请立即停用。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "PSS_007",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "판테티놀 선 에센스 SPF50+ PA++++ 30ml",
+                                        "usage":  "아침 스킨케어 마지막 단계에서 외출 20~30분 전 얼굴 전체와 목에 골고루 펴 바르고, 야외 활동 시 2~3시간마다 덧발라요.",
+                                        "features":  [
+                                                         "SPF50+ PA++++로 UVA/UVB를 동시에 강력하게 차단해요",
+                                                         "판테놀과 저자극 안티에이징 성분이 자외선 자극으로부터 피부 장벽을 함께 지켜줘요"
+                                                     ],
+                                        "caution":  "상처가 아물지 않은 시술 직후 피부에는 무기자차 제품을 쓰고, 눈가는 피해서 발라주세요."
+                                    },
+                             "en":  {
+                                        "name":  "Panthetinol Sun Essence SPF50+ PA++++ 30ml",
+                                        "usage":  "As the last step of your morning routine, apply evenly over the face and neck 20-30 minutes before going out, and reapply every 2-3 hours during extended outdoor activity.",
+                                        "features":  [
+                                                         "SPF50+ PA++++ for strong, broad-spectrum UVA/UVB protection",
+                                                         "Combines panthenol with a gentle anti-aging complex to protect the skin barrier from UV-induced stress"
+                                                     ],
+                                        "caution":  "On freshly treated skin that hasn\u0027t fully healed, use a mineral-only sunscreen or apply over a recovery dressing, and avoid the eye area."
+                                    },
+                             "ja":  {
+                                        "name":  "パンテチノールサンエッセンス SPF50+ PA++++ 30ml",
+                                        "usage":  "朝のスキンケアの最後に、外出20〜30分前に顔全体と首に均一に伸ばしてください。屋外活動時は2〜3時間ごとに塗り直します。",
+                                        "features":  [
+                                                         "SPF50+ PA++++でUVA/UVBを同時にしっかりカット",
+                                                         "パンテノールと低刺激エイジングケア複合成分が紫外線ダメージから肌バリアを保護"
+                                                     ],
+                                        "caution":  "施術直後で傷が完全に治っていない肌には、ノンケミカルタイプまたは保護テープの上からの使用をおすすめし、目元は避けてください。"
+                                    },
+                             "zh":  {
+                                        "name":  "泛醇防晒精华 SPF50+ PA++++ 30ml",
+                                        "usage":  "作为早间护肤最后一步，在外出前20~30分钟均匀涂抹于全脸及颈部，户外活动时每2~3小时补涂一次。",
+                                        "features":  [
+                                                         "SPF50+ PA++++高倍防护，同时阻隔UVA/UVB",
+                                                         "泛醇搭配低刺激抗老复合成分，在防晒的同时保护肌肤屏障"
+                                                     ],
+                                        "caution":  "术后伤口未完全愈合的肌肤，建议单独使用物理防晒或涂于修复贴之上，并避开眼周。"
+                                    }
+                         }
     }
-  },
-  {
-    "product_id": "PSS_002",
-    "translations": {
-      "ko": {
-        "name": "블루 리페어 수딩 크림",
-        "usage": "열감이나 붉은기가 있는 부위를 중심으로 가볍게 펴 바른 뒤 가볍게 두드려 흡수시켜요. 필요하면 얇게 덧발라요.",
-        "features": [
-          "구아이아줄렌 성분이 시술이나 자극으로 인한 일시적 붉은기와 열감을 진정시켜요",
-          "병풀추출물 기반의 저자극 수분 젤 크림이에요"
-        ],
-        "caution": "단독 사용 후 자외선에 노출된다면 자외선 차단제를 함께 발라주세요."
-      },
-      "en": {
-        "name": "Blue Repair Soothing Cream",
-        "usage": "Apply gently over areas with heat or redness and pat to absorb; layer a thin extra coat if needed.",
-        "features": [
-          "Guaiazulene helps calm temporary redness and heat from treatments or irritation",
-          "Low-irritation, water-gel cream formula based on centella asiatica extract"
-        ],
-        "caution": "If used alone before sun exposure, pairing with sunscreen is recommended."
-      },
-      "ja": {
-        "name": "ブルーリペアスージングクリーム",
-        "usage": "ほてりや赤みが気になる部分を中心に軽く伸ばし、軽くたたくように浸透させてください。必要に応じて重ね付けします。",
-        "features": [
-          "グアイアズレン配合で、施術や刺激による一時的な赤み・ほてりを鎮静",
-          "ツボクサエキスベースの低刺激ウォータージェルクリーム処方"
-        ],
-        "caution": "単独使用後に紫外線を浴びる場合は、日焼け止めの併用をおすすめします。"
-      },
-      "zh": {
-        "name": "蓝色舒缓修护霜",
-        "usage": "以有灼热感或泛红的部位为中心轻轻涂抹，轻拍吸收，如有需要可薄薄叠涂一层。",
-        "features": [
-          "含愈创薁烷成分，舒缓术后或刺激引起的暂时性泛红与灼热感",
-          "以积雪草提取物为基础的低刺激水凝霜配方"
-        ],
-        "caution": "单独使用后如需外出见光，建议搭配防晒产品使用。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_003",
-    "translations": {
-      "ko": {
-        "name": "판테티놀 선 에센스 SPF50+ PA++++",
-        "usage": "아침 스킨케어 마지막 단계에서 외출 20~30분 전 얼굴 전체와 목에 골고루 펴 바르고, 야외 활동 시 2~3시간마다 덧발라요.",
-        "features": [
-          "SPF50+ PA++++로 UVA/UVB를 동시에 강력하게 차단해요",
-          "판테놀과 저자극 안티에이징 성분이 자외선 자극으로부터 피부 장벽을 함께 지켜줘요"
-        ],
-        "caution": "상처가 아물지 않은 시술 직후 피부에는 무기자차 제품을 쓰고, 눈가는 피해서 발라주세요."
-      },
-      "en": {
-        "name": "Panthetinol Sun Essence SPF50+ PA++++",
-        "usage": "As the last step of your morning routine, apply evenly over the face and neck 20-30 minutes before going out, and reapply every 2-3 hours during extended outdoor activity.",
-        "features": [
-          "SPF50+ PA++++ for strong, broad-spectrum UVA/UVB protection",
-          "Combines panthenol with a gentle anti-aging complex to protect the skin barrier from UV-induced stress"
-        ],
-        "caution": "On freshly treated skin that hasn't fully healed, use a mineral-only sunscreen or apply over a recovery dressing, and avoid the eye area."
-      },
-      "ja": {
-        "name": "パンテチノールサンエッセンス SPF50+ PA++++",
-        "usage": "朝のスキンケアの最後に、外出20〜30分前に顔全体と首に均一に伸ばしてください。屋外活動時は2〜3時間ごとに塗り直します。",
-        "features": [
-          "SPF50+ PA++++でUVA/UVBを同時にしっかりカット",
-          "パンテノールと低刺激エイジングケア複合成分が紫外線ダメージから肌バリアを保護"
-        ],
-        "caution": "施術直後で傷が完全に治っていない肌には、ノンケミカルタイプまたは保護テープの上からの使用をおすすめし、目元は避けてください。"
-      },
-      "zh": {
-        "name": "泛醇防晒精华 SPF50+ PA++++",
-        "usage": "作为早间护肤最后一步，在外出前20~30分钟均匀涂抹于全脸及颈部，户外活动时每2~3小时补涂一次。",
-        "features": [
-          "SPF50+ PA++++高倍防护，同时阻隔UVA/UVB",
-          "泛醇搭配低刺激抗老复合成分，在防晒的同时保护肌肤屏障"
-        ],
-        "caution": "术后伤口未完全愈合的肌肤，建议单独使用物理防晒或涂于修复贴之上，并避开眼周。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_004",
-    "translations": {
-      "ko": {
-        "name": "블루 리페어 수딩 마스크",
-        "usage": "세안 후 토너로 피부결을 정돈한 뒤 마스크 시트를 얼굴 전체에 밀착시키고 15~20분 후 제거해요. 남은 에센스는 가볍게 두드려 흡수시켜요.",
-        "features": [
-          "임상으로 검증된 급속 쿨링 효과로 시술 후 피부 온도를 낮춰줘요",
-          "멸균 극세사 시트라 민감성 피부에도 물리적 자극이 적어요"
-        ],
-        "caution": "시트 부착 시간은 20분을 넘기지 마세요."
-      },
-      "en": {
-        "name": "Blue Repair Soothing Mask (5 sheets)",
-        "usage": "After cleansing and toning, smooth the sheet mask over the whole face, leave on for 15-20 minutes, then remove and pat any remaining essence into the skin.",
-        "features": [
-          "Clinically shown to cool skin quickly and lower post-treatment skin temperature",
-          "Sterile microfiber sheet minimizes physical friction on sensitive skin"
-        ],
-        "caution": "Do not leave the sheet on for longer than 20 minutes."
-      },
-      "ja": {
-        "name": "ブルーリペアスージングマスク(5枚)",
-        "usage": "洗顔後、トナーで肌を整えてからシートを顔全体に密着させ、15〜20分後に剥がしてください。残ったエッセンスは軽くたたいて浸透させます。",
-        "features": [
-          "施術後の肌温度を素早く下げる冷却効果が臨床で確認済み",
-          "滅菌済みの極細繊維シートで敏感肌への物理的な摩擦を最小限に"
-        ],
-        "caution": "シートの装着時間は20分を超えないようにしてください。"
-      },
-      "zh": {
-        "name": "蓝色舒缓修护面膜(5片)",
-        "usage": "洁面并用爽肤水打底后，将面膜贴均匀敷于全脸，15~20分钟后取下，剩余精华轻拍吸收。",
-        "features": [
-          "经临床验证可快速降温，缓解术后肌肤灼热",
-          "无菌超细纤维面膜布，最大限度减少对敏感肌的摩擦刺激"
-        ],
-        "caution": "敷贴时间请勿超过20分钟。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_005",
-    "translations": {
-      "ko": {
-        "name": "젠틀 밸런싱 아미노 클렌저",
-        "usage": "미온수로 얼굴을 적신 후 손바닥에서 조밀한 거품을 내어 부드럽게 롤링한 뒤 깨끗이 헹궈요.",
-        "features": [
-          "pH 5.5 약산성 아미노산 세정 성분으로 세안 후 당김과 장벽 손상을 최소화해요",
-          "1차 자극 테스트를 마친 저자극 포뮬러예요"
-        ],
-        "caution": "세안 시 강하게 문지르지 말고 가볍게 패팅하듯 헹궈주세요."
-      },
-      "en": {
-        "name": "Gentle Balancing Amino Cleanser",
-        "usage": "Wet your face with lukewarm water, work up a dense lather in your palms, massage gently with minimal friction, then rinse thoroughly.",
-        "features": [
-          "pH 5.5 mildly acidic amino-acid surfactants minimize barrier damage and tightness after cleansing",
-          "Low-irritation formula that has completed primary skin irritation testing"
-        ],
-        "caution": "Rinse by patting gently rather than rubbing hard while cleansing."
-      },
-      "ja": {
-        "name": "ジェントルバランシングアミノクレンザー",
-        "usage": "ぬるま湯で顔を濡らし、手のひらで濃密な泡を作って肌への摩擦を抑えながら優しく転がすように洗い、しっかりすすいでください。",
-        "features": [
-          "pH5.5の弱酸性アミノ酸系洗浄成分で、洗顔後のバリア機能低下やつっぱりを最小限に",
-          "一次刺激性テスト済みの低刺激処方"
-        ],
-        "caution": "洗顔時は強くこすらず、軽くたたくようにすすいでください。"
-      },
-      "zh": {
-        "name": "温和平衡氨基酸洁面乳",
-        "usage": "以温水打湿面部，在掌心充分打出细腻泡沫，以最小摩擦轻柔按摩后彻底冲洗干净。",
-        "features": [
-          "pH5.5弱酸性氨基酸洁面成分，最大限度减少洁面后屏障受损与紧绷感",
-          "已完成皮肤原发性刺激测试的低刺激配方"
-        ],
-        "caution": "洁面时请勿用力搓揉，以轻拍方式冲洗。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_006",
-    "translations": {
-      "ko": {
-        "name": "배리어 부스팅 하이드라 토너",
-        "usage": "세안 직후 손바닥에 덜어 얼굴 전체에 지그시 눌러 흡수시켜요. 건조함이 심하면 2~3회 겹쳐 발라요.",
-        "features": [
-          "5종 복합 히알루론산과 고농축 판테놀로 세안 직후 수분을 빠르게 채워줘요",
-          "알코올 프리 저자극 진정 제형이에요"
-        ],
-        "caution": "시술 후 7일간은 화장솜으로 세게 닦아내는 건 피해주세요."
-      },
-      "en": {
-        "name": "Barrier Boosting Hydra Toner",
-        "usage": "Right after cleansing, pour into your palms and press gently into the whole face; layer 2-3 times if skin feels especially dry after a treatment.",
-        "features": [
-          "5 types of hyaluronic acid plus concentrated panthenol deliver rapid hydration right after cleansing",
-          "Alcohol-free, gentle soothing essence-toner formula"
-        ],
-        "caution": "Avoid wiping the skin firmly with a cotton pad for 7 days after a treatment."
-      },
-      "ja": {
-        "name": "バリアブースティングハイドラトナー",
-        "usage": "洗顔後すぐに手のひらに取り、顔全体に押し込むように浸透させてください。施術後に乾燥が強い場合は2〜3回重ね付けします。",
-        "features": [
-          "5種のヒアルロン酸と高濃度パンテノールで洗顔直後の肌に素早く水分補給",
-          "アルコールフリーの低刺激なとろみエッセンストナー処方"
-        ],
-        "caution": "施術後7日間は、コットンで強く拭き取る使用は避けてください。"
-      },
-      "zh": {
-        "name": "屏障强化水润爽肤水",
-        "usage": "洁面后立即倒入掌心，以按压方式让全脸充分吸收；术后肌肤特别干燥时可叠加涂抹2~3次。",
-        "features": [
-          "5种玻尿酸复合高浓度泛醇，洁面后迅速为肌肤补水",
-          "无酒精低刺激舒缓精华水配方"
-        ],
-        "caution": "术后7天内请避免用化妆棉用力擦拭肌肤。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_007",
-    "translations": {
-      "ko": {
-        "name": "EGF 펩타이드 코어 앰플",
-        "usage": "토너 사용 후 스포이드로 양 볼과 이마에 떨어뜨려 피부 결을 따라 펴 바르고 손바닥으로 감싸 흡수시켜요.",
-        "features": [
-          "고순도 리포좀화 EGF 성분이 피부 턴오버와 탄력을 지지해요",
-          "멀티 펩타이드 복합체로 잔주름과 피부 결을 집중 케어해요"
-        ],
-        "caution": "상처 부위에는 직접 사용하지 마세요."
-      },
-      "en": {
-        "name": "EGF Peptide Core Ampoule",
-        "usage": "After toner, use the dropper to place drops on both cheeks and the forehead, smooth along your skin's natural lines, then cup your palms over the face to help it absorb.",
-        "features": [
-          "High-purity liposomal SH-Oligopeptide-1 (EGF) supports skin turnover and elasticity",
-          "Multi-peptide complex focuses on fine lines and overall skin texture"
-        ],
-        "caution": "Avoid applying directly to open wounds."
-      },
-      "ja": {
-        "name": "EGFペプチドコアアンプル",
-        "usage": "トナーの後、スポイトで両頬と額に落とし、肌のキメに沿って優しく伸ばしてから、手のひらで包み込むように浸透させてください。",
-        "features": [
-          "高純度リポソーム化SH-オリゴペプチド-1(EGF)配合で肌のターンオーバーとハリをサポート",
-          "マルチペプチド複合体で小じわとキメを集中ケア"
-        ],
-        "caution": "傷のある部位への直接使用は避けてください。"
-      },
-      "zh": {
-        "name": "EGF多肽精华安瓶",
-        "usage": "使用爽肤水后，用滴管在双颊及额头滴入适量，沿肌肤纹理轻轻推开，再以掌心按压帮助吸收。",
-        "features": [
-          "高纯度脂质体包裹SH-寡肽-1(EGF)，支持肌肤新陈代谢与弹性",
-          "多重多肽复合物针对细纹及肌肤纹理进行集中护理"
-        ],
-        "caution": "请避免直接涂抹于伤口部位。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_008",
-    "translations": {
-      "ko": {
-        "name": "아줄렌 카밍 릴리프 세럼",
-        "usage": "토너 다음 단계에서 붉은기와 열감이 두드러진 부위를 중심으로 펴 바르고 두드려 흡수시켜요.",
-        "features": [
-          "고농축 구아이아줄렌이 자극받은 피부를 즉각 진정시켜요",
-          "병풀잎수 72% 베이스로 수분 진정 효과도 함께 줘요"
-        ],
-        "caution": "이상 증상이 느껴지면 사용을 중단하세요."
-      },
-      "en": {
-        "name": "Azulene Calming Relief Serum",
-        "usage": "After toner, apply over areas with noticeable redness or heat and pat gently to absorb.",
-        "features": [
-          "High concentration of guaiazulene (3,000ppm) for immediate calming of irritated skin",
-          "Soothing, hydrating formula based on 72% centella asiatica leaf water"
-        ],
-        "caution": "Discontinue use if you notice any unusual reaction."
-      },
-      "ja": {
-        "name": "アズレンカーミングリリーフセラム",
-        "usage": "トナーの後、赤みやほてりが気になる部分を中心に伸ばし、軽くたたいて浸透させてください。",
-        "features": [
-          "高濃度グアイアズレン(3,000ppm)配合で刺激を受けた肌を即座に鎮静",
-          "ツボクサ葉水72%ベースの保湿鎮静処方"
-        ],
-        "caution": "異常が感じられた場合は使用を中止してください。"
-      },
-      "zh": {
-        "name": "甘菊蓝舒缓精华",
-        "usage": "使用爽肤水后，以泛红、灼热明显的部位为中心涂抹，轻拍吸收。",
-        "features": [
-          "高浓度愈创薁烷(3,000ppm)配方，即时舒缓受刺激肌肤",
-          "以72%积雪草叶水为基础的保湿舒缓配方"
-        ],
-        "caution": "如出现异常反应请立即停用。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_009",
-    "translations": {
-      "ko": {
-        "name": "비타 부스팅 래디언스 세럼",
-        "usage": "저녁 스킨케어 시 토너 후 2~3방울을 색소 고민 부위에 도포하고 가볍게 흡수시킨 뒤 보습 크림으로 마무리해요.",
-        "features": [
-          "안정화된 비타민C 유도체와 나이아신아마이드 5%로 잡티와 피부 톤을 개선해요",
-          "글루타치온 복합체로 맑은 안색을 도와줘요"
-        ],
-        "caution": "시술 직후 붉은기나 미세 상처가 있을 때는 사용을 피하고, 낮에 쓸 땐 자외선 차단제를 꼭 함께 발라주세요."
-      },
-      "en": {
-        "name": "Vita Boosting Radiance Serum",
-        "usage": "During your evening routine, after toner, apply 2-3 drops to areas of concern for pigmentation, pat to absorb, then finish with a moisturizing cream.",
-        "features": [
-          "Stabilized vitamin C derivative (3-O-Ethyl Ascorbic Acid) with 5% niacinamide helps improve blemishes and tone",
-          "Glutathione complex supports a brighter, more radiant complexion"
-        ],
-        "caution": "Do not use on skin with redness or micro-wounds right after a treatment, and always apply sunscreen when using during the day."
-      },
-      "ja": {
-        "name": "ビタブースティングラディアンスセラム",
-        "usage": "夜のスキンケアでトナーの後、色素が気になる部分に2〜3滴なじませ、軽く浸透させた後、保湿クリームで仕上げてください。",
-        "features": [
-          "安定型ビタミンC誘導体(3-O-エチルアスコルビン酸)とナイアシンアミド5%配合でシミ・肌トーンを改善",
-          "グルタチオン複合体で明るく澄んだ肌印象に"
-        ],
-        "caution": "施術直後で赤みや微細な傷がある場合は使用を避け、日中使用時は必ず日焼け止めを併用してください。"
-      },
-      "zh": {
-        "name": "维他亮采精华液",
-        "usage": "晚间护肤时，在使用爽肤水后取2~3滴涂于色斑困扰部位，轻拍吸收后以保湿霜收尾。",
-        "features": [
-          "稳定型维C衍生物(3-O-乙基抗坏血酸)搭配5%烟酰胺，改善暗沉与肤色不均",
-          "谷胱甘肽复合成分带来更透亮的肤色"
-        ],
-        "caution": "术后仍有泛红或微创伤口时请勿使用，白天使用务必配合防晒。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_010",
-    "translations": {
-      "ko": {
-        "name": "시카 인텐시브 리커버리 밤",
-        "usage": "시술 부위나 건조하고 자극받은 국소 부위에 얇은 보호막을 만들듯 톡톡 얹어 발라요.",
-        "features": [
-          "고농축 센텔라아시아티카 정량추출물과 판테놀 10%로 국소 부위를 집중 보호해요",
-          "외부 자극으로부터 미세 손상 피부를 밀폐 보호해줘요"
-        ],
-        "caution": "출혈이나 진물이 계속되는 상처가 있다면 사용 전 의료진과 상담하세요."
-      },
-      "en": {
-        "name": "Cica Intensive Recovery Balm",
-        "usage": "Dab a small amount onto treated areas or extremely dry, irritated spots, as if forming a thin protective layer.",
-        "features": [
-          "Concentrated centella asiatica extract (TECA) with 10% panthenol for targeted spot protection",
-          "Forms a protective seal to shield micro-damaged skin from outside irritants"
-        ],
-        "caution": "If a wound is still bleeding or oozing, consult a doctor before use."
-      },
-      "ja": {
-        "name": "シカインテンシブリカバリーバーム",
-        "usage": "施術部位や極度に乾燥・刺激を受けた部分に、薄い保護膜を作るようにポンポンと乗せてください。",
-        "features": [
-          "高濃度センテラアジアチカ定量抽出物(TECA)とパンテノール10%配合の局所集中保護バーム",
-          "外部の有害環境から微細なダメージ肌を密閉保護"
-        ],
-        "caution": "出血や滲出液が続く開放創がある場合は、使用前に医師に相談してください。"
-      },
-      "zh": {
-        "name": "积雪草强效修护膏",
-        "usage": "以轻点方式涂抹于术后部位或极度干燥、受刺激的局部，形成一层薄薄的保护膜。",
-        "features": [
-          "高浓度积雪草定量提取物(TECA)搭配10%泛醇，局部集中保护",
-          "形成保护膜，隔绝外界刺激对受损肌肤的影响"
-        ],
-        "caution": "如伤口持续出血或渗液，请在使用前咨询医生。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_011",
-    "translations": {
-      "ko": {
-        "name": "퓨리파잉 클리어링 젤 클렌저",
-        "usage": "손에 덜어 충분히 거품을 낸 뒤 T존과 피지 분비가 많은 부위를 중심으로 마사지하듯 씻어내요.",
-        "features": [
-          "저자극 LHA 성분과 티트리추출물이 과다 피지와 모공 속 노폐물을 부드럽게 씻어줘요",
-          "여드름성 피부에도 적합하도록 테스트를 마쳤어요"
-        ],
-        "caution": "시술 직후 민감해진 피부라면 저자극 아미노 클렌저를 대신 사용하세요."
-      },
-      "en": {
-        "name": "Purifying Clearing Gel Cleanser",
-        "usage": "Lather well in your hands, then massage over the T-zone and other oil-prone areas before rinsing off.",
-        "features": [
-          "Gentle 4th-generation LHA and tea tree extract cleanse excess sebum and pore buildup",
-          "Tested suitable for acne-prone skin"
-        ],
-        "caution": "Skip this cleanser on skin that's still sensitive right after a treatment - use the gentle amino cleanser instead."
-      },
-      "ja": {
-        "name": "ピュリファイングクリアリングジェルクレンザー",
-        "usage": "手のひらで十分に泡立て、Tゾーンや皮脂の多い部分を中心にマッサージするように洗い流してください。",
-        "features": [
-          "低刺激な第4世代LHA成分とティーツリー抽出物が余分な皮脂と毛穴汚れを優しく洗浄",
-          "ニキビ肌向け適合テスト済み"
-        ],
-        "caution": "施術直後で肌が敏感な状態の時は使用を避け、低刺激アミノクレンザーの使用をおすすめします。"
-      },
-      "zh": {
-        "name": "净澈控油洁面凝胶",
-        "usage": "在手心充分打出泡沫，以T区及易出油部位为中心按摩清洗后冲净。",
-        "features": [
-          "温和的第四代LHA成分搭配茶树提取物，轻柔清洁多余皮脂与毛孔堆积物",
-          "已通过痘肌适用性测试"
-        ],
-        "caution": "术后肌肤仍处于敏感状态时请避免使用，建议改用温和氨基酸洁面产品。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_012",
-    "translations": {
-      "ko": {
-        "name": "스쿠알란 배리어 페이셜 오일",
-        "usage": "저녁 스킨케어 마지막 단계에서 크림에 한 방울 섞어 바르거나, 손바닥에 비벼 체온으로 얼굴에 밀착 흡수시켜요.",
-        "features": [
-          "100% 식물성 고순도 스쿠알란이 수분 증발을 막아줘요",
-          "모공을 막지 않는 논코메도제닉 오일이에요"
-        ],
-        "caution": "여드름성 피부나 피지 과다 피부는 사용량을 조절해주세요."
-      },
-      "en": {
-        "name": "Squalane Barrier Facial Oil",
-        "usage": "As the last step of your evening routine, mix a drop into your cream or warm it between your palms and press it into the face to absorb.",
-        "features": [
-          "100% plant-derived, sugarcane-sourced squalane forms a seal against moisture loss",
-          "Non-comedogenic oil base that won't clog pores"
-        ],
-        "caution": "If you have acne-prone or very oily skin, use a smaller amount."
-      },
-      "ja": {
-        "name": "スクワランバリアフェイシャルオイル",
-        "usage": "夜のスキンケアの最後にクリームに1滴混ぜるか、手のひらで温めて顔を包み込むように密着浸透させてください。",
-        "features": [
-          "100%植物由来のサトウキビ由来スクワランが水分蒸発を防ぐバリアを形成",
-          "毛穴を塞がないノンコメドジェニックオイルベース"
-        ],
-        "caution": "ニキビ肌や皮脂が多い肌の方は使用量にご注意ください。"
-      },
-      "zh": {
-        "name": "角鲨烷屏障面部精油",
-        "usage": "作为晚间护肤最后一步，滴一滴混入面霜使用，或在掌心搓热后贴合面部帮助吸收。",
-        "features": [
-          "100%植物来源(甘蔗)高纯度角鲨烷，形成锁水屏障防止水分流失",
-          "不致粉刺配方，不堵塞毛孔"
-        ],
-        "caution": "痘痘肌或出油较多的肌肤请注意控制用量。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_013",
-    "translations": {
-      "ko": {
-        "name": "PHA 마일드 리셋 필링 패드",
-        "usage": "세안 후 엠보면으로 T존과 각질 고민 부위를 부드럽게 닦아낸 뒤, 부드러운 면으로 피부 결을 정돈하고 흡수시켜요.",
-        "features": [
-          "입자가 큰 3세대 PHA가 자극과 광과민성 없이 묵은 각질을 부드럽게 정리해요",
-          "판테놀과 알란토인이 각질 케어 후에도 촉촉함을 지켜줘요"
-        ],
-        "caution": "시술 회복 기간에는 물리적 마찰과 산 성분 접촉을 피해주세요."
-      },
-      "en": {
-        "name": "PHA Mild Reset Peeling Pad (60 pads)",
-        "usage": "After cleansing, gently wipe the textured side over the T-zone and other rough areas (avoiding the eye area), then smooth the soft side over the skin to finish.",
-        "features": [
-          "Large-molecule, 3rd-generation PHA (3% gluconolactone) softens buildup without irritation or photosensitivity",
-          "Panthenol and allantoin keep skin hydrated even after exfoliating"
-        ],
-        "caution": "Avoid all physical friction and acid-based products during post-treatment recovery."
-      },
-      "ja": {
-        "name": "PHAマイルドリセットピーリングパッド(60枚)",
-        "usage": "洗顔後、エンボス面で目元を避けながらTゾーンや角質が気になる部分を優しく拭き取り、なめらかな面で肌を整えて浸透させてください。",
-        "features": [
-          "大粒子の第3世代PHA(グルコノラクトン3%)が刺激や光過敏なく古い角質を柔らげる",
-          "パンテノールとアラントイン配合でケア後もしっとりとした潤いをキープ"
-        ],
-        "caution": "施術後の回復期間中は、物理的な摩擦と酸成分の使用を絶対に避けてください。"
-      },
-      "zh": {
-        "name": "PHA温和焕肤棉片(60片)",
-        "usage": "洁面后，用凹凸面轻轻擦拭T区及角质困扰部位(避开眼周)，再用光滑面抚平肌肤帮助吸收。",
-        "features": [
-          "大分子第三代PHA(葡萄糖酸内酯3%)温和软化老废角质，无刺激无光敏",
-          "泛醇与尿囊素配方，护理后依然保持水润"
-        ],
-        "caution": "术后恢复期间请绝对避免物理摩擦及接触酸类成分。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_014",
-    "translations": {
-      "ko": {
-        "name": "엑소좀 펩타이드 리바이탈 크림",
-        "usage": "세럼 단계 후 얼굴 안쪽에서 바깥쪽으로 부드럽게 펴 바르고, 턱선과 이마를 끌어올리듯 가볍게 마사지하며 흡수시켜요.",
-        "features": [
-          "식물 유래 엑소좀이 진피층 세포 신호 전달과 피부 재생을 도와줘요",
-          "8종 멀티 펩타이드가 피부 탄력과 밀도를 강화해요"
-        ],
-        "caution": "민감성 피부라면 사용 전 패치 테스트를 해보세요."
-      },
-      "en": {
-        "name": "Exosome Peptide Revital Cream",
-        "usage": "After serum, smooth from the center of the face outward, gently lifting along the jawline and forehead as you massage it in.",
-        "features": [
-          "Plant-derived exosomes (CICA-Exosome, 10,000ppm) support cell signaling and skin regeneration in the dermis",
-          "8 peptides plus a firming complex help strengthen skin elasticity and density"
-        ],
-        "caution": "A patch test is recommended for sensitive skin."
-      },
-      "ja": {
-        "name": "エクソソームペプチドリバイタルクリーム",
-        "usage": "セラムの後、顔の内側から外側へ優しく伸ばし、フェイスラインと額を持ち上げるように軽くマッサージしながら密着させてください。",
-        "features": [
-          "植物由来エクソソーム(CICA-Exosome)10,000ppm配合で真皮層の細胞シグナル伝達と再生を活性化",
-          "8種のマルチペプチドとフォルフィリン成分が肌のハリと密度を強化"
-        ],
-        "caution": "敏感肌の方はパッチテストをおすすめします。"
-      },
-      "zh": {
-        "name": "外泌体多肽活颜霜",
-        "usage": "使用精华后，从面部内侧向外侧推开，沿下颌线及额头做上提按摩帮助吸收。",
-        "features": [
-          "植物来源外泌体(CICA-Exosome)10,000ppm，激活真皮层细胞信号传导及肌肤再生",
-          "8种复合多肽及紧致成分强化肌肤弹性与密度"
-        ],
-        "caution": "敏感肌肤建议先做局部测试。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_015",
-    "translations": {
-      "ko": {
-        "name": "징크 시카 카밍 무기자차 선크림 SPF50+ PA++++",
-        "usage": "아침 스킨케어 마지막 단계에서 피부에 얇게 두드리듯 펴 발라요. 시술 직후 피부에도 안전해요.",
-        "features": [
-          "100% 논나노 징크옥사이드 단일 무기자차로 눈 시림 없이 안전하게 자외선을 차단해요",
-          "센텔라아시아티카 정량추출물이 자외선 열감과 붉은기를 함께 진정시켜줘요"
-        ],
-        "caution": "저녁에는 약산성 클렌저로 잔여물 없이 깨끗이 세안해주세요."
-      },
-      "en": {
-        "name": "Zinc Cica Mineral Sunscreen SPF50+ PA++++",
-        "usage": "As the last step of your morning routine, pat a thin layer over the skin to form a physical UV barrier - safe to use even right after a treatment.",
-        "features": [
-          "100% non-nano zinc oxide, a single mineral filter, protects even extremely sensitive post-treatment skin without stinging eyes",
-          "Centella asiatica extract calms UV-induced heat and redness at the same time"
-        ],
-        "caution": "Cleanse thoroughly in the evening with a mildly acidic cleanser to remove all residue."
-      },
-      "ja": {
-        "name": "ジンクシカカーミングノンケミカルサンクリーム SPF50+ PA++++",
-        "usage": "朝のスキンケアの最後に、肌に薄くたたくように伸ばして物理的な紫外線バリアを作ります。施術直後の肌にも安心です。",
-        "features": [
-          "100%ノンナノ酸化亜鉛単独のノンケミカル処方で、施術直後の敏感な肌にも目にしみずに使える紫外線カット",
-          "センテラアジアチカ定量抽出物が紫外線によるほてりと赤みを同時に鎮静"
-        ],
-        "caution": "夜は弱酸性クレンザーで残らずしっかり洗い流してください。"
-      },
-      "zh": {
-        "name": "锌积雪草舒缓物理防晒霜 SPF50+ PA++++",
-        "usage": "作为早间护肤最后一步，薄薄拍匀于肌肤形成物理防晒屏障，术后肌肤也可安心使用。",
-        "features": [
-          "100%非纳米氧化锌单一物理防晒剂，术后极度敏感肌也不刺激眼睛",
-          "积雪草定量提取物同时舒缓紫外线引起的灼热与泛红"
-        ],
-        "caution": "外出后请于晚间用弱酸性洁面产品彻底清洁干净。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_016",
-    "translations": {
-      "ko": {
-        "name": "비타-C 20 인텐시브 브라이트닝 앰플",
-        "usage": "저녁 스킨케어 시 토너 후 2~3방울을 기미·잡티 부위에 톡톡 흡수시킨 뒤 고보습 크림으로 마무리해요. 개봉 후에는 냉장 보관해요.",
-        "features": [
-          "순수 비타민C 20%와 페룰릭애씨드가 짙은 색소침착을 억제해요",
-          "항산화 시너지 포뮬러로 피부 산화 스트레스를 막아줘요"
-        ],
-        "caution": "상처나 여드름 압출 부위, 시술 직후 피부에는 따가움이 느껴질 수 있고, 낮에는 자외선 차단제를 꼭 함께 발라주세요."
-      },
-      "en": {
-        "name": "Vita-C 20 Intensive Brightening Ampoule",
-        "usage": "During your evening routine, after toner, pat 2-3 drops onto areas with dark spots or pigmentation, then finish with a rich moisturizing cream. (Refrigerate after opening.)",
-        "features": [
-          "20% pure vitamin C (L-ascorbic acid) from the UK plus ferulic acid helps suppress stubborn pigmentation",
-          "Antioxidant synergy formula defends skin against oxidative stress"
-        ],
-        "caution": "May cause tingling on wounds, extraction spots, or freshly treated skin; always pair with sunscreen when used during the day."
-      },
-      "ja": {
-        "name": "ビタC20インテンシブブライトニングアンプル",
-        "usage": "夜のスキンケアでトナーの後、シミ・くすみが気になる部分に2〜3滴なじませ、高保湿クリームで仕上げてください。(開封後は冷蔵保管推奨)",
-        "features": [
-          "英国産純粋ビタミンC(L-アスコルビン酸)20%とフェルラ酸配合で濃い色素沈着を抑制",
-          "抗酸化シナジー処方で肌の酸化ストレスを防御"
-        ],
-        "caution": "傷やニキビの圧出部位、施術直後の肌に塗布するとピリつく場合があります。日中使用時は必ず日焼け止めを併用してください。"
-      },
-      "zh": {
-        "name": "维C20强效亮肤精华安瓶",
-        "usage": "晚间护肤时，使用爽肤水后取2~3滴轻拍于色斑、暗沉部位，再叠加高保湿面霜收尾。(开封后建议冷藏保存)",
-        "features": [
-          "含20%英国产纯维生素C(左旋抗坏血酸)及阿魏酸，抑制顽固色素沉着",
-          "抗氧化协同配方，抵御肌肤氧化压力"
-        ],
-        "caution": "涂抹于伤口、挤压后的痘痘或术后肌肤可能产生刺痛感；白天使用请务必配合防晒。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_017",
-    "translations": {
-      "ko": {
-        "name": "마데카 카밍 드레싱 스팟 패치",
-        "usage": "세안 후 스킨케어 전, 시술 자국이나 압출 부위의 물기를 완전히 제거하고 패치를 밀착 부착해요. 삼출물이 차 하얗게 부풀면 교체해요.",
-        "features": [
-          "하이드로콜로이드 원단에 센텔라아시아티카 성분을 담아 습윤 환경을 만들고 2차 감염을 막아줘요",
-          "초슬림 밀착 공법으로 티가 잘 안 나요"
-        ],
-        "caution": "감염되었거나 진물이 심한 부위는 의사와 상담 후 부착하세요."
-      },
-      "en": {
-        "name": "Madeca Calming Dressing Spot Patch (60 patches)",
-        "usage": "Before your skincare routine, dry the area completely and apply the patch firmly over injection marks or extraction spots. Replace once it turns white and swells with fluid.",
-        "features": [
-          "Hydrocolloid material infused with centella asiatica creates a moist healing environment and blocks secondary infection",
-          "Ultra-slim 0.1mm beveled edge stays discreet and secure"
-        ],
-        "caution": "For infected wounds or heavy oozing, consult a doctor before applying."
-      },
-      "ja": {
-        "name": "マデカカーミングドレッシングスポットパッチ(60枚)",
-        "usage": "スキンケア前に水分をしっかり拭き取り、注射跡や圧出部位にパッチを密着させてください。滲出液で白く膨らんだら交換します。",
-        "features": [
-          "ハイドロコロイド素材にセンテラアジアチカ成分を配合し、湿潤環境の形成と二次感染を防止",
-          "0.1mmの超極薄ベベリング加工で目立たずしっかり密着"
-        ],
-        "caution": "感染した傷や滲出液が多い部位は、医師に相談の上で使用してください。"
-      },
-      "zh": {
-        "name": "积雪草舒缓护创贴(60片)",
-        "usage": "护肤前先将局部水分擦干，紧密贴于注射痕迹或挤压部位。渗出液使贴片发白鼓起时请更换。",
-        "features": [
-          "水胶体材质搭配积雪草成分，营造湿润愈合环境并阻隔二次感染",
-          "0.1mm超薄斜边工艺，贴合服帖不明显"
-        ],
-        "caution": "如伤口已感染或渗液严重，请先咨询医生再使用。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_018",
-    "translations": {
-      "ko": {
-        "name": "콜라겐 리프팅 하이드로겔 마스크",
-        "usage": "세안 후 토너로 정돈한 피부에 상/하 분리형 하이드로겔 마스크를 밀착시켜요. 시트가 투명해지면(약 30~40분) 떼어내요.",
-        "features": [
-          "초저분자 피쉬 콜라겐 추출물 82%로 만든 리얼 콜라겐 겔이에요",
-          "시술 후 늘어진 모공 수축과 열감 완화가 임상으로 확인됐어요"
-        ],
-        "caution": "부착 중에는 과도한 대화나 표정 변화를 자제해주세요."
-      },
-      "en": {
-        "name": "Collagen Lifting Hydrogel Mask (4 sheets)",
-        "usage": "After cleansing and toning, apply the two-piece hydrogel mask (upper and lower) and remove once it turns translucent as the active ingredients absorb (about 30-40 minutes).",
-        "features": [
-          "Real collagen gel set from 82% ultra-low molecular weight (300Da) French fish collagen extract",
-          "Clinically shown to tighten enlarged pores and ease post-treatment heat"
-        ],
-        "caution": "Try to limit talking or facial expressions while the mask is on."
-      },
-      "ja": {
-        "name": "コラーゲンリフティングハイドロゲルマスク(4枚)",
-        "usage": "洗顔後、トナーで肌を整えてから上下分離型ハイドロゲルマスクを密着させ、有効成分が浸透してシートが透明になったら(約30〜40分)剥がしてください。",
-        "features": [
-          "超低分子300Daのフランス産フィッシュコラーゲン抽出物82%を固めたリアルコラーゲンゲル",
-          "施術後の毛穴引き締めとほてり緩和効果を臨床で確認"
-        ],
-        "caution": "装着中は会話や表情の変化をできるだけ控えてください。"
-      },
-      "zh": {
-        "name": "胶原紧致水凝面膜(4片)",
-        "usage": "洁面并以爽肤水打底后，将上下分体式水凝面膜贴合面部，待有效成分吸收、贴片变透明时(约30~40分钟)取下。",
-        "features": [
-          "以82%超低分子量(300Da)法国鱼胶原蛋白提取物凝结而成的真实胶原凝胶",
-          "经临床验证可收敛术后毛孔、缓解灼热感"
-        ],
-        "caution": "敷贴期间请尽量减少说话及表情变化。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_019",
-    "translations": {
-      "ko": {
-        "name": "세라마이드 딥 리페어 립 & 아이 밤",
-        "usage": "건조하고 얇은 눈가와 입가, 팔자 부위에 쌀알 크기만큼 덜어 네 번째 손가락으로 가볍게 두드려 흡수시켜요.",
-        "features": [
-          "5중 복합 세라마이드와 쉐어버터가 얇은 눈가·입가 피부에 영양막을 만들어줘요",
-          "무향·무색소 저자극 포뮬러예요"
-        ],
-        "caution": "눈 안쪽에 내용물이 들어가지 않도록 주의하세요."
-      },
-      "en": {
-        "name": "Ceramide Deep Repair Lip & Eye Balm",
-        "usage": "Take a rice-grain amount and gently pat it into dry, thin areas like the eyes, mouth, and smile lines using your ring finger.",
-        "features": [
-          "A 5-ceramide complex with shea butter forms a nourishing seal on thin, oil-gland-free skin around the eyes and mouth",
-          "Fragrance- and dye-free, tested for low irritation"
-        ],
-        "caution": "Be careful not to get product into the eyes."
-      },
-      "ja": {
-        "name": "セラミドディープリペアリップ&アイバーム",
-        "usage": "乾燥しやすい薄い目元・口元・ほうれい線部分に米粒大を取り、薬指で軽くたたくように浸透させてください。",
-        "features": [
-          "5種の複合セラミドとシアバターが皮脂腺のない薄い目元・口元に密着栄養膜を形成",
-          "無香料・無着色料、低刺激テスト済み処方"
-        ],
-        "caution": "目の中に入らないようご注意ください。"
-      },
-      "zh": {
-        "name": "神经酰胺深层修护唇眼膏",
-        "usage": "取米粒大小用量，以无名指轻轻拍打于眼周、唇周及法令纹等干燥细薄部位帮助吸收。",
-        "features": [
-          "5重复合神经酰胺搭配乳木果油，为无皮脂腺的眼唇周薄嫩肌肤形成滋养保护膜",
-          "无香精无色素，已通过低刺激性测试"
-        ],
-        "caution": "请避免产品进入眼内。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_020",
-    "translations": {
-      "ko": {
-        "name": "티트리 아연 스팟 클리어링 젤",
-        "usage": "국소 트러블 부위에 면봉이나 깨끗한 손끝으로 소량만 얹어 흡수시켜요.",
-        "features": [
-          "티트리 유효성분과 징크 PCA 복합체가 급성 붉은 트러블을 빠르게 진정시켜요",
-          "논코메도제닉에 피지 분비 조절 테스트도 마쳤어요"
-        ],
-        "caution": "눈가 주변에는 바르지 말고, 넓은 부위에 많이 바르면 건조해질 수 있어요."
-      },
-      "en": {
-        "name": "Tea Tree Zinc Spot Clearing Gel",
-        "usage": "Using a cotton swab or clean fingertip, dot a small amount of gel directly onto the blemish and let it absorb.",
-        "features": [
-          "Australian 4-terpineol (the active tea tree compound) and zinc PCA quickly calm acute breakouts",
-          "Non-comedogenic and tested to help balance sebum"
-        ],
-        "caution": "Do not apply near the eye area, and avoid using a large amount over a wide area as it may cause dryness."
-      },
-      "ja": {
-        "name": "ティーツリージンクスポットクリアリングジェル",
-        "usage": "綿棒または清潔な指先で、トラブル部分に少量のジェルを乗せるように塗布して浸透させてください。",
-        "features": [
-          "オーストラリア産4-テルピネオール(ティーツリー有効成分)とジンクPCA複合体が急性トラブルを素早く鎮静",
-          "ノンコメドジェニック・皮脂分泌調整テスト済み"
-        ],
-        "caution": "目元周辺への使用は避け、広範囲に多量に塗布すると乾燥を招く場合があります。"
-      },
-      "zh": {
-        "name": "茶树锌焕净修护凝胶",
-        "usage": "用棉签或干净指尖蘸取少量凝胶，点涂于痘痘困扰部位并轻轻推开吸收。",
-        "features": [
-          "澳洲产4-松油醇(茶树活性成分)搭配PCA锌复合物，快速舒缓急性痘痘困扰",
-          "已通过不致粉刺及控油测试"
-        ],
-        "caution": "请避免涂抹于眼周，大面积过量使用可能导致干燥。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_021",
-    "translations": {
-      "ko": {
-        "name": "펩타이드 퍼밍 넥 & 데콜테 크림",
-        "usage": "목 아래에서 위쪽(턱선 방향)으로 쓸어올리듯 펴 바르고, 쇄골과 데콜테 라인까지 가볍게 마사지하며 흡수시켜요.",
-        "features": [
-          "기능성 원료 아데노신과 리프팅 펩타이드 복합체가 목주름 개선을 도와줘요",
-          "끈적임 없이 빠르게 흡수되는 탄력 포뮬러예요"
-        ],
-        "caution": "마찰을 줄이기 위해 충분한 양을 덜어 부드럽게 발라주세요."
-      },
-      "en": {
-        "name": "Peptide Firming Neck Cream",
-        "usage": "Sweep upward from the lower neck toward the jawline, then gently massage down to the collarbone and decollete to absorb.",
-        "features": [
-          "Contains adenosine, an approved anti-wrinkle ingredient, plus a firming peptide complex targeting neck lines",
-          "Dense, elastic formula that absorbs quickly without stickiness"
-        ],
-        "caution": "Use a generous amount and apply gently to avoid friction on the skin."
-      },
-      "ja": {
-        "name": "ペプチドファーミングネック&デコルテクリーム",
-        "usage": "首の下から上(顎先方向)へなで上げるように伸ばし、鎖骨からデコルテラインまで軽くマッサージしながら浸透させてください。",
-        "features": [
-          "首元じわ改善の機能性成分アデノシンとリフティングペプチド複合体を配合",
-          "べたつかず素早くなじむ高密度ハリ処方"
-        ],
-        "caution": "肌への摩擦を防ぐため、十分な量を優しく塗布してください。"
-      },
-      "zh": {
-        "name": "多肽紧致颈霜",
-        "usage": "由颈部下方向上(朝下颌方向)推抹，并轻柔按摩至锁骨及颈胸线帮助吸收。",
-        "features": [
-          "含改善颈纹功效成分腺苷及紧致多肽复合物",
-          "高密度紧致配方，不粘腻且吸收迅速"
-        ],
-        "caution": "请取足量轻柔涂抹，避免摩擦肌肤。"
-      }
-    }
-  },
-  {
-    "product_id": "PSS_022",
-    "translations": {
-      "ko": {
-        "name": "릴랙싱 카렌듈라 클렌징 밤",
-        "usage": "물기 없는 손에 덜어 마른 얼굴에 롤링해 메이크업과 노폐물을 녹인 뒤, 미온수로 유화해 깨끗이 헹궈요.",
-        "features": [
-          "카렌듈라 꽃추출물과 식물성 오일 베이스가 짙은 메이크업과 워터프루프 선크림도 자극 없이 지워줘요",
-          "세안 후에도 오일 잔여감 없이 산뜻해요"
-        ],
-        "caution": "시술 직후 미세 상처가 있다면 2~3일간은 순한 폼 클렌저만 사용하세요."
-      },
-      "en": {
-        "name": "Relaxing Calendula Cleansing Balm",
-        "usage": "Massage onto dry skin with dry hands to dissolve makeup and impurities, add a little lukewarm water to emulsify, then rinse thoroughly.",
-        "features": [
-          "Calendula flower extract and plant oils gently dissolve heavy makeup and waterproof sunscreen without irritation",
-          "Leaves no oily residue after rinsing"
-        ],
-        "caution": "For skin with micro-wounds right after a treatment, use a gentle foam cleanser alone for 2-3 days instead of this balm as a first cleanse."
-      },
-      "ja": {
-        "name": "リラクシングカレンデュラクレンジングバーム",
-        "usage": "乾いた手に取り、乾いた顔にくるくるとなじませてメイクや汚れを浮かせた後、ぬるま湯を少し加えて乳化させ、水でしっかり洗い流してください。",
-        "features": [
-          "カレンデュラ花抽出物と植物性オイルベースで濃いメイクやウォータープルーフの日焼け止めも刺激なくオフ",
-          "洗い流した後もオイリーな残り感のないすっきりした洗い上がり"
-        ],
-        "caution": "施術直後で微細な傷がある肌には、2〜3日間はクレンジングバームの代わりに低刺激フォームクレンザー単独使用をおすすめします。"
-      },
-      "zh": {
-        "name": "舒缓金盏花卸妆膏",
-        "usage": "取适量于干燥双手，在干燥面部打圈按摩溶解彩妆及污垢，加少量温水乳化后用清水彻底冲净。",
-        "features": [
-          "金盏花提取物搭配植物油基底，温和卸除浓妆及防水防晒，不刺激",
-          "冲洗后无油腻残留感，洁净清爽"
-        ],
-        "caution": "术后仍有微小伤口的肌肤，建议2~3天内改用温和泡沫洁面单独使用，暂缓使用卸妆膏。"
-      }
-    }
-  },
-  {
-    "product_id": "WHS_P023",
-    "translations": {
-      "ko": {
-        "name": "PDRN 리제너레이팅 인텐시브 앰플",
-        "usage": "저녁 세안 후 토너 다음 단계에서 얼굴 전체에 도포하고, 탄력과 흉터 회복이 필요한 부위를 가볍게 두드려 흡수시켜요.",
-        "features": [
-          "연어 정소 유래 고순도 PDRN 성분이 피부 세포 재생을 촉진해요",
-          "콜라겐 합성과 피부 두께 증가가 임상으로 검증됐어요"
-        ],
-        "caution": "어류나 연어 알레르기가 있다면 사용 전 패치 테스트를 꼭 해보세요."
-      },
-      "en": {
-        "name": "PDRN Regenerating Intensive Ampoule",
-        "usage": "In the evening after cleansing, apply after toner over the whole face, gently patting into areas that need extra elasticity or scar recovery.",
-        "features": [
-          "High-purity salmon-derived polydeoxyribonucleotide (PDRN, 5,000ppm) promotes skin cell regeneration",
-          "Clinically shown to stimulate collagen synthesis and increase skin thickness"
-        ],
-        "caution": "A patch test is essential if you have a fish or salmon allergy."
-      },
-      "ja": {
-        "name": "PDRNリジェネレーティングインテンシブアンプル",
-        "usage": "夜の洗顔後、トナーの後に顔全体へ塗布し、特にハリや傷跡の回復が必要な部分は軽くたたいて浸透させてください。",
-        "features": [
-          "サーモン精巣由来の高純度ポリデオキシリボヌクレオチド(PDRN 5,000ppm)配合で肌細胞の再生を促進",
-          "コラーゲン合成誘導と肌の厚み増加を臨床で確認"
-        ],
-        "caution": "魚類・サーモンアレルギーがある方は必ずパッチテストを行ってください。"
-      },
-      "zh": {
-        "name": "PDRN再生强效安瓶",
-        "usage": "晚间洁面后使用爽肤水打底，涂抹于全脸，弹性及疤痕修复需求部位可轻拍加强吸收。",
-        "features": [
-          "高纯度鲑鱼精巢来源多聚脱氧核糖核苷酸(PDRN 5,000ppm)，促进肌肤细胞再生",
-          "经临床验证可诱导胶原蛋白合成、增加肌肤厚度"
-        ],
-        "caution": "对鱼类/鲑鱼过敏者，使用前请务必先做局部测试。"
-      }
-    }
-  },
-  {
-    "product_id": "WHS_P024",
-    "translations": {
-      "ko": {
-        "name": "트라넥삼산 3% 멜라제로 스팟 세럼",
-        "usage": "아침/저녁 토너 후 기미, 주근깨, 색소침착 부위에 얇게 펴 발라요. 아침에는 자외선 차단제를 꼭 함께 발라주세요.",
-        "features": [
-          "트라넥삼산 3%와 특허 미백 원료 Melazero가 멜라닌 생성을 억제해요",
-          "자극 없이 색소 침착의 면적과 짙기를 개선해줘요"
-        ],
-        "caution": "시술 후 붉은 상처 부위에는 바르지 마세요."
-      },
-      "en": {
-        "name": "Tranexamic 3% Melazero Spot Serum",
-        "usage": "After toner morning and evening, apply a thin layer over dark spots, freckles, or areas of pigmentation. Always pair with sunscreen when used in the morning.",
-        "features": [
-          "3% tranexamic acid, an approved melasma-care ingredient, plus patented brightening ingredient Melazero suppress melanin production",
-          "Improves the size and depth of pigmentation gently, without irritation"
-        ],
-        "caution": "Avoid applying over red, freshly treated wounds."
-      },
-      "ja": {
-        "name": "トラネキサム酸3%メラゼロスポットセラム",
-        "usage": "朝晩トナーの後、シミ・そばかす・色素沈着部位に薄く伸ばしてください。朝使用時は必ず日焼け止めを併用してください。",
-        "features": [
-          "肝斑治療成分であるトラネキサム酸3%と特許美白原料Melazero配合でメラニン生成を抑制",
-          "刺激なく色素沈着の範囲と濃さを改善"
-        ],
-        "caution": "施術後の赤みのある傷部位への使用は控えてください。"
-      },
-      "zh": {
-        "name": "传明酸3%淡斑精华",
-        "usage": "早晚使用爽肤水后，薄涂于色斑、雀斑及色素沉着部位。早间使用请务必配合防晒。",
-        "features": [
-          "含3%传明酸(祛斑医药成分)及专利美白原料Melazero，抑制黑色素生成",
-          "温和无刺激地改善色素沉着的面积与深浅"
-        ],
-        "caution": "术后仍有泛红伤口的部位请避免涂抹。"
-      }
-    }
-  },
-  {
-    "product_id": "WHS_P025",
-    "translations": {
-      "ko": {
-        "name": "크라이오 SOS 수딩 쿨링 젤",
-        "usage": "시술 후 열감이나 홍조가 느껴질 때 수면팩처럼 두껍게 얹어 흡수시키거나, 냉장 보관 후 차갑게 발라요.",
-        "features": [
-          "도포 즉시 피부 온도를 낮춰주는 급속 쿨링 효과가 임상으로 확인됐어요(멘톨·알코올 프리)",
-          "에리스리톨과 알로에베라잎즙이 열 스트레스를 해소해줘요"
-        ],
-        "caution": "고주파·초음파 리프팅 직후 24시간 동안은 과도한 냉각 사용을 자제하세요."
-      },
-      "en": {
-        "name": "Cryo SOS Soothing Cooling Gel",
-        "usage": "When skin feels hot or flushed after a treatment, apply a thick layer like a sleeping mask, or refrigerate first for an extra-cooling effect.",
-        "features": [
-          "Clinically shown to instantly cool skin temperature by up to -5.2C (menthol- and alcohol-free formula)",
-          "Erythritol and aloe vera juice relieve heat stress deep in the skin"
-        ],
-        "caution": "Avoid heavy cooling-gel use for 24 hours right after RF/ultrasound lifting treatments, to preserve the treatment's heat effect."
-      },
-      "ja": {
-        "name": "クライオSOSスージングクーリングジェル",
-        "usage": "施術後にほてりや赤みを感じた時、スリーピングパックのように厚めに乗せて浸透させるか、冷蔵保管して冷たく塗布してください。",
-        "features": [
-          "塗布直後に肌温度を最大-5.2℃まで急速冷却する効果を臨床確認(メントール・アルコールフリー処方)",
-          "エリスリトールとアロエベラ葉汁が真皮層の熱ストレスを緩和"
-        ],
-        "caution": "高周波・超音波リフティング施術直後は、熱の保持のため24時間は過度な冷却ジェルの使用を控えてください。"
-      },
-      "zh": {
-        "name": "冰川SOS舒缓冷凝胶",
-        "usage": "术后感到灼热或泛红时，可如睡眠面膜般厚敷吸收，或冷藏后取出冰凉涂抹。",
-        "features": [
-          "经临床验证涂抹后可迅速降温达-5.2℃(不含薄荷醇及酒精，无刺激配方)",
-          "赤藓糖醇搭配芦荟叶汁缓解真皮层热应激"
-        ],
-        "caution": "射频/超声炮等热能提拉疗程后24小时内，请避免大量使用冷凝胶以免影响热效应保留。"
-      }
-    }
-  },
-  {
-    "product_id": "WHS_P026",
-    "translations": {
-      "ko": {
-        "name": "마이크로바이옴 배리어 리페어 미스트",
-        "usage": "눈을 감고 얼굴에서 20cm 거리를 두고 골고루 분사한 뒤 자연 건조하거나 손바닥으로 가볍게 흡수시켜요. 건조할 때 수시로 사용해요.",
-        "features": [
-          "유익균 발효 성분이 피부 유익균 생태계를 회복시켜 외부 자극 방어력을 높여줘요",
-          "미스트 타입이라 손 접촉 없이 위생적으로 수분을 채워줘요"
-        ],
-        "caution": "눈에 들어가지 않도록 주의하세요."
-      },
-      "en": {
-        "name": "Microbiome Barrier Repair Mist",
-        "usage": "Close your eyes, hold the bottle about 20cm from your face, spray evenly, and let it air-dry or pat gently to absorb. Use anytime skin feels dry throughout the day.",
-        "features": [
-          "Lactobacillus and bifida ferment lysates help restore a healthy skin microbiome and strengthen defense against irritants",
-          "Fine mist spray delivers hygienic hydration without touching the skin with your hands"
-        ],
-        "caution": "Be careful not to spray into the eyes."
-      },
-      "ja": {
-        "name": "マイクロバイオームバリアリペアミスト",
-        "usage": "目を閉じて顔から20cm離し、まんべんなくスプレーした後、自然乾燥させるか手のひらで軽く浸透させてください。日中乾燥を感じた時にこまめに使用します。",
-        "features": [
-          "ラクトバチルス発酵溶解物とビフィダ発酵ろ液が善玉菌バランスを整え、外部刺激への防御力を強化",
-          "ミスト噴射タイプで手を触れずに衛生的に水分補給"
-        ],
-        "caution": "目に入らないようご注意ください。"
-      },
-      "zh": {
-        "name": "微生态屏障修护喷雾",
-        "usage": "闭上双眼，距面部约20cm均匀喷洒，自然风干或轻拍吸收。日间感到干燥时可随时补喷。",
-        "features": [
-          "乳酸菌发酵溶解物及双歧杆菌发酵滤液修复有益菌群生态，强化肌肤抵御外界刺激的能力",
-          "雾状喷洒方式无需手部接触，卫生便捷地为肌肤补水舒缓"
-        ],
-        "caution": "请避免喷入眼睛。"
-      }
-    }
-  },
-  {
-    "product_id": "WHS_P027",
-    "translations": {
-      "ko": {
-        "name": "바쿠치올 1% 탄력 스무딩 세럼",
-        "usage": "토너 다음 단계에서 얼굴 전체에 부드럽게 펴 바르고 흡수시켜요. 광과민성이 없어 아침/저녁 모두 사용할 수 있어요.",
-        "features": [
-          "고순도 식물성 바쿠치올 1%가 레티놀과 비슷한 탄력 효과를 자극 없이 줘요",
-          "민감성 피부의 주름과 모공 탄력 개선 테스트를 마쳤어요"
-        ],
-        "caution": "임산부도 사용할 수 있지만 특이체질이라면 전문의와 상담을 권해요."
-      },
-      "en": {
-        "name": "Bakuchiol 1% Smoothing Serum",
-        "usage": "After toner, smooth over the whole face and let it absorb. Unlike retinol, it doesn't cause photosensitivity, so it can be used both morning and night.",
-        "features": [
-          "1% ultra-pure (99%) plant-based bakuchiol offers retinol-like collagen-boosting benefits without stinging or flaking",
-          "Tested to improve wrinkles and pore elasticity on sensitive skin"
-        ],
-        "caution": "Generally safe during pregnancy, but those with specific conditions should consult a doctor."
-      },
-      "ja": {
-        "name": "バクチオール1%ファーミングスムージングセラム",
-        "usage": "トナーの後、顔全体に優しく伸ばして浸透させてください。レチノールと異なり光過敏性がないため朝晩どちらも使用できます。",
-        "features": [
-          "高純度99%植物由来バクチオール1%配合でレチノール類似のコラーゲンブースト効果を、ピリつきや皮むけなしに提供",
-          "敏感肌でのしわ・毛穴のハリ改善テスト済み"
-        ],
-        "caution": "妊娠中でも使用可能ですが、特異体質の方は専門医への相談をおすすめします。"
-      },
-      "zh": {
-        "name": "补骨脂酚1%紧致舒缓精华",
-        "usage": "使用爽肤水后均匀涂抹于全脸并按摩吸收。与视黄醇不同，本品不具光敏性，早晚均可使用。",
-        "features": [
-          "含1%高纯度(99%)植物来源补骨脂酚，带来类视黄醇的胶原蛋白提升效果，无刺痛脱皮困扰",
-          "已通过敏感肌肤皱纹及毛孔弹性改善测试"
-        ],
-        "caution": "孕期一般可使用，但特殊体质者建议先咨询医生。"
-      }
-    }
-  },
-  {
-    "product_id": "WHS_P028",
-    "translations": {
-      "ko": {
-        "name": "레티놀 0.3% 마이크로 캡슐 나이트 크림",
-        "usage": "저녁 스킨케어 마지막 단계에서 완두콩 크기만큼 덜어 눈가와 입가를 피해 얼굴 전체에 얇게 펴 발라요. 주 2~3회부터 시작해요.",
-        "features": [
-          "리포좀 캡슐화된 순수 레티놀 0.3%가 밤사이 모공과 잔주름을 집중 개선해요",
-          "판테놀과 세라마이드가 레티놀의 자극을 완화해줘요"
-        ],
-        "caution": "임산부·수유부는 사용하지 말고, 낮에는 쓰지 말고 사용 기간 중엔 자외선 차단제를 꼭 발라주세요."
-      },
-      "en": {
-        "name": "Retinol 0.3% Microcapsule Night Cream",
-        "usage": "As the last step of your evening routine, take a pea-sized amount and apply a thin layer over the face, avoiding the eye and mouth area. Start with 2-3 times a week.",
-        "features": [
-          "Liposome-encapsulated pure retinol (0.3%) works overnight to refine pores and fine lines",
-          "Panthenol and ceramides help buffer the dryness and irritation that can come with retinol"
-        ],
-        "caution": "Do not use during pregnancy or breastfeeding, avoid daytime use, and always apply sunscreen during the day while using this product."
-      },
-      "ja": {
-        "name": "レチノール0.3%マイクロカプセルナイトクリーム",
-        "usage": "夜のスキンケアの最後に、豆粒大を取り目元・口元を避けて顔全体に薄く伸ばしてください。週2〜3回から始めます。",
-        "features": [
-          "リポソームカプセル化した純粋レチノール0.3%が就寝中に毛穴と小じわを集中改善",
-          "パンテノールとセラミドがレチノールによる乾燥刺激を緩和"
-        ],
-        "caution": "妊娠中・授乳中の使用は絶対に避け、日中の使用も禁止です。使用期間中は日中の日焼け止めを必ず併用してください。"
-      },
-      "zh": {
-        "name": "视黄醇0.3%微囊晚霜",
-        "usage": "作为晚间护肤最后一步，取豌豆大小用量，避开眼周及唇周薄涂于全脸。建议从每周2~3次开始使用。",
-        "features": [
-          "脂质体包裹纯视黄醇0.3%，夜间集中改善毛孔粗大及细纹",
-          "泛醇与神经酰胺缓冲视黄醇可能带来的干燥刺激"
-        ],
-        "caution": "孕期及哺乳期请绝对禁止使用，白天禁止使用，使用期间白天请务必配合防晒。"
-      }
-    }
-  },
-  {
-    "product_id": "WHS_P029",
-    "translations": {
-      "ko": {
-        "name": "카밍 시카 아줄렌 패드",
-        "usage": "문지르지 말고 양 볼과 이마 등 붉은기가 심한 부위에 3~5분간 얹어 수딩 팩처럼 사용한 뒤 떼어내어 가볍게 두드려 흡수시켜요.",
-        "features": [
-          "100% 순면 비건 패드에 병풀추출물과 구아이아줄렌을 듬뿍 담아 3분 만에 열감을 진정시켜요",
-          "민감성 피부 적합 테스트를 마쳤어요"
-        ],
-        "caution": "피부에 마찰을 주며 닦아내지 마세요."
-      },
-      "en": {
-        "name": "Calming Cica Azulene Pad (70 pads)",
-        "usage": "Without rubbing, rest the pad over both cheeks and forehead or other areas with strong redness for 3-5 minutes as a soothing treatment, then remove and pat any remaining essence to absorb.",
-        "features": [
-          "100% unbleached vegan cotton pads soaked with centella extract and guaiazulene calm skin heat almost instantly, in just 3 minutes",
-          "Tested suitable for sensitive skin"
-        ],
-        "caution": "Do not rub or wipe the skin with the pad."
-      },
-      "ja": {
-        "name": "カーミングシカアズレンパッド(70枚)",
-        "usage": "こすらずに、両頬や額など赤みが強い部分に3〜5分間乗せてスージングパックとして使用し、外した後は軽くたたいて浸透させてください。",
-        "features": [
-          "無漂白ビーガンコットン100%のパッドにツボクサ抽出物とグアイアズレンをたっぷり含浸し、3分でほてりを即座に緩和",
-          "敏感肌適合テスト済み"
-        ],
-        "caution": "パッドで肌をこすったり拭き取ったりしないでください。"
-      },
-      "zh": {
-        "name": "舒缓积雪草甘菊蓝棉片(70片)",
-        "usage": "无需摩擦，敷于双颊、额头等泛红明显部位3~5分钟作为舒缓湿敷，取下后轻拍吸收残留精华。",
-        "features": [
-          "100%未漂白纯棉纯素棉片，饱含积雪草提取物及愈创薁烷，3分钟即时缓解肌肤灼热",
-          "已通过敏感肌适用性测试"
-        ],
-        "caution": "请勿用棉片摩擦或用力擦拭肌肤。"
-      }
-    }
-  },
-  {
-    "product_id": "WHS_P030",
-    "translations": {
-      "ko": {
-        "name": "무화과 젠틀 수딩 클렌징 밀크",
-        "usage": "물기 없는 마른 얼굴에 덜어 부드럽게 롤링해 노폐물을 녹인 뒤, 미온수로 충분히 헹구거나 부드러운 해면으로 가볍게 닦아내요.",
-        "features": [
-          "무화과 추출물과 식물성 스쿠알란 베이스가 거품 없이도 유수분 막을 지켜줘요",
-          "시술 직후 메마르고 따가운 피부에 특히 잘 맞아요"
-        ],
-        "caution": "눈에 들어갔다면 바로 씻어내세요."
-      },
-      "en": {
-        "name": "Fig Gentle Soothing Cleansing Milk",
-        "usage": "Apply to a dry face with dry hands, massage gently to dissolve impurities, then rinse thoroughly with lukewarm water or wipe gently with a soft sponge.",
-        "features": [
-          "Fig extract and a plant-based squalane base gently cleanse without foam, fully preserving the skin's oil-water balance",
-          "Ideal for skin that feels extremely tight and stinging right after a treatment"
-        ],
-        "caution": "If it gets into your eyes, rinse immediately."
-      },
-      "ja": {
-        "name": "フィグジェントルスージングクレンジングミルク",
-        "usage": "水気のない乾いた顔に取り、優しく転がすように汚れを浮かせた後、ぬるま湯でしっかりすすぐか、柔らかいスポンジで優しく拭き取ってください。",
-        "features": [
-          "イチジク抽出物と植物性スクワランベースで泡立たず、肌の水分・油分バランスをそのまま守る高保湿ミルク洗顔料",
-          "施術直後で極度に乾燥しピリつく肌に最適"
-        ],
-        "caution": "目に入った場合はすぐに洗い流してください。"
-      },
-      "zh": {
-        "name": "无花果温和舒缓洁面乳",
-        "usage": "取适量于干燥双手，涂于干燥面部轻柔打圈溶解污垢，再用温水彻底冲洗，或以柔软海绵轻轻擦拭。",
-        "features": [
-          "无花果提取物搭配植物性角鲨烷基底，无泡配方完整保留肌肤油水平衡",
-          "特别适合术后极度干燥刺痛的肌肤"
-        ],
-        "caution": "若不慎入眼请立即冲洗。"
-      }
-    }
-  }
 ]

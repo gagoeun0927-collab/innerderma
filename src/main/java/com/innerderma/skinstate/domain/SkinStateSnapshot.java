@@ -43,11 +43,11 @@ public class SkinStateSnapshot {
     @Column(name = "scoring_version", nullable = false, length = 40)
     private String scoringVersion;
 
-    @Lob
-    @Column(name = "symptom_scores_json", nullable = false, length = Integer.MAX_VALUE)
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
+    @Column(name = "symptom_scores_json", length = Integer.MAX_VALUE, nullable = false)
     private String symptomScoresJson;
 
-    @Lob
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
     @Column(name = "analysis_scores_json", length = Integer.MAX_VALUE)
     private String analysisScoresJson;
 

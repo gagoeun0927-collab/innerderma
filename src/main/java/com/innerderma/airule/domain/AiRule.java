@@ -25,16 +25,16 @@ public class AiRule {
     @Column(nullable = false)
     private int priority;
 
-    @Lob
-    @Column(name = "conditions_json", nullable = false, length = Integer.MAX_VALUE)
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
+    @Column(name = "conditions_json", length = Integer.MAX_VALUE, nullable = false)
     private String conditionsJson;
 
-    @Lob
-    @Column(name = "actions_json", nullable = false, length = Integer.MAX_VALUE)
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
+    @Column(name = "actions_json", length = Integer.MAX_VALUE, nullable = false)
     private String actionsJson;
 
-    @Lob
-    @Column(name = "restrictions_json", nullable = false, length = Integer.MAX_VALUE)
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
+    @Column(name = "restrictions_json", length = Integer.MAX_VALUE, nullable = false)
     private String restrictionsJson;
 
     @Column(name = "explanation_template", length = 1000)

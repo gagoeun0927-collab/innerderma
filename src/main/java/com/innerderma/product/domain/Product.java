@@ -57,15 +57,15 @@ public class Product {
     @Column(name = "application_method", length = 500)
     private String applicationMethod;
 
-    @Lob
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
     @Column(name = "verified_claims_json", length = Integer.MAX_VALUE)
     private String verifiedClaimsJson;
 
-    @Lob
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
     @Column(name = "ingredients_highlight_json", length = Integer.MAX_VALUE)
     private String ingredientsHighlightJson;
 
-    @Lob
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
     @Column(name = "skin_state_tags_json", length = Integer.MAX_VALUE)
     private String skinStateTagsJson;
 

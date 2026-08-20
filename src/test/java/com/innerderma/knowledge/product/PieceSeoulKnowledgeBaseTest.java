@@ -53,7 +53,7 @@ class PieceSeoulKnowledgeBaseTest {
 
     @Test
     void loadsOnlyPieceSeoulStoreItems() {
-        assertThat(kb.size()).isEqualTo(22);
+        assertThat(kb.size()).isEqualTo(7);
     }
 
     @Test
@@ -66,7 +66,8 @@ class PieceSeoulKnowledgeBaseTest {
             assertThat(p.brand()).isNotBlank();
             assertThat(p.category()).isNotBlank();
             assertThat(p.price()).isNotNull().isPositive();
-            assertThat(p.officialUrl()).isNotBlank();
+            assertThat(p.applicationMethod()).isNotBlank();
+            assertThat(p.verifiedClaims()).isNotEmpty();
         });
     }
 }

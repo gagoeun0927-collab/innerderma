@@ -38,8 +38,8 @@ public class SkinAnalysis {
     @Column(name = "model_version", nullable = false, length = 50)
     private String modelVersion;
 
-    @Lob
-    @Column(name = "raw_result", nullable = false, length = Integer.MAX_VALUE)
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.LONG32VARCHAR)
+    @Column(name = "raw_result", length = Integer.MAX_VALUE, nullable = false)
     private String rawResult;
 
     protected SkinAnalysis() {}

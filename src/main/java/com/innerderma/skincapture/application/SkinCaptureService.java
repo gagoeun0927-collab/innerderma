@@ -39,13 +39,22 @@ public class SkinCaptureService {
     private final SkinCaptureStorage storage;
     private final Clock clock;
 
+    /**
+     * 촬영 1일 1회 제한 사용 여부 (기획서 7.1 R002).
+     * 기본값 false — 같은 날 재촬영을 허용하고, 최신 촬영·분석 결과로 갱신한다.
+     * true로 두면 그날 VALID 촬영이 있으면 CAPTURE_002로 막는다.
+     */
+    private final boolean dailyLimitEnabled;
+
     @Autowired
     public SkinCaptureService(
             SkinCaptureRepository skinCaptureRepository,
             UserRepository userRepository,
-            SkinCaptureStorage storage
+            SkinCaptureStorage storage,
+            @org.springframework.beans.factory.annotation.Value(
+                    "${innerderma.skin-capture.daily-limit-enabled:false}") boolean dailyLimitEnabled
     ) {
-        this(skinCaptureRepository, userRepository, storage, Clock.system(MVP_ZONE));
+        this(skinCaptureRepository, userRepository, storage, Clock.system(MVP_ZONE), dailyLimitEnabled);
     }
 
     SkinCaptureService(
@@ -54,10 +63,21 @@ public class SkinCaptureService {
             SkinCaptureStorage storage,
             Clock clock
     ) {
+        this(skinCaptureRepository, userRepository, storage, clock, false);
+    }
+
+    SkinCaptureService(
+            SkinCaptureRepository skinCaptureRepository,
+            UserRepository userRepository,
+            SkinCaptureStorage storage,
+            Clock clock,
+            boolean dailyLimitEnabled
+    ) {
         this.skinCaptureRepository = skinCaptureRepository;
         this.userRepository = userRepository;
         this.storage = storage;
         this.clock = clock;
+        this.dailyLimitEnabled = dailyLimitEnabled;
     }
 
     @Transactional
@@ -67,13 +87,18 @@ public class SkinCaptureService {
                 .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
         LocalDate capturedDate = LocalDate.now(clock);
 
-        boolean alreadyCaptured = skinCaptureRepository.existsByUser_UserCodeAndCapturedDateAndQualityStatus(
-                userCode,
-                capturedDate,
-                SkinCaptureQualityStatus.VALID
-        );
-        if (alreadyCaptured) {
-            throw new BusinessException(ErrorCode.SKIN_CAPTURE_ALREADY_EXISTS);
+        // 1일 1회 제한(기획서 7.1 R002). 기본은 해제 — 같은 날 재촬영 시 최신 결과로 갱신한다.
+        // 하위 흐름(분석 → care-cycle → care-solution)은 각각 분석 ID·사이클 ID 기준으로
+        // 중복을 판단하므로, 새 촬영이 생기면 최신 분석 기준으로 자연히 다시 생성된다.
+        if (dailyLimitEnabled) {
+            boolean alreadyCaptured = skinCaptureRepository.existsByUser_UserCodeAndCapturedDateAndQualityStatus(
+                    userCode,
+                    capturedDate,
+                    SkinCaptureQualityStatus.VALID
+            );
+            if (alreadyCaptured) {
+                throw new BusinessException(ErrorCode.SKIN_CAPTURE_ALREADY_EXISTS);
+            }
         }
 
         SkinCaptureQualityStatus qualityStatus = assessQuality(file);

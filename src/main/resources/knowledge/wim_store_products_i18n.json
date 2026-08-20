@@ -1,740 +1,371 @@
 [
-  {
-    "product_id": "WIM_001",
-    "translations": {
-      "ko": {
-        "name": "윔 프로틴 쉐이크 저당 곡물",
-        "usage": "하루 1회, 1포(40g)를 물이나 두유·우유 150~200ml에 흔들어 섭취해요.",
-        "features": [
-          "내과 전문의가 설계해 1포당 순단백질 20g을 고함량으로 담았어요",
-          "당류 1g 미만의 저당 설계로 혈당 걱정 없이 피부 재생에 필요한 아미노산을 채워줘요"
-        ],
-        "caution": "우유·대두 성분이 들어있으니 특이체질이나 알레르기가 있다면 성분을 확인하고 섭취하세요."
-      },
-      "en": {
-        "name": "WIM High Protein Shake - Grain",
-        "usage": "Once a day, shake one pack (40g) with 150-200ml of water, soy milk, or milk.",
-        "features": [
-          "Designed by an internal medicine specialist, delivering 20g of pure protein per pack",
-          "Low-sugar formula (under 1g of sugar) supplies essential amino acids for skin repair without spiking blood sugar"
-        ],
-        "caution": "Contains milk and soy - check the ingredients before drinking if you have food sensitivities or allergies."
-      },
-      "ja": {
-        "name": "ウィムハイプロテインシェイク低糖穀物",
-        "usage": "1日1回、1包(40g)を水または豆乳/牛乳150〜200mlに入れてよく振って摂取してください。",
-        "features": [
-          "内科専門医が設計した、1包あたり純タンパク質20g高配合",
-          "糖類1g未満の低糖設計で血糖値スパイクなく肌再生に必要な必須アミノ酸を補給"
-        ],
-        "caution": "牛乳・大豆を含みます。特異体質やアレルギー体質の方は成分を確認の上お召し上がりください。"
-      },
-      "zh": {
-        "name": "WIM高蛋白奶昔-低糖谷物味",
-        "usage": "每日1次，将1包(40g)加入150~200ml水、豆浆或牛奶中摇匀饮用。",
-        "features": [
-          "由内科专家设计，每包含20g纯蛋白质",
-          "低糖配方(糖分低于1g)，不引起血糖飙升的同时补充肌肤修复所需必需氨基酸"
-        ],
-        "caution": "含牛奶及大豆成分，特殊体质或过敏体质者请先确认成分再饮用。"
-      }
+    {
+        "product_id":  "WIM_001",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "마시는 식이섬유 비포밀 (30포/BOX)",
+                                        "usage":  "식사 10~20분 전, 1포를 충분한 물(200~300ml)에 타서 섭취하세요.",
+                                        "features":  [
+                                                         "내과 전문의가 직접 설계하여 식후 혈당 상승 억제와 탄수화물 관리를 돕는 식이섬유입니다.",
+                                                         "매일 식전 루틴으로 가볍고 깔끔하게 섭취하기 좋습니다."
+                                                     ],
+                                        "caution":  "가루째 드시지 마시고 반드시 물과 함께 충분히 섞어서 섭취하세요."
+                                    },
+                             "en":  {
+                                        "name":  "WIM Before-Meal Fruit \u0026 Vegetable Fiber (30 packs)",
+                                        "usage":  "Mix 1 pack with 200-300ml of water and drink 10-20 minutes before meals.",
+                                        "features":  [
+                                                         "Formulated by an internal medicine specialist to support post-meal blood sugar balance.",
+                                                         "An easy pre-meal routine to control carbohydrate intake."
+                                                     ],
+                                        "caution":  "Do not swallow the dry powder directly; always mix with water."
+                                    },
+                             "ja":  {
+                                        "name":  "飲む食物繊維 ビフォーミール (30包/BOX)",
+                                        "usage":  "食事の10〜20分前に、1包を十分な水(200〜300ml)に溶かしてお召し上がりください。",
+                                        "features":  [
+                                                         "内科専門医が直接設計し、食後血糖値の急上昇抑制と糖質管理をサポートする食物繊維です。",
+                                                         "毎日の食前ルーティンとして軽く手軽に摂取できます。"
+                                                     ],
+                                        "caution":  "粉末のまま摂取せず、必ず水としっかり混ぜてからお召し上がりください。"
+                                    },
+                             "zh":  {
+                                        "name":  "餐前膳食纤维（30包/盒）",
+                                        "usage":  "餐前10~20分钟，将1包充分溶于200~300ml水中饮用。",
+                                        "features":  [
+                                                         "由内科专科医生亲自设计，帮助抑制餐后血糖上升并管理碳水化合物摄入的膳食纤维。",
+                                                         "适合作为每日餐前的轻负担摄入习惯。"
+                                                     ],
+                                        "caution":  "请勿直接干吃粉末，务必与水充分混合后饮用。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "WIM_002",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "마시는 식이섬유 비포밀 스위치 (30포/BOX)",
+                                        "usage":  "1일 1~2회, 식전 1포를 시원한 물에 타서 음료처럼 섭취하세요.",
+                                        "features":  [
+                                                         "기존 비포밀 성분에 상큼한 맛을 더해 음료처럼 맛있게 즐기는 식이섬유 제품입니다.",
+                                                         "식사 후 혈당 오르내림 완화 및 원활한 배변 활동을 지원합니다."
+                                                     ],
+                                        "caution":  "물에 타서 오랫동안 방치하면 겔 형태로 변할 수 있으니 타서 즉시 마세요."
+                                    },
+                             "en":  {
+                                        "name":  "WIM Before-Meal Fiber Switch (30 packs)",
+                                        "usage":  "Mix 1 pack with cold water 1-2 times daily before meals.",
+                                        "features":  [
+                                                         "A refreshingly flavored fiber drink designed to make daily pre-meal intake enjoyable.",
+                                                         "Supports digestion and curbs sharp post-meal glucose spikes."
+                                                     ],
+                                        "caution":  "Drink immediately after mixing, as it may thicken if left standing."
+                                    },
+                             "ja":  {
+                                        "name":  "飲む食物繊維 ビフォーミール スイッチ (30包/BOX)",
+                                        "usage":  "1日1〜2回、食前に1包を冷たい水に溶かして飲料のようにお召し上がりください。",
+                                        "features":  [
+                                                         "従来のビフォーミール成分にさわやかな風味を加え、飲料感覚で楽しめる食物繊維製品です。",
+                                                         "食後の血糖値の変動緩和とスムーズな排便活動をサポートします。"
+                                                     ],
+                                        "caution":  "水に溶かしたまま長時間放置するとゲル状になることがあるため、溶かしたらすぐにお飲みください。"
+                                    },
+                             "zh":  {
+                                        "name":  "餐前膳食纤维 焕新版（30包/盒）",
+                                        "usage":  "每日1~2次，餐前将1包溶于冰水中，如饮料般饮用。",
+                                        "features":  [
+                                                         "在原版膳食纤维基础上加入清爽风味，可像饮料一样轻松享用。",
+                                                         "有助于缓解餐后血糖波动并促进排便顺畅。"
+                                                     ],
+                                        "caution":  "溶于水后如长时间放置可能变为凝胶状，请溶解后立即饮用。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "WIM_003",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "비포밀 + 비포밀 스위치 스타터 패키지",
+                                        "usage":  "식사 전 취향이나 스케줄에 맞춰 비포밀 또는 비포밀 스위치 1포를 물에 타서 드세요.",
+                                        "features":  [
+                                                         "오리지널 비포밀과 상큼한 비포밀 스위치를 한 번에 경험할 수 있는 결합 구성입니다.",
+                                                         "체중 및 식단 관리를 시작하는 분들을 위한 맞춤형 패키지입니다."
+                                                     ],
+                                        "caution":  "두 제품 모두 개봉 후 가루째 섭취하지 마시고 물에 잘 녹여 마셔야 합니다."
+                                    },
+                             "en":  {
+                                        "name":  "WIM Before-Meal Starter Package",
+                                        "usage":  "Enjoy 1 pack of either original or Switch edition mixed with water prior to meals.",
+                                        "features":  [
+                                                         "A combo pack combining both Original and Switch versions of Before-Meal fiber.",
+                                                         "Ideal starter set for structured dietary and glucose management."
+                                                     ],
+                                        "caution":  "Always dissolve in water before consuming."
+                                    },
+                             "ja":  {
+                                        "name":  "ビフォーミール + ビフォーミール スイッチ スターターパッケージ",
+                                        "usage":  "食事前、好みやスケジュールに合わせてビフォーミールまたはビフォーミール スイッチ1包を水に溶かしてお召し上がりください。",
+                                        "features":  [
+                                                         "オリジナルのビフォーミールとさわやかなビフォーミール スイッチを一度に体験できるセット構成です。",
+                                                         "体重・食事管理を始めたい方のためのスターターパッケージです。"
+                                                     ],
+                                        "caution":  "どちらの製品も開封後は粉末のまま摂取せず、必ず水によく溶かしてお召し上がりください。"
+                                    },
+                             "zh":  {
+                                        "name":  "餐前膳食纤维 + 焕新版 尝鲜套装",
+                                        "usage":  "餐前根据个人喜好或安排，选择原味或焕新版膳食纤维1包溶于水中饮用。",
+                                        "features":  [
+                                                         "可一次体验原味膳食纤维与清爽焕新版的组合套装。",
+                                                         "适合刚开始体重与饮食管理的人群的入门套装。"
+                                                     ],
+                                        "caution":  "两款产品开封后均不可直接干吃粉末，务必充分溶于水后饮用。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "WIM_004",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "저당 저탄수 고단백 윔쉐이크 초코 대용량 (800g)",
+                                        "usage":  "1일 1회, 전용 스쿱으로 동봉된 가루를 물이나 우유 150~200ml와 함께 섞어 드세요.",
+                                        "features":  [
+                                                         "당류와 탄수화물 부담을 낮추고 고단백 영양을 채운 진한 초콜릿 맛 대용량 쉐이크입니다.",
+                                                         "가성비 있게 매일 식사 대용으로 즐기기 좋습니다."
+                                                     ],
+                                        "caution":  "우유, 대두가 함유되어 있으므로 알레르기 체질인 경우 성분을 확인하세요."
+                                    },
+                             "en":  {
+                                        "name":  "WIM High Protein Shake - Choco Bulk (800g)",
+                                        "usage":  "Mix scoops with 150-200ml of water or milk once daily.",
+                                        "features":  [
+                                                         "Rich chocolate-flavored high-protein shake in a cost-effective bulk tub.",
+                                                         "Low in sugar and net carbs, perfect for long-term daily meal replacement."
+                                                     ],
+                                        "caution":  "Contains milk and soy ingredients."
+                                    },
+                             "ja":  {
+                                        "name":  "低糖質・低炭水化物・高たんぱく WIMシェイク チョコ 大容量 (800g)",
+                                        "usage":  "1日1回、専用スクープで付属の粉末を水または牛乳150〜200mlと混ぜてお召し上がりください。",
+                                        "features":  [
+                                                         "糖質・炭水化物の負担を抑えつつ高たんぱく質を補える、濃厚チョコレート味の大容量シェイクです。",
+                                                         "コストパフォーマンスに優れ、毎日の食事代わりとして続けやすい設計です。"
+                                                     ],
+                                        "caution":  "牛乳・大豆を含むため、アレルギー体質の方は成分をご確認ください。"
+                                    },
+                             "zh":  {
+                                        "name":  "低糖低碳高蛋白WIM奶昔 巧克力 大容量装（800g）",
+                                        "usage":  "每日1次，用专用量勺取粉末与150~200ml水或牛奶混合饮用。",
+                                        "features":  [
+                                                         "降低糖分与碳水负担、补充高蛋白营养的浓郁巧克力口味大容量奶昔。",
+                                                         "高性价比，适合每日代餐饮用。"
+                                                     ],
+                                        "caution":  "含有牛奶、大豆成分，过敏体质者请提前确认成分。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "WIM_005",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "저당 저탄수 고단백 윔쉐이크 초코 파우치 (30g x 5개입)",
+                                        "usage":  "1포(30g)를 물 또는 두유 150~200ml와 함께 흔들어 간편하게 섭취하세요.",
+                                        "features":  [
+                                                         "외출 시나 운동 전후에 휴대하며 마실 수 있는 개별 포장 초코 쉐이크입니다.",
+                                                         "내과 전문의 설계로 식후 당 걱정 없이 부족한 단백질을 보충해 줍니다."
+                                                     ],
+                                        "caution":  "개봉 후에는 바로 섭취하시고 직사광선을 피해 서늘한 곳에 보관하세요."
+                                    },
+                             "en":  {
+                                        "name":  "WIM High Protein Shake - Choco Pouch (30g x 5ea)",
+                                        "usage":  "Shake 1 pouch (30g) with 150-200ml of water or soy milk.",
+                                        "features":  [
+                                                         "Portably packaged single-serve protein pouches convenient for travel or gym workouts.",
+                                                         "Provides protein replenishment without spiking sugar levels."
+                                                     ],
+                                        "caution":  "Consume immediately upon opening."
+                                    },
+                             "ja":  {
+                                        "name":  "低糖質・低炭水化物・高たんぱく WIMシェイク チョコ パウチ (30g×5包)",
+                                        "usage":  "1包(30g)を水または豆乳150〜200mlと一緒にシェイクして手軽にお召し上がりください。",
+                                        "features":  [
+                                                         "外出時や運動の前後に持ち運んで飲める個包装タイプのチョコシェイクです。",
+                                                         "内科専門医設計で、食後の糖の心配なく不足しがちなたんぱく質を補えます。"
+                                                     ],
+                                        "caution":  "開封後はすぐにお召し上がりいただき、直射日光を避けて涼しい場所に保管してください。"
+                                    },
+                             "zh":  {
+                                        "name":  "低糖低碳高蛋白WIM奶昔 巧克力独立包（30g×5袋）",
+                                        "usage":  "取1袋（30g）与150~200ml水或豆浆混合摇匀后饮用，携带方便。",
+                                        "features":  [
+                                                         "外出或运动前后可随身携带饮用的独立包装巧克力奶昔。",
+                                                         "由内科专科医生设计，餐后无需担心血糖，同时补充不足的蛋白质。"
+                                                     ],
+                                        "caution":  "开封后请尽快饮用，并避光置于阴凉处保存。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "WIM_006",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "저당 저탄수 고단백 윔쉐이크 검은콩 대용량 (800g)",
+                                        "usage":  "전용 스쿱을 이용해 1회 분량을 물이나 두유 150~200ml와 잘 섞어 섭취하세요.",
+                                        "features":  [
+                                                         "국산 검은콩의 고소함과 풍부한 단백질을 담은 대용량 건강 쉐이크입니다.",
+                                                         "높은 포만감으로 든든한 아침이나 저녁 식사 대용으로 적합합니다."
+                                                     ],
+                                        "caution":  "대두 알레르기가 있으신 분은 섭취에 유의하시기 바랍니다."
+                                    },
+                             "en":  {
+                                        "name":  "WIM High Protein Shake - Black Bean Bulk (800g)",
+                                        "usage":  "Mix 1 serving with 150-200ml of water or soy milk.",
+                                        "features":  [
+                                                         "Nutty and savory black bean flavored protein powder in a large capacity size.",
+                                                         "High satiety option for sustainable low-carb diets."
+                                                     ],
+                                        "caution":  "Check for soybean allergies prior to consumption."
+                                    },
+                             "ja":  {
+                                        "name":  "低糖質・低炭水化物・高たんぱく WIMシェイク 黒豆 大容量 (800g)",
+                                        "usage":  "専用スクープで1回分を水または豆乳150〜200mlとよく混ぜてお召し上がりください。",
+                                        "features":  [
+                                                         "国産黒豆の香ばしさと豊富なたんぱく質を詰め込んだ大容量ヘルシーシェイクです。",
+                                                         "満腹感が高く、朝食や夕食の置き換えにもしっかり対応します。"
+                                                     ],
+                                        "caution":  "大豆アレルギーのある方はご注意の上お召し上がりください。"
+                                    },
+                             "zh":  {
+                                        "name":  "低糖低碳高蛋白WIM奶昔 黑豆 大容量装（800g）",
+                                        "usage":  "用专用量勺取1次用量，与150~200ml水或豆浆充分混合后饮用。",
+                                        "features":  [
+                                                         "选用韩国国产黑豆，香浓醇厚且富含丰富蛋白质的大容量健康奶昔。",
+                                                         "饱腹感强，适合作为丰盛早餐或晚餐的代餐选择。"
+                                                     ],
+                                        "caution":  "大豆过敏者请谨慎饮用。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "WIM_007",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "저당 저탄수 고단백 윔쉐이크 검은콩 파우치 (30g x 5개입)",
+                                        "usage":  "1포를 물이나 두유 150~200ml에 넣고 잘 흔든 뒤 마셔줍니다.",
+                                        "features":  [
+                                                         "검은콩의 고소한 영양을 한 포씩 담아 어디서나 가볍게 마시는 단백질 파우치입니다.",
+                                                         "당류 함량을 최소화하여 부담 없는 고단백 간식으로 적합합니다."
+                                                     ],
+                                        "caution":  "특이체질 및 알레르기 반응이 있으신 분은 재료를 미리 확인하세요."
+                                    },
+                             "en":  {
+                                        "name":  "WIM High Protein Shake - Black Bean Pouch (30g x 5ea)",
+                                        "usage":  "Shake 1 pouch with 150-200ml of water or soy milk.",
+                                        "features":  [
+                                                         "On-the-go pouches packed with savory black bean nutrition.",
+                                                         "Low-sugar formulation designed for quick protein delivery."
+                                                     ],
+                                        "caution":  "Check allergy information before intake."
+                                    },
+                             "ja":  {
+                                        "name":  "低糖質・低炭水化物・高たんぱく WIMシェイク 黒豆 パウチ (30g×5包)",
+                                        "usage":  "1包を水または豆乳150〜200mlに入れてよく振ってからお召し上がりください。",
+                                        "features":  [
+                                                         "黒豆の香ばしい栄養を1包ずつ詰め込んだ、どこでも手軽に飲めるプロテインパウチです。",
+                                                         "糖分を最小限に抑え、負担の少ない高たんぱくスナックとして最適です。"
+                                                     ],
+                                        "caution":  "体質やアレルギーに不安のある方は事前に原材料をご確認ください。"
+                                    },
+                             "zh":  {
+                                        "name":  "低糖低碳高蛋白WIM奶昔 黑豆独立包（30g×5袋）",
+                                        "usage":  "取1袋与150~200ml水或豆浆混合，充分摇匀后饮用。",
+                                        "features":  [
+                                                         "将黑豆的醇香营养逐袋独立包装，随时随地轻松饮用的蛋白质小包装。",
+                                                         "糖分含量降至最低，是无负担的高蛋白零食之选。"
+                                                     ],
+                                        "caution":  "特殊体质或有过敏史者请提前确认成分。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "WIM_008",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "저당 저탄수 고단백 윔쉐이크 말차 (420g)",
+                                        "usage":  "1회 적당량을 물이나 우유 150~200ml에 섞어 시원하게 드세요.",
+                                        "features":  [
+                                                         "쌉싸름하고 깔끔한 말차 풍미를 살린 저당 고단백 쉐이크입니다.",
+                                                         "영양 균형과 당 관리를 동시에 고려한 내과 전문의 설계 제품입니다."
+                                                     ],
+                                        "caution":  "말차 추출물이 들어있어 카페인에 매우 민감한 경우 섭취 시기에 유의하세요."
+                                    },
+                             "en":  {
+                                        "name":  "WIM High Protein Shake - Matcha (420g)",
+                                        "usage":  "Mix 1 serving with 150-200ml of water or milk.",
+                                        "features":  [
+                                                         "A clean, rich matcha protein shake formulated for low-sugar requirements.",
+                                                         "Delivers both appetite satisfaction and vital daily nutrients."
+                                                     ],
+                                        "caution":  "Contains natural matcha caffeine."
+                                    },
+                             "ja":  {
+                                        "name":  "低糖質・低炭水化物・高たんぱく WIMシェイク 抹茶 (420g)",
+                                        "usage":  "1回分の適量を水または牛乳150〜200mlに混ぜ、冷やしてお召し上がりください。",
+                                        "features":  [
+                                                         "ほろ苦く上品な抹茶の風味を活かした低糖質・高たんぱくシェイクです。",
+                                                         "栄養バランスと糖管理を同時に考慮した内科専門医設計の製品です。"
+                                                     ],
+                                        "caution":  "抹茶エキスを含むため、カフェインに敏感な方は摂取のタイミングにご注意ください。"
+                                    },
+                             "zh":  {
+                                        "name":  "低糖低碳高蛋白WIM奶昔 抹茶（420g）",
+                                        "usage":  "取适量与150~200ml水或牛奶混合，冰饮口感更佳。",
+                                        "features":  [
+                                                         "呈现微苦清爽抹茶风味的低糖高蛋白奶昔。",
+                                                         "由内科专科医生设计，兼顾营养均衡与血糖管理。"
+                                                     ],
+                                        "caution":  "含抹茶提取物，对咖啡因非常敏感者请注意饮用时间。"
+                                    }
+                         }
+    },
+    {
+        "product_id":  "WIM_009",
+        "translations":  {
+                             "ko":  {
+                                        "name":  "윔도시락 소불고기 곤드레밥 외 6종 세트",
+                                        "usage":  "용기 필름을 약간 뜯은 뒤 전자레인지(700W 기준)에서 3분 30초~4분간 데워 드세요.",
+                                        "features":  [
+                                                         "내과 전문의가 나트륨과 탄단지 비율을 직접 세심하게 맞춘 저염·고단백 식단 도시락입니다.",
+                                                         "소불고기, 곤드레밥 등 간편하고 맛있게 즐기는 건강 관리 식사입니다."
+                                                     ],
+                                        "caution":  "냉동 보관(-18℃ 이하)이 필수이며, 해동 후 재냉동하지 마세요."
+                                    },
+                             "en":  {
+                                        "name":  "WIM Balanced Meal Box 6-Type Set",
+                                        "usage":  "Peel open film corner and microwave for 3.5 to 4 minutes.",
+                                        "features":  [
+                                                         "Doctor-formulated low-sodium and high-protein frozen meal kits.",
+                                                         "Provides convenient nutrition with menu items such as beef bulgogi and thistle rice."
+                                                     ],
+                                        "caution":  "Keep frozen under -18°C. Do not refreeze once thawed."
+                                    },
+                             "ja":  {
+                                        "name":  "WIM弁当 牛プルコギ\u0026ゴンドゥレご飯ほか全6種セット",
+                                        "usage":  "容器のフィルムを少し剥がしてから、電子レンジ(700W基準)で3分30秒〜4分加熱してお召し上がりください。",
+                                        "features":  [
+                                                         "内科専門医がナトリウムとPFCバランスを緻密に設計した、低塩・高たんぱく食事弁当です。",
+                                                         "牛プルコギやゴンドゥレご飯など、手軽においしく続けられる健康管理食です。"
+                                                     ],
+                                        "caution":  "冷凍保存(-18℃以下)が必須で、解凍後の再冷凍はしないでください。"
+                                    },
+                             "zh":  {
+                                        "name":  "WIM健康餐盒 牛烤肉山蓟拌饭等6款套装",
+                                        "usage":  "稍微撕开容器薄膜后，用微波炉（700W基准）加热3分30秒~4分钟后食用。",
+                                        "features":  [
+                                                         "由内科专科医生精心设计钠含量与三大营养素比例的低盐高蛋白餐盒。",
+                                                         "牛肉烤肉、山蓟拌饭等口味丰富，方便美味的健康管理餐食。"
+                                                     ],
+                                        "caution":  "须冷冻保存（-18℃以下），解冻后请勿再次冷冻。"
+                                    }
+                         }
     }
-  },
-  {
-    "product_id": "WIM_002",
-    "translations": {
-      "ko": {
-        "name": "비포밀 과채 식이섬유 스틱 애플베리",
-        "usage": "하루 1~2회, 식사 10~20분 전 1포를 충분한 물(300ml 이상)과 함께 섭취해요.",
-        "features": [
-          "수용성·불용성 식이섬유 6g이 식후 혈당 상승 억제와 원활한 배변을 도와줘요",
-          "과채 유래 파이토케미컬로 체내 밸런스를 잡아줘요"
-        ],
-        "caution": "반드시 충분한 물과 함께 섭취하고, 가루째 먹으면 목에 걸릴 수 있으니 주의하세요."
-      },
-      "en": {
-        "name": "Before-Meal Fruit & Vegetable Fiber Stick - Apple Berry",
-        "usage": "1-2 times a day, take one pack 10-20 minutes before a meal with plenty of water (300ml or more).",
-        "features": [
-          "6g of combined soluble and insoluble fiber from fruits and vegetables helps curb post-meal blood sugar spikes and supports regular bowel movements",
-          "Fruit and vegetable phytochemicals help maintain overall body balance"
-        ],
-        "caution": "Always take with plenty of water - swallowing the powder dry may cause choking."
-      },
-      "ja": {
-        "name": "ビフォーミール野菜果物食物繊維スティックアップルベリー",
-        "usage": "1日1〜2回、食事の10〜20分前に1包を十分な水(300ml以上)と一緒に摂取してください。",
-        "features": [
-          "食後の血糖値上昇抑制と排便活動をサポートする水溶性・不溶性食物繊維6g複合配合",
-          "野菜・果物由来のフィトケミカルで体内バランスをサポート"
-        ],
-        "caution": "必ず十分な量の水と一緒に摂取してください。粉のまま摂取するとのどに詰まる恐れがあります。"
-      },
-      "zh": {
-        "name": "餐前果蔬纤维棒-苹果莓果味",
-        "usage": "每日1~2次，于餐前10~20分钟服用1包，并搭配充足水分(300ml以上)。",
-        "features": [
-          "含6g水溶性及不溶性膳食纤维复合配方，有助抑制餐后血糖上升并促进排便顺畅",
-          "果蔬来源植化素有助维持体内平衡"
-        ],
-        "caution": "请务必搭配充足水分服用，直接干吞粉末可能导致呛噎。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_003",
-    "translations": {
-      "ko": {
-        "name": "글루타치온 래디언스 젤리",
-        "usage": "하루 1포(20g)를 간식처럼 씹어서 섭취해요(식후 권장).",
-        "features": [
-          "고순도 L-글루타치온과 비타민C를 복합 배합했어요",
-          "안색 개선과 활성산소로부터 세포를 보호하는 항산화 이너뷰티예요"
-        ],
-        "caution": "임산부·수유부나 특정 질환이 있다면 섭취 전 전문의와 상담하세요."
-      },
-      "en": {
-        "name": "Glutathione Radiance Jelly",
-        "usage": "Chew one pack (20g) daily like a snack, ideally after a meal.",
-        "features": [
-          "Contains 500mg of yeast-derived L-glutathione extract (50%+ purity) plus 200mg vitamin C",
-          "An antioxidant inner-beauty jelly that helps brighten complexion and protect cells from free radicals"
-        ],
-        "caution": "Pregnant or breastfeeding individuals, or those with a specific medical condition, should consult a doctor before taking."
-      },
-      "ja": {
-        "name": "グルタチオンラディアンスゼリー",
-        "usage": "1日1包(20g)を、おやつ感覚で噛んで摂取してください。(食後推奨)",
-        "features": [
-          "純度50%以上の酵母由来L-グルタチオン抽出物500mgとビタミンC200mg複合配合",
-          "肌の明るさ改善と活性酸素から細胞を守る抗酸化インナービューティー"
-        ],
-        "caution": "妊娠中・授乳中の方や特定疾患をお持ちの方は、摂取前に専門医にご相談ください。"
-      },
-      "zh": {
-        "name": "谷胱甘肽亮颜果冻",
-        "usage": "每日1包(20g)，如零食般咀嚼食用(建议饭后)。",
-        "features": [
-          "含纯度50%以上酵母来源L-谷胱甘肽提取物500mg及维生素C 200mg",
-          "抗氧化内调美容果冻，改善肤色暗沉并保护细胞免受自由基损伤"
-        ],
-        "caution": "孕妇、哺乳期女性及有特定疾病者，食用前请咨询医生。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_004",
-    "translations": {
-      "ko": {
-        "name": "하이드라 배리어 세라마이드 캡슐",
-        "usage": "하루 1회, 2캡슐을 물과 함께 섭취해요.",
-        "features": [
-          "식물성 세라마이드가 피부 수분 손실을 줄이는 데 도움을 줘요",
-          "히알루론산 120mg이 피부 속 보습을 지원해요"
-        ],
-        "caution": "고칼슘혈증이 있거나 다른 약을 복용 중이라면 전문가와 상담하세요."
-      },
-      "en": {
-        "name": "Hydra Barrier Ceramide Capsule",
-        "usage": "Once a day, take 2 capsules together with water.",
-        "features": [
-          "Plant-derived ceramide (glucosylceramide) from konjac helps reduce trans-epidermal water loss (TEWL)",
-          "120mg of hyaluronic acid supports hydration deep within the skin"
-        ],
-        "caution": "If you have hypercalcemia or are taking medication, consult a specialist before use."
-      },
-      "ja": {
-        "name": "ハイドラバリアセラミドカプセル",
-        "usage": "1日1回、1回2カプセルを水と一緒に摂取してください。",
-        "features": [
-          "植物性コンニャク芋由来セラミド(グルコシルセラミド)配合で表皮水分蒸散量(TEWL)の減少をサポート",
-          "ヒアルロン酸120mg配合で肌内部の保湿をサポート"
-        ],
-        "caution": "高カルシウム血症の方や医薬品を服用中の方は、専門家にご相談ください。"
-      },
-      "zh": {
-        "name": "水润屏障神经酰胺胶囊",
-        "usage": "每日1次，每次2粒搭配水服用。",
-        "features": [
-          "植物性魔芋来源神经酰胺(葡糖神经酰胺)，有助减少表皮水分流失(TEWL)",
-          "含120mg玻尿酸，支持肌肤深层保湿"
-        ],
-        "caution": "高钙血症患者或正在服药者，请先咨询专业人士。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_005",
-    "translations": {
-      "ko": {
-        "name": "윔 안티옥시던트 카밍 부스터 티",
-        "usage": "하루 1~2회, 티백 1개를 따뜻하거나 찬 물 300~500ml에 3~5분 우려 마셔요.",
-        "features": [
-          "늙은호박·옥수수수염 추출물이 시술 후 일시적 붓기 완화와 수분 배출을 도와줘요",
-          "카페인 걱정 없는 유기농 그린루이보스로 항산화 성분을 채워줘요"
-        ],
-        "caution": "신장 질환이 있다면 칼륨 섭취에 유의하세요."
-      },
-      "en": {
-        "name": "WIM Antioxidant Calming Booster Tea",
-        "usage": "1-2 times a day, steep one tea bag in 300-500ml of hot or cold water for 3-5 minutes.",
-        "features": [
-          "Domestic aged pumpkin and corn silk extracts help ease temporary post-treatment swelling and promote water balance",
-          "Organic green rooibos supplies antioxidant flavonoids without the caffeine"
-        ],
-        "caution": "If you have kidney disease, be mindful of your potassium intake."
-      },
-      "ja": {
-        "name": "ウィムアンチオキシダントカーミングブースターティー",
-        "usage": "1日1〜2回、ティーバッグ1個を温かいまたは冷たい水300〜500mlに3〜5分浸出させて摂取してください。",
-        "features": [
-          "国産の熟成かぼちゃとコーンシルク抽出物が施術後の一時的なむくみ緩和と水分排出を促進",
-          "有機グリーンルイボス配合でカフェインを気にせず抗酸化フラボノイドを補給"
-        ],
-        "caution": "腎臓疾患をお持ちの方はカリウム摂取にご注意ください。"
-      },
-      "zh": {
-        "name": "WIM抗氧化舒缓助力茶",
-        "usage": "每日1~2次，将1个茶包用300~500ml热水或冷水冲泡3~5分钟后饮用。",
-        "features": [
-          "国产老南瓜及玉米须提取物有助缓解术后暂时性水肿并促进水分代谢",
-          "有机绿色博士茶不含咖啡因，同时补充抗氧化黄酮类物质"
-        ],
-        "caution": "肾脏疾病患者请留意钾摄入量。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_006",
-    "translations": {
-      "ko": {
-        "name": "윔 데일리 멀티 비타민 & 미네랄",
-        "usage": "하루 1회, 1정을 식후 충분한 물과 함께 섭취해요.",
-        "features": [
-          "비타민 B군 8종을 하루 권장량 이상 채워줘요",
-          "시술 후 회복에 필요한 비타민C·아연·셀레늄이 들어있어요"
-        ],
-        "caution": "위장이 약하다면 공복에 먹지 말고 꼭 식후에 섭취하세요."
-      },
-      "en": {
-        "name": "WIM Daily Multi-Vitamin & Mineral",
-        "usage": "Once a day, take 1 tablet with plenty of water after a meal.",
-        "features": [
-          "Provides over 100% of 8 essential B vitamins needed for energy metabolism and cell division",
-          "Includes vitamin C, zinc, and selenium to support connective tissue formation and wound recovery after treatments"
-        ],
-        "caution": "If you have a sensitive stomach, taking it on an empty stomach may cause discomfort - always take after a meal."
-      },
-      "ja": {
-        "name": "ウィムデイリーマルチビタミン&ミネラル",
-        "usage": "1日1回、1回1粒を食後に十分な水と一緒に摂取してください。",
-        "features": [
-          "エネルギー代謝と細胞分裂に必要なビタミンB群8種を100%以上配合",
-          "施術後の結合組織形成と傷の回復に必要なビタミンC、亜鉛、セレンを配合"
-        ],
-        "caution": "胃腸が弱い方は空腹時の摂取で胃もたれが起こる場合があるため、必ず食後に摂取してください。"
-      },
-      "zh": {
-        "name": "WIM每日复合维生素矿物质",
-        "usage": "每日1次，每次1粒于饭后搭配充足水分服用。",
-        "features": [
-          "提供能量代谢及细胞分裂所需的8种B族维生素，含量达每日建议摄取量100%以上",
-          "含维生素C、锌、硒，支持术后结缔组织形成及伤口恢复"
-        ],
-        "caution": "肠胃较弱者空腹服用可能引起不适，请务必饭后服用。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_007",
-    "translations": {
-      "ko": {
-        "name": "윔 프로틴 쉐이크 저당 다크카카오",
-        "usage": "하루 1회, 1포(40g)를 물이나 아몬드유 180ml에 타서 흔들어 섭취해요.",
-        "features": [
-          "프리미엄 다크 코코아와 순단백질 20g을 함께 담았어요",
-          "당류 0.8g의 저칼로리 설계로 부담 없이 단백질을 보충해요"
-        ],
-        "caution": "우유·대두 알레르기가 있다면 섭취에 유의하세요."
-      },
-      "en": {
-        "name": "WIM High Protein Shake - Dark Cacao",
-        "usage": "Once a day, mix one pack (40g) with 180ml of water or almond milk and shake lightly.",
-        "features": [
-          "Premium Dutch dark cocoa powder combined with 20g of pure protein",
-          "Only 0.8g of sugar, sweetened with allulose, for guilt-free protein without the calorie load"
-        ],
-        "caution": "Contains milk and soy - take care if you have a related allergy."
-      },
-      "ja": {
-        "name": "ウィムハイプロテインシェイク低糖ダークカカオ",
-        "usage": "1日1回、1包(40g)を水またはアーモンドミルク180mlに入れて軽く振って摂取してください。",
-        "features": [
-          "オランダ産プレミアムダークカカオパウダーと純タンパク質20g配合",
-          "糖類0.8g、アルロース使用でカロリーを気にせずタンパク質補給"
-        ],
-        "caution": "牛乳・大豆を含みます。該当アレルギーがある方はご注意ください。"
-      },
-      "zh": {
-        "name": "WIM高蛋白奶昔-低糖黑可可味",
-        "usage": "每日1次，将1包(40g)加入180ml水或杏仁奶中轻轻摇匀饮用。",
-        "features": [
-          "荷兰进口优质黑可可粉搭配20g纯蛋白质",
-          "仅含0.8g糖分，使用阿洛酮糖，补充蛋白质无需担心热量负担"
-        ],
-        "caution": "含牛奶及大豆成分，相关过敏体质者请注意。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_008",
-    "translations": {
-      "ko": {
-        "name": "윔 프로틴 쉐이크 저당 제주말차",
-        "usage": "하루 1회, 1포(40g)를 물 150ml에 타서 시원하게 섭취해요.",
-        "features": [
-          "100% 유기농 제주 말차의 항산화 카테킨을 담았어요",
-          "순단백질 20g과 아미노산으로 시술 후 활력 회복을 도와줘요"
-        ],
-        "caution": "카페인에 민감한 어린이나 임산부는 섭취량을 조절하세요."
-      },
-      "en": {
-        "name": "WIM High Protein Shake - Jeju Matcha",
-        "usage": "Once a day, mix one pack (40g) with 150ml of water and enjoy chilled.",
-        "features": [
-          "100% organic young-leaf matcha powder from Jeju with antioxidant catechins (EGCG)",
-          "20g of pure protein and rich amino acids help restore energy after treatments"
-        ],
-        "caution": "Those extremely sensitive to caffeine, including children and pregnant individuals, should adjust the intake amount."
-      },
-      "ja": {
-        "name": "ウィムハイプロテインシェイク低糖済州抹茶",
-        "usage": "1日1回、1包(40g)を水150mlに入れて冷たく仕上げて摂取してください。",
-        "features": [
-          "100%有機済州若葉抹茶パウダーと抗酸化カテキン(EGCG)配合",
-          "純タンパク質20gと豊富なアミノ酸で施術後の活力回復をサポート"
-        ],
-        "caution": "カフェインに極めて敏感なお子様や妊娠中の方は摂取量にご注意ください。"
-      },
-      "zh": {
-        "name": "WIM高蛋白奶昔-低糖济州抹茶味",
-        "usage": "每日1次，将1包(40g)加入150ml水中冰凉饮用。",
-        "features": [
-          "100%有机济州嫩叶抹茶粉，含抗氧化儿茶素(EGCG)",
-          "20g纯蛋白质及丰富氨基酸有助术后体力恢复"
-        ],
-        "caution": "对咖啡因极度敏感的儿童或孕妇请注意控制摄入量。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_009",
-    "translations": {
-      "ko": {
-        "name": "윔 소화발효효소 비움 스틱",
-        "usage": "하루 1~2회, 식후 1포를 그대로 먹거나 미온수와 함께 섭취해요.",
-        "features": [
-          "고역가 곡물 발효효소가 탄수화물과 단백질 분해를 도와줘요",
-          "식후 더부룩함과 가스 생성을 줄여줘요"
-        ],
-        "caution": "뜨거운 물과 함께 먹으면 효소 활성이 떨어지니 미온수나 찬물과 드세요."
-      },
-      "en": {
-        "name": "WIM Digestive Fermented Enzyme Stick",
-        "usage": "1-2 times a day, take one pack after a meal, either directly or with lukewarm water.",
-        "features": [
-          "Pure grain-fermented enzymes guaranteed at 600,000 units of activity (alpha-amylase, protease)",
-          "Helps break down carbohydrates and protein smoothly, easing gas and bloating"
-        ],
-        "caution": "Enzyme activity may decrease if taken with hot water - use lukewarm or cold water instead."
-      },
-      "ja": {
-        "name": "ウィム消化発酵酵素ビウムスティック",
-        "usage": "1日1〜2回、食後に1包をそのまま、またはぬるま湯と一緒に摂取してください。",
-        "features": [
-          "活性値600,000ユニット(α-アミラーゼ、プロテアーゼ)を保証する純粋穀物発酵酵素",
-          "炭水化物とタンパク質の分解をサポートし、ガスの発生や膨満感を緩和"
-        ],
-        "caution": "熱いお湯と一緒に摂取すると酵素の活性が低下する場合があるため、ぬるま湯または冷水と一緒に摂取してください。"
-      },
-      "zh": {
-        "name": "WIM消化发酵酵素轻盈棒",
-        "usage": "每日1~2次，餐后直接服用1包，或搭配温水食用。",
-        "features": [
-          "保证活性值600,000单位(α-淀粉酶、蛋白酶)的纯谷物发酵酵素",
-          "帮助碳水化合物及蛋白质顺利分解，缓解体内胀气及腹胀感"
-        ],
-        "caution": "搭配热水服用可能降低酵素活性，请以温水或冷水送服。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_010",
-    "translations": {
-      "ko": {
-        "name": "글루타치온 하이퍼 멜팅 구강용해필름",
-        "usage": "하루 1회, 1매를 입천장 안쪽에 붙여 천천히 녹여 흡수시켜요.",
-        "features": [
-          "고순도 L-글루타치온을 구강 점막으로 바로 흡수시키는 필름이에요",
-          "소화 손실 없이 흡수돼 효능을 극대화해요"
-        ],
-        "caution": "붙인 뒤 혀로 건드리지 말고 자연스럽게 녹여서 흡수시키세요."
-      },
-      "en": {
-        "name": "Glutathione Hyper-Melting Oral Film (30 sheets)",
-        "usage": "Once a day, place one film against the roof of your mouth and let it slowly dissolve for direct absorption.",
-        "features": [
-          "Dutch-sourced L-glutathione (75% purity) in an oral dissolving film (ODF) for direct mucosal absorption",
-          "Bypasses digestive breakdown, maximizing absorption straight into the bloodstream for brighter skin"
-        ],
-        "caution": "After placing the film, let it dissolve naturally without touching it with your tongue."
-      },
-      "ja": {
-        "name": "グルタチオンハイパーメルティング口腔溶解フィルム(30枚)",
-        "usage": "1日1回、1枚を口の中の上あご部分に貼り付け、ゆっくり溶かして吸収させてください。",
-        "features": [
-          "オランダ産L-グルタチオン純度75%原料を使用した口腔粘膜直接吸収型フィルム(ODF)",
-          "消化酵素による分解ロスなく血管へ直接吸収され、美白効果を最大化"
-        ],
-        "caution": "口の中に貼った後は舌で触らず、自然に溶かして吸収させてください。"
-      },
-      "zh": {
-        "name": "谷胱甘肽速溶口含膜(30片)",
-        "usage": "每日1次，取1片贴于口腔上颚内侧，缓慢溶解吸收。",
-        "features": [
-          "采用荷兰产纯度75%L-谷胱甘肽原料制成口腔黏膜直接吸收型溶解膜(ODF)",
-          "无消化酶分解损耗，直接经血管吸收，最大化提亮肤色功效"
-        ],
-        "caution": "贴于口腔内后请勿用舌头触碰，让其自然溶解吸收。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_011",
-    "translations": {
-      "ko": {
-        "name": "윔 닥터스 밸런스 클린 도시락 5종 세트",
-        "usage": "전자레인지에 포장을 살짝 뜯어 3분 30초~4분 조리한 뒤 간편하게 드세요.",
-        "features": [
-          "내과 전문의가 감수한 저염·고단백 시술 후 회복 식단이에요",
-          "염증 완화와 부기 배출에 좋은 복합 탄수화물과 단백질로 구성했어요"
-        ],
-        "caution": "냉동 보관이 필수고, 해동 후에는 다시 얼리지 마세요. 계란·생선·대두가 들어있어요."
-      },
-      "en": {
-        "name": "WIM Doctor's Balance Clean Meal Kit (5 types)",
-        "usage": "Lightly open the packaging and microwave for 3.5-4 minutes for a quick, balanced meal.",
-        "features": [
-          "Low-sodium (under 350mg) and high-protein (avg. 25g) recovery meals directly supervised by an internal medicine specialist",
-          "Balanced with complex carbs (quinoa, oats) and quality protein (sous-vide salmon/chicken breast) tailored to ease inflammation and swelling"
-        ],
-        "caution": "Must be kept frozen; do not refreeze after thawing."
-      },
-      "ja": {
-        "name": "ウィムドクターズバランスクリーン弁当5種セット",
-        "usage": "電子レンジ対応の包装を少し開けて3分30秒〜4分加熱するだけの手軽な食事です。",
-        "features": [
-          "内科専門医が直接監修した低ナトリウム(350mg以下)、高タンパク質(平均25g)の施術後回復食",
-          "炎症緩和とむくみ排出に最適化された複合炭水化物(キヌア、オーツ)と良質タンパク質(低温調理サーモン/鶏むね肉)で構成"
-        ],
-        "caution": "冷凍保管必須で、解凍後の再冷凍は禁止です。"
-      },
-      "zh": {
-        "name": "WIM医生均衡轻食便当5种套装",
-        "usage": "微微撕开包装，微波炉加热3分30秒~4分钟即可轻松享用。",
-        "features": [
-          "内科专家亲自监制的低钠(钠含量350mg以下)、高蛋白(平均25g)术后恢复餐",
-          "以缓解炎症及排出水肿为目标搭配的复合碳水(藜麦、燕麦)及优质蛋白(低温慢煮三文鱼/鸡胸肉)"
-        ],
-        "caution": "须冷冻保存，解冻后请勿二次冷冻。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_012",
-    "translations": {
-      "ko": {
-        "name": "스킨 리커버리 비오틴 징크 부스터",
-        "usage": "하루 1회, 1정을 식후 물과 함께 섭취해요.",
-        "features": [
-          "프리미엄 비오틴을 고함량으로 배합했어요",
-          "피부 재생과 면역, 상처 회복을 돕는 아연을 함께 담았어요"
-        ],
-        "caution": "수용성 비타민이라 남는 양은 소변으로 배출되지만 과다 섭취는 주의하세요."
-      },
-      "en": {
-        "name": "Skin Recovery Biotin Zinc Booster",
-        "usage": "Once a day, take 1 tablet with water after a meal.",
-        "features": [
-          "High-dose 5,000mcg of premium French biotin, well above the standard daily reference intake",
-          "15mg of zinc gluconate supports skin/mucous membrane formation, normal immune function, and wound recovery"
-        ],
-        "caution": "As a water-soluble vitamin, excess is generally excreted in urine, but avoid taking more than the recommended amount."
-      },
-      "ja": {
-        "name": "スキンリカバリービオチンジンクブースター",
-        "usage": "1日1回、1粒を食後に水と一緒に摂取してください。",
-        "features": [
-          "フランス産プレミアムビオチン5,000mcgを高配合(一日栄養成分基準値を大きく上回る量)",
-          "皮膚・粘膜の形成と正常な免疫機能、傷の回復をサポートするグルコン酸亜鉛15mg配合"
-        ],
-        "caution": "水溶性ビタミンのため必要量以上は尿中に排出されますが、過剰摂取にはご注意ください。"
-      },
-      "zh": {
-        "name": "肌肤修护生物素锌营养素",
-        "usage": "每日1次，每次1粒于饭后搭配水服用。",
-        "features": [
-          "高含量法国进口优质生物素5,000mcg，远超每日营养素参考摄取量",
-          "含葡萄糖酸锌15mg，支持皮肤黏膜形成、正常免疫功能及伤口恢复"
-        ],
-        "caution": "属水溶性维生素，多余部分会随尿液排出，但仍请避免过量摄取。"
-      }
-    }
-  },
-  {
-    "product_id": "SWL_013",
-    "translations": {
-      "ko": {
-        "name": "스웰니시 림프 디톡스 붓기 클렌즈 주스",
-        "usage": "아침 공복이나 시술 후 저녁에 1병(250ml)을 마셔요.",
-        "features": [
-          "콜드프레스 늙은호박·셀러리·비트 추출물이 나트륨과 림프 부종 배출을 도와줘요",
-          "무설탕·무방부제 천연 주스예요"
-        ],
-        "caution": "신장 기능이 저하된 분은 칼륨 섭취에 주의하고, 냉장 보관하세요."
-      },
-      "en": {
-        "name": "Swellnish Lymph Detox Cleanse Juice",
-        "usage": "Drink one bottle (250ml) on an empty stomach in the morning, or in the evening after a treatment.",
-        "features": [
-          "Cold-pressed aged pumpkin, celery, and potassium-rich beet extract help rapidly flush excess sodium and lymphatic swelling",
-          "A sugar-free, preservative-free juice packed with natural phytochemicals"
-        ],
-        "caution": "Those with reduced kidney function should be mindful of potassium intake. Keep refrigerated."
-      },
-      "ja": {
-        "name": "スウェルニッシュリンパデトックスむくみクレンズジュース",
-        "usage": "朝の空腹時、または施術後の夜に1本(250ml)を飲用してください。",
-        "features": [
-          "コールドプレス製法の熟成かぼちゃ、セロリ、カリウム豊富なビーツ抽出物で体内のナトリウムとリンパのむくみを急速に排出",
-          "無糖・無保存料の天然フィトケミカルジュース"
-        ],
-        "caution": "腎機能が低下している方はカリウム摂取にご注意ください。要冷蔵保管。"
-      },
-      "zh": {
-        "name": "淋巴排毒消肿净化果汁",
-        "usage": "早晨空腹或术后晚间饮用1瓶(250ml)。",
-        "features": [
-          "冷压萃取老南瓜、芹菜及富含钾的甜菜根提取物，快速排出体内钠分及淋巴水肿",
-          "无糖无防腐剂，富含天然植化素的纯净果汁"
-        ],
-        "caution": "肾功能不佳者请注意钾摄入量，需冷藏保存。"
-      }
-    }
-  },
-  {
-    "product_id": "SWL_014",
-    "translations": {
-      "ko": {
-        "name": "콜라겐 래디언스 스무디 파우더",
-        "usage": "하루 1회, 1스쿱(25g)을 물이나 코코넛워터 200ml에 섞어 스무디로 마셔요.",
-        "features": [
-          "저분자 피쉬 콜라겐 펩타이드와 아사이베리 항산화 성분을 담았어요",
-          "피부 진피 치밀도와 수분 보유력을 높여줘요"
-        ],
-        "caution": "어류 알레르기가 있다면 섭취하지 마세요."
-      },
-      "en": {
-        "name": "Collagen Radiance Smoothie Powder",
-        "usage": "Once a day, blend one scoop (25g) with 200ml of water or coconut water for a smoothie.",
-        "features": [
-          "French low-molecular fish collagen peptide (3,000mg) plus freeze-dried acai berry powder for antioxidant support",
-          "Helps strengthen dermal density and boost moisture retention"
-        ],
-        "caution": "Not for those with a fish allergy."
-      },
-      "ja": {
-        "name": "コラーゲンラディアンススムージーパウダー",
-        "usage": "1日1回、1スクープ(25g)を水またはココナッツウォーター200mlに混ぜてスムージーとして摂取してください。",
-        "features": [
-          "フランス産低分子フィッシュコラーゲンペプチド3,000mgと凍結乾燥アサイベリー抗酸化パウダー配合",
-          "真皮の密度強化と保水力向上をサポート"
-        ],
-        "caution": "魚アレルギーがある方は摂取しないでください。"
-      },
-      "zh": {
-        "name": "胶原亮采果昔粉",
-        "usage": "每日1次，取1勺(25g)加入200ml水或椰子水中调制成果昔饮用。",
-        "features": [
-          "法国产低分子鱼胶原蛋白肽(3,000mg)搭配冻干巴西莓抗氧化粉末",
-          "有助强化真皮密度并提升保湿锁水力"
-        ],
-        "caution": "对鱼类过敏者请勿食用。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_015",
-    "translations": {
-      "ko": {
-        "name": "롱제비티 NMN + 레스베라트롤 셀룰러 캡슐",
-        "usage": "하루 1회, 아침 공복에 1캡슐을 미온수와 함께 섭취해요.",
-        "features": [
-          "고순도 NMN과 트랜스-레스베라트롤을 함께 배합했어요",
-          "세포 내 NAD+ 수치를 높여 세포 재생과 노화 억제를 지원해요"
-        ],
-        "caution": "영유아, 임산부, 수유부는 섭취를 피하세요."
-      },
-      "en": {
-        "name": "Longevity NMN + Resveratrol Cellular Capsule",
-        "usage": "Once a day, take 1 capsule on an empty stomach in the morning with lukewarm water.",
-        "features": [
-          "99.9% pure beta-NMN (nicotinamide mononucleotide) 300mg combined with 150mg of trans-resveratrol",
-          "Helps boost cellular NAD+ levels to support cell regeneration and combat signs of aging"
-        ],
-        "caution": "Not recommended for infants, young children, or those who are pregnant or breastfeeding."
-      },
-      "ja": {
-        "name": "ロンジェビティNMN+レスベラトロールセルラーカプセル",
-        "usage": "1日1回、朝の空腹時に1カプセルをぬるま湯と一緒に摂取してください。",
-        "features": [
-          "純度99.9%のβ-NMN(ニコチンアミドモノヌクレオチド)300mgとトランス-レスベラトロール150mg配合",
-          "細胞内NAD+レベルを高め、細胞再生の促進と老化抑制をサポート"
-        ],
-        "caution": "乳幼児、妊娠中・授乳中の方は摂取を避けてください。"
-      },
-      "zh": {
-        "name": "长寿NMN+白藜芦醇细胞胶囊",
-        "usage": "每日1次，晨起空腹以温水送服1粒。",
-        "features": [
-          "纯度99.9%的β-NMN(烟酰胺单核苷酸)300mg搭配反式白藜芦醇150mg",
-          "有助提升细胞内NAD+水平，促进细胞再生并延缓衰老迹象"
-        ],
-        "caution": "婴幼儿、孕妇及哺乳期女性请避免服用。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_016",
-    "translations": {
-      "ko": {
-        "name": "딥 슬립 나이트 마그네슘 카모마일 티",
-        "usage": "취침 30분~1시간 전, 티백 1개를 따뜻한 물 200ml에 5분간 우려 마셔요.",
-        "features": [
-          "유기농 카모마일과 흡수율 높은 마그네슘이 수면 중 피부 재생을 도와줘요",
-          "근육 이완과 스트레스 완화로 숙면을 유도해요"
-        ],
-        "caution": "섭취 후에는 운전이나 기계 조작을 피하세요."
-      },
-      "en": {
-        "name": "Deep Sleep Night Magnesium Chamomile Tea",
-        "usage": "30 minutes to 1 hour before bed, steep one tea bag in 200ml of hot water for 5 minutes and drink.",
-        "features": [
-          "Organic chamomile, which supports skin-regenerating hormone release during sleep, combined with highly absorbable magnesium glycinate",
-          "Helps relax muscles and ease stress for deeper sleep"
-        ],
-        "caution": "Avoid driving or operating machinery after drinking."
-      },
-      "ja": {
-        "name": "ディープスリープナイトマグネシウムカモミールティー",
-        "usage": "就寝30分〜1時間前に、ティーバッグ1個を温かいお湯200mlに5分間浸出させて摂取してください。",
-        "features": [
-          "睡眠中の肌再生ホルモン分泌を促す有機カモミールと吸収率の高いグリシン酸マグネシウム配合",
-          "筋肉の弛緩とストレス緩和で深い眠りをサポート"
-        ],
-        "caution": "摂取後の運転や機械操作は避けてください。"
-      },
-      "zh": {
-        "name": "深睡夜间镁质洋甘菊茶",
-        "usage": "睡前30分钟至1小时，将1个茶包用200ml热水冲泡5分钟后饮用。",
-        "features": [
-          "有机洋甘菊有助促进睡眠中肌肤再生激素分泌，搭配高吸收率甘氨酸镁",
-          "帮助放松肌肉、缓解压力，助力深度睡眠"
-        ],
-        "caution": "饮用后请避免驾驶或操作机械。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_017",
-    "translations": {
-      "ko": {
-        "name": "비포밀 과채 식이섬유 스틱 샤인머스캣",
-        "usage": "하루 1~2회, 식사 전 1포를 시원한 물 300ml에 타서 섭취해요.",
-        "features": [
-          "샤인머스캣 과즙과 식이섬유 6g으로 맛있게 식전 혈당을 관리해요",
-          "급격한 인슐린 분비를 억제해 피지 분비도 완화해줘요"
-        ],
-        "caution": "물에 타서 오래 두면 젤처럼 굳으니 타서 바로 마시세요."
-      },
-      "en": {
-        "name": "Before-Meal Fruit & Vegetable Fiber Stick - Shine Muscat",
-        "usage": "1-2 times a day, mix one pack into 300ml of cold water before a meal for a refreshing drink.",
-        "features": [
-          "Shine Muscat fruit powder makes 6g of pre-meal blood-sugar-cutting fiber genuinely enjoyable to drink",
-          "Curbs the sharp insulin spike after meals, helping prevent excess sebum production"
-        ],
-        "caution": "Drink immediately after mixing - letting it sit in water too long will cause it to gel."
-      },
-      "ja": {
-        "name": "ビフォーミール野菜果物食物繊維スティックシャインマスカット",
-        "usage": "1日1〜2回、食事前に1包を冷たい水300mlに溶かして爽やかに摂取してください。",
-        "features": [
-          "シャインマスカット果汁パウダー配合でおいしく楽しめる食前血糖カット食物繊維6g",
-          "食後の急激なインスリン分泌を抑え、皮脂分泌の急増を予防"
-        ],
-        "caution": "水に溶かして長時間放置するとゲル状に固まるため、溶かしたらすぐに飲んでください。"
-      },
-      "zh": {
-        "name": "餐前果蔬纤维棒-阳光玫瑰味",
-        "usage": "每日1~2次，餐前将1包溶于300ml冰水中清爽饮用。",
-        "features": [
-          "阳光玫瑰果汁粉末带来美味的餐前控糖纤维6g",
-          "抑制餐后急剧胰岛素分泌，预防皮脂过度分泌"
-        ],
-        "caution": "溶于水后请立即饮用，久置会凝结成胶状。"
-      }
-    }
-  },
-  {
-    "product_id": "WIM_018",
-    "translations": {
-      "ko": {
-        "name": "유기농 C8 MCT 오일 부스터 포켓",
-        "usage": "아침 공복이나 커피·쉐이크·샐러드에 1포(10ml)를 더해 섭취해요.",
-        "features": [
-          "흡수가 빠른 순수 C8 지방산 99%를 담았어요",
-          "케톤체 생성을 촉진해 에너지 공급과 항염증 대사를 도와줘요"
-        ],
-        "caution": "코코넛 성분이 들어있고, 처음에는 반 포부터 시작해 과다 섭취로 인한 복통이나 설사를 피하세요."
-      },
-      "en": {
-        "name": "Organic C8 MCT Oil Booster Pocket (30 packs)",
-        "usage": "On an empty stomach in the morning, or added to coffee, a shake, or a salad, use one pack (10ml).",
-        "features": [
-          "99% pure C8 (caprylic acid) fatty acid, the fastest-absorbing MCT, extracted from 100% organic Philippine coconut",
-          "Promotes ketone production to support brain energy and the body's anti-inflammatory metabolism"
-        ],
-        "caution": "Taking too much when first starting out may cause stomach discomfort or diarrhea - start with half a pack."
-      },
-      "ja": {
-        "name": "オーガニックC8 MCTオイルブースターポケット(30包)",
-        "usage": "朝の空腹時、またはコーヒー/シェイク/サラダに1包(10ml)を加えて摂取してください。",
-        "features": [
-          "100%フィリピン産有機ココナッツから抽出した、最も吸収の早い純粋C8(カプリル酸)脂肪酸99%配合",
-          "ケトン体生成を促進し、脳へのエネルギー供給と体内の抗炎症代謝をサポート"
-        ],
-        "caution": "初めて摂取する際に多量に摂ると腹痛や下痢を起こすことがあるため、半包から始めてください。"
-      },
-      "zh": {
-        "name": "有机C8 MCT油能量小袋(30袋)",
-        "usage": "晨起空腹，或加入咖啡、奶昔、沙拉中，每次1包(10ml)。",
-        "features": [
-          "100%菲律宾有机椰子萃取，吸收速度最快的纯C8(辛酸)脂肪酸，纯度达99%",
-          "促进酮体生成，支持大脑能量供应及体内抗炎代谢"
-        ],
-        "caution": "初次食用若摄入过量可能引起腹痛或腹泻，建议从半包开始尝试。"
-      }
-    }
-  }
 ]

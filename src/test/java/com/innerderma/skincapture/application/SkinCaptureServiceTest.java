@@ -150,18 +150,40 @@ class SkinCaptureServiceTest {
     }
 
     @Test
-    void rejectsSecondValidCaptureOnSameKoreanDate() {
+    void rejectsSecondValidCaptureOnSameKoreanDateWhenDailyLimitEnabled() {
+        SkinCaptureService limited = new SkinCaptureService(
+                skinCaptureRepository, userRepository, storage, CLOCK, true);
         when(userRepository.findByUserCode(USER_CODE))
                 .thenReturn(Optional.of(new User(USER_CODE, "테스트 사용자", "010-1234-1234")));
         when(skinCaptureRepository.existsByUser_UserCodeAndCapturedDateAndQualityStatus(
                 USER_CODE, LocalDate.of(2026, 8, 17), SkinCaptureQualityStatus.VALID
         )).thenReturn(true);
 
-        assertThatThrownBy(() -> service.create(USER_CODE, jpegFile()))
+        assertThatThrownBy(() -> limited.create(USER_CODE, jpegFile()))
                 .isInstanceOfSatisfying(BusinessException.class, exception ->
                         assertThat(exception.errorCode()).isEqualTo(ErrorCode.SKIN_CAPTURE_ALREADY_EXISTS)
                 );
         verify(storage, never()).store(any());
+    }
+
+    @Test
+    void allowsSecondValidCaptureOnSameDayByDefault() {
+        // 기본 설정(제한 해제): 같은 날 이미 VALID 촬영이 있어도 재촬영을 허용한다
+        SkinCaptureFile file = realJpeg("second.jpg", 640, 640);
+        when(userRepository.findByUserCode(USER_CODE))
+                .thenReturn(Optional.of(new User(USER_CODE, "테스트 사용자", "010-1234-1234")));
+        when(skinCaptureRepository.existsByUser_UserCodeAndCapturedDateAndQualityStatus(
+                USER_CODE, LocalDate.of(2026, 8, 17), SkinCaptureQualityStatus.VALID
+        )).thenReturn(true);
+        when(storage.store(file)).thenReturn("/images/second.jpg");
+        when(skinCaptureRepository.save(any(SkinCapture.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        SkinCapture saved = service.create(USER_CODE, file);
+
+        assertThat(saved.getQualityStatus()).isEqualTo(SkinCaptureQualityStatus.VALID);
+        assertThat(saved.getCapturedDate()).isEqualTo(LocalDate.of(2026, 8, 17));
+        verify(storage).store(file);
     }
 
     @Test

@@ -99,6 +99,18 @@ public class SkinCaptureService {
                 .orElseThrow(() -> new BusinessException(ErrorCode.SKIN_CAPTURE_NOT_FOUND));
     }
 
+    /**
+     * SkinAge 분석 실패 시 capture를 QUALITY_CHECK_FAILED로 변경해
+     * daily limit에서 제외한다 (같은 날 재촬영 가능).
+     */
+    @Transactional
+    public void markAnalysisFailed(Long captureId) {
+        skinCaptureRepository.findById(captureId).ifPresent(capture -> {
+            capture.markQualityFailed();
+            skinCaptureRepository.save(capture);
+        });
+    }
+
     public DailyCaptureStatus getTodayStatus(String userCode) {
         if (!userRepository.existsByUserCode(userCode)) throw new BusinessException(ErrorCode.USER_NOT_FOUND);
         LocalDate today = LocalDate.now(clock);

@@ -25,6 +25,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(errorCode.status()).body(ErrorResponse.of(errorCode));
     }
 
+    @ExceptionHandler(com.innerderma.skinanalysis.application.SkinAgeQualityCheckFailedException.class)
+    public ResponseEntity<ErrorResponse> handleSkinAgeQualityCheckFailed(
+            com.innerderma.skinanalysis.application.SkinAgeQualityCheckFailedException exception
+    ) {
+        ErrorCode errorCode = ErrorCode.SKIN_CAPTURE_QUALITY_CHECK_FAILED;
+        return ResponseEntity.status(errorCode.status()).body(ErrorResponse.of(errorCode));
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException exception

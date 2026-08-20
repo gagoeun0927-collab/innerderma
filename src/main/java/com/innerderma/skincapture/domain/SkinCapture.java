@@ -82,4 +82,9 @@ public class SkinCapture {
     public String getContentType() { return contentType; }
     public long getFileSize() { return fileSize; }
     public SkinCaptureQualityStatus getQualityStatus() { return qualityStatus; }
+
+    /** 분석 실패 시 품질 상태를 변경해 daily limit에서 제외한다. */
+    public void markQualityFailed() {
+        this.qualityStatus = SkinCaptureQualityStatus.QUALITY_CHECK_FAILED;
+    }
 }

@@ -66,6 +66,11 @@ public class HttpSkinAgeClient implements SkinAgeClient {
                 if (qualityResult != null) {
                     throw new SkinAgeQualityCheckFailedException(qualityResult);
                 }
+                // face detection 실패 등 detail이 단순 문자열인 경우
+                String faceMessage = parseFaceDetectionFailure(response.body());
+                if (faceMessage != null) {
+                    throw new BusinessException(ErrorCode.SKIN_CAPTURE_FACE_NOT_DETECTED);
+                }
                 throw new BusinessException(ErrorCode.SKINAGE_INVALID_RESPONSE);
             }
             if (response.statusCode() != 200) {
@@ -93,6 +98,8 @@ public class HttpSkinAgeClient implements SkinAgeClient {
             if (detail == null) return null;
             // FastAPI validation error format: detail is array
             if (detail.isArray()) return null;
+            // SkinAge face detection failure: detail is string
+            if (detail.isTextual()) return null;
             // SkinAge quality check format: detail is object with error/failed_checks
             var error = detail.get("error");
             if (error == null || !"quality_check_failed".equals(error.asText())) return null;
@@ -107,6 +114,27 @@ public class HttpSkinAgeClient implements SkinAgeClient {
                 for (var node : messages) msgs.add(node.asText());
             }
             return new SkinAgeQualityCheckResult(checks, msgs);
+        } catch (Exception exception) {
+            return null;
+        }
+    }
+
+    /**
+     * SkinAge가 얼굴을 인식하지 못했을 때의 응답 파싱.
+     * 형식: {"detail": "Could not detect face landmarks..."} (detail이 단순 문자열)
+     */
+    private String parseFaceDetectionFailure(String body) {
+        try {
+            var tree = objectMapper.readTree(body);
+            var detail = tree.get("detail");
+            if (detail != null && detail.isTextual()) {
+                String message = detail.asText();
+                if (message.toLowerCase().contains("face")
+                        || message.toLowerCase().contains("landmark")) {
+                    return message;
+                }
+            }
+            return null;
         } catch (Exception exception) {
             return null;
         }

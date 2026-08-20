@@ -16,6 +16,8 @@ public enum ErrorCode {
     SKIN_CAPTURE_ALREADY_EXISTS(HttpStatus.CONFLICT, "CAPTURE_002", "오늘의 유효한 피부 촬영 기록이 이미 있습니다."),
     SKIN_CAPTURE_NOT_FOUND(HttpStatus.NOT_FOUND, "CAPTURE_003", "피부 촬영 기록을 찾을 수 없습니다."),
     SKIN_CAPTURE_STORAGE_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "CAPTURE_004", "피부 사진을 저장하지 못했습니다."),
+    SKIN_CAPTURE_FACE_NOT_DETECTED(HttpStatus.UNPROCESSABLE_CONTENT, "CAPTURE_005", "얼굴을 인식할 수 없어요. 밝은 곳에서 얼굴이 잘 보이게 다시 촬영해주세요."),
+    SKIN_CAPTURE_QUALITY_CHECK_FAILED(HttpStatus.UNPROCESSABLE_CONTENT, "CAPTURE_006", "사진 품질이 기준에 미달해요. 밝고 깨끗한 배경에서 다시 촬영해주세요."),
     SELF_CHECK_NOT_FOUND(HttpStatus.NOT_FOUND, "SELF_CHECK_001", "자가 피부 상태 기록을 찾을 수 없습니다."),
     SKIN_ANALYSIS_NOT_FOUND(HttpStatus.NOT_FOUND, "ANALYSIS_001", "피부 사진 분석 결과를 찾을 수 없습니다."),
     SKIN_ANALYSIS_ALREADY_EXISTS(HttpStatus.CONFLICT, "ANALYSIS_002", "해당 사진의 분석 결과가 이미 있습니다."),

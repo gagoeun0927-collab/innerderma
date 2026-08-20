@@ -79,8 +79,15 @@ public class SkinCaptureController {
                 return ApiResponse.success(CaptureAndAnalyzeResponse.qualityFailed(capture));
             }
 
-            SkinAnalysisResult analysisResult = skinAnalysisService.analyze(userCode, capture.getId(), actualAge);
-            return ApiResponse.success(CaptureAndAnalyzeResponse.success(capture, analysisResult));
+            try {
+                SkinAnalysisResult analysisResult = skinAnalysisService.analyze(userCode, capture.getId(), actualAge);
+                return ApiResponse.success(CaptureAndAnalyzeResponse.success(capture, analysisResult));
+            } catch (BusinessException | com.innerderma.skinanalysis.application.SkinAgeQualityCheckFailedException analysisEx) {
+                // SkinAge 분석 실패(얼굴 인식 실패 등): capture를 QUALITY_CHECK_FAILED로 변경해
+                // daily limit에서 제외하고 재촬영 가능하게 함
+                skinCaptureService.markAnalysisFailed(capture.getId());
+                throw analysisEx;  // GlobalExceptionHandler에서 적절한 에러 코드로 변환
+            }
         } catch (IOException exception) {
             throw new BusinessException(ErrorCode.INVALID_SKIN_CAPTURE_IMAGE);
         }

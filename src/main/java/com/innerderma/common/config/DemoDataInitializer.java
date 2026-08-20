@@ -28,6 +28,9 @@ import java.util.List;
 @Configuration
 public class DemoDataInitializer {
 
+    private static final org.slf4j.Logger log =
+            org.slf4j.LoggerFactory.getLogger(DemoDataInitializer.class);
+
     public static final String DEMO_USER_CODE = "WHS-DEMO-001";
     private static final LocalDate DEMO_DATE = LocalDate.of(2026, 8, 15);
 
@@ -148,6 +151,7 @@ public class DemoDataInitializer {
                                          com.innerderma.knowledge.product.PieceSeoulKnowledgeBase pieceSeoulKb,
                                          com.innerderma.knowledge.product.WimStoreKnowledgeBase wimStoreKb) {
         int priority = 100;
+        int pieceSeoulSaved = 0;
         for (var p : pieceSeoulKb.findAll()) {
             if (p.productId() == null || p.name() == null) continue;
             if (!repository.existsByProductCode(p.productId())) {
@@ -159,22 +163,28 @@ public class DemoDataInitializer {
                         p.applicationMethod(), toJson(p.verifiedClaims()),
                         toJson(p.ingredientsHighlight()), toJson(p.skinStateTags())
                 ));
+                pieceSeoulSaved++;
             }
         }
 
+        int wimStoreSaved = 0;
         for (var p : wimStoreKb.findAll()) {
             if (p.productId() == null || p.name() == null) continue;
             if (!repository.existsByProductCode(p.productId())) {
                 repository.save(new Product(
                         p.productId(), p.brand() != null ? p.brand() : "WIM Store", p.name(),
-                        ProductCategory.TARGETED_CARE, ProductConcern.GENERAL, true,
+                        mapCategory(p.category()), ProductConcern.GENERAL, true,
                         true, false, p.officialUrl(), priority++,
                         "WIM_STORE", p.price(), p.imageUrl(), p.usage(),
                         null, toJson(p.verifiedClaims()),
                         toJson(p.ingredientsHighlight()), toJson(p.stateTags())
                 ));
+                wimStoreSaved++;
             }
         }
+
+        log.info("KB product seeding done. PieceSeoul: {} newly saved of {} in KB, WimStore: {} newly saved of {} in KB",
+                pieceSeoulSaved, pieceSeoulKb.size(), wimStoreSaved, wimStoreKb.size());
     }
 
     private ProductCategory mapCategory(String kbCategory) {

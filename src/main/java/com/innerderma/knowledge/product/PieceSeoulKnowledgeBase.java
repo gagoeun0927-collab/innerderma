@@ -19,6 +19,9 @@ import java.util.stream.Collectors;
 @Component
 public class PieceSeoulKnowledgeBase {
 
+    private static final org.slf4j.Logger log =
+            org.slf4j.LoggerFactory.getLogger(PieceSeoulKnowledgeBase.class);
+
     private static final String DATA_PATH = "knowledge/piece_seoul_products.json";
 
     private final ObjectMapper objectMapper;
@@ -32,14 +35,19 @@ public class PieceSeoulKnowledgeBase {
     public void load() {
         try {
             InputStream is = new ClassPathResource(DATA_PATH).getInputStream();
-            List<PieceSeoulProductJson> items = objectMapper.readValue(is,
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, PieceSeoulProductJson.class));
+            var mapper = objectMapper.rebuild()
+                    .disable(tools.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                    .build();
+            List<PieceSeoulProductJson> items = mapper.readValue(is,
+                    mapper.getTypeFactory().constructCollectionType(List.class, PieceSeoulProductJson.class));
             this.products = items.stream()
                     .filter(item -> "piece_seoul".equalsIgnoreCase(item.store))
                     .map(PieceSeoulProductJson::toProduct)
                     .filter(PieceSeoulProduct::isActive)
                     .collect(Collectors.toUnmodifiableList());
-        } catch (IOException exception) {
+            log.info("PieceSeoul KB loaded: {} products (of {} JSON entries)", products.size(), items.size());
+        } catch (Exception exception) {
+            log.error("PieceSeoul KB load failed", exception);
             this.products = Collections.emptyList();
         }
     }
@@ -80,6 +88,8 @@ public class PieceSeoulKnowledgeBase {
         return products.size();
     }
 
+    @com.fasterxml.jackson.annotation.JsonAutoDetect(
+            fieldVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY)
     private static class PieceSeoulProductJson {
         @JsonProperty("product_id") String productId;
         String brand;
@@ -102,7 +112,7 @@ public class PieceSeoulKnowledgeBase {
         @JsonProperty("official_url") String officialUrl;
         @JsonProperty("image_url") String imageUrl;
         @JsonProperty("recommend_frequency_days") Integer recommendFrequencyDays;
-        String store;
+        @JsonProperty("store") String store;
 
         PieceSeoulProduct toProduct() {
             List<PieceSeoulProduct.RestrictedTreatment> restricted = restrictedAfterTreatments == null
@@ -135,6 +145,8 @@ public class PieceSeoulKnowledgeBase {
         }
     }
 
+    @com.fasterxml.jackson.annotation.JsonAutoDetect(
+            fieldVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY)
     private static class RestrictedTreatmentJson {
         String treatment;
         @JsonProperty("restrict_days") int restrictDays;

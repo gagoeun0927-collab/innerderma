@@ -19,6 +19,9 @@ import java.util.stream.Collectors;
 @Component
 public class WimStoreKnowledgeBase {
 
+    private static final org.slf4j.Logger log =
+            org.slf4j.LoggerFactory.getLogger(WimStoreKnowledgeBase.class);
+
     private static final String DATA_PATH = "knowledge/wim_store_products.json";
 
     private final ObjectMapper objectMapper;
@@ -32,14 +35,19 @@ public class WimStoreKnowledgeBase {
     public void load() {
         try {
             InputStream is = new ClassPathResource(DATA_PATH).getInputStream();
-            List<WimStoreProductJson> items = objectMapper.readValue(is,
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, WimStoreProductJson.class));
+            var mapper = objectMapper.rebuild()
+                    .disable(tools.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                    .build();
+            List<WimStoreProductJson> items = mapper.readValue(is,
+                    mapper.getTypeFactory().constructCollectionType(List.class, WimStoreProductJson.class));
             this.products = items.stream()
                     .filter(item -> "wim_store".equalsIgnoreCase(item.store))
                     .map(WimStoreProductJson::toProduct)
                     .filter(WimStoreProduct::isActive)
                     .collect(Collectors.toUnmodifiableList());
-        } catch (IOException exception) {
+            log.info("WimStore KB loaded: {} products (of {} JSON entries)", products.size(), items.size());
+        } catch (Exception exception) {
+            log.error("WimStore KB load failed", exception);
             this.products = Collections.emptyList();
         }
     }
@@ -67,12 +75,15 @@ public class WimStoreKnowledgeBase {
         return products.size();
     }
 
+    @com.fasterxml.jackson.annotation.JsonAutoDetect(
+            fieldVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY)
     private static class WimStoreProductJson {
         @JsonProperty("product_id") String productId;
         String brand;
         String name;
         String category;
         @JsonProperty("state_tags") List<String> stateTags;
+        @JsonProperty("skin_state_tags") List<String> skinStateTags;
         @JsonProperty("dietary_tags") List<String> dietaryTags;
         List<String> allergens;
         List<String> restrictions;
@@ -85,11 +96,14 @@ public class WimStoreKnowledgeBase {
         @JsonProperty("official_url") String officialUrl;
         @JsonProperty("image_url") String imageUrl;
         @JsonProperty("recommend_frequency_days") Integer recommendFrequencyDays;
-        String store;
+        @JsonProperty("store") String store;
 
         WimStoreProduct toProduct() {
+            List<String> resolvedStateTags = stateTags != null && !stateTags.isEmpty()
+                    ? stateTags
+                    : (skinStateTags != null ? skinStateTags : List.of());
             return new WimStoreProduct(productId, brand, name, category,
-                    stateTags != null ? stateTags : List.of(),
+                    resolvedStateTags,
                     dietaryTags != null ? dietaryTags : List.of(),
                     allergens != null ? allergens : List.of(),
                     restrictions != null ? restrictions : List.of(),

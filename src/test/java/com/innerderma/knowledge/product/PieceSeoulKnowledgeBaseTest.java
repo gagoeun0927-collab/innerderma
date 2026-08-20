@@ -50,4 +50,23 @@ class PieceSeoulKnowledgeBaseTest {
         assertThat(results).allSatisfy(p ->
                 assertThat(p.usageTime()).anyMatch(t -> t.equalsIgnoreCase("night")));
     }
+
+    @Test
+    void loadsOnlyPieceSeoulStoreItems() {
+        assertThat(kb.size()).isEqualTo(22);
+    }
+
+    @Test
+    void deserializesNonAnnotatedFields() {
+        // 회귀 방지: package-private 필드가 Jackson에 보이지 않으면 name/brand/category가 null이 되어
+        // DemoDataInitializer 시딩이 조용히 스킵된다.
+        assertThat(kb.findAll()).allSatisfy(p -> {
+            assertThat(p.productId()).isNotBlank();
+            assertThat(p.name()).isNotBlank();
+            assertThat(p.brand()).isNotBlank();
+            assertThat(p.category()).isNotBlank();
+            assertThat(p.price()).isNotNull().isPositive();
+            assertThat(p.officialUrl()).isNotBlank();
+        });
+    }
 }

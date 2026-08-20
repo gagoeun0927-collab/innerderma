@@ -37,7 +37,9 @@ class ProductControllerTest {
     void returnsProductDetail() throws Exception {
         when(service.getProduct("PRD-001")).thenReturn(new ProductResponse(
                 1L, "PRD-001", "이너덤", "수분 크림", ProductCategory.MOISTURIZER,
-                ProductConcern.GENERAL, true, false, "https://example.com/prd-001"));
+                ProductConcern.GENERAL, true, false, "https://example.com/prd-001",
+                "PIECE_SEOUL", 32000, "https://example.com/img.jpg", "daily",
+                "얼굴 전체에 도포", List.of("보습"), List.of("ceramide"), List.of("HYDRATION")));
 
         mockMvc.perform(get("/api/products/PRD-001"))
                 .andExpect(status().isOk())
@@ -58,12 +60,23 @@ class ProductControllerTest {
 
     @Test
     void forwardsCategoryAndConcernFilters() throws Exception {
-        when(service.getActiveProducts(ProductCategory.TARGETED_CARE, ProductConcern.REDNESS))
+        when(service.getActiveProducts(ProductCategory.TARGETED_CARE, ProductConcern.REDNESS, null))
                 .thenReturn(List.of(ProductResponse.from(product())));
 
         mockMvc.perform(get("/api/products")
                         .param("category", "TARGETED_CARE")
                         .param("concern", "REDNESS"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.data[0].productCode").value("DEMO-REDNESS-001"));
+    }
+
+    @Test
+    void forwardsSourceFilter() throws Exception {
+        when(service.getActiveProducts(null, null, "PIECE_SEOUL"))
+                .thenReturn(List.of(ProductResponse.from(product())));
+
+        mockMvc.perform(get("/api/products").param("source", "PIECE_SEOUL"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.data[0].productCode").value("DEMO-REDNESS-001"));

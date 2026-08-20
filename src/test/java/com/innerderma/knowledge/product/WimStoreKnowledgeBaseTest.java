@@ -43,4 +43,23 @@ class WimStoreKnowledgeBaseTest {
         List<WimStoreProduct> filtered = kb.filter(null, List.of(), List.of());
         assertThat(filtered).hasSize(kb.size());
     }
+
+    @Test
+    void loadsOnlyWimStoreItems() {
+        assertThat(kb.size()).isEqualTo(16);
+    }
+
+    @Test
+    void deserializesNonAnnotatedFields() {
+        // 회귀 방지: package-private 필드가 Jackson에 보이지 않으면 name/brand/category가 null이 되어
+        // DemoDataInitializer 시딩이 조용히 스킵된다.
+        assertThat(kb.findAll()).allSatisfy(p -> {
+            assertThat(p.productId()).isNotBlank();
+            assertThat(p.name()).isNotBlank();
+            assertThat(p.brand()).isNotBlank();
+            assertThat(p.category()).isNotBlank();
+            assertThat(p.price()).isNotNull().isPositive();
+            assertThat(p.usage()).isNotBlank();
+        });
+    }
 }

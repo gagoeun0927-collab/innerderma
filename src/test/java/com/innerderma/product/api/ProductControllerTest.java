@@ -43,7 +43,8 @@ class ProductControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.data.productCode").value("DEMO-REDNESS-001"))
-                .andExpect(jsonPath("$.data.translation").doesNotExist());
+                .andExpect(jsonPath("$.data.locale").doesNotExist())
+                .andExpect(jsonPath("$.data.caution").doesNotExist());
     }
 
     @Test
@@ -57,10 +58,11 @@ class ProductControllerTest {
 
         mockMvc.perform(get("/api/products/DEMO-REDNESS-001").param("locale", "en"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data.translation.locale").value("en"))
-                .andExpect(jsonPath("$.data.translation.name").value("Redness Calming Care"))
-                .andExpect(jsonPath("$.data.translation.features[0]").value("Soothes redness"))
-                .andExpect(jsonPath("$.data.translation.caution").value("For external use only."));
+                .andExpect(jsonPath("$.data.locale").value("en"))
+                .andExpect(jsonPath("$.data.name").value("Redness Calming Care"))
+                .andExpect(jsonPath("$.data.usage").value("Apply after cleansing"))
+                .andExpect(jsonPath("$.data.verifiedClaims[0]").value("Soothes redness"))
+                .andExpect(jsonPath("$.data.caution").value("For external use only."));
     }
 
     @Test

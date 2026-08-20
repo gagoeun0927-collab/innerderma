@@ -108,10 +108,11 @@ class ProductServiceTest {
 
         ProductResponse result = service.getProduct("PRD-001", "en");
 
-        assertThat(result.translation()).isNotNull();
-        assertThat(result.translation().locale()).isEqualTo("en");
-        assertThat(result.translation().name()).isEqualTo("Moisture Cream");
-        assertThat(result.translation().features()).containsExactly("Hydrates skin");
+        assertThat(result.locale()).isEqualTo("en");
+        assertThat(result.name()).isEqualTo("Moisture Cream");
+        assertThat(result.usage()).isEqualTo("Apply daily");
+        assertThat(result.verifiedClaims()).containsExactly("Hydrates skin");
+        assertThat(result.caution()).isEqualTo("For external use only.");
     }
 
     @Test
@@ -123,7 +124,9 @@ class ProductServiceTest {
 
         ProductResponse result = service.getProduct("PRD-001", "ko");
 
-        assertThat(result.translation()).isNull();
+        assertThat(result.locale()).isNull();
+        assertThat(result.caution()).isNull();
+        assertThat(result.name()).isEqualTo("수분 크림");
     }
 
     @Test
@@ -140,8 +143,8 @@ class ProductServiceTest {
 
         ProductResponse result = service.getProduct("PRD-001", "ja-JP");
 
-        assertThat(result.translation()).isNotNull();
-        assertThat(result.translation().locale()).isEqualTo("ja");
+        assertThat(result.locale()).isEqualTo("ja");
+        assertThat(result.name()).isEqualTo("モイスチャークリーム");
     }
 
     @Test
@@ -155,13 +158,15 @@ class ProductServiceTest {
 
         ProductResponse cleanser = result.stream()
                 .filter(p -> "CLEANSER".equals(p.productCode())).findFirst().orElseThrow();
-        assertThat(cleanser.translation()).isNotNull();
-        assertThat(cleanser.translation().name()).isEqualTo("Gentle Cleanser");
+        assertThat(cleanser.name()).isEqualTo("Gentle Cleanser");
+        assertThat(cleanser.locale()).isEqualTo("en");
+        assertThat(cleanser.caution()).isEqualTo("None.");
 
-        // Products without translation should have null translation
+        // Products without translation keep Korean defaults
         ProductResponse moisturizer = result.stream()
                 .filter(p -> "MOISTURIZER".equals(p.productCode())).findFirst().orElseThrow();
-        assertThat(moisturizer.translation()).isNull();
+        assertThat(moisturizer.locale()).isNull();
+        assertThat(moisturizer.name()).isEqualTo("MOISTURIZER");
     }
 
     private List<Product> catalog() {

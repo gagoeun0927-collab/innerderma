@@ -175,4 +175,90 @@ class AiCareControllerTest {
                 .andExpect(jsonPath("$.data.primaryConcern").value("STABLE"))
                 .andExpect(jsonPath("$.data.locale").value("ko"));
     }
+
+    @Test
+    void getReturnsNotFoundWhenNothingGeneratedToday() throws Exception {
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
+                .thenReturn(Optional.empty());
+        com.innerderma.user.domain.User user =
+                new com.innerderma.user.domain.User("WHS-DEMO-001", "test", "010-1234-1234");
+        user.updatePreferredLocale("ko");
+        when(userService.getByUserCode("WHS-DEMO-001")).thenReturn(user);
+        when(solutionCache.get(any())).thenReturn(Optional.empty());
+
+        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                        .get("/api/users/WHS-DEMO-001/ai-care"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.code").value("AI_CARE_001"));
+    }
+
+    @Test
+    void getReturnsCachedResultWithoutRegenerating() throws Exception {
+        SolutionObject solution = new SolutionObject(
+                Map.of(), List.of(), List.of("R010@1.0.0"), List.of(), Map.of(), Map.of());
+        ProductMatchResult products =
+                new ProductMatchResult(List.of(), List.of(), List.of(), "HYDRATION", null);
+        when(solutionCache.get(any())).thenReturn(Optional.of(
+                new com.innerderma.airule.cache.SolutionCacheEntry(solution, products, LocalDateTime.now())));
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
+                .thenReturn(Optional.empty());
+        com.innerderma.user.domain.User user =
+                new com.innerderma.user.domain.User("WHS-DEMO-001", "test", "010-1234-1234");
+        user.updatePreferredLocale("ko");
+        when(userService.getByUserCode("WHS-DEMO-001")).thenReturn(user);
+
+        LlmResponse llmResponse = new LlmResponse("Cached Care", "HYDRATION", "", null, null, null, null);
+        when(llmRenderer.render(any(), any(), any())).thenReturn(llmResponse);
+
+        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                        .get("/api/users/WHS-DEMO-001/ai-care"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.care.headline").value("Cached Care"))
+                .andExpect(jsonPath("$.data.primaryConcern").value("HYDRATION"));
+
+        // GET은 Rule Engine을 재실행하지 않는다
+        org.mockito.Mockito.verify(solutionAssembler, org.mockito.Mockito.never()).assembleForUser(any());
+    }
+
+    @Test
+    void doesNotDuplicateRecommendationLogForSameProductSameDay() throws Exception {
+        var logRepository = mock(com.innerderma.knowledge.product.usage.ProductRecommendationLogRepository.class);
+        mockMvc = MockMvcBuilders.standaloneSetup(
+                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator,
+                                snapshotRepository, procedureRecordRepository, userService, solutionCache, logRepository))
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
+
+        SolutionObject solution = new SolutionObject(
+                Map.of(), List.of(), List.of("R010@1.0.0"), List.of(), Map.of(), Map.of());
+        when(solutionAssembler.assembleForUser("WHS-DEMO-001")).thenReturn(solution);
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("WHS-DEMO-001"))
+                .thenReturn(Optional.empty());
+
+        PieceSeoulProduct nightProduct = new PieceSeoulProduct(
+                "PSS_001", "Piece Seoul", "Cica Cream", "MOISTURIZER",
+                List.of("barrier"), List.of("HYDRATION"), List.of(), List.of(),
+                List.of("night"), "daily", "fingertip", "얼굴 전체 도포",
+                List.of(), List.of("장벽 강화"), List.of(), List.of(), true, 38000, null, null, null);
+        when(productMatcher.match(any(), any(), any(), any(), any()))
+                .thenReturn(new ProductMatchResult(List.of(nightProduct), List.of(), List.of(), "STABLE", null));
+
+        com.innerderma.user.domain.User user =
+                new com.innerderma.user.domain.User("WHS-DEMO-001", "test", "010-1234-1234");
+        user.updatePreferredLocale("ko");
+        when(userService.getByUserCode("WHS-DEMO-001")).thenReturn(user);
+        when(llmRenderer.render(any(), any(), any()))
+                .thenReturn(new LlmResponse("Care", "STABLE", "", null, null, null, null));
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any(), any(), any()))
+                .thenReturn(ResponseValidationResult.success());
+
+        // 이미 오늘 기록이 있다고 응답 → 저장하지 않아야 한다
+        when(logRepository.existsByUser_UserCodeAndProductIdAndRecommendedDate(
+                eq("WHS-DEMO-001"), eq("PSS_001"), any())).thenReturn(true);
+
+        mockMvc.perform(post("/api/users/WHS-DEMO-001/ai-care"))
+                .andExpect(status().isOk());
+
+        org.mockito.Mockito.verify(logRepository, org.mockito.Mockito.never()).save(any());
+    }
 }

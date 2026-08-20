@@ -26,8 +26,16 @@ import java.util.Map;
 @Component
 public class OpenAiLlmRenderer implements LlmRenderer {
 
+    private static final org.slf4j.Logger log =
+            org.slf4j.LoggerFactory.getLogger(OpenAiLlmRenderer.class);
+
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
     private static final String MODEL = "gpt-4o-mini";
+
+    /** OpenAI 연결 타임아웃. 없으면 응답이 늦을 때 요청 스레드가 무한정 점유된다. */
+    private static final java.time.Duration CONNECT_TIMEOUT = java.time.Duration.ofSeconds(5);
+    /** OpenAI 응답 타임아웃. 초과 시 fallback으로 전환한다. */
+    private static final java.time.Duration REQUEST_TIMEOUT = java.time.Duration.ofSeconds(20);
 
     private final String apiKey;
     private final HttpClient httpClient;
@@ -42,6 +50,7 @@ public class OpenAiLlmRenderer implements LlmRenderer {
         this.objectMapper = objectMapper;
         this.httpClient = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
+                .connectTimeout(CONNECT_TIMEOUT)
                 .build();
     }
 
@@ -55,7 +64,7 @@ public class OpenAiLlmRenderer implements LlmRenderer {
     @Override
     public LlmResponse render(SolutionObject solution, ProductMatchResult products, String locale) {
         if (apiKey == null || apiKey.isBlank()) {
-            // API key 미설정 시 fallback: 구조만 채운 기본 응답
+            log.warn("LLM rendering skipped: openai.api-key is not configured. Returning fallback response.");
             return buildFallbackResponse(solution, products, locale);
         }
 
@@ -64,9 +73,22 @@ public class OpenAiLlmRenderer implements LlmRenderer {
 
         try {
             String responseBody = callOpenAi(systemPrompt, userPrompt);
-            return parseResponse(responseBody);
+            LlmResponse parsed = parseResponse(responseBody);
+            if (parsed == null) {
+                log.warn("LLM rendering failed: could not parse OpenAI response. Returning fallback response.");
+                return buildFallbackResponse(solution, products, locale);
+            }
+            return parsed;
+        } catch (java.net.http.HttpTimeoutException exception) {
+            log.warn("LLM rendering failed: OpenAI request timed out after {}s. Returning fallback response.",
+                    REQUEST_TIMEOUT.toSeconds());
+            return buildFallbackResponse(solution, products, locale);
+        } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
+            log.warn("LLM rendering interrupted. Returning fallback response.");
+            return buildFallbackResponse(solution, products, locale);
         } catch (Exception exception) {
-            // LLM 호출 실패 시 fallback
+            log.warn("LLM rendering failed: {}. Returning fallback response.", exception.getMessage(), exception);
             return buildFallbackResponse(solution, products, locale);
         }
     }
@@ -156,12 +178,14 @@ public class OpenAiLlmRenderer implements LlmRenderer {
                 .uri(URI.create(API_URL))
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Bearer " + apiKey)
+                .timeout(REQUEST_TIMEOUT)
                 .POST(HttpRequest.BodyPublishers.ofString(json))
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         if (response.statusCode() != 200) {
-            throw new IOException("OpenAI API returned " + response.statusCode() + ": " + response.body());
+            // 응답 본문에 API 키가 포함될 수 있으므로 상태 코드만 남긴다
+            throw new IOException("OpenAI API returned status " + response.statusCode());
         }
         return response.body();
     }

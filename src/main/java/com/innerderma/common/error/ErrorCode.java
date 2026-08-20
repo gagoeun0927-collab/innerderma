@@ -29,6 +29,7 @@ public enum ErrorCode {
     CARE_SOLUTION_NOT_FOUND(HttpStatus.NOT_FOUND, "CARE_SOLUTION_001", "케어 솔루션을 찾을 수 없습니다."),
     CARE_SOLUTION_ALREADY_EXISTS(HttpStatus.CONFLICT, "CARE_SOLUTION_002", "해당 케어 사이클의 솔루션이 이미 있습니다."),
     CARE_HISTORY_NOT_FOUND(HttpStatus.NOT_FOUND, "CARE_HISTORY_001", "해당 날짜의 케어 기록을 찾을 수 없습니다."),
+    AI_CARE_NOT_GENERATED(HttpStatus.NOT_FOUND, "AI_CARE_001", "오늘 생성된 AI 케어가 없습니다. 먼저 생성해주세요."),
     PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND, "PRODUCT_001", "제품을 찾을 수 없습니다."),
     SKIN_STATE_SNAPSHOT_NOT_FOUND(HttpStatus.NOT_FOUND, "SNAPSHOT_001", "피부 상태 스냅샷을 찾을 수 없습니다.");
 

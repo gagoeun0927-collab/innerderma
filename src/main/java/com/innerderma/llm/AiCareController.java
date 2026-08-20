@@ -75,21 +75,44 @@ public class AiCareController {
         this.recommendationLogRepository = recommendationLogRepository;
     }
 
+    @Operation(
+            summary = "AI Care 조회 (부작용 없음)",
+            description = "이미 생성된 오늘의 AI 케어를 조회합니다. LLM 호출과 추천 이력 저장을 하지 않습니다. "
+                    + "생성된 결과가 없으면 404를 반환하므로, 프론트는 404를 받으면 POST로 생성하면 됩니다. "
+                    + "결과는 인메모리 캐시에 보관되므로 서버 재기동 시 사라집니다."
+    )
+    @io.swagger.v3.oas.annotations.responses.ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "조회 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "404", description = "오늘 생성된 AI 케어가 없음 (POST로 생성 필요)")
+    })
+    @org.springframework.web.bind.annotation.GetMapping
+    public ApiResponse<AiCareResponse> getToday(
+            @PathVariable String userCode,
+            @RequestParam(required = false) String locale
+    ) {
+        String resolvedLocale = resolveLocale(userCode, locale);
+        SolutionCacheKey cacheKey = buildCacheKey(userCode);
+
+        SolutionCacheEntry entry = solutionCache.get(cacheKey)
+                .orElseThrow(() -> new com.innerderma.common.error.BusinessException(
+                        com.innerderma.common.error.ErrorCode.AI_CARE_NOT_GENERATED));
+
+        LlmResponse llmResponse = llmRenderer.render(entry.solution(), entry.products(), resolvedLocale);
+        return ApiResponse.success(new AiCareResponse(llmResponse, entry.solution().appliedRules(),
+                entry.products().primaryConcern(), resolvedLocale, true, List.of(),
+                buildProductSources(entry.products())));
+    }
+
     @Operation(summary = "AI Care 생성", description = "피부 상태 기반 AI 케어 솔루션을 생성합니다. 같은 날 동일 조건이면 캐시 결과를 반환합니다.")
     @PostMapping
     public ApiResponse<AiCareResponse> generate(
             @PathVariable String userCode,
             @RequestParam(required = false) String locale
     ) {
-        // locale 미지정 시 사용자의 preferredLocale 사용
-        String resolvedLocale = (locale != null && !locale.isBlank())
-                ? locale.trim().toLowerCase()
-                : userService.getByUserCode(userCode).getPreferredLocale();
+        String resolvedLocale = resolveLocale(userCode, locale);
 
         // Cache 적중 확인 (§33 멱등성: 같은 날 동일 조건이면 LLM 재호출 안 함)
-        String scoringVersion = snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc(userCode)
-                .map(s -> s.getScoringVersion()).orElse("none");
-        SolutionCacheKey cacheKey = SolutionCacheKey.of(userCode, LocalDate.now(), scoringVersion, "1.0.0");
+        SolutionCacheKey cacheKey = buildCacheKey(userCode);
         var cached = solutionCache.get(cacheKey);
         if (cached.isPresent()) {
             SolutionCacheEntry entry = cached.get();
@@ -163,6 +186,19 @@ public class AiCareController {
         );
     }
 
+    /** locale 미지정 시 사용자의 preferredLocale 사용 */
+    private String resolveLocale(String userCode, String locale) {
+        return (locale != null && !locale.isBlank())
+                ? locale.trim().toLowerCase()
+                : userService.getByUserCode(userCode).getPreferredLocale();
+    }
+
+    private SolutionCacheKey buildCacheKey(String userCode) {
+        String scoringVersion = snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc(userCode)
+                .map(SkinStateSnapshot::getScoringVersion).orElse("none");
+        return SolutionCacheKey.of(userCode, LocalDate.now(), scoringVersion, "1.0.0");
+    }
+
     private Map<String, String> buildProductSources(ProductMatchResult products) {
         Map<String, String> sources = new HashMap<>();
         products.nightProducts().forEach(p -> sources.put(p.productId(), "PIECE_SEOUL"));
@@ -171,15 +207,26 @@ public class AiCareController {
         return sources;
     }
 
+    /**
+     * 추천 이력 저장 (제품 추천 빈도 제한용).
+     * 같은 날 같은 제품은 한 번만 기록한다 — 캐시가 인메모리라 재배포 후 재호출 시
+     * 중복 저장되면 빈도 제한 계산이 왜곡된다.
+     */
     private void saveRecommendationLog(String userCode, ProductMatchResult products) {
         var user = userService.getByUserCode(userCode);
         LocalDate today = LocalDate.now();
-        products.nightProducts().forEach(p ->
-                recommendationLogRepository.save(new ProductRecommendationLog(user, p.productId(), "PIECE_SEOUL", today)));
-        products.morningProducts().forEach(p ->
-                recommendationLogRepository.save(new ProductRecommendationLog(user, p.productId(), "PIECE_SEOUL", today)));
-        products.innerCareProducts().forEach(p ->
-                recommendationLogRepository.save(new ProductRecommendationLog(user, p.productId(), "WIM_STORE", today)));
+        products.nightProducts().forEach(p -> saveIfAbsent(user, userCode, p.productId(), "PIECE_SEOUL", today));
+        products.morningProducts().forEach(p -> saveIfAbsent(user, userCode, p.productId(), "PIECE_SEOUL", today));
+        products.innerCareProducts().forEach(p -> saveIfAbsent(user, userCode, p.productId(), "WIM_STORE", today));
+    }
+
+    private void saveIfAbsent(com.innerderma.user.domain.User user, String userCode,
+                              String productId, String source, LocalDate date) {
+        if (recommendationLogRepository
+                .existsByUser_UserCodeAndProductIdAndRecommendedDate(userCode, productId, date)) {
+            return;
+        }
+        recommendationLogRepository.save(new ProductRecommendationLog(user, productId, source, date));
     }
 
     private String resolvePrimaryConcern(String userCode) {

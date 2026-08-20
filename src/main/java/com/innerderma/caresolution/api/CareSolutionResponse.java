@@ -12,7 +12,7 @@ import java.util.List;
 public record CareSolutionResponse(
         Long id, Long careCycleId, LocalDate originCaptureDate, LocalDate servedDate,
         boolean inherited, CareGenerationType generationType, CareSeason season, SafetyLevel safetyLevel,
-        String headline, String primaryConcern, List<String> eveningSteps, List<String> morningSteps,
+        String headline, String primaryConcern, List<CareStepResponse> eveningSteps, List<CareStepResponse> morningSteps,
         String safetyMessage, String whsDiagnosisSummary, String procedureName,
         String procedureCareGuide, LocalDateTime generatedAt
 ) {
@@ -24,9 +24,20 @@ public record CareSolutionResponse(
                 solution.getCareCycle().getOriginCaptureDate(), result.servedDate(), result.inherited(),
                 CareGenerationType.of(result.inherited()),
                 solution.getSeason(), solution.getSafetyLevel(), solution.getHeadline(),
-                solution.getPrimaryConcern(), result.eveningSteps(), result.morningSteps(),
+                solution.getPrimaryConcern(),
+                toStepResponses(result.eveningSteps()),
+                toStepResponses(result.morningSteps()),
                 solution.getSafetyMessage(), diagnosis == null ? null : diagnosis.getResultSummary(),
                 procedure == null ? null : procedure.getProcedureName(),
                 procedure == null ? null : procedure.getCareGuide(), solution.getGeneratedAt());
+    }
+
+    private static List<CareStepResponse> toStepResponses(List<String> steps) {
+        if (steps == null) return List.of();
+        List<CareStepResponse> result = new java.util.ArrayList<>();
+        for (int i = 0; i < steps.size(); i++) {
+            result.add(CareStepResponse.fromLegacyString(steps.get(i), i));
+        }
+        return List.copyOf(result);
     }
 }

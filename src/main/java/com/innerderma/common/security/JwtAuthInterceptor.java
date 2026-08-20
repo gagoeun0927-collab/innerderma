@@ -29,6 +29,11 @@ public class JwtAuthInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        // CORS preflight(OPTIONS)는 인증 없이 통과
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            return true;
+        }
+
         String pathUserCode = extractPathUserCode(request.getRequestURI());
         if (pathUserCode == null) {
             return true; // /api/users/** 가 아닌 경로는 통과

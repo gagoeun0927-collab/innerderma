@@ -24,10 +24,23 @@ public class UserOwnershipInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        // CORS preflight는 통과
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            return true;
+        }
+
         String pathUserCode = extractPathUserCode(request.getRequestURI());
         if (pathUserCode == null) {
             return true;
         }
+
+        // JWT Authorization 헤더가 있으면 JWT 인터셉터가 이미 소유권 검증했으므로 통과
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            return true;
+        }
+
+        // JWT 없으면 레거시 X-User-Code 헤더로 검증
         String headerUserCode = request.getHeader(USER_CODE_HEADER);
         if (headerUserCode == null || headerUserCode.isBlank()) {
             throw new BusinessException(ErrorCode.UNAUTHORIZED);

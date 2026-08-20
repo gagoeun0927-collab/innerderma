@@ -54,6 +54,8 @@ class DemoDataInitializerSeedingTest {
             assertThat(p.getPrice()).isNotNull().isPositive();
             assertThat(p.getOfficialUrl()).isNotBlank();
             assertThat(p.isDemoProduct()).isFalse();
+            assertThat(p.getImageUrl()).startsWith("https://inner-derma.duckdns.org/product-images/");
+            assertThat(p.getImageUrl()).endsWith(".jpg");
         });
     }
 
@@ -96,9 +98,9 @@ class DemoDataInitializerSeedingTest {
 
     @Test
     void seedsTranslationsForAllKbProducts() {
-        // 22 piece_seoul × 3 locales + 18 wim_store × 3 locales = 120 translations
+        // (30 piece_seoul + 18 wim_store) × 4 locales (ko/en/ja/zh) = 192 translations
         List<ProductTranslation> all = translationRepository.findAll();
-        assertThat(all).hasSize(120);
+        assertThat(all).hasSize(192);
     }
 
     @Test
@@ -107,7 +109,7 @@ class DemoDataInitializerSeedingTest {
         assertThat(tr).isPresent();
         assertThat(tr.get().getName()).isEqualTo("Core Rebuild Cream");
         assertThat(tr.get().getUsage()).isNotBlank();
-        assertThat(tr.get().getFeaturesJson()).contains("growth factor");
+        assertThat(tr.get().getFeaturesJson()).contains("beta-sitosterol");
         assertThat(tr.get().getCaution()).isNotBlank();
     }
 

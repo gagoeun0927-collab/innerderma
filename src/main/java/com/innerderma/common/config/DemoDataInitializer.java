@@ -150,6 +150,8 @@ public class DemoDataInitializer {
                 .orElseGet(() -> facilityRepository.save(new Facility(facilityCode, name)));
     }
 
+    private static final String PRODUCT_IMAGE_BASE_URL = "https://inner-derma.duckdns.org/product-images/";
+
     private void seedKnowledgeBaseProducts(ProductRepository repository,
                                          com.innerderma.knowledge.product.PieceSeoulKnowledgeBase pieceSeoulKb,
                                          com.innerderma.knowledge.product.WimStoreKnowledgeBase wimStoreKb) {
@@ -162,7 +164,7 @@ public class DemoDataInitializer {
                         p.productId(), p.brand() != null ? p.brand() : "Piece Seoul", p.name(),
                         mapCategory(p.category()), ProductConcern.GENERAL, true,
                         true, false, p.officialUrl(), priority++,
-                        "PIECE_SEOUL", p.price(), p.imageUrl(), p.frequency(),
+                        "PIECE_SEOUL", p.price(), productImageUrl(p.productId()), p.frequency(),
                         p.applicationMethod(), toJson(p.verifiedClaims()),
                         toJson(p.ingredientsHighlight()), toJson(p.skinStateTags())
                 ));
@@ -178,7 +180,7 @@ public class DemoDataInitializer {
                         p.productId(), p.brand() != null ? p.brand() : "WIM Store", p.name(),
                         mapCategory(p.category()), ProductConcern.GENERAL, true,
                         true, false, p.officialUrl(), priority++,
-                        "WIM_STORE", p.price(), p.imageUrl(), p.usage(),
+                        "WIM_STORE", p.price(), productImageUrl(p.productId()), p.usage(),
                         null, toJson(p.verifiedClaims()),
                         toJson(p.ingredientsHighlight()), toJson(p.stateTags())
                 ));
@@ -188,6 +190,10 @@ public class DemoDataInitializer {
 
         log.info("KB product seeding done. PieceSeoul: {} newly saved of {} in KB, WimStore: {} newly saved of {} in KB",
                 pieceSeoulSaved, pieceSeoulKb.size(), wimStoreSaved, wimStoreKb.size());
+    }
+
+    private String productImageUrl(String productId) {
+        return PRODUCT_IMAGE_BASE_URL + productId + ".jpg";
     }
 
     private ProductCategory mapCategory(String kbCategory) {

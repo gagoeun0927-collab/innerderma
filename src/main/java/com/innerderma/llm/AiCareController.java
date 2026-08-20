@@ -54,6 +54,7 @@ public class AiCareController {
     private final UserService userService;
     private final SolutionCache solutionCache;
     private final ProductRecommendationLogRepository recommendationLogRepository;
+    private final com.innerderma.common.demo.DemoUserDataSeeder demoUserDataSeeder;
 
     public AiCareController(SolutionAssembler solutionAssembler,
                             ProductMatcher productMatcher,
@@ -63,7 +64,8 @@ public class AiCareController {
                             ProcedureRecordRepository procedureRecordRepository,
                             UserService userService,
                             SolutionCache solutionCache,
-                            ProductRecommendationLogRepository recommendationLogRepository) {
+                            ProductRecommendationLogRepository recommendationLogRepository,
+                            com.innerderma.common.demo.DemoUserDataSeeder demoUserDataSeeder) {
         this.solutionAssembler = solutionAssembler;
         this.productMatcher = productMatcher;
         this.llmRenderer = llmRenderer;
@@ -73,6 +75,7 @@ public class AiCareController {
         this.userService = userService;
         this.solutionCache = solutionCache;
         this.recommendationLogRepository = recommendationLogRepository;
+        this.demoUserDataSeeder = demoUserDataSeeder;
     }
 
     @Operation(
@@ -110,6 +113,10 @@ public class AiCareController {
             @RequestParam(required = false) String locale
     ) {
         String resolvedLocale = resolveLocale(userCode, locale);
+
+        // 시연용: 자가문진/스냅샷이 없는 신규 사용자에게 최소 데이터를 만들어
+        // 파이프라인이 의미 있는 신호를 받을 수 있게 한다. (innerderma.demo.auto-seed-user-data로 제어)
+        demoUserDataSeeder.ensureMinimumData(userCode);
 
         // Cache 적중 확인 (§33 멱등성: 같은 날 동일 조건이면 LLM 재호출 안 함)
         SolutionCacheKey cacheKey = buildCacheKey(userCode);

@@ -43,6 +43,7 @@ class AiCareControllerTest {
     private com.innerderma.procedure.domain.ProcedureRecordRepository procedureRecordRepository;
     private com.innerderma.user.application.UserService userService;
     private SolutionCache solutionCache;
+    private com.innerderma.common.demo.DemoUserDataSeeder demoUserDataSeeder;
     private MockMvc mockMvc;
 
     @BeforeEach
@@ -55,9 +56,10 @@ class AiCareControllerTest {
         procedureRecordRepository = mock(com.innerderma.procedure.domain.ProcedureRecordRepository.class);
         userService = mock(com.innerderma.user.application.UserService.class);
         solutionCache = mock(SolutionCache.class);
+        demoUserDataSeeder = mock(com.innerderma.common.demo.DemoUserDataSeeder.class);
         when(solutionCache.get(any())).thenReturn(Optional.empty());
         mockMvc = MockMvcBuilders.standaloneSetup(
-                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository, procedureRecordRepository, userService, solutionCache, mock(com.innerderma.knowledge.product.usage.ProductRecommendationLogRepository.class)))
+                        new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator, snapshotRepository, procedureRecordRepository, userService, solutionCache, mock(com.innerderma.knowledge.product.usage.ProductRecommendationLogRepository.class), demoUserDataSeeder))
                 .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
         when(procedureRecordRepository.findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDesc(any(), any()))
@@ -225,7 +227,8 @@ class AiCareControllerTest {
         var logRepository = mock(com.innerderma.knowledge.product.usage.ProductRecommendationLogRepository.class);
         mockMvc = MockMvcBuilders.standaloneSetup(
                         new AiCareController(solutionAssembler, productMatcher, llmRenderer, responseValidator,
-                                snapshotRepository, procedureRecordRepository, userService, solutionCache, logRepository))
+                                snapshotRepository, procedureRecordRepository, userService, solutionCache,
+                                logRepository, demoUserDataSeeder))
                 .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
 
@@ -260,5 +263,47 @@ class AiCareControllerTest {
                 .andExpect(status().isOk());
 
         org.mockito.Mockito.verify(logRepository, org.mockito.Mockito.never()).save(any());
+    }
+
+    @Test
+    void postSeedsMinimumDataForNewUser() throws Exception {
+        SolutionObject solution = new SolutionObject(
+                Map.of(), List.of(), List.of("R010@1.0.0"), List.of(), Map.of(), Map.of());
+        when(solutionAssembler.assembleForUser("NEW-USER-001")).thenReturn(solution);
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("NEW-USER-001"))
+                .thenReturn(Optional.empty());
+        when(productMatcher.match(any(), any(), any(), any(), any()))
+                .thenReturn(new ProductMatchResult(List.of(), List.of(), List.of(), "STABLE", null));
+        com.innerderma.user.domain.User user =
+                new com.innerderma.user.domain.User("NEW-USER-001", "new", "010-0000-0000");
+        user.updatePreferredLocale("ko");
+        when(userService.getByUserCode("NEW-USER-001")).thenReturn(user);
+        when(llmRenderer.render(any(), any(), any()))
+                .thenReturn(new LlmResponse("Care", "STABLE", "", null, null, null, null));
+        when(responseValidator.validate(any(), any(int.class), any(int.class), any(int.class), any(), any(), any(), any()))
+                .thenReturn(ResponseValidationResult.success());
+
+        mockMvc.perform(post("/api/users/NEW-USER-001/ai-care"))
+                .andExpect(status().isOk());
+
+        org.mockito.Mockito.verify(demoUserDataSeeder).ensureMinimumData("NEW-USER-001");
+    }
+
+    @Test
+    void getDoesNotSeedData() throws Exception {
+        when(snapshotRepository.findFirstByUser_UserCodeOrderBySnapshotDateDesc("NEW-USER-001"))
+                .thenReturn(Optional.empty());
+        com.innerderma.user.domain.User user =
+                new com.innerderma.user.domain.User("NEW-USER-001", "new", "010-0000-0000");
+        user.updatePreferredLocale("ko");
+        when(userService.getByUserCode("NEW-USER-001")).thenReturn(user);
+        when(solutionCache.get(any())).thenReturn(Optional.empty());
+
+        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                        .get("/api/users/NEW-USER-001/ai-care"))
+                .andExpect(status().isNotFound());
+
+        // GET은 읽기 전용이어야 한다
+        org.mockito.Mockito.verify(demoUserDataSeeder, org.mockito.Mockito.never()).ensureMinimumData(any());
     }
 }

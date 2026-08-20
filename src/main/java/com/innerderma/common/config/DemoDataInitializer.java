@@ -150,7 +150,7 @@ public class DemoDataInitializer {
                 .orElseGet(() -> facilityRepository.save(new Facility(facilityCode, name)));
     }
 
-    private static final String PRODUCT_IMAGE_BASE_URL = "https://inner-derma.duckdns.org/product-images/";
+    private static final String PRODUCT_IMAGE_BASE_URL = "/product-images/";
 
     private void seedKnowledgeBaseProducts(ProductRepository repository,
                                          com.innerderma.knowledge.product.PieceSeoulKnowledgeBase pieceSeoulKb,

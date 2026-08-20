@@ -54,7 +54,7 @@ class DemoDataInitializerSeedingTest {
             assertThat(p.getPrice()).isNotNull().isPositive();
             assertThat(p.getOfficialUrl()).isNotBlank();
             assertThat(p.isDemoProduct()).isFalse();
-            assertThat(p.getImageUrl()).startsWith("https://inner-derma.duckdns.org/product-images/");
+            assertThat(p.getImageUrl()).startsWith("/product-images/");
             assertThat(p.getImageUrl()).endsWith(".jpg");
         });
     }

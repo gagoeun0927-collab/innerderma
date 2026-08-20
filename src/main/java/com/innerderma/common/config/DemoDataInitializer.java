@@ -181,9 +181,17 @@ public class DemoDataInitializer {
         if (kbCategory == null) return ProductCategory.TARGETED_CARE;
         return switch (kbCategory.toUpperCase()) {
             case "CLEANSER" -> ProductCategory.CLEANSER;
+            case "TONER" -> ProductCategory.TONER;
+            case "SERUM" -> ProductCategory.SERUM;
             case "MOISTURIZER" -> ProductCategory.MOISTURIZER;
             case "SUNSCREEN" -> ProductCategory.SUNSCREEN;
-            case "TONER", "SERUM", "OIL", "MASK", "TARGETED_CARE" -> ProductCategory.TARGETED_CARE;
+            case "OIL" -> ProductCategory.OIL;
+            case "MASK" -> ProductCategory.MASK;
+            case "POWDER" -> ProductCategory.POWDER;
+            case "JELLY" -> ProductCategory.JELLY;
+            case "SUPPLEMENT" -> ProductCategory.SUPPLEMENT;
+            case "DRINK" -> ProductCategory.DRINK;
+            case "FOOD" -> ProductCategory.FOOD;
             default -> ProductCategory.TARGETED_CARE;
         };
     }

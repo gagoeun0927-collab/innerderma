@@ -4,8 +4,20 @@
     "brand": "Piece Seoul",
     "name": "코어 리빌드 크림 (Core Rebuild Cream)",
     "category": "MOISTURIZER",
-    "tags": ["barrier", "growth_factor", "peptide", "ceramide", "soothing", "recovery"],
-    "skin_state_tags": ["BARRIER_RECOVERY", "HYDRATION", "IRRITATION", "STABLE"],
+    "tags": [
+      "barrier",
+      "growth_factor",
+      "peptide",
+      "ceramide",
+      "soothing",
+      "recovery"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "HYDRATION",
+      "IRRITATION",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -37,31 +49,59 @@
       "exosome_asce"
     ],
     "restricted_after_treatments": [
-      {"treatment": "tca_deep_peel", "restrict_days": 3}
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 3
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "fingertip amount (1~2 pea-sized)",
     "application_method": "세안 및 토너/세럼 사용 후 적당량을 덜어 피부 결을 따라 얼굴 전체와 목에 부드럽게 펴 바르고 체온으로 흡수시킵니다.",
-    "warnings": ["상처 부위 직접 도포 피하기", "사용 중 붉은 반점이나 가려움 발생 시 사용 중단"],
+    "warnings": [
+      "상처 부위 직접 도포 피하기",
+      "사용 중 붉은 반점이나 가려움 발생 시 사용 중단"
+    ],
     "verified_claims": [
       "베타-시토스테롤 및 10종 피부 성장인자(EGF/FGF 등) 복합체 함유로 손상된 피부 장벽 회복 지원",
       "피부과 시술 후 약해진 피부 밀도 개선 및 보습 유지력 강화"
     ],
-    "ingredients_highlight": ["beta-sitosterol", "growth factor complex (10 GF)", "ceramide NP", "panthenol", "copper tripeptide-1"],
+    "ingredients_highlight": [
+      "beta-sitosterol",
+      "growth factor complex (10 GF)",
+      "ceramide NP",
+      "panthenol",
+      "copper tripeptide-1"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 68000,
     "official_url": "https://pieceseoul.com/products/core-rebuild-cream",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_001_core_rebuild.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_001_core_rebuild.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_002",
     "brand": "Piece Seoul",
     "name": "블루 리페어 수딩 크림 (Blue Repair Soothing Cream)",
     "category": "MOISTURIZER",
-    "tags": ["soothing", "calming", "azulene", "centella", "redness", "cooling"],
-    "skin_state_tags": ["REDNESS", "IRRITATION", "BARRIER_RECOVERY", "SWELLING"],
+    "tags": [
+      "soothing",
+      "calming",
+      "azulene",
+      "centella",
+      "redness",
+      "cooling"
+    ],
+    "skin_state_tags": [
+      "REDNESS",
+      "IRRITATION",
+      "BARRIER_RECOVERY",
+      "SWELLING"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -86,29 +126,52 @@
       "exosome_asce"
     ],
     "restricted_after_treatments": [],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "1~2 pumps",
     "application_method": "열감이나 붉은기가 있는 부위를 중심으로 가볍게 펴 바른 뒤 가볍게 두드려 흡수시킵니다. 필요 시 얇게 덧바릅니다.",
-    "warnings": ["자외선 노출 전 단독 사용 시 자외선 차단제 병행 권장"],
+    "warnings": [
+      "자외선 노출 전 단독 사용 시 자외선 차단제 병행 권장"
+    ],
     "verified_claims": [
       "구아이아줄렌 성분이 시술 및 자극으로 인한 일시적 붉은기 및 열감 진정",
       "병풀추출물 기반의 저자극 수분 젤 크림 포뮬러"
     ],
-    "ingredients_highlight": ["guaiazulene", "centella asiatica extract", "madecassoside", "allantoin", "hyaluronic acid"],
+    "ingredients_highlight": [
+      "guaiazulene",
+      "centella asiatica extract",
+      "madecassoside",
+      "allantoin",
+      "hyaluronic acid"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 54000,
     "official_url": "https://pieceseoul.com/products/blue-repair-soothing-cream",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_002_blue_repair_cream.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_002_blue_repair_cream.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_003",
     "brand": "Piece Seoul",
     "name": "판테티놀 선 에센스 SPF50+ PA++++ (Panthetinol Sun Essence)",
     "category": "SUNSCREEN",
-    "tags": ["sunscreen", "uv_protection", "panthenol", "anti_aging", "moisture_sun"],
-    "skin_state_tags": ["STABLE", "HYDRATION", "PIGMENTATION", "BARRIER_RECOVERY"],
+    "tags": [
+      "sunscreen",
+      "uv_protection",
+      "panthenol",
+      "anti_aging",
+      "moisture_sun"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "HYDRATION",
+      "PIGMENTATION",
+      "BARRIER_RECOVERY"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -126,35 +189,75 @@
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "fractional_laser", "restrict_days": 2},
-      {"treatment": "fraxel_dual", "restrict_days": 2},
-      {"treatment": "microneedling", "restrict_days": 2},
-      {"treatment": "potenza_pumping", "restrict_days": 2},
-      {"treatment": "tca_deep_peel", "restrict_days": 5}
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 2
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 5
+      }
     ],
-    "usage_time": ["morning"],
+    "usage_time": [
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "two-finger length (약 1.2g)",
     "application_method": "아침 스킨케어 마지막 단계에서 외출 20~30분 전 얼굴 전체 및 목에 골고루 펴 바릅니다. 야외 활동 시 2~3시간마다 덧바릅니다.",
-    "warnings": ["상처가 아물지 않은 시술 직후 피부에는 무기자차 전용 또는 재생 밴드 위 사용 권장", "눈가 피하여 도포"],
+    "warnings": [
+      "상처가 아물지 않은 시술 직후 피부에는 무기자차 전용 또는 재생 밴드 위 사용 권장",
+      "눈가 피하여 도포"
+    ],
     "verified_claims": [
       "SPF50+ PA++++ 강력한 자외선 차단(UVA/UVB 동시 차단)",
       "판테놀과 저자극 안티에이징 복합체가 결합되어 자외선 자극으로부터 피부 장벽 동시 보호"
     ],
-    "ingredients_highlight": ["panthenol", "retinyl palmitate (micro-dosed)", "tocopherol", "niacinamide", "adenosine"],
+    "ingredients_highlight": [
+      "panthenol",
+      "retinyl palmitate (micro-dosed)",
+      "tocopherol",
+      "niacinamide",
+      "adenosine"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 42000,
     "official_url": "https://pieceseoul.com/products/panthetinol-sun-essence",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_003_panthetinol_sun.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_003_panthetinol_sun.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_004",
     "brand": "Piece Seoul",
     "name": "블루 리페어 수딩 마스크 (Blue Repair Soothing Mask - 5ea)",
     "category": "MASK",
-    "tags": ["mask_sheet", "soothing", "cooling", "azulene", "calming", "post_treatment"],
-    "skin_state_tags": ["REDNESS", "IRRITATION", "SWELLING", "HYDRATION", "BARRIER_RECOVERY"],
+    "tags": [
+      "mask_sheet",
+      "soothing",
+      "cooling",
+      "azulene",
+      "calming",
+      "post_treatment"
+    ],
+    "skin_state_tags": [
+      "REDNESS",
+      "IRRITATION",
+      "SWELLING",
+      "HYDRATION",
+      "BARRIER_RECOVERY"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -180,31 +283,58 @@
       "exosome_asce"
     ],
     "restricted_after_treatments": [
-      {"treatment": "tca_deep_peel", "restrict_days": 3}
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 3
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "every_other_day",
     "amount": "1 sheet",
     "application_method": "세안 후 토너로 피부결을 정돈한 뒤 마스크 시트를 얼굴 전체에 밀착시키고 15~20분 후 제거합니다. 남은 에센스는 가볍게 두드려 흡수시킵니다.",
-    "warnings": ["시트 부착 시간을 20분 이상 초과하지 말 것"],
+    "warnings": [
+      "시트 부착 시간을 20분 이상 초과하지 말 것"
+    ],
     "verified_claims": [
       "임상 검증된 급속 쿨링 및 시술 후 피부 온도 감소 효과",
       "멸균 극세사 시트로 민감성 피부 물리적 자극 최소화"
     ],
-    "ingredients_highlight": ["guaiazulene", "chamomile flower extract", "hydrolyzed hyaluronic acid", "panthenol", "dipotassium glycyrrhizate"],
+    "ingredients_highlight": [
+      "guaiazulene",
+      "chamomile flower extract",
+      "hydrolyzed hyaluronic acid",
+      "panthenol",
+      "dipotassium glycyrrhizate"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 35000,
     "official_url": "https://pieceseoul.com/products/blue-repair-soothing-mask",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_004_blue_mask.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_004_blue_mask.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_005",
     "brand": "Piece Seoul",
     "name": "젠틀 밸런싱 아미노 클렌저 (Gentle Balancing Amino Cleanser)",
     "category": "CLEANSER",
-    "tags": ["cleanser", "low_ph", "amino_acid", "barrier_safe", "gentle", "mild"],
-    "skin_state_tags": ["BARRIER_RECOVERY", "IRRITATION", "HYDRATION", "ACNE", "STABLE"],
+    "tags": [
+      "cleanser",
+      "low_ph",
+      "amino_acid",
+      "barrier_safe",
+      "gentle",
+      "mild"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "IRRITATION",
+      "HYDRATION",
+      "ACNE",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -231,29 +361,52 @@
       "juvelook_skin"
     ],
     "restricted_after_treatments": [],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "1~2 pumps",
     "application_method": "미온수로 얼굴을 적신 후 손바닥에서 조밀한 거품을 내어 피부에 물리적 마찰을 최소화하며 부드럽게 롤링한 뒤 깨끗이 헹구어냅니다.",
-    "warnings": ["세안 시 강하게 문지르지 말고 가볍게 패팅하듯 헹굴 것"],
+    "warnings": [
+      "세안 시 강하게 문지르지 말고 가볍게 패팅하듯 헹굴 것"
+    ],
     "verified_claims": [
       "pH 5.5 약산성 아미노산 계면활성제 적용으로 세안 후 피부 장벽 손상 및 당김 최소화",
       "피부 1차 자극 테스트 완료 저자극 포뮬러"
     ],
-    "ingredients_highlight": ["sodium cocoyl apple amino acids", "panthenol", "glycerin", "camellia sinensis leaf water"],
+    "ingredients_highlight": [
+      "sodium cocoyl apple amino acids",
+      "panthenol",
+      "glycerin",
+      "camellia sinensis leaf water"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 32000,
     "official_url": "https://pieceseoul.com/products/gentle-balancing-amino-cleanser",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_005_amino_cleanser.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_005_amino_cleanser.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_006",
     "brand": "Piece Seoul",
     "name": "배리어 부스팅 하이드라 토너 (Barrier Boosting Hydra Toner)",
     "category": "TONER",
-    "tags": ["toner", "hydration", "ceramide", "panthenol", "hyaluronic_acid", "soothing"],
-    "skin_state_tags": ["HYDRATION", "BARRIER_RECOVERY", "IRRITATION", "STABLE"],
+    "tags": [
+      "toner",
+      "hydration",
+      "ceramide",
+      "panthenol",
+      "hyaluronic_acid",
+      "soothing"
+    ],
+    "skin_state_tags": [
+      "HYDRATION",
+      "BARRIER_RECOVERY",
+      "IRRITATION",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -279,31 +432,58 @@
       "juvelook_skin"
     ],
     "restricted_after_treatments": [
-      {"treatment": "tca_deep_peel", "restrict_days": 3}
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 3
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "coin-sized amount (약 2~3ml)",
     "application_method": "세안 직후 손바닥에 덜어 얼굴 전체에 지그시 누르듯 흡수시킵니다. 시술 후 건조함이 심할 경우 2~3회 레이어링합니다.",
-    "warnings": ["화장솜으로 세게 닦아내는 행위(닦토)는 시술 후 7일간 자제"],
+    "warnings": [
+      "화장솜으로 세게 닦아내는 행위(닦토)는 시술 후 7일간 자제"
+    ],
     "verified_claims": [
       "5종 복합 히알루론산과 고농축 판테놀로 세안 직후 급속 수분 공급",
       "알코올 프리 무자극 진정 에센스 제형"
     ],
-    "ingredients_highlight": ["hyaluronic acid complex (5 types)", "panthenol 5%", "ceramide NP", "betaine", "beta-glucan"],
+    "ingredients_highlight": [
+      "hyaluronic acid complex (5 types)",
+      "panthenol 5%",
+      "ceramide NP",
+      "betaine",
+      "beta-glucan"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 38000,
     "official_url": "https://pieceseoul.com/products/barrier-boosting-hydra-toner",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_006_hydra_toner.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_006_hydra_toner.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_007",
     "brand": "Piece Seoul",
     "name": "EGF 펩타이드 코어 앰플 (EGF Peptide Core Ampoule)",
     "category": "SERUM",
-    "tags": ["serum", "ampoule", "egf", "peptide", "anti_aging", "elasticity", "recovery"],
-    "skin_state_tags": ["BARRIER_RECOVERY", "STABLE", "HYDRATION"],
+    "tags": [
+      "serum",
+      "ampoule",
+      "egf",
+      "peptide",
+      "anti_aging",
+      "elasticity",
+      "recovery"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "STABLE",
+      "HYDRATION"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -326,32 +506,60 @@
       "exosome_asce"
     ],
     "restricted_after_treatments": [
-      {"treatment": "chemical_peel", "restrict_days": 3},
-      {"treatment": "tca_deep_peel", "restrict_days": 7}
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 3
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 7
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "daily",
     "amount": "1 dropper (약 0.5ml)",
     "application_method": "토너 사용 후 스포이드로 양 볼과 이마에 떨어뜨려 피부 결을 따라 부드럽게 펴 바르고 손바닥으로 감싸 흡수시킵니다.",
-    "warnings": ["상처 부위 직접 사용 피하기"],
+    "warnings": [
+      "상처 부위 직접 사용 피하기"
+    ],
     "verified_claims": [
       "고순도 리포좀 화된 SH-Oligopeptide-1 (EGF) 함유로 피부 턴오버 및 탄력 지지",
       "멀티 펩타이드 콤플렉스를 통한 잔주름 및 피부 결 집중 케어"
     ],
-    "ingredients_highlight": ["sh-oligopeptide-1 (EGF)", "acetyl hexapeptide-8", "palmitoyl pentapeptide-4", "adenosine", "hydrolyzed collagen"],
+    "ingredients_highlight": [
+      "sh-oligopeptide-1 (EGF)",
+      "acetyl hexapeptide-8",
+      "palmitoyl pentapeptide-4",
+      "adenosine",
+      "hydrolyzed collagen"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 82000,
     "official_url": "https://pieceseoul.com/products/egf-peptide-core-ampoule",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_007_egf_ampoule.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_007_egf_ampoule.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_008",
     "brand": "Piece Seoul",
     "name": "아줄렌 카밍 릴리프 세럼 (Azulene Calming Relief Serum)",
     "category": "SERUM",
-    "tags": ["serum", "soothing", "azulene", "centella", "redness", "sensitivity"],
-    "skin_state_tags": ["REDNESS", "IRRITATION", "BARRIER_RECOVERY"],
+    "tags": [
+      "serum",
+      "soothing",
+      "azulene",
+      "centella",
+      "redness",
+      "sensitivity"
+    ],
+    "skin_state_tags": [
+      "REDNESS",
+      "IRRITATION",
+      "BARRIER_RECOVERY"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -377,29 +585,51 @@
       "juvelook_skin"
     ],
     "restricted_after_treatments": [],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "1 dropper",
     "application_method": "토너 다음 단계에서 붉은기와 열감이 두드러진 부위를 중심으로 펴 발라 두드려 흡수시킵니다.",
-    "warnings": ["이상 증상 발생 시 사용 중단"],
+    "warnings": [
+      "이상 증상 발생 시 사용 중단"
+    ],
     "verified_claims": [
       "구아이아줄렌 고농축(3,000ppm) 배합으로 자극받은 피부의 즉각적인 진정 효과",
       "병풀잎수 72% 베이스의 수분 진정 포뮬러"
     ],
-    "ingredients_highlight": ["centella asiatica leaf water 72%", "guaiazulene 3000ppm", "madecassoside", "panthenol", "allantoin"],
+    "ingredients_highlight": [
+      "centella asiatica leaf water 72%",
+      "guaiazulene 3000ppm",
+      "madecassoside",
+      "panthenol",
+      "allantoin"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 58000,
     "official_url": "https://pieceseoul.com/products/azulene-calming-relief-serum",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_008_azulene_serum.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_008_azulene_serum.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_009",
     "brand": "Piece Seoul",
     "name": "비타 부스팅 래디언스 세럼 (Vita Boosting Radiance Serum)",
     "category": "SERUM",
-    "tags": ["serum", "brightening", "vitamin_c", "niacinamide", "pigmentation", "radiance"],
-    "skin_state_tags": ["PIGMENTATION", "STABLE"],
+    "tags": [
+      "serum",
+      "brightening",
+      "vitamin_c",
+      "niacinamide",
+      "pigmentation",
+      "radiance"
+    ],
+    "skin_state_tags": [
+      "PIGMENTATION",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -409,37 +639,81 @@
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "fractional_laser", "restrict_days": 7},
-      {"treatment": "fraxel_dual", "restrict_days": 7},
-      {"treatment": "microneedling", "restrict_days": 7},
-      {"treatment": "potenza_pumping", "restrict_days": 7},
-      {"treatment": "chemical_peel", "restrict_days": 7},
-      {"treatment": "tca_deep_peel", "restrict_days": 14},
-      {"treatment": "ipl", "restrict_days": 3}
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 14
+      },
+      {
+        "treatment": "ipl",
+        "restrict_days": 3
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "every_other_day",
     "amount": "2~3 drops",
     "application_method": "저녁 스킨케어 시 토너 후 2~3방울을 색소 고민 부위에 도포하고 가볍게 흡수시킨 후 보습 크림으로 마무리합니다.",
-    "warnings": ["시술 직후 붉은기나 미세 상처가 있을 때는 사용 금지", "낮 사용 시 자외선 차단제 필수"],
+    "warnings": [
+      "시술 직후 붉은기나 미세 상처가 있을 때는 사용 금지",
+      "낮 사용 시 자외선 차단제 필수"
+    ],
     "verified_claims": [
       "안정화된 비타민C 유도체(3-O-Ethyl Ascorbic Acid) 및 나이아신아마이드 5% 함유로 잡티 및 피부 톤 개선",
       "글루타치온 복합체로 맑은 안색 부여"
     ],
-    "ingredients_highlight": ["3-o-ethyl ascorbic acid", "niacinamide 5%", "glutathione", "ferulic acid", "hyaluronic acid"],
+    "ingredients_highlight": [
+      "3-o-ethyl ascorbic acid",
+      "niacinamide 5%",
+      "glutathione",
+      "ferulic acid",
+      "hyaluronic acid"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 64000,
     "official_url": "https://pieceseoul.com/products/vita-boosting-radiance-serum",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_009_vita_serum.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_009_vita_serum.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_010",
     "brand": "Piece Seoul",
     "name": "시카 인텐시브 리커버리 밤 (Cica Intensive Recovery Balm)",
     "category": "TARGETED_CARE",
-    "tags": ["targeted_care", "balm", "spot", "cica", "barrier_recovery", "post_procedure"],
-    "skin_state_tags": ["BARRIER_RECOVERY", "IRRITATION", "REDNESS"],
+    "tags": [
+      "targeted_care",
+      "balm",
+      "spot",
+      "cica",
+      "barrier_recovery",
+      "post_procedure"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "IRRITATION",
+      "REDNESS"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -453,29 +727,51 @@
       "juvelook_skin"
     ],
     "restricted_after_treatments": [],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "small pea-sized per spot",
     "application_method": "시술 부위나 극도로 건조하고 자극받은 국소 부위에 얇은 보호막을 형성하듯 톡톡 얹어 바릅니다.",
-    "warnings": ["출혈이나 진물이 지속되는 개방성 상처에는 사용 전 의료진과 상담"],
+    "warnings": [
+      "출혈이나 진물이 지속되는 개방성 상처에는 사용 전 의료진과 상담"
+    ],
     "verified_claims": [
       "고농축 센텔라아시아티카 정량추출물(TECA)과 판테놀 10% 함유 국소 집중 보호밤",
       "외부 유해 환경으로부터 미세 손상 피부를 밀폐 보호"
     ],
-    "ingredients_highlight": ["centella asiatica quantitative extract (TECA)", "panthenol 10%", "madecassic acid", "asiaticoside", "ceramide EOP"],
+    "ingredients_highlight": [
+      "centella asiatica quantitative extract (TECA)",
+      "panthenol 10%",
+      "madecassic acid",
+      "asiaticoside",
+      "ceramide EOP"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 46000,
     "official_url": "https://pieceseoul.com/products/cica-intensive-recovery-balm",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_010_cica_balm.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_010_cica_balm.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_011",
     "brand": "Piece Seoul",
     "name": "퓨리파잉 클리어링 젤 클렌저 (Purifying Clearing Gel Cleanser)",
     "category": "CLEANSER",
-    "tags": ["cleanser", "acne", "sebum_control", "tea_tree", "lha", "pore"],
-    "skin_state_tags": ["ACNE", "SEBUM"],
+    "tags": [
+      "cleanser",
+      "acne",
+      "sebum_control",
+      "tea_tree",
+      "lha",
+      "pore"
+    ],
+    "skin_state_tags": [
+      "ACNE",
+      "SEBUM"
+    ],
     "treatment_compatibility": [
       "aquapeel",
       "hydrafacial",
@@ -484,37 +780,80 @@
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "fractional_laser", "restrict_days": 7},
-      {"treatment": "fraxel_dual", "restrict_days": 7},
-      {"treatment": "microneedling", "restrict_days": 7},
-      {"treatment": "potenza_pumping", "restrict_days": 7},
-      {"treatment": "chemical_peel", "restrict_days": 7},
-      {"treatment": "tca_deep_peel", "restrict_days": 14},
-      {"treatment": "laser_toning", "restrict_days": 3}
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 14
+      },
+      {
+        "treatment": "laser_toning",
+        "restrict_days": 3
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "1 pump",
     "application_method": "손에 덜어 충분히 거품을 낸 뒤 T존과 피지 분비가 많은 부위를 중심으로 마사지하듯 씻어냅니다.",
-    "warnings": ["시술 직후 민감해진 피부에는 사용을 피하고 저자극 아미노 클렌저 사용 권장"],
+    "warnings": [
+      "시술 직후 민감해진 피부에는 사용을 피하고 저자극 아미노 클렌저 사용 권장"
+    ],
     "verified_claims": [
       "4세대 저자극 LHA 성분과 티트리추출물이 과다 피지와 모공 속 노폐물을 부드럽게 세정",
       "여드름성 피부 사용 적합 테스트 완료"
     ],
-    "ingredients_highlight": ["capryloyl salicylic acid (LHA)", "melaleuca alternifolia (tea tree) extract", "zinc PCA", "salicylic acid 0.45%"],
+    "ingredients_highlight": [
+      "capryloyl salicylic acid (LHA)",
+      "melaleuca alternifolia (tea tree) extract",
+      "zinc PCA",
+      "salicylic acid 0.45%"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 32000,
     "official_url": "https://pieceseoul.com/products/purifying-clearing-gel-cleanser",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_011_purifying_cleanser.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_011_purifying_cleanser.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_012",
     "brand": "Piece Seoul",
     "name": "스쿠알란 배리어 페이셜 오일 (Squalane Barrier Facial Oil)",
     "category": "OIL",
-    "tags": ["oil", "squalane", "barrier", "dry_skin", "moisture_lock", "nutrition"],
-    "skin_state_tags": ["HYDRATION", "BARRIER_RECOVERY", "STABLE"],
+    "tags": [
+      "oil",
+      "squalane",
+      "barrier",
+      "dry_skin",
+      "moisture_lock",
+      "nutrition"
+    ],
+    "skin_state_tags": [
+      "HYDRATION",
+      "BARRIER_RECOVERY",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -525,72 +864,148 @@
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "chemical_peel", "restrict_days": 3},
-      {"treatment": "microneedling", "restrict_days": 3},
-      {"treatment": "fractional_laser", "restrict_days": 5}
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 3
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 3
+      },
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 5
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "every_other_day",
     "amount": "1~2 drops",
     "application_method": "저녁 스킨케어 마지막 단계에서 크림에 1방울 섞어 바르거나, 손바닥에 비벼 체온으로 얼굴을 감싸듯 밀착 흡수시킵니다.",
-    "warnings": ["여드름성 피부나 피지 과다 피부는 사용량 조절 주의"],
+    "warnings": [
+      "여드름성 피부나 피지 과다 피부는 사용량 조절 주의"
+    ],
     "verified_claims": [
       "100% 식물성 사탕수수 유래 고순도 스쿠알란으로 피부 수분 증발 차단막 형성",
       "모공을 막지 않는 논코메도제닉 오일 베이스"
     ],
-    "ingredients_highlight": ["plant-derived squalane 100%", "tocopherol"],
+    "ingredients_highlight": [
+      "plant-derived squalane 100%",
+      "tocopherol"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 48000,
     "official_url": "https://pieceseoul.com/products/squalane-barrier-facial-oil",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_012_squalane_oil.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_012_squalane_oil.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_013",
     "brand": "Piece Seoul",
     "name": "PHA 마일드 리셋 필링 패드 (PHA Mild Reset Peeling Pad - 60매)",
     "category": "TONER",
-    "tags": ["toner", "pad", "pha", "gluconolactone", "gentle_exfoliation", "texture"],
-    "skin_state_tags": ["ACNE", "SEBUM", "STABLE"],
+    "tags": [
+      "toner",
+      "pad",
+      "pha",
+      "gluconolactone",
+      "gentle_exfoliation",
+      "texture"
+    ],
+    "skin_state_tags": [
+      "ACNE",
+      "SEBUM",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "hydrafacial",
       "aquapeel",
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "laser_toning", "restrict_days": 5},
-      {"treatment": "pico_toning", "restrict_days": 5},
-      {"treatment": "fractional_laser", "restrict_days": 10},
-      {"treatment": "fraxel_dual", "restrict_days": 10},
-      {"treatment": "chemical_peel", "restrict_days": 7},
-      {"treatment": "tca_deep_peel", "restrict_days": 21},
-      {"treatment": "microneedling", "restrict_days": 7},
-      {"treatment": "potenza_pumping", "restrict_days": 7},
-      {"treatment": "injection", "restrict_days": 5}
+      {
+        "treatment": "laser_toning",
+        "restrict_days": 5
+      },
+      {
+        "treatment": "pico_toning",
+        "restrict_days": 5
+      },
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 10
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 10
+      },
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 21
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "injection",
+        "restrict_days": 5
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "every_other_day",
     "amount": "1 pad",
     "application_method": "세안 후 엠보면으로 눈가를 제외한 T존과 각질 고민 부위를 부드럽게 닦아낸 뒤, 부드러운 면으로 피부 결을 정돈하고 흡수시킵니다.",
-    "warnings": ["시술 회복 기간 중 물리적 마찰 및 산 성분 접촉 절대 금지"],
+    "warnings": [
+      "시술 회복 기간 중 물리적 마찰 및 산 성분 접촉 절대 금지"
+    ],
     "verified_claims": [
       "입자가 큰 3세대 PHA(글루코노락톤 3%)로 피부 자극과 광과민성 없이 묵은 각질 연화",
       "판테놀과 알란토인 배합으로 각질 케어 후에도 촉촉한 수분감 유지"
     ],
-    "ingredients_highlight": ["gluconolactone (PHA 3%)", "panthenol", "allantoin", "betula platyphylla japonica juice"],
+    "ingredients_highlight": [
+      "gluconolactone (PHA 3%)",
+      "panthenol",
+      "allantoin",
+      "betula platyphylla japonica juice"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 34000,
     "official_url": "https://pieceseoul.com/products/pha-mild-reset-pad",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_013_pha_pad.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_013_pha_pad.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_014",
     "brand": "Piece Seoul",
     "name": "엑소좀 펩타이드 리바이탈 크림 (Exosome Peptide Revital Cream)",
     "category": "MOISTURIZER",
-    "tags": ["barrier", "exosome", "peptide", "anti_aging", "elasticity", "firming"],
-    "skin_state_tags": ["BARRIER_RECOVERY", "STABLE", "HYDRATION"],
+    "tags": [
+      "barrier",
+      "exosome",
+      "peptide",
+      "anti_aging",
+      "elasticity",
+      "firming"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "STABLE",
+      "HYDRATION"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -616,31 +1031,58 @@
       "exosome_asce"
     ],
     "restricted_after_treatments": [
-      {"treatment": "tca_deep_peel", "restrict_days": 5}
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 5
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "1~2 pea-sized",
     "application_method": "세럼 단계 후 얼굴 안쪽에서 바깥쪽으로 부드럽게 펴 바르고, 턱선과 이마를 끌어올리듯 가볍게 리프팅 마사지하며 밀착 흡수시킵니다.",
-    "warnings": ["민감 피부 사용 시 패치 테스트 권장"],
+    "warnings": [
+      "민감 피부 사용 시 패치 테스트 권장"
+    ],
     "verified_claims": [
       "식물 유래 엑소좀(CICA-Exosome) 10,000ppm 함유로 진피층 세포 간 신호 전달 및 피부 재생 활성화",
       "8종 멀티 펩타이드와 보르피린 성분이 피부 탄력 밀도 강화"
     ],
-    "ingredients_highlight": ["centella asiatica exosome 10000ppm", "volufiline", "acetyl octapeptide-3", "niacinamide", "ceramide NP"],
+    "ingredients_highlight": [
+      "centella asiatica exosome 10000ppm",
+      "volufiline",
+      "acetyl octapeptide-3",
+      "niacinamide",
+      "ceramide NP"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 88000,
     "official_url": "https://pieceseoul.com/products/exosome-peptide-revital-cream",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_014_exosome_cream.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_014_exosome_cream.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_015",
     "brand": "Piece Seoul",
     "name": "징크 시카 카밍 무기자차 선크림 SPF50+ PA++++ (Zinc Cica Mineral Sunscreen)",
     "category": "SUNSCREEN",
-    "tags": ["sunscreen", "mineral_sunscreen", "zinc_oxide", "cica", "post_procedure", "non_nano"],
-    "skin_state_tags": ["REDNESS", "IRRITATION", "BARRIER_RECOVERY", "SWELLING"],
+    "tags": [
+      "sunscreen",
+      "mineral_sunscreen",
+      "zinc_oxide",
+      "cica",
+      "post_procedure",
+      "non_nano"
+    ],
+    "skin_state_tags": [
+      "REDNESS",
+      "IRRITATION",
+      "BARRIER_RECOVERY",
+      "SWELLING"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -672,69 +1114,143 @@
       "exosome_asce"
     ],
     "restricted_after_treatments": [],
-    "usage_time": ["morning"],
+    "usage_time": [
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "two-finger length (약 1.2g)",
     "application_method": "아침 스킨케어 마지막 단계에서 피부에 얇게 두드리듯 펴 발라 물리적 자외선 차단막을 형성합니다. 시술 직후 피부에 안전합니다.",
-    "warnings": ["외출 후 저녁에 약산성 클렌저로 잔여물 없이 깨끗이 세안할 것"],
+    "warnings": [
+      "외출 후 저녁에 약산성 클렌저로 잔여물 없이 깨끗이 세안할 것"
+    ],
     "verified_claims": [
       "100% 논나노 징크옥사이드 단일 무기자차로 시술 직후 극도로 민감한 피부에도 눈 시림 없이 안전한 자외선 차단",
       "센텔라아시아티카 정량추출물이 자외선 열감과 붉은기를 동시에 진정"
     ],
-    "ingredients_highlight": ["zinc oxide (non-nano 100%)", "madecassoside", "calamine", "panthenol", "echium plantagineum seed oil"],
+    "ingredients_highlight": [
+      "zinc oxide (non-nano 100%)",
+      "madecassoside",
+      "calamine",
+      "panthenol",
+      "echium plantagineum seed oil"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 45000,
     "official_url": "https://pieceseoul.com/products/zinc-cica-mineral-sunscreen",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_015_zinc_sun.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_015_zinc_sun.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_016",
     "brand": "Piece Seoul",
     "name": "비타-C 20 인텐시브 브라이트닝 앰플 (Vita-C 20 Intensive Brightening Ampoule)",
     "category": "SERUM",
-    "tags": ["serum", "pure_vitamin_c", "brightening", "pigmentation", "antioxidant", "high_potency"],
-    "skin_state_tags": ["PIGMENTATION", "STABLE"],
+    "tags": [
+      "serum",
+      "pure_vitamin_c",
+      "brightening",
+      "pigmentation",
+      "antioxidant",
+      "high_potency"
+    ],
+    "skin_state_tags": [
+      "PIGMENTATION",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "hydrafacial",
       "aquapeel",
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "laser_toning", "restrict_days": 7},
-      {"treatment": "pico_toning", "restrict_days": 7},
-      {"treatment": "fractional_laser", "restrict_days": 14},
-      {"treatment": "fraxel_dual", "restrict_days": 14},
-      {"treatment": "ipl", "restrict_days": 7},
-      {"treatment": "chemical_peel", "restrict_days": 10},
-      {"treatment": "tca_deep_peel", "restrict_days": 21},
-      {"treatment": "microneedling", "restrict_days": 10},
-      {"treatment": "potenza_pumping", "restrict_days": 10},
-      {"treatment": "injection", "restrict_days": 7}
+      {
+        "treatment": "laser_toning",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "pico_toning",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 14
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 14
+      },
+      {
+        "treatment": "ipl",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 10
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 21
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 10
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 10
+      },
+      {
+        "treatment": "injection",
+        "restrict_days": 7
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "every_other_day",
     "amount": "2~3 drops",
     "application_method": "저녁 스킨케어 시 토너 후 2~3방울을 기미·잡티 부위에 톡톡 흡수시킨 후 고보습 크림을 덧발라 마무리합니다. (개봉 후 냉장 보관 권장)",
-    "warnings": ["상처, 여드름 압출 부위, 시술 직후 피부에 도포 시 따가움 유발 가능", "낮 사용 시 자외선 차단제 필수"],
+    "warnings": [
+      "상처, 여드름 압출 부위, 시술 직후 피부에 도포 시 따가움 유발 가능",
+      "낮 사용 시 자외선 차단제 필수"
+    ],
     "verified_claims": [
       "영국산 순수 비타민 C (L-아스코빅애씨드) 20% 및 페룰릭애씨드 함유로 짙은 색소침착 억제",
       "항산화 시너지 포뮬러로 피부 산화 스트레스 방어"
     ],
-    "ingredients_highlight": ["pure ascorbic acid 20%", "ferulic acid", "tocopherol", "glutathione", "alpha-bisabolol"],
+    "ingredients_highlight": [
+      "pure ascorbic acid 20%",
+      "ferulic acid",
+      "tocopherol",
+      "glutathione",
+      "alpha-bisabolol"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 75000,
     "official_url": "https://pieceseoul.com/products/vita-c-20-ampoule",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_016_vitac_20.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_016_vitac_20.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_017",
     "brand": "Piece Seoul",
     "name": "마데카 카밍 드레싱 스팟 패치 (Madeca Calming Dressing Patch - 60ea)",
     "category": "TARGETED_CARE",
-    "tags": ["targeted_care", "spot_patch", "hydrocolloid", "cica", "wound_care", "post_procedure"],
-    "skin_state_tags": ["IRRITATION", "ACNE", "BARRIER_RECOVERY"],
+    "tags": [
+      "targeted_care",
+      "spot_patch",
+      "hydrocolloid",
+      "cica",
+      "wound_care",
+      "post_procedure"
+    ],
+    "skin_state_tags": [
+      "IRRITATION",
+      "ACNE",
+      "BARRIER_RECOVERY"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -746,29 +1262,52 @@
       "rejuran_healer"
     ],
     "restricted_after_treatments": [],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "1 patch per spot",
     "application_method": "세안 후 스킨케어 전, 시술 주사 자국이나 압출 부위에 물기를 완전히 제거한 후 패치를 밀착 부착합니다. 삼출물이 차올라 하얗게 부풀면 교체합니다.",
-    "warnings": ["감염된 상처나 진물이 심한 부위는 의사 상담 후 부착"],
+    "warnings": [
+      "감염된 상처나 진물이 심한 부위는 의사 상담 후 부착"
+    ],
     "verified_claims": [
       "하이드로콜로이드 원단에 센텔라아시아티카 성분을 압착하여 습윤 환경 조성 및 2차 감염 차단",
       "0.1mm 초슬림 베벨링 공법으로 티 나지 않는 밀착력"
     ],
-    "ingredients_highlight": ["hydrocolloid adhesive", "asiaticoside", "madecassic acid", "tea tree oil"],
+    "ingredients_highlight": [
+      "hydrocolloid adhesive",
+      "asiaticoside",
+      "madecassic acid",
+      "tea tree oil"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 18000,
     "official_url": "https://pieceseoul.com/products/madeca-calming-spot-patch",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_017_spot_patch.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_017_spot_patch.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_018",
     "brand": "Piece Seoul",
     "name": "콜라겐 리프팅 하이드로겔 마스크 (Collagen Lifting Hydrogel Mask - 4ea)",
     "category": "MASK",
-    "tags": ["mask", "hydrogel", "collagen", "elasticity", "firming", "cooling"],
-    "skin_state_tags": ["STABLE", "HYDRATION", "BARRIER_RECOVERY", "SWELLING"],
+    "tags": [
+      "mask",
+      "hydrogel",
+      "collagen",
+      "elasticity",
+      "firming",
+      "cooling"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "HYDRATION",
+      "BARRIER_RECOVERY",
+      "SWELLING"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -787,31 +1326,57 @@
       "juvelook_skin"
     ],
     "restricted_after_treatments": [
-      {"treatment": "tca_deep_peel", "restrict_days": 7}
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 7
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "every_other_day",
     "amount": "1 sheet",
     "application_method": "세안 후 토너로 정돈한 피부에 상/하 분리형 하이드로겔 마스크를 밀착시킵니다. 유효 성분이 흡수되어 시트가 투명해질 때(약 30~40분) 떼어냅니다.",
-    "warnings": ["부착 중 과도한 대화나 표정 변화 자제"],
+    "warnings": [
+      "부착 중 과도한 대화나 표정 변화 자제"
+    ],
     "verified_claims": [
       "초저분자 300Da 프랑스산 피쉬 콜라겐 추출물 82%를 굳혀 만든 리얼 콜라겐 겔",
       "시술 후 늘어진 모공 수축 및 열감 완화 임상 입증"
     ],
-    "ingredients_highlight": ["hydrolyzed collagen (300Da) 82%", "volufiline", "adenosine", "niacinamide", "irish moss extract"],
+    "ingredients_highlight": [
+      "hydrolyzed collagen (300Da) 82%",
+      "volufiline",
+      "adenosine",
+      "niacinamide",
+      "irish moss extract"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 42000,
     "official_url": "https://pieceseoul.com/products/collagen-hydrogel-mask",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_018_collagen_mask.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_018_collagen_mask.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_019",
     "brand": "Piece Seoul",
     "name": "세라마이드 딥 리페어 립 & 아이 밤 (Ceramide Deep Repair Lip & Eye Balm)",
     "category": "TARGETED_CARE",
-    "tags": ["targeted_care", "eye_cream", "lip_balm", "ceramide", "dry_patch", "sensitive"],
-    "skin_state_tags": ["HYDRATION", "BARRIER_RECOVERY", "IRRITATION", "STABLE"],
+    "tags": [
+      "targeted_care",
+      "eye_cream",
+      "lip_balm",
+      "ceramide",
+      "dry_patch",
+      "sensitive"
+    ],
+    "skin_state_tags": [
+      "HYDRATION",
+      "BARRIER_RECOVERY",
+      "IRRITATION",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -833,29 +1398,51 @@
       "injection"
     ],
     "restricted_after_treatments": [],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "rice grain-sized per zone",
     "application_method": "건조하고 얇은 눈가와 입가, 팔자 부위에 쌀알 크기만큼 덜어 네 번째 손가락으로 가볍게 톡톡 두드리듯 흡수시킵니다.",
-    "warnings": ["눈 안쪽에 내용물이 들어가지 않도록 주의"],
+    "warnings": [
+      "눈 안쪽에 내용물이 들어가지 않도록 주의"
+    ],
     "verified_claims": [
       "5중 복합 세라마이드와 쉐어버터가 피지선이 없는 얇은 눈가·입가 피부에 밀착 영양막 형성",
       "무향·무색소 안자극 테스트 완료 저자극 포뮬러"
     ],
-    "ingredients_highlight": ["ceramide complex (EOP, NS, NP, AS, AP)", "butyrospermum parkii (shea) butter", "panthenol", "tocopheryl acetate"],
+    "ingredients_highlight": [
+      "ceramide complex (EOP, NS, NP, AS, AP)",
+      "butyrospermum parkii (shea) butter",
+      "panthenol",
+      "tocopheryl acetate"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 36000,
     "official_url": "https://pieceseoul.com/products/ceramide-lip-eye-balm",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_019_lip_eye_balm.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_019_lip_eye_balm.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_020",
     "brand": "Piece Seoul",
     "name": "티트리 아연 스팟 클리어링 젤 (Tea Tree Zinc Spot Clearing Gel)",
     "category": "TARGETED_CARE",
-    "tags": ["targeted_care", "spot_gel", "tea_tree", "zinc", "acne", "calming"],
-    "skin_state_tags": ["ACNE", "SEBUM", "IRRITATION"],
+    "tags": [
+      "targeted_care",
+      "spot_gel",
+      "tea_tree",
+      "zinc",
+      "acne",
+      "calming"
+    ],
+    "skin_state_tags": [
+      "ACNE",
+      "SEBUM",
+      "IRRITATION"
+    ],
     "treatment_compatibility": [
       "aquapeel",
       "hydrafacial",
@@ -864,36 +1451,76 @@
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "fractional_laser", "restrict_days": 7},
-      {"treatment": "fraxel_dual", "restrict_days": 7},
-      {"treatment": "chemical_peel", "restrict_days": 7},
-      {"treatment": "tca_deep_peel", "restrict_days": 14},
-      {"treatment": "microneedling", "restrict_days": 7},
-      {"treatment": "potenza_pumping", "restrict_days": 7}
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 14
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 7
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "pinpoint amount per blemish",
     "application_method": "국소 트러블 부위에 면봉이나 깨끗한 손가락 끝으로 젤을 얹듯이 소량 도포하여 흡수시킵니다.",
-    "warnings": ["눈가 주변 도포 금지", "넓은 부위에 과량 도포 시 건조함 유발 가능"],
+    "warnings": [
+      "눈가 주변 도포 금지",
+      "넓은 부위에 과량 도포 시 건조함 유발 가능"
+    ],
     "verified_claims": [
       "호주산 4-터피네올(티트리 유효성분)과 징크 PCA 복합체가 급성 붉은 트러블을 빠르게 진정",
       "논코메도제닉 및 피지 분비 조절 테스트 완료"
     ],
-    "ingredients_highlight": ["4-terpineol (active tea tree)", "zinc PCA 1%", "salicylic acid 0.2%", "madecassoside"],
+    "ingredients_highlight": [
+      "4-terpineol (active tea tree)",
+      "zinc PCA 1%",
+      "salicylic acid 0.2%",
+      "madecassoside"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 28000,
     "official_url": "https://pieceseoul.com/products/tea-tree-zinc-spot-gel",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_020_spot_gel.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_020_spot_gel.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_021",
     "brand": "Piece Seoul",
     "name": "펩타이드 퍼밍 넥 & 데콜테 크림 (Peptide Firming Neck Cream)",
     "category": "MOISTURIZER",
-    "tags": ["neck_cream", "peptide", "lifting", "anti_wrinkle", "adenosine", "firming"],
-    "skin_state_tags": ["STABLE", "BARRIER_RECOVERY"],
+    "tags": [
+      "neck_cream",
+      "peptide",
+      "lifting",
+      "anti_wrinkle",
+      "adenosine",
+      "firming"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "BARRIER_RECOVERY"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -910,31 +1537,56 @@
       "injection"
     ],
     "restricted_after_treatments": [
-      {"treatment": "tca_deep_peel", "restrict_days": 7}
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 7
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "1 pump",
     "application_method": "목 아래에서 위쪽(턱선 방향)으로 쓸어올리듯 펴 바르고, 쇄골과 데콜테 라인까지 가볍게 마사지하며 흡수시킵니다.",
-    "warnings": ["피부 마찰 방지를 위해 충분한 양을 덜어 부드럽게 도포"],
+    "warnings": [
+      "피부 마찰 방지를 위해 충분한 양을 덜어 부드럽게 도포"
+    ],
     "verified_claims": [
       "목 주름 개선 기능성 고시 성분 아데노신 및 리프팅 펩타이드 복합체 배합",
       "끈적임 없이 빠르게 흡수되는 고밀도 탄력 포뮬러"
     ],
-    "ingredients_highlight": ["acetyl dipeptide-1 cetyl ester", "palmitoyl tripeptide-5", "adenosine", "hydrolyzed elastin", "niacinamide"],
+    "ingredients_highlight": [
+      "acetyl dipeptide-1 cetyl ester",
+      "palmitoyl tripeptide-5",
+      "adenosine",
+      "hydrolyzed elastin",
+      "niacinamide"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 52000,
     "official_url": "https://pieceseoul.com/products/peptide-firming-neck-cream",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_021_neck_cream.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_021_neck_cream.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "PSS_022",
     "brand": "Piece Seoul",
     "name": "릴랙싱 카렌듈라 클렌징 밤 (Relaxing Calendula Cleansing Balm)",
     "category": "CLEANSER",
-    "tags": ["cleansing_balm", "first_cleanser", "calendula", "gentle_melting", "soothing"],
-    "skin_state_tags": ["STABLE", "HYDRATION", "BARRIER_RECOVERY"],
+    "tags": [
+      "cleansing_balm",
+      "first_cleanser",
+      "calendula",
+      "gentle_melting",
+      "soothing"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "HYDRATION",
+      "BARRIER_RECOVERY"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -949,35 +1601,71 @@
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "fractional_laser", "restrict_days": 4},
-      {"treatment": "fraxel_dual", "restrict_days": 4},
-      {"treatment": "microneedling", "restrict_days": 3},
-      {"treatment": "potenza_pumping", "restrict_days": 3},
-      {"treatment": "tca_deep_peel", "restrict_days": 10}
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 4
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 4
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 3
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 3
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 10
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "daily",
     "amount": "1 spatula scoop (약 3~4g)",
     "application_method": "물기 없는 손에 덜어 마른 얼굴에 롤링하여 메이크업과 노폐물을 녹여낸 후, 미온수를 약간 묻혀 유화 과정을 거친 뒤 물로 깨끗이 헹구어냅니다.",
-    "warnings": ["미세 상처가 있는 시술 직후 피부에는 2~3일간 1차 클렌징 밤 대신 순한 폼 클렌저 단독 사용 권장"],
+    "warnings": [
+      "미세 상처가 있는 시술 직후 피부에는 2~3일간 1차 클렌징 밤 대신 순한 폼 클렌저 단독 사용 권장"
+    ],
     "verified_claims": [
       "카렌듈라 꽃추출물과 식물성 오일 베이스로 짙은 메이크업과 워터프루프 선크림을 자극 없이 클렌징",
       "세안 후에도 오일 잔여감 없는 산뜻한 세정력"
     ],
-    "ingredients_highlight": ["calendula officinalis flower extract", "helianthus annuus (sunflower) seed oil", "tocopherol", "centella asiatica extract"],
+    "ingredients_highlight": [
+      "calendula officinalis flower extract",
+      "helianthus annuus (sunflower) seed oil",
+      "tocopherol",
+      "centella asiatica extract"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 38000,
     "official_url": "https://pieceseoul.com/products/relaxing-calendula-cleansing-balm",
-    "image_url": "https://cdn.pieceseoul.com/images/pss_022_cleansing_balm.jpg"
+    "image_url": "https://cdn.pieceseoul.com/images/pss_022_cleansing_balm.jpg",
+    "store": "piece_seoul"
   },
   {
     "product_id": "WHS_P023",
     "brand": "WHS Curated Derma",
     "name": "PDRN 리제너레이팅 인텐시브 앰플 (PDRN Regenerating Ampoule)",
     "category": "SERUM",
-    "tags": ["serum", "pdrn", "salmon_dna", "cellular_repair", "anti_aging", "elasticity"],
-    "skin_state_tags": ["BARRIER_RECOVERY", "STABLE", "HYDRATION"],
+    "tags": [
+      "serum",
+      "pdrn",
+      "salmon_dna",
+      "cellular_repair",
+      "anti_aging",
+      "elasticity"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "STABLE",
+      "HYDRATION"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -995,31 +1683,56 @@
       "juvelook_skin"
     ],
     "restricted_after_treatments": [
-      {"treatment": "tca_deep_peel", "restrict_days": 5}
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 5
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "daily",
     "amount": "1 full dropper",
     "application_method": "저녁 세안 후 토너 다음 단계에서 얼굴 전체에 도포하고, 특히 탄력과 흉터 회복이 필요한 부위를 가볍게 두드려 흡수시킵니다.",
-    "warnings": ["어류/연어 알레르기가 있는 경우 패치 테스트 필수"],
+    "warnings": [
+      "어류/연어 알레르기가 있는 경우 패치 테스트 필수"
+    ],
     "verified_claims": [
       "연어 정소 유래 고순도 폴리데옥시리보뉴클레오티드(PDRN 5,000ppm) 함유로 피부 세포 재생 촉진",
       "콜라겐 합성 유도 및 피부 두께 증가 임상 검증"
     ],
-    "ingredients_highlight": ["salmon DNA sodium DNA (PDRN 5000ppm)", "hyaluronic acid", "madecassoside", "glutathione"],
-    "allergens": ["fish_dna"],
+    "ingredients_highlight": [
+      "salmon DNA sodium DNA (PDRN 5000ppm)",
+      "hyaluronic acid",
+      "madecassoside",
+      "glutathione"
+    ],
+    "allergens": [
+      "fish_dna"
+    ],
     "is_active": true,
     "price": 95000,
     "official_url": "https://wellnesshouse-seoul.com/products/pdrn-regenerating-ampoule",
-    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_023_pdrn_ampoule.jpg"
+    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_023_pdrn_ampoule.jpg",
+    "store": "기타(Wellness House Seoul Store)"
   },
   {
     "product_id": "WHS_P024",
     "brand": "WHS Curated Derma",
     "name": "트라넥삼산 3% 멜라제로 스팟 세럼 (Tranexamic 3% Melazero Serum)",
     "category": "SERUM",
-    "tags": ["serum", "tranexamic_acid", "pigmentation", "melasma", "brightening", "melazero"],
-    "skin_state_tags": ["PIGMENTATION", "STABLE"],
+    "tags": [
+      "serum",
+      "tranexamic_acid",
+      "pigmentation",
+      "melasma",
+      "brightening",
+      "melazero"
+    ],
+    "skin_state_tags": [
+      "PIGMENTATION",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -1028,36 +1741,76 @@
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "fractional_laser", "restrict_days": 7},
-      {"treatment": "fraxel_dual", "restrict_days": 7},
-      {"treatment": "chemical_peel", "restrict_days": 7},
-      {"treatment": "tca_deep_peel", "restrict_days": 14},
-      {"treatment": "microneedling", "restrict_days": 7},
-      {"treatment": "potenza_pumping", "restrict_days": 7}
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 14
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 7
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "2 pumps",
     "application_method": "아침/저녁 토너 후 기미, 주근깨, 색소침착 부위에 얇게 펴 바릅니다. 아침 사용 시 반드시 자외선 차단제를 함께 바릅니다.",
-    "warnings": ["시술 후 붉은 상처 부위 도포 자제"],
+    "warnings": [
+      "시술 후 붉은 상처 부위 도포 자제"
+    ],
     "verified_claims": [
       "기미 치료 의약품 성분인 트라넥삼산 3%와 특허 미백 원료 Melazero 함유로 멜라닌 생성 억제",
       "자극 없이 색소 침착 부위의 면적과 짙기 개선"
     ],
-    "ingredients_highlight": ["tranexamic acid 3%", "melazero (arisaema amurense extract)", "niacinamide 4%", "alpha-arbutin 1%"],
+    "ingredients_highlight": [
+      "tranexamic acid 3%",
+      "melazero (arisaema amurense extract)",
+      "niacinamide 4%",
+      "alpha-arbutin 1%"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 62000,
     "official_url": "https://wellnesshouse-seoul.com/products/tranexamic-melazero-serum",
-    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_024_tranexamic.jpg"
+    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_024_tranexamic.jpg",
+    "store": "기타(Wellness House Seoul Store)"
   },
   {
     "product_id": "WHS_P025",
     "brand": "WHS Curated Derma",
     "name": "크라이오 SOS 수딩 쿨링 젤 (Cryo SOS Soothing Cooling Gel)",
     "category": "MOISTURIZER",
-    "tags": ["cooling", "soothing", "gel", "post_laser", "erythema", "cryo"],
-    "skin_state_tags": ["REDNESS", "SWELLING", "IRRITATION"],
+    "tags": [
+      "cooling",
+      "soothing",
+      "gel",
+      "post_laser",
+      "erythema",
+      "cryo"
+    ],
+    "skin_state_tags": [
+      "REDNESS",
+      "SWELLING",
+      "IRRITATION"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -1071,34 +1824,70 @@
       "injection"
     ],
     "restricted_after_treatments": [
-      {"treatment": "thermage_flx", "restrict_days": 1},
-      {"treatment": "ultherapy", "restrict_days": 1},
-      {"treatment": "serf_rf", "restrict_days": 1},
-      {"treatment": "volnewmer", "restrict_days": 1}
+      {
+        "treatment": "thermage_flx",
+        "restrict_days": 1
+      },
+      {
+        "treatment": "ultherapy",
+        "restrict_days": 1
+      },
+      {
+        "treatment": "serf_rf",
+        "restrict_days": 1
+      },
+      {
+        "treatment": "volnewmer",
+        "restrict_days": 1
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "generous layer",
     "application_method": "시술 후 열감이나 홍조가 느껴질 때 수면팩처럼 두껍게 얹어 흡수시키거나, 냉장 보관 후 차갑게 도포합니다.",
-    "warnings": ["고주파/초음파 리프팅 직후에는 열 보존을 위해 과도한 냉각 젤 사용 24시간 자제"],
+    "warnings": [
+      "고주파/초음파 리프팅 직후에는 열 보존을 위해 과도한 냉각 젤 사용 24시간 자제"
+    ],
     "verified_claims": [
       "도포 즉시 피부 온도 -5.2℃ 급속 쿨링 임상 완료 (멘톨/알코올 프리 무자극 포뮬러)",
       "에리스리톨과 알로에베라잎즙이 진피층 열 스트레스 해소"
     ],
-    "ingredients_highlight": ["erythritol", "aloe barbadensis leaf juice 85%", "centella asiatica extract", "trehalose", "panthenol"],
+    "ingredients_highlight": [
+      "erythritol",
+      "aloe barbadensis leaf juice 85%",
+      "centella asiatica extract",
+      "trehalose",
+      "panthenol"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 38000,
     "official_url": "https://wellnesshouse-seoul.com/products/cryo-sos-cooling-gel",
-    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_025_cryo_gel.jpg"
+    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_025_cryo_gel.jpg",
+    "store": "기타(Wellness House Seoul Store)"
   },
   {
     "product_id": "WHS_P026",
     "brand": "WHS Curated Derma",
     "name": "마이크로바이옴 배리어 리페어 미스트 (Microbiome Barrier Mist)",
     "category": "TONER",
-    "tags": ["mist", "microbiome", "probiotics", "barrier", "hydration", "soothing"],
-    "skin_state_tags": ["BARRIER_RECOVERY", "HYDRATION", "IRRITATION", "STABLE"],
+    "tags": [
+      "mist",
+      "microbiome",
+      "probiotics",
+      "barrier",
+      "hydration",
+      "soothing"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "HYDRATION",
+      "IRRITATION",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -1116,29 +1905,51 @@
       "injection"
     ],
     "restricted_after_treatments": [],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "3~4 sprays",
     "application_method": "눈을 감고 얼굴에서 20cm 거리를 두고 골고루 분사한 뒤 자연 건조시키거나 손바닥으로 가볍게 흡수시킵니다. 일상 중 건조할 때 수시로 사용합니다.",
-    "warnings": ["눈에 들어가지 않도록 주의"],
+    "warnings": [
+      "눈에 들어가지 않도록 주의"
+    ],
     "verified_claims": [
       "락토바실러스 발효용해물과 비피다 발효여과물이 유익균 생태계를 복원하여 외부 자극 방어력 강화",
       "안개 분사 타입으로 손 접촉 없이 위생적인 수분 진정"
     ],
-    "ingredients_highlight": ["bifida ferment lysate", "lactobacillus ferment", "ceramide NP", "ectoin 1%", "panthenol"],
+    "ingredients_highlight": [
+      "bifida ferment lysate",
+      "lactobacillus ferment",
+      "ceramide NP",
+      "ectoin 1%",
+      "panthenol"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 36000,
     "official_url": "https://wellnesshouse-seoul.com/products/microbiome-barrier-mist",
-    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_026_mist.jpg"
+    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_026_mist.jpg",
+    "store": "기타(Wellness House Seoul Store)"
   },
   {
     "product_id": "WHS_P027",
     "brand": "WHS Curated Derma",
     "name": "바쿠치올 1% 탄력 스무딩 세럼 (Bakuchiol 1% Smoothing Serum)",
     "category": "SERUM",
-    "tags": ["serum", "bakuchiol", "retinol_alternative", "anti_wrinkle", "gentle_elasticity"],
-    "skin_state_tags": ["STABLE", "BARRIER_RECOVERY", "HYDRATION"],
+    "tags": [
+      "serum",
+      "bakuchiol",
+      "retinol_alternative",
+      "anti_wrinkle",
+      "gentle_elasticity"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "BARRIER_RECOVERY",
+      "HYDRATION"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -1152,74 +1963,162 @@
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "fractional_laser", "restrict_days": 4},
-      {"treatment": "chemical_peel", "restrict_days": 4},
-      {"treatment": "tca_deep_peel", "restrict_days": 10},
-      {"treatment": "microneedling", "restrict_days": 4}
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 4
+      },
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 4
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 10
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 4
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "1 pump",
     "application_method": "토너 다음 단계에서 얼굴 전체에 부드럽게 펴 바르고 흡수시킵니다. 레티놀과 달리 광과민성이 없어 아침/저녁 모두 사용 가능합니다.",
-    "warnings": ["임산부 사용 가능하나 특이체질은 전문의 상담 권장"],
+    "warnings": [
+      "임산부 사용 가능하나 특이체질은 전문의 상담 권장"
+    ],
     "verified_claims": [
       "99% 고순도 식물성 바쿠치올 1% 함유로 레티놀 유사 콜라겐 부스팅 효과 제공하되 따가움/각질 탈락 자극 없음",
       "민감성 피부 주름 및 모공 탄력 개선 테스트 완료"
     ],
-    "ingredients_highlight": ["bakuchiol 1%", "squalane", "peptide complex", "adenosine", "allantoin"],
+    "ingredients_highlight": [
+      "bakuchiol 1%",
+      "squalane",
+      "peptide complex",
+      "adenosine",
+      "allantoin"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 56000,
     "official_url": "https://wellnesshouse-seoul.com/products/bakuchiol-smoothing-serum",
-    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_027_bakuchiol.jpg"
+    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_027_bakuchiol.jpg",
+    "store": "기타(Wellness House Seoul Store)"
   },
   {
     "product_id": "WHS_P028",
     "brand": "WHS Curated Derma",
     "name": "레티놀 0.3% 마이크로 캡슐 나이트 크림 (Retinol 0.3% Night Cream)",
     "category": "MOISTURIZER",
-    "tags": ["retinol", "night_cream", "pore", "wrinkle", "high_potency", "exfoliation"],
-    "skin_state_tags": ["STABLE", "SEBUM"],
+    "tags": [
+      "retinol",
+      "night_cream",
+      "pore",
+      "wrinkle",
+      "high_potency",
+      "exfoliation"
+    ],
+    "skin_state_tags": [
+      "STABLE",
+      "SEBUM"
+    ],
     "treatment_compatibility": [
       "hydrafacial",
       "aquapeel",
       "led_therapy"
     ],
     "restricted_after_treatments": [
-      {"treatment": "laser_toning", "restrict_days": 7},
-      {"treatment": "pico_toning", "restrict_days": 7},
-      {"treatment": "fractional_laser", "restrict_days": 14},
-      {"treatment": "fraxel_dual", "restrict_days": 14},
-      {"treatment": "ipl", "restrict_days": 7},
-      {"treatment": "chemical_peel", "restrict_days": 10},
-      {"treatment": "tca_deep_peel", "restrict_days": 21},
-      {"treatment": "microneedling", "restrict_days": 10},
-      {"treatment": "potenza_pumping", "restrict_days": 10},
-      {"treatment": "injection", "restrict_days": 7}
+      {
+        "treatment": "laser_toning",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "pico_toning",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "fractional_laser",
+        "restrict_days": 14
+      },
+      {
+        "treatment": "fraxel_dual",
+        "restrict_days": 14
+      },
+      {
+        "treatment": "ipl",
+        "restrict_days": 7
+      },
+      {
+        "treatment": "chemical_peel",
+        "restrict_days": 10
+      },
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 21
+      },
+      {
+        "treatment": "microneedling",
+        "restrict_days": 10
+      },
+      {
+        "treatment": "potenza_pumping",
+        "restrict_days": 10
+      },
+      {
+        "treatment": "injection",
+        "restrict_days": 7
+      }
     ],
-    "usage_time": ["night"],
+    "usage_time": [
+      "night"
+    ],
     "frequency": "every_other_day",
     "amount": "pea-sized amount",
     "application_method": "저녁 스킨케어 마지막 단계에서 완두콩 크기만큼 덜어 눈가와 입가를 피해 얼굴 전체에 얇게 펴 바릅니다. 주 2~3회 간격으로 시작합니다.",
-    "warnings": ["임산부/수유부 사용 절대 금지", "낮 사용 금지", "사용 기간 중 낮에 자외선 차단제 필수"],
+    "warnings": [
+      "임산부/수유부 사용 절대 금지",
+      "낮 사용 금지",
+      "사용 기간 중 낮에 자외선 차단제 필수"
+    ],
     "verified_claims": [
       "리포좀 캡슐화된 순수 레티놀 0.3%가 밤사이 모공 수축 및 잔주름 집중 개선",
       "판테놀과 세라마이드가 레티놀의 건조 자극을 완충"
     ],
-    "ingredients_highlight": ["pure encapsulated retinol 0.3%", "ceramide NP", "panthenol", "adenosine", "tocopherol"],
+    "ingredients_highlight": [
+      "pure encapsulated retinol 0.3%",
+      "ceramide NP",
+      "panthenol",
+      "adenosine",
+      "tocopherol"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 72000,
     "official_url": "https://wellnesshouse-seoul.com/products/retinol-03-night-cream",
-    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_028_retinol.jpg"
+    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_028_retinol.jpg",
+    "store": "기타(Wellness House Seoul Store)"
   },
   {
     "product_id": "WHS_P029",
     "brand": "WHS Curated Derma",
     "name": "카밍 시카 아줄렌 패드 (Calming Cica Azulene Pad - 70매)",
     "category": "TONER",
-    "tags": ["pad", "toner_pad", "cica", "azulene", "emergency_calming", "cooling_pack"],
-    "skin_state_tags": ["REDNESS", "IRRITATION", "BARRIER_RECOVERY"],
+    "tags": [
+      "pad",
+      "toner_pad",
+      "cica",
+      "azulene",
+      "emergency_calming",
+      "cooling_pack"
+    ],
+    "skin_state_tags": [
+      "REDNESS",
+      "IRRITATION",
+      "BARRIER_RECOVERY"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -1240,31 +2139,56 @@
       "injection"
     ],
     "restricted_after_treatments": [
-      {"treatment": "tca_deep_peel", "restrict_days": 4}
+      {
+        "treatment": "tca_deep_peel",
+        "restrict_days": 4
+      }
     ],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "2~3 pads",
     "application_method": "문지르지 말고 양 볼과 이마 등 붉은기가 심한 부위에 3~5분간 얹어 수딩 팩으로 사용한 뒤 떼어내어 가볍게 두드려 흡수시킵니다.",
-    "warnings": ["피부에 마찰을 가하여 닦아내지 말 것"],
+    "warnings": [
+      "피부에 마찰을 가하여 닦아내지 말 것"
+    ],
     "verified_claims": [
       "순면 100% 무표백 비건 패드에 병풀추출물과 구아이아줄렌을 듬뿍 머금어 3분 만에 피부 열감 즉각 완화",
       "민감성 피부 적합 테스트 완료"
     ],
-    "ingredients_highlight": ["centella asiatica extract 85%", "guaiazulene", "dipotassium glycyrrhizate", "hyaluronic acid"],
+    "ingredients_highlight": [
+      "centella asiatica extract 85%",
+      "guaiazulene",
+      "dipotassium glycyrrhizate",
+      "hyaluronic acid"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 32000,
     "official_url": "https://wellnesshouse-seoul.com/products/cica-azulene-pad",
-    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_029_cica_pad.jpg"
+    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_029_cica_pad.jpg",
+    "store": "기타(Wellness House Seoul Store)"
   },
   {
     "product_id": "WHS_P030",
     "brand": "WHS Curated Derma",
     "name": "무화과 젠틀 수딩 클렌징 밀크 (Fig Gentle Cleansing Milk)",
     "category": "CLEANSER",
-    "tags": ["cleansing_milk", "dry_skin", "gentle", "hypoallergenic", "moisture_wash"],
-    "skin_state_tags": ["BARRIER_RECOVERY", "HYDRATION", "IRRITATION", "STABLE"],
+    "tags": [
+      "cleansing_milk",
+      "dry_skin",
+      "gentle",
+      "hypoallergenic",
+      "moisture_wash"
+    ],
+    "skin_state_tags": [
+      "BARRIER_RECOVERY",
+      "HYDRATION",
+      "IRRITATION",
+      "STABLE"
+    ],
     "treatment_compatibility": [
       "laser_toning",
       "pico_toning",
@@ -1287,20 +2211,32 @@
       "injection"
     ],
     "restricted_after_treatments": [],
-    "usage_time": ["night", "morning"],
+    "usage_time": [
+      "night",
+      "morning"
+    ],
     "frequency": "daily",
     "amount": "2~3 pumps",
     "application_method": "물기 없는 마른 얼굴에 덜어 부드럽게 롤링하여 노폐물을 녹인 후, 미온수로 충분히 헹구거나 부드러운 해면으로 가볍게 닦아냅니다.",
-    "warnings": ["눈에 들어갔을 경우 즉시 씻어낼 것"],
+    "warnings": [
+      "눈에 들어갔을 경우 즉시 씻어낼 것"
+    ],
     "verified_claims": [
       "무화과 추출물과 식물성 스쿠알란 베이스로 거품 없이 피부 유수분 막을 온전히 보존하는 고보습 밀크 세안제",
       "시술 직후 극도로 메마르고 따가운 피부에 최적화"
     ],
-    "ingredients_highlight": ["ficus carica (fig) fruit extract 10%", "plant squalane", "panthenol", "ceramide NP", "sweet almond oil"],
+    "ingredients_highlight": [
+      "ficus carica (fig) fruit extract 10%",
+      "plant squalane",
+      "panthenol",
+      "ceramide NP",
+      "sweet almond oil"
+    ],
     "allergens": [],
     "is_active": true,
     "price": 36000,
     "official_url": "https://wellnesshouse-seoul.com/products/fig-cleansing-milk",
-    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_030_cleansing_milk.jpg"
+    "image_url": "https://cdn.wellnesshouse-seoul.com/images/whs_030_cleansing_milk.jpg",
+    "store": "기타(Wellness House Seoul Store)"
   }
 ]

@@ -35,6 +35,7 @@ public class PieceSeoulKnowledgeBase {
             List<PieceSeoulProductJson> items = objectMapper.readValue(is,
                     objectMapper.getTypeFactory().constructCollectionType(List.class, PieceSeoulProductJson.class));
             this.products = items.stream()
+                    .filter(item -> "piece_seoul".equalsIgnoreCase(item.store))
                     .map(PieceSeoulProductJson::toProduct)
                     .filter(PieceSeoulProduct::isActive)
                     .collect(Collectors.toUnmodifiableList());
@@ -101,6 +102,7 @@ public class PieceSeoulKnowledgeBase {
         @JsonProperty("official_url") String officialUrl;
         @JsonProperty("image_url") String imageUrl;
         @JsonProperty("recommend_frequency_days") Integer recommendFrequencyDays;
+        String store;
 
         PieceSeoulProduct toProduct() {
             List<PieceSeoulProduct.RestrictedTreatment> restricted = restrictedAfterTreatments == null

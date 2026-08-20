@@ -35,6 +35,7 @@ public class WimStoreKnowledgeBase {
             List<WimStoreProductJson> items = objectMapper.readValue(is,
                     objectMapper.getTypeFactory().constructCollectionType(List.class, WimStoreProductJson.class));
             this.products = items.stream()
+                    .filter(item -> "wim_store".equalsIgnoreCase(item.store))
                     .map(WimStoreProductJson::toProduct)
                     .filter(WimStoreProduct::isActive)
                     .collect(Collectors.toUnmodifiableList());
@@ -84,6 +85,7 @@ public class WimStoreKnowledgeBase {
         @JsonProperty("official_url") String officialUrl;
         @JsonProperty("image_url") String imageUrl;
         @JsonProperty("recommend_frequency_days") Integer recommendFrequencyDays;
+        String store;
 
         WimStoreProduct toProduct() {
             return new WimStoreProduct(productId, brand, name, category,

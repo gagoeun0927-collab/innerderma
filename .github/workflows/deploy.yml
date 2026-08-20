@@ -39,8 +39,28 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -e
             cd /opt/innerderma
             git pull origin main
+
+            # nginx가 실제로 읽는 파일은 active.conf 이므로 매 배포마다 갱신한다.
+            # (이걸 빼먹으면 nginx.innerderma.conf 변경이 반영되지 않는다)
+            cp deploy/nginx/nginx.innerderma.conf deploy/nginx/active.conf
+
             docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml build app-api
             docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml up -d app-api
             docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml restart frontend
+
+            # 기동 확인 (Flyway/validate 실패 시 여기서 배포를 실패로 처리)
+            echo "Waiting for app-api to become healthy..."
+            for i in $(seq 1 30); do
+              if curl -fsS https://inner-derma.duckdns.org/api/innerderma/health > /dev/null 2>&1; then
+                echo "app-api is up."
+                exit 0
+              fi
+              sleep 5
+            done
+
+            echo "app-api did not become healthy in time. Recent logs:"
+            docker compose --env-file /opt/innerderma.env -f docker-compose.prod.yml logs --tail=60 app-api
+            exit 1

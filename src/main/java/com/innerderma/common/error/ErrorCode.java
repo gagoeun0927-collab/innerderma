@@ -11,6 +11,8 @@ public enum ErrorCode {
     USER_ALREADY_EXISTS(HttpStatus.CONFLICT, "USER_002", "이미 존재하는 사용자입니다."),
     SKIN_DIAGNOSIS_NOT_FOUND(HttpStatus.NOT_FOUND, "SKIN_001", "피부 진단 결과를 찾을 수 없습니다."),
     PROCEDURE_NOT_FOUND(HttpStatus.NOT_FOUND, "PROCEDURE_001", "시술 기록을 찾을 수 없습니다."),
+    PROCEDURE_ALREADY_EXISTS(HttpStatus.CONFLICT, "PROCEDURE_002", "해당 기관·날짜의 시술 기록이 이미 있습니다."),
+    TREATMENT_NOT_FOUND(HttpStatus.BAD_REQUEST, "PROCEDURE_003", "지원하지 않는 시술 코드입니다."),
     FACILITY_NOT_FOUND(HttpStatus.NOT_FOUND, "FACILITY_001", "시설을 찾을 수 없습니다."),
     INVALID_SKIN_CAPTURE_IMAGE(HttpStatus.BAD_REQUEST, "CAPTURE_001", "지원하지 않는 피부 사진입니다."),
     SKIN_CAPTURE_ALREADY_EXISTS(HttpStatus.CONFLICT, "CAPTURE_002", "오늘의 유효한 피부 촬영 기록이 이미 있습니다."),

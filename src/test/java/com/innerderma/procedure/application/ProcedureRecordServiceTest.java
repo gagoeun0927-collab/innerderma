@@ -21,7 +21,7 @@ class ProcedureRecordServiceTest {
     @Test
     void returnsLatestProcedureOnOrBeforeReferenceDateAndComputesElapsedDays() {
         ProcedureRecordRepository repository = mock(ProcedureRecordRepository.class);
-        ProcedureRecordService service = new ProcedureRecordService(repository);
+        ProcedureRecordService service = new ProcedureRecordService(repository, mock(com.innerderma.user.domain.UserRepository.class), mock(com.innerderma.facility.domain.FacilityRepository.class), mock(com.innerderma.knowledge.treatment.TreatmentKnowledgeBase.class), mock(com.innerderma.airule.cache.SolutionCache.class));
         LocalDate referenceDate = LocalDate.of(2026, 8, 18);
         ProcedureRecord record = structuredRecord(LocalDate.of(2026, 8, 15));
         when(repository.findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDescIdDesc(
@@ -41,7 +41,7 @@ class ProcedureRecordServiceTest {
     @Test
     void doesNotSelectFutureProcedureBecauseRepositoryIsBoundedByReferenceDate() {
         ProcedureRecordRepository repository = mock(ProcedureRecordRepository.class);
-        ProcedureRecordService service = new ProcedureRecordService(repository);
+        ProcedureRecordService service = new ProcedureRecordService(repository, mock(com.innerderma.user.domain.UserRepository.class), mock(com.innerderma.facility.domain.FacilityRepository.class), mock(com.innerderma.knowledge.treatment.TreatmentKnowledgeBase.class), mock(com.innerderma.airule.cache.SolutionCache.class));
         LocalDate referenceDate = LocalDate.of(2026, 8, 18);
         when(repository.findFirstByUser_UserCodeAndProcedureDateLessThanEqualOrderByProcedureDateDescIdDesc(
                 USER_CODE, referenceDate)).thenReturn(Optional.empty());

@@ -49,8 +49,12 @@ class CareSolutionControllerTest {
                 .andExpect(jsonPath("$.data.safetyLevel").value("ATTENTION"))
                 .andExpect(jsonPath("$.data.inherited").value(true))
                 .andExpect(jsonPath("$.data.generationType").value("CARRIED_FORWARD"))
-                .andExpect(jsonPath("$.data.eveningSteps[0]").value("저녁 최소 보습"))
-                .andExpect(jsonPath("$.data.morningSteps[0]").value("아침 자외선 차단"));
+                .andExpect(jsonPath("$.data.eveningSteps[0].description").value("저녁 최소 보습"))
+                .andExpect(jsonPath("$.data.morningSteps[0].description").value("아침 자외선 차단"))
+                .andExpect(jsonPath("$.data.eveningAvoid").isArray())
+                .andExpect(jsonPath("$.data.supplements").isArray())
+                .andExpect(jsonPath("$.data.concernTags").isArray())
+                .andExpect(jsonPath("$.data.eveningWash.title").value("저녁 세안 루틴"));
     }
 
     @Test

@@ -17,13 +17,19 @@ public class ProductService {
     private final ProductRepository repository;
     public ProductService(ProductRepository repository) { this.repository = repository; }
 
-    /** category와 concern은 모두 선택 필터이며, null이면 해당 조건을 적용하지 않는다. */
-    public List<ProductResponse> getActiveProducts(ProductCategory category, ProductConcern concern) {
+    /** category, concern, source는 모두 선택 필터이며, null이면 해당 조건을 적용하지 않는다. */
+    public List<ProductResponse> getActiveProducts(ProductCategory category, ProductConcern concern, String source) {
         return repository.findAllByActiveTrueOrderByDisplayPriorityAscProductCodeAsc().stream()
                 .filter(product -> category == null || product.getCategory() == category)
                 .filter(product -> concern == null || product.getTargetConcern() == concern)
+                .filter(product -> source == null || source.equalsIgnoreCase(product.getSource()))
                 .map(ProductResponse::from)
                 .toList();
+    }
+
+    /** 하위 호환 */
+    public List<ProductResponse> getActiveProducts(ProductCategory category, ProductConcern concern) {
+        return getActiveProducts(category, concern, null);
     }
 
     public ProductResponse getProduct(String productCode) {

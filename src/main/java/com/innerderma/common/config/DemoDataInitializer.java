@@ -37,7 +37,9 @@ public class DemoDataInitializer {
             FacilityRepository facilityRepository,
             WhsSkinDiagnosisRepository diagnosisRepository,
             ProcedureRecordRepository procedureRecordRepository,
-            ProductRepository productRepository
+            ProductRepository productRepository,
+            com.innerderma.knowledge.product.PieceSeoulKnowledgeBase pieceSeoulKb,
+            com.innerderma.knowledge.product.WimStoreKnowledgeBase wimStoreKb
     ) {
         return args -> {
             User user = userRepository.findByUserCode(DEMO_USER_CODE)
@@ -98,6 +100,7 @@ public class DemoDataInitializer {
             }
 
             initializeDemoProducts(productRepository);
+            seedKnowledgeBaseProducts(productRepository, pieceSeoulKb, wimStoreKb);
         };
     }
 
@@ -139,5 +142,58 @@ public class DemoDataInitializer {
     ) {
         return facilityRepository.findByFacilityCode(facilityCode)
                 .orElseGet(() -> facilityRepository.save(new Facility(facilityCode, name)));
+    }
+
+    private void seedKnowledgeBaseProducts(ProductRepository repository,
+                                         com.innerderma.knowledge.product.PieceSeoulKnowledgeBase pieceSeoulKb,
+                                         com.innerderma.knowledge.product.WimStoreKnowledgeBase wimStoreKb) {
+        int priority = 100;
+        for (var p : pieceSeoulKb.findAll()) {
+            if (p.productId() == null || p.name() == null) continue;
+            if (!repository.existsByProductCode(p.productId())) {
+                repository.save(new Product(
+                        p.productId(), p.brand() != null ? p.brand() : "Piece Seoul", p.name(),
+                        mapCategory(p.category()), ProductConcern.GENERAL, true,
+                        true, false, p.officialUrl(), priority++,
+                        "PIECE_SEOUL", p.price(), p.imageUrl(), p.frequency(),
+                        p.applicationMethod(), toJson(p.verifiedClaims()),
+                        toJson(p.ingredientsHighlight()), toJson(p.skinStateTags())
+                ));
+            }
+        }
+
+        for (var p : wimStoreKb.findAll()) {
+            if (p.productId() == null || p.name() == null) continue;
+            if (!repository.existsByProductCode(p.productId())) {
+                repository.save(new Product(
+                        p.productId(), p.brand() != null ? p.brand() : "WIM Store", p.name(),
+                        ProductCategory.TARGETED_CARE, ProductConcern.GENERAL, true,
+                        true, false, p.officialUrl(), priority++,
+                        "WIM_STORE", p.price(), p.imageUrl(), p.usage(),
+                        null, toJson(p.verifiedClaims()),
+                        toJson(p.ingredientsHighlight()), toJson(p.stateTags())
+                ));
+            }
+        }
+    }
+
+    private ProductCategory mapCategory(String kbCategory) {
+        if (kbCategory == null) return ProductCategory.TARGETED_CARE;
+        return switch (kbCategory.toUpperCase()) {
+            case "CLEANSER" -> ProductCategory.CLEANSER;
+            case "MOISTURIZER" -> ProductCategory.MOISTURIZER;
+            case "SUNSCREEN" -> ProductCategory.SUNSCREEN;
+            case "TONER", "SERUM", "OIL", "MASK", "TARGETED_CARE" -> ProductCategory.TARGETED_CARE;
+            default -> ProductCategory.TARGETED_CARE;
+        };
+    }
+
+    private String toJson(java.util.List<String> list) {
+        if (list == null || list.isEmpty()) return "[]";
+        try {
+            return new tools.jackson.databind.ObjectMapper().writeValueAsString(list);
+        } catch (Exception e) {
+            return "[]";
+        }
     }
 }

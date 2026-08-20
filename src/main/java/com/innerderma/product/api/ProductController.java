@@ -17,8 +17,9 @@ public class ProductController {
     @GetMapping
     public ApiResponse<List<ProductResponse>> getProducts(
             @RequestParam(value = "category", required = false) ProductCategory category,
-            @RequestParam(value = "concern", required = false) ProductConcern concern) {
-        return ApiResponse.success(service.getActiveProducts(category, concern));
+            @RequestParam(value = "concern", required = false) ProductConcern concern,
+            @RequestParam(value = "source", required = false) String source) {
+        return ApiResponse.success(service.getActiveProducts(category, concern, source));
     }
 
     @GetMapping("/{productCode}")
